@@ -13,22 +13,28 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>GageShan&#39;s blog</title>
+  <title>nyoj63 小猴子下落（二叉树） | GageShan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="ACM" />
   
   
   
-  <meta name="description" content="谨言慎行，勤思能动">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GageShan&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  
+  <meta name="description" content="一、题目描述小猴子下落时间限制：3000 ms  |  内存限制：65535 KB难度：3描述  有一颗二叉树，最大深度为D,且所有叶子的深度都相同。所有结点从左到右从上到下的编号为1,2,3，·····，2的D次方减1。在结点1处放一个小猴子，它会往下跑。每个内结点上都有一个开关，初始全部关闭，当每次有小猴子跑到一个开关上时，它的状态都会改变，当到达一个内结点时，如果开关关闭，小猴子往左走，否则">
+<meta name="keywords" content="ACM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NYOJ63 小猴子下落（二叉树）">
+<meta property="og:url" content="http://yoursite.com/2018/08/14/NYOJ63小猴子下落/index.html">
 <meta property="og:site_name" content="GageShan&#39;s blog">
-<meta property="og:description" content="谨言慎行，勤思能动">
+<meta property="og:description" content="一、题目描述小猴子下落时间限制：3000 ms  |  内存限制：65535 KB难度：3描述  有一颗二叉树，最大深度为D,且所有叶子的深度都相同。所有结点从左到右从上到下的编号为1,2,3，·····，2的D次方减1。在结点1处放一个小猴子，它会往下跑。每个内结点上都有一个开关，初始全部关闭，当每次有小猴子跑到一个开关上时，它的状态都会改变，当到达一个内结点时，如果开关关闭，小猴子往左走，否则">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/css/images/满二叉树.jpg">
+<meta property="og:updated_time" content="2018-08-14T12:10:27.789Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GageShan&#39;s blog">
-<meta name="twitter:description" content="谨言慎行，勤思能动">
+<meta name="twitter:title" content="NYOJ63 小猴子下落（二叉树）">
+<meta name="twitter:description" content="一、题目描述小猴子下落时间限制：3000 ms  |  内存限制：65535 KB难度：3描述  有一颗二叉树，最大深度为D,且所有叶子的深度都相同。所有结点从左到右从上到下的编号为1,2,3，·····，2的D次方减1。在结点1处放一个小猴子，它会往下跑。每个内结点上都有一个开关，初始全部关闭，当每次有小猴子跑到一个开关上时，它的状态都会改变，当到达一个内结点时，如果开关关闭，小猴子往左走，否则">
+<meta name="twitter:image" content="http://yoursite.com/css/images/满二叉树.jpg">
   
     <link rel="alternate" href="/atom.xml" title="GageShan&#39;s blog" type="application/atom+xml">
   
@@ -84,7 +90,7 @@ var themeMenus = {};
 </script>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -162,17 +168,15 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-    <article id="post-NYOJ63小猴子下落"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-NYOJ63小猴子下落" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/14/NYOJ63小猴子下落/">NYOJ63 小猴子下落（二叉树）</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      NYOJ63 小猴子下落（二叉树）
     </h1>
   
 
@@ -185,6 +189,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -222,376 +230,58 @@ var themeMenus = {};
       
             
       
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/10/hexo小配置/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo小配置</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 <!-- Table of Contents -->
 
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
-
-  
-    <article id="post-hexo小配置"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、题目描述"><span class="nav-number">1.</span> <span class="nav-text">一、题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、题解"><span class="nav-number">2.</span> <span class="nav-text">二、题解</span></a></li></ol>
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/10/hexo小配置/">hexo小配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/10/hexo小配置/" class="article-date">
-	  <time datetime="2018-08-10T12:00:32.068Z" itemprop="datePublished">August 10, 2018</time>
-	</a>
-
-      
     </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<h1 id="一、hexo部署本地图片"><a href="#一、hexo部署本地图片" class="headerlink" title="一、hexo部署本地图片"></a>一、hexo部署本地图片</h1><p>把图片在hexo/blog/public/css/images目录下，其中(hexo/blog)是你博客所在文件夹。使用/css/images/at.png的方式进行链接。</p>
-<h1 id="二、在首页只显示摘要信息"><a href="#二、在首页只显示摘要信息" class="headerlink" title="二、在首页只显示摘要信息"></a>二、在首页只显示摘要信息</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这里写文章的简介</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">这里写文章的正文</span><br></pre></td></tr></table></figure>
-<p>未完待续……</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小技巧/">小技巧</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-二叉树的创建及其遍历"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/09/二叉树的创建及其遍历/">二叉树的创建及其遍历</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/09/二叉树的创建及其遍历/" class="article-date">
-	  <time datetime="2018-08-09T15:37:26.625Z" itemprop="datePublished">August 9, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            
-
-二叉树是一种非常重要的数据结构，许多其他的数据结构都是基于二叉树发展推演过来的。用递归定义树的结构非常简洁，同样，递归遍历也非常简洁。在学习过程中，我发现递归算法往往只是一个简单的语句，虽然简洁的语句实现了功能，但在算法具体过程方面没有很好的阐述，我也很纠结为什么可以这么用，一次次调式试图弄明白内在机理，总是达不到预期效果，所以我转而写非递归的算法以此希望能够理解树的节点的构造、遍历。在这里，我写下这些天学习二叉树的历程。
-
-
-一、树的创建利用递归创建二叉树。123456789101112131415struct Btree *inputTree()//创建二叉树 &#123;	int number;	struct Btree *tree;	scanf(&quot;%d&quot;...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/08/09/二叉树的创建及其遍历/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/">c/c++</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-    <article id="post-hello-world"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/02/hello-world/">I am coming</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/02/hello-world/" class="article-date">
-	  <time datetime="2018-08-02T01:30:58.139Z" itemprop="datePublished">August 2, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-<h1 id="ONE"><a href="#ONE" class="headerlink" title="ONE"></a>ONE</h1><blockquote>
-<p>将学习and工作中遇到的问题记录下来，小白成长为大佬，若干年后，相必值得回味。</p>
-</blockquote>
-<p>这是我的第一篇博客。想写博客，但会不会变成为了写博客而写博客呢，不知道。认真地想，以往遇到问题，求助知乎、csdn、博客园，大部分问题都能得到很好的解决，感慨众多大神and大佬的无私分享，遂生出想法，记录问题，待知识丰富后，再来看看这些，希望能够得到些许乐趣吧。<br>                                                                    ——GageShan 于2018.08.02 夜</p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
-
-      
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
-
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div>
-</div>
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/GageShan" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://weibo.com/6308056321/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:1489438788@qq.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://www.zhihu.com/people/dan-tian-74-36/activities" title="Zhihu"><i class="fa fa-zhihu" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/08/14/NYOJ63小猴子下落/">NYOJ63 小猴子下落（二叉树）</a></h6>
-              <span>August 14, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/08/10/hexo小配置/">hexo小配置</a></h6>
-              <span>August 10, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/08/09/二叉树的创建及其遍历/">二叉树的创建及其遍历</a></h6>
-              <span>August 9, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/08/02/hello-world/">I am coming</a></h6>
-              <span>August 2, 2018</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-c/">c/c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/c-c/" style="font-size: 10px;">c/c++</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">4</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
       <footer id="footer" class="site-footer">
