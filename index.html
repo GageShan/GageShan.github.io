@@ -188,27 +188,27 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h1 id="一、题目描述"><a href="#一、题目描述" class="headerlink" title="一、题目描述"></a>一、题目描述</h1><p>小猴子下落<br>时间限制：3000 ms  |  内存限制：65535 KB<br>难度：3<br>描述</p>
-<blockquote>
-<p>有一颗二叉树，最大深度为D,且所有叶子的深度都相同。所有结点从左到右从上到下的编号为1,2,3，·····，2的D次方减1。在结点1处放一个小猴子，它会往下跑。每个内结点上都有一个开关，初始全部关闭，当每次有小猴子跑到一个开关上时，它的状态都会改变，当到达一个内结点时，如果开关关闭，小猴子往左走，否则往右走，直到走到叶子结点。一些小猴子从结点1处开始往下跑，最后一个小猴儿会跑到哪里呢？</p>
-</blockquote>
-<p>输入</p>
-<blockquote>
-<p>输入二叉树叶子的深度D,和小猴子数目I，假设I不超过整棵树的叶子个数，D&lt;=20.最终以 0 0 结尾</p>
-</blockquote>
-<p>输出</p>
-<blockquote>
-<p>输出第I个小猴子所在的叶子编号。</p>
-</blockquote>
-<p>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 2</span><br><span class="line">3 4</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure></p>
-<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">12</span><br><span class="line">7</span><br></pre></td></tr></table></figure></p>
-<p>来源<br>[张洁烽]原创<br>上传者<br>张洁烽</p>
-<h1 id="二、题解"><a href="#二、题解" class="headerlink" title="二、题解"></a>二、题解</h1><p><img src="/css/images/满二叉树.jpg" alt="满二叉树"><br>思路如下</p>
-<blockquote>
-<p>1、首先可以明确当节点值为0时，往左走，然后节点值变为1，反之往右走，节点值变为0；<br>2、定义一个大数组用来存放节点状态值，将数组看成满二叉树存储值的状态；<br>3、左节点的序号为上一节点的2倍，右节点的序号为上一节点的2倍加1。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;memory.h&gt;</span><br><span class="line">#define MAXSIZE 40000+10</span><br><span class="line">int flag[MAXSIZE]=&#123;0&#125;; </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int N,M;</span><br><span class="line">	while(scanf(&quot;%d%d&quot;,&amp;N,&amp;M)!=EOF)&#123;</span><br><span class="line">		memset(flag,0,MAXSIZE);</span><br><span class="line">		if(N==0&amp;&amp;M==0)</span><br><span class="line">			break;</span><br><span class="line">		int temp=1;</span><br><span class="line">		for(int i=1;i&lt;=M;i++)&#123;</span><br><span class="line">			int depth=1;</span><br><span class="line">			temp=1;</span><br><span class="line">			while(depth&lt;N)&#123;</span><br><span class="line">					if(flag[temp]==0)&#123;</span><br><span class="line">						flag[temp]=1;</span><br><span class="line">						temp=temp*2;</span><br><span class="line">					&#125;else&#123;</span><br><span class="line">						flag[temp]=0;</span><br><span class="line">						temp=temp*2+1;</span><br><span class="line">					&#125;</span><br><span class="line">					depth++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%d\n&quot;,temp);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+
+          
+            <div class="entry-summary" style="margin-left:0;">
+            一、题目描述小猴子下落时间限制：3000 ms  |  内存限制：65535 KB难度：3描述
+
+有一颗二叉树，最大深度为D,且所有叶子的深度都相同。所有结点从左到右从上到下的编号为1,2,3，·····，2的D次方减1。在结点1处放一个小猴子，它会往下跑。每个内结点上都有一个开关，初始全部关闭，当每次有小猴子跑到一个开关上时，它的状态都会改变，当到达一个内结点时，如果开关关闭，小猴子往左走，否则往右走，直到走到叶子结点。一些小猴子从结点1处开始往下跑，最后一个小猴儿会跑到哪里呢？输入输入二叉树叶子的深度D,和小猴子数目I，假设I不超过整棵树的叶子个数，D&lt;=20.最终以 0 0 结尾
+
+输出
+
+输出第I个小猴子所在的叶子编号。
+
+样例输入1234 23 40 0
+样例输出121...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/08/14/NYOJ63小猴子下落/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
