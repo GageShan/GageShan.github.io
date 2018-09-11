@@ -19,18 +19,18 @@
   
   
   
-  <meta name="description" content="title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: -“https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1536690025330&amp;amp;di=044c40b07c07bc21de6477224b07d1e0&amp;amp;imgtype=0">
+  <meta name="description" content="title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: “https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1536690025330&amp;amp;di=044c40b07c07bc21de6477224b07d1e0&amp;amp;imgtype=0&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GageShan&#39;s blog">
 <meta property="og:url" content="http://yoursite.com/2018/09/11/统计磁盘文件数/index.html">
 <meta property="og:site_name" content="GageShan&#39;s blog">
-<meta property="og:description" content="title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: -“https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1536690025330&amp;amp;di=044c40b07c07bc21de6477224b07d1e0&amp;amp;imgtype=0">
+<meta property="og:description" content="title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: “https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1536690025330&amp;amp;di=044c40b07c07bc21de6477224b07d1e0&amp;amp;imgtype=0&amp;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/09/11/统计磁盘文件数/css/images/文件统计20180911232729.png">
-<meta property="og:updated_time" content="2018-09-11T15:55:24.818Z">
+<meta property="og:updated_time" content="2018-09-11T16:00:16.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GageShan&#39;s blog">
-<meta name="twitter:description" content="title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: -“https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1536690025330&amp;amp;di=044c40b07c07bc21de6477224b07d1e0&amp;amp;imgtype=0">
+<meta name="twitter:description" content="title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: “https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1536690025330&amp;amp;di=044c40b07c07bc21de6477224b07d1e0&amp;amp;imgtype=0&amp;">
 <meta name="twitter:image" content="http://yoursite.com/2018/09/11/统计磁盘文件数/css/images/文件统计20180911232729.png">
   
     <link rel="alternate" href="/atom.xml" title="GageShan&#39;s blog" type="application/atom+xml">
@@ -184,7 +184,7 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>title: 统计磁盘文件数（C#实现）<br>categories: c#<br>tags: 小轮子<br>photo: -“<a href="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1536690025330&amp;di=044c40b07c07bc21de6477224b07d1e0&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D5baf7811b0119313c743ffb8553a0c10%2Fc0aab3389b504fc2dd8e06d6e7dde71192ef6d90.jpg&quot;" target="_blank" rel="noopener">https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1536690025330&amp;di=044c40b07c07bc21de6477224b07d1e0&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D5baf7811b0119313c743ffb8553a0c10%2Fc0aab3389b504fc2dd8e06d6e7dde71192ef6d90.jpg&quot;</a></p>
+<p>title: 统计磁盘文件数（C#实现）<br>categories: c#<br>tags: 小轮子<br>photo: “<a href="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1536690025330&amp;di=044c40b07c07bc21de6477224b07d1e0&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D5baf7811b0119313c743ffb8553a0c10%2Fc0aab3389b504fc2dd8e06d6e7dde71192ef6d90.jpg&quot;" target="_blank" rel="noopener">https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1536690025330&amp;di=044c40b07c07bc21de6477224b07d1e0&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D5baf7811b0119313c743ffb8553a0c10%2Fc0aab3389b504fc2dd8e06d6e7dde71192ef6d90.jpg&quot;</a></p>
 <hr>
 <h1 id="一、想法"><a href="#一、想法" class="headerlink" title="一、想法"></a>一、想法</h1><p>想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。</p>
 <h1 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h1><p>编译环境：Visual Studio 2017<br>页面控件： Button、Label、TextBox、ListBox<br>应用项目：.NET Framework<br><a id="more"></a><br>解决方案：<br>1、首先识别磁盘第一层（就是点开磁盘后所显示的）中有多少文件夹<br>2、然后从上往下从第一个文件夹（记为文件夹A）开始识别，若文件夹A中还有若干个子文件夹，则又从第一个子文件夹开始识别<br>3、接2，直到文件夹里没有其他子文件夹了，则开始统计文件的数量</p>
