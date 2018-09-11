@@ -168,6 +168,16 @@ var themeMenus = {};
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/09/11/统计磁盘文件数/">统计磁盘文件数量（c#实现）</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-meta">
       
 	Posted on <a href="/2018/09/11/统计磁盘文件数/" class="article-date">
@@ -182,10 +192,9 @@ var themeMenus = {};
 
           
             <div class="entry-summary" style="margin-left:0;">
-            
-title: 统计磁盘文件数量（c#实现）categories: C#
-tags: 小轮子一、想法想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。
-二、原理编译环境：Visual Studio 2017页面控件： Button、Label、TextBox、ListBox应用项目：.NET Framework解决方案：1、首先识别磁盘第一层（就是点开磁盘后所显示的）中有多少文件夹2、然后从上往下从第一个文件夹（记为文件夹A）开始识别，若文件夹A中还有若干个子文件夹，则又从第一个子文件夹开始识别3、接2，直到文件夹里没有其他子文件夹了，则开始...
+            一、想法想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。
+二、原理编译环境：Visual Studio 2017页面控件： Button、Label、TextBox、ListBox应用项目：.NET Framework解决方案：1、首先识别磁盘第一层（就是点开磁盘后所显示的）中有多少文件夹2、然后从上往下从第一个文件夹（记为文件夹A）开始识别，若文件夹A中还有若干个子文件夹，则又从第一个子文件夹开始识别3、接2，直到文件夹里没有其他子文件夹了，则开始统计文件的数量
+4、接3，统计完当前文件夹里的文件后，返回上一层，也就是与当前文件夹处于同一...
           
 
         
@@ -197,7 +206,13 @@ tags: 小轮子一、想法想到能不能写一个小程序用来统计磁盘�
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/C/">C#</a>
+
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小轮子/">小轮子</a></li></ul>
+
       
             
       
@@ -568,7 +583,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
               <div class="widget-entry-summary" style="margin: 0;">
             
 
-              <h6 style="margin: 0;"><a href="/2018/09/11/统计磁盘文件数/">(no title)</a></h6>
+              <h6 style="margin: 0;"><a href="/2018/09/11/统计磁盘文件数/">统计磁盘文件数量（c#实现）</a></h6>
               <span>September 11, 2018</span>
             </div>
 
@@ -658,7 +673,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c#</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c#</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -668,7 +683,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-c/">c/c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础算法/">基础算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小轮子/">小轮子</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程实验/">编程实验</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-c/">c/c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础算法/">基础算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小轮子/">小轮子</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程实验/">编程实验</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -678,7 +693,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/c-c/" style="font-size: 10px;">c/c++</a> <a href="/tags/基础算法/" style="font-size: 10px;">基础算法</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/小轮子/" style="font-size: 10px;">小轮子</a> <a href="/tags/编程实验/" style="font-size: 10px;">编程实验</a>
+      <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/c-c/" style="font-size: 10px;">c/c++</a> <a href="/tags/基础算法/" style="font-size: 10px;">基础算法</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/小轮子/" style="font-size: 20px;">小轮子</a> <a href="/tags/编程实验/" style="font-size: 10px;">编程实验</a>
     </div>
   </div>
 
