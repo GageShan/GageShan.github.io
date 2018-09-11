@@ -183,7 +183,10 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             
-title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: “https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1536690025330&amp;di=044c40b07c07bc21de6477224b07d1e0&amp;imgtype=0&amp;src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D5baf7811b0119313c743ffb8553a0c10%2Fc0aab3389b504fc2dd8e06d6e7dde71192ef6d90.jpg&qu...
+title: 统计磁盘文件数（C#实现）categories: c#tags: 小轮子photo: 
+
+一、想法想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。
+二、原理编译环境：Visual Studio 2017页面控件： Button、Label、TextBox、ListBox应用项目：.NET Framework解决方案：1、首先识别磁盘第一层（就是点开磁盘后所显示的）中有多少文件夹2、然后从上往下从第一个文件夹（记为文件夹A）开始识别，若文件夹A中还有若干个子文件夹，则又从第一个子文件夹开始识别3、接2，直到文件夹里没有其他子文...
           
 
         
