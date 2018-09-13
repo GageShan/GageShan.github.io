@@ -29,12 +29,10 @@
 <meta property="og:site_name" content="GageShan&#39;s blog">
 <meta property="og:description" content="想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go! 一、问题描述给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为栈、队列。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而用队列">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE&hs=0&pn=0&spn=0&di=988883060&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=1113726968%2C2870159405&os=1261221542%2C292356763&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01cfdb57634ed20000012e7e735d90.jpg%401280w_1l_2o_100sh.png&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bzv55s_z%26e3Bv54_z%26e3BvgAzdH3Fo56hAzdH3FZMTY9Mz2zOTY%3D_z%26e3Bip4s%3FfotpviPw2j%3D5g&gsm=0&islist=&querylist=">
-<meta property="og:updated_time" content="2018-09-13T16:13:56.725Z">
+<meta property="og:updated_time" content="2018-09-13T16:16:36.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="迷宫求解">
 <meta name="twitter:description" content="想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go! 一、问题描述给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为栈、队列。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而用队列">
-<meta name="twitter:image" content="http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE&hs=0&pn=0&spn=0&di=988883060&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=1113726968%2C2870159405&os=1261221542%2C292356763&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01cfdb57634ed20000012e7e735d90.jpg%401280w_1l_2o_100sh.png&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bzv55s_z%26e3Bv54_z%26e3BvgAzdH3Fo56hAzdH3FZMTY9Mz2zOTY%3D_z%26e3Bip4s%3FfotpviPw2j%3D5g&gsm=0&islist=&querylist=">
   
     <link rel="alternate" href="/atom.xml" title="GageShan&#39;s blog" type="application/atom+xml">
   
@@ -175,16 +173,6 @@ var themeMenus = {};
           <section id="main" style="float:none;"><article id="post-迷宫求解" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
-<div class="article-gallery">
-  <div class="article-gallery-photos">
-    
-      <a class="article-gallery-img fancybox" href="http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE&hs=0&pn=0&spn=0&di=988883060&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=1113726968%2C2870159405&os=1261221542%2C292356763&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01cfdb57634ed20000012e7e735d90.jpg%401280w_1l_2o_100sh.png&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bzv55s_z%26e3Bv54_z%26e3BvgAzdH3Fo56hAzdH3FZMTY9Mz2zOTY%3D_z%26e3Bip4s%3FfotpviPw2j%3D5g&gsm=0&islist=&querylist=" rel="gallery_cjm0r72h1000000txj4t0dsvz">
-        <img src="http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE&hs=0&pn=0&spn=0&di=988883060&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=1113726968%2C2870159405&os=1261221542%2C292356763&simid=0%2C0&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01cfdb57634ed20000012e7e735d90.jpg%401280w_1l_2o_100sh.png&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bzv55s_z%26e3Bv54_z%26e3BvgAzdH3Fo56hAzdH3FZMTY9Mz2zOTY%3D_z%26e3Bip4s%3FfotpviPw2j%3D5g&gsm=0&islist=&querylist=" itemprop="image">
-      </a>
-    
-  </div>
-</div>
-
     
       <header class="article-header">
         
