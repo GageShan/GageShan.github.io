@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>迷宫求解 | GageShan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="c/c++" />
+  
+  
+  
+  
+  <meta name="description" content="想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go! 一、问题描述给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为栈、队列。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而用队列">
+<meta name="keywords" content="c&#x2F;c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迷宫求解">
+<meta property="og:url" content="http://yoursite.com/2018/09/13/迷宫求解/index.html">
+<meta property="og:site_name" content="GageShan&#39;s blog">
+<meta property="og:description" content="想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go! 一、问题描述给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为栈、队列。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而用队列">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-13T15:53:05.115Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="迷宫求解">
+<meta name="twitter:description" content="想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go! 一、问题描述给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为栈、队列。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而用队列">
+  
+    <link rel="alternate" href="/atom.xml" title="GageShan&#39;s blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/friends"] = "friends"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="GageShan&#39;s blog" rel="home"> GageShan&#39;s blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">谨言慎行，勤思能动</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/friends">friends</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-迷宫求解" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      迷宫求解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/09/13/迷宫求解/" class="article-date">
+	  <time datetime="2018-09-13T15:51:59.612Z" itemprop="datePublished">September 13, 2018</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go!</p>
+<h1 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h1><p>给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为<strong>栈、队列</strong>。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而用队列来求解的话，可以求出一条最短路径。<br><a id="more"></a></p>
+<h1 id="二、栈实现"><a href="#二、栈实现" class="headerlink" title="二、栈实现"></a>二、栈实现</h1><h2 id="1、解决方案"><a href="#1、解决方案" class="headerlink" title="1、解决方案"></a>1、解决方案</h2><p>说实话，不喜欢用栈来求解，耗时耗力还得不到最优解。就这样吧。<br>从指定路口开始，将指定入口入栈。然后查找与栈头相邻且可走的路口。需要说明是首先要制定一个选择路口的方案，不然计算机怎么知道往哪走呢？我选择的是顺时针查看，即先查看上再右其次下最后左方。<br>若找到，则将其入栈，在这里有一个非常关键的地方，就是需要记住处于栈头相对于前一个路口的方位值，所谓方位值，简单来讲，用0代表上，1代表右，2代表下，3代表左。接着再次查找相邻可走路口。为避免查找到的路口是已经走过的，在设计程序的时候，每一个路口入栈后，都将该路口的状态改变，比如，前面用0代表路径可走，那么可以设置入栈的入口状态值为-1，为区分起始条件不可走的状态值1。<br>若没有找到，也就是说处于当前路口时，上下左右都不可走，不要怕，退一步。退一步就是退回到上一路口。<br>那么整个栈中的元素就是从入口到出口的迷宫路径了。<br>如此直到找到出口，若没有出口，就。。。</p>
+<h2 id="2、代码"><a href="#2、代码" class="headerlink" title="2、代码"></a>2、代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#define MAXSIZE 10000</span><br><span class="line">int mg[10][10]=&#123;	//迷宫数组</span><br><span class="line">				&#123;1,1,1,1,1,1,1,1,1,1&#125;,</span><br><span class="line">				&#123;1,0,0,1,0,0,0,1,0,1&#125;,</span><br><span class="line">				&#123;1,0,0,1,0,0,0,1,0,1&#125;,</span><br><span class="line">				&#123;1,0,0,0,0,1,1,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,1,1,1,0,0,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,0,0,1,0,0,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,1,0,0,0,1,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,1,1,1,0,1,1,0,1&#125;,</span><br><span class="line">				&#123;1,1,0,0,0,0,0,0,0,1&#125;,</span><br><span class="line">				&#123;1,1,1,1,1,1,1,1,1,1&#125;</span><br><span class="line">				&#125;;</span><br><span class="line">struct Box</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	int j;</span><br><span class="line">	int di;      //表示方位值</span><br><span class="line">&#125;;</span><br><span class="line">struct Type</span><br><span class="line">&#123;</span><br><span class="line">	struct Box data[MAXSIZE];</span><br><span class="line">	int top;</span><br><span class="line">&#125;;</span><br><span class="line">bool findRode(int m,int n,int it,int yt);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	if(findRode(1,1,8,8)==false)</span><br><span class="line">		printf(&quot;failed\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">bool findRode(int m,int n,int it,int yt)</span><br><span class="line">&#123;</span><br><span class="line">	int i,j,di,k=0;</span><br><span class="line">	Box e;</span><br><span class="line">	struct Type *stack;</span><br><span class="line">	stack=(struct Type *)malloc(sizeof(struct Type));</span><br><span class="line">	stack-&gt;top=-1;</span><br><span class="line">	e.i=m;e.j=n;e.di=0;</span><br><span class="line">	stack-&gt;top++;   //将第一个路口入栈</span><br><span class="line">	stack-&gt;data[stack-&gt;top]=e;</span><br><span class="line">	mg[e.i][e.j]=-1;</span><br><span class="line">	while(stack-&gt;top!=-1)&#123;</span><br><span class="line">		e=stack-&gt;data[stack-&gt;top];</span><br><span class="line">		i=e.i;j=e.j;k=e.di;</span><br><span class="line">		if(i==it&amp;&amp;j==yt)&#123;</span><br><span class="line">			while(stack-&gt;top!=-1)&#123;</span><br><span class="line">				e=stack-&gt;data[stack-&gt;top];</span><br><span class="line">				printf(&quot;(%d,%d) &quot;,e.i,e.j);</span><br><span class="line">				mg[e.i][e.j]=0;</span><br><span class="line">				stack-&gt;top--;</span><br><span class="line">			&#125;</span><br><span class="line">			free(stack);</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		bool find=false;</span><br><span class="line">		while(k&lt;4&amp;&amp;find!=true)&#123;</span><br><span class="line">			k++;</span><br><span class="line">			switch(k)&#123;</span><br><span class="line">				case 0: i=e.i-1;j=e.j;break;</span><br><span class="line">				case 1: i=e.i;j=e.j+1;break;</span><br><span class="line">				case 2: i=e.i+1;j=e.j;break;</span><br><span class="line">				case 3: i=e.i;j=e.j-1;break; </span><br><span class="line">			&#125;</span><br><span class="line">			if(mg[i][j]==0)</span><br><span class="line">				find=true;</span><br><span class="line">		&#125;</span><br><span class="line">		if(k&lt;4)&#123;</span><br><span class="line">			stack-&gt;data[stack-&gt;top].di=k; </span><br><span class="line">			e.i=i;e.j=j;e.di=-1;</span><br><span class="line">			stack-&gt;top++;</span><br><span class="line">			stack-&gt;data[stack-&gt;top]=e;</span><br><span class="line">			mg[i][j]=-1;</span><br><span class="line">		&#125;else&#123;    //如果当前路口没有相邻可走且不是出口，则退栈回到上一路口</span><br><span class="line">			stack-&gt;top--;</span><br><span class="line">			mg[e.i][e.j]=0; //将该路口状态值重置，表示可走</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	free(stack);</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三、队列实现"><a href="#三、队列实现" class="headerlink" title="三、队列实现"></a>三、队列实现</h1><h2 id="1、解决方案-1"><a href="#1、解决方案-1" class="headerlink" title="1、解决方案"></a>1、解决方案</h2><p>为什么说用队列来解可以求得最短路径呢？<br>与栈不同的是，队列在查看相邻可走路口时，是将全部相邻可走路口进队；<br>首先将入口进队，队列中就记录下该路口的信息了。将队首元素出队，（注意此时队伍中还记录有路口的信息），以该路口为中心查看相邻路口，使全部相邻可走路口记下该路口在队列中的位置，然后将它们进队。比如起点为A，进队。<br>此时队列为A-&gt;NULL；<br>此时A在队列中的位置就是0（记0是开始），出队，B、C、D是A的相邻可走路口，则B、C、D的前导值就是0，通过查询前导值，就可以清楚地知道A的位置（说明下，第一个路口的前导值记为-1）。<br>此时队列为a-&gt;B-&gt;C-&gt;D-&gt;NULL；（A已出队，但A的信息保留着，所以用a代替）<br>注意队首为B（B在队列中的位置是1），然后将B出队，执行与出队A类似的步骤。直到找到出口。<br>找到出口后，那么通过出口的前导值可以知道它前面的路口（记为M）在哪（将M在队列中的状态值记为-1，后面皆是如此），通过M的前导值又可以知道M前面的路口在哪，直到与入口联系起来。<br>从队首信息开始扫描整个队列，若队列中的元素的状态值为-1，则将该元素记录的坐标输出。<br>求解完成。</p>
+<h2 id="2、代码-1"><a href="#2、代码-1" class="headerlink" title="2、代码"></a>2、代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#define MAXSIZE 10000</span><br><span class="line">#define LEN sizeof(struct Type )</span><br><span class="line">int mg[10][10]=&#123;</span><br><span class="line">				&#123;1,1,1,1,1,1,1,1,1,1&#125;,</span><br><span class="line">				&#123;1,0,0,1,0,0,0,1,0,1&#125;,</span><br><span class="line">				&#123;1,0,0,1,0,0,0,1,0,1&#125;,</span><br><span class="line">				&#123;1,0,0,0,0,1,1,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,1,1,1,0,0,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,0,0,1,0,0,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,1,0,0,0,1,0,0,1&#125;,</span><br><span class="line">				&#123;1,0,1,1,1,0,1,1,0,1&#125;,</span><br><span class="line">				&#123;1,1,0,0,0,0,0,0,0,1&#125;,</span><br><span class="line">				&#123;1,1,1,1,1,1,1,1,1,1&#125;</span><br><span class="line">				&#125;;</span><br><span class="line">struct Box</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	int j;</span><br><span class="line">	int pre;//记录上一路口的前导值,所谓前导值，就是可走路口在队列中的位置</span><br><span class="line">&#125;;</span><br><span class="line">struct Type</span><br><span class="line">&#123;</span><br><span class="line">	struct Box data[MAXSIZE];</span><br><span class="line">	int front,rear;</span><br><span class="line">&#125;;</span><br><span class="line">bool findRoad(int m,int n,int it,int yt);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	if(findRoad(1,1,8,8)==false)</span><br><span class="line">		printf(&quot;failed\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">bool findRoad(int m,int n,int it,int yt)</span><br><span class="line">&#123;</span><br><span class="line">	int i,j;</span><br><span class="line">	Box e;</span><br><span class="line">	struct Type *queue;</span><br><span class="line">	queue=(struct Type *)malloc(LEN);</span><br><span class="line">	e.i=m;e.j=n;e.pre=-1;</span><br><span class="line">	queue-&gt;front=queue-&gt;rear=-1;</span><br><span class="line">	queue-&gt;rear++;</span><br><span class="line">	queue-&gt;data[queue-&gt;rear]=e;</span><br><span class="line">	mg[e.i][e.j]=-1;</span><br><span class="line">	while(queue-&gt;rear!=queue-&gt;front)&#123;</span><br><span class="line">		queue-&gt;front++;</span><br><span class="line">		e=queue-&gt;data[queue-&gt;front];</span><br><span class="line">		i=e.i;j=e.j;</span><br><span class="line">		if(i==it&amp;&amp;j==yt)&#123;</span><br><span class="line">			int temp=queue-&gt;front;</span><br><span class="line">			int num=0;</span><br><span class="line">			while(temp!=0)&#123;</span><br><span class="line">				num=queue-&gt;data[temp].pre;</span><br><span class="line">				queue-&gt;data[temp].pre=-1;</span><br><span class="line">				temp=num;</span><br><span class="line">			&#125;</span><br><span class="line">			temp=0;</span><br><span class="line">			int count=1;</span><br><span class="line">			while(temp&lt;=queue-&gt;rear)&#123;	</span><br><span class="line">				if(queue-&gt;data[temp].pre==-1)&#123;</span><br><span class="line">					printf(&quot;(%d,%d)&quot;,queue-&gt;data[temp].i,queue-&gt;data[temp].j);</span><br><span class="line">					if(count%5==0)</span><br><span class="line">						printf(&quot;\n&quot;);</span><br><span class="line">					count++;</span><br><span class="line">				&#125;</span><br><span class="line">				temp++; </span><br><span class="line">			&#125;</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		int x,y;</span><br><span class="line">		int k=0;</span><br><span class="line">		while(k&lt;4)&#123;</span><br><span class="line">			switch(k)&#123;</span><br><span class="line">				case 0: x=i-1;y=j;break;</span><br><span class="line">				case 1: x=i;y=j+1;break;</span><br><span class="line">				case 2: x=i+1;y=j;break;</span><br><span class="line">				case 3: x=i;y=j-1;break;</span><br><span class="line">			&#125;</span><br><span class="line">			k++;</span><br><span class="line">			if(mg[x][y]==0)&#123;</span><br><span class="line">			/*只要该路口可走，就将其进队</span><br><span class="line">			*并且记录上一路口的前导值</span><br><span class="line">			*/</span><br><span class="line">				queue-&gt;rear++;</span><br><span class="line">				e.i=x;e.j=y;e.pre=queue-&gt;front;</span><br><span class="line">				queue-&gt;data[queue-&gt;rear]=e;</span><br><span class="line">				mg[i][j]=-1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/">c/c++</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/11/统计磁盘文件数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">统计磁盘文件数量（c#实现）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、问题描述"><span class="nav-number">1.</span> <span class="nav-text">一、问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、栈实现"><span class="nav-number">2.</span> <span class="nav-text">二、栈实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、解决方案"><span class="nav-number">2.1.</span> <span class="nav-text">1、解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、代码"><span class="nav-number">2.2.</span> <span class="nav-text">2、代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、队列实现"><span class="nav-number">3.</span> <span class="nav-text">三、队列实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、解决方案-1"><span class="nav-number">3.1.</span> <span class="nav-text">1、解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、代码-1"><span class="nav-number">3.2.</span> <span class="nav-text">2、代码</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 GageShan&#39;s blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/friends" class="mobile-nav-link">Friends</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
