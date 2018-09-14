@@ -168,6 +168,67 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-走迷宫"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/09/14/走迷宫/">走迷宫（迷宫问题补题）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/09/14/走迷宫/" class="article-date">
+	  <time datetime="2018-09-14T15:22:22.908Z" itemprop="datePublished">September 14, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div class="entry-thumbnail">
+            <a href="/2018/09/14/走迷宫/"><img width="250" height="175" src="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/jzARyjaBQxKQh.LPFWQQJz7I7GD*aeQBLjXJxy2r4LU!/b/dDYBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=AAQABAAEAAQBACc!&amp;tl=1&amp;tm=1536937200&amp;sce=0-12-12&amp;rf=viewer_311" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          一、题目描述
+一个迷宫由R行C列格子组成，有的格子里有障碍物，不能走；有的格子是空地，可以走。给定一个迷宫，求从左上角走到右下角最少需要走多少步(数据保证一定能走到)。只能在水平方向或垂直方向走，不能斜着走。Input第一行是两个整数，Ｒ和Ｃ，代表迷宫的长和宽。（ 1&lt;= R，C &lt;= 40)接下来是Ｒ行，每行Ｃ个字符，代表整个迷宫。空地格子用’.’表示，有障碍物的格子用’#’表...
+
+        
+          <p class="article-more-link">
+            <a href="/2018/09/14/走迷宫/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/">c/c++</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-迷宫求解"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -193,13 +254,12 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         
-
-          
-            <div class="entry-summary" style="margin-left:0;">
-            想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go!
-一、问题描述给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为栈、队列。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而用队列来求解的话，可以求出一条最短路径。
-二、栈实现1、解决方案说实话，不喜欢用栈来求解，耗时耗力还得不到最优解。就这样吧。从指定路口开始，将指定入口入栈。然后查找与栈头相邻且可走的路口。需要说明是首先要制定一个选择路口的方案，不然计算机怎么知道往哪走呢？我选择的是顺时针查看，即先查看上再右其次下最...
-          
+          <div class="entry-thumbnail">
+            <a href="/2018/09/13/迷宫求解/"><img width="250" height="175" src="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/14U8rfPMEiQsCx1s.fqvjzVjPr6VldWK62X6IHNVzXo!/b/dDYBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=vAKKAbwCigEBACc!&amp;tl=1&amp;vuin=2311526082&amp;tm=1536937200&amp;sce=50-1-1&amp;rf=viewer_311" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+          </div>
+          <div class="entry-summary">
+          想不到迷宫求解还困惑我这么久久久？搞清楚了吧？做下笔记防止遗忘？去补点题？let’s go!
+一、问题描述给定一个10*10的迷宫图，求一条从指定路口到指定出口的路径。在这里可以定义一个二维数组，用0来代表迷宫路径可走，用1代表路径不可走。迷宫问题可以用两种数据结构来解决（我暂时只会两种，囧rz），分别为栈、队列。栈只能简单地求出从指定路口到制定出口的路径，也就是说并不能考虑路径长短问题；而...
 
         
           <p class="article-more-link">
@@ -416,68 +476,6 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
     
 
   
-    <article id="post-验证回文字符串"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/09/07/验证回文字符串/">验证回文字符串（c#实现）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/09/07/验证回文字符串/" class="article-date">
-	  <time datetime="2018-09-07T04:34:18.465Z" itemprop="datePublished">September 7, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-          <div class="entry-thumbnail">
-            <a href="/2018/09/07/验证回文字符串/"><img width="250" height="175" src="https://pic2.zhimg.com/v2-7621e931f3970c8bb323b93d24573ee5_b.jpg" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-          </div>
-          <div class="entry-summary">
-          最近在学习c#语言，为提高c#熟练度，特意到leetcode上写题，现写下代码 回文字符串概念：一个字符串从左往右数和从右往左数是一样的。
- 
-12345678910111213141516171819202122232425262728293031using System;namespace 验证回文字符串__leetcode&#123;    class Program    &#123...
-
-        
-          <p class="article-more-link">
-            <a href="/2018/09/07/验证回文字符串/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/c/">c#</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础算法/">基础算法</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
 
 
   <nav id="page-nav">
@@ -583,7 +581,25 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
           <li class="clearfix">
 
             
-              <div class="widget-entry-summary" style="margin: 0;">
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/09/14/走迷宫/" title=""><img width="50" height="50" src="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/jzARyjaBQxKQh.LPFWQQJz7I7GD*aeQBLjXJxy2r4LU!/b/dDYBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=AAQABAAEAAQBACc!&amp;tl=1&amp;tm=1536937200&amp;sce=0-12-12&amp;rf=viewer_311" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/09/14/走迷宫/">走迷宫（迷宫问题补题）</a></h6>
+              <span>September 14, 2018</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-thumbnail">
+                <a href="/2018/09/13/迷宫求解/" title=""><img width="50" height="50" src="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/14U8rfPMEiQsCx1s.fqvjzVjPr6VldWK62X6IHNVzXo!/b/dDYBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=vAKKAbwCigEBACc!&amp;tl=1&amp;vuin=2311526082&amp;tm=1536937200&amp;sce=50-1-1&amp;rf=viewer_311" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
+              </div>
+              <div class="widget-entry-summary">
             
 
               <h6 style="margin: 0;"><a href="/2018/09/13/迷宫求解/">迷宫求解</a></h6>
@@ -652,21 +668,6 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-thumbnail">
-                <a href="/2018/08/14/NYOJ63小猴子下落/" title=""><img width="50" height="50" src="http://a4.qpic.cn/psb?/V11e15LV3RWYH9/G*gRz6OOt7wdJ9LGBACrs3Kpq99ZLTlzjfDAAIw.rjg!/c/dFMBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=ngGWAZ4BlgEBACc!&amp;tl=1&amp;tm=1536325200&amp;sce=0-12-12&amp;rf=0-18" class="attachment-thumb-small size-thumb-small wp-post-image" alt="preview-16" title=""></a>
-              </div>
-              <div class="widget-entry-summary">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/08/14/NYOJ63小猴子下落/">NYOJ63 小猴子下落（二叉树）</a></h6>
-              <span>August 14, 2018</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -676,7 +677,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c#</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c#</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/hexo/">hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -686,7 +687,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-c/">c/c++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础算法/">基础算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小轮子/">小轮子</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程实验/">编程实验</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/">ACM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-c/">c/c++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础算法/">基础算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小技巧/">小技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小轮子/">小轮子</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程实验/">编程实验</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -696,7 +697,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/基础算法/" style="font-size: 10px;">基础算法</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/小轮子/" style="font-size: 20px;">小轮子</a> <a href="/tags/编程实验/" style="font-size: 10px;">编程实验</a>
+      <a href="/tags/ACM/" style="font-size: 10px;">ACM</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/基础算法/" style="font-size: 10px;">基础算法</a> <a href="/tags/小技巧/" style="font-size: 10px;">小技巧</a> <a href="/tags/小轮子/" style="font-size: 15px;">小轮子</a> <a href="/tags/编程实验/" style="font-size: 10px;">编程实验</a>
     </div>
   </div>
 
@@ -706,7 +707,7 @@ try：将可能产生异常的代码块放到try中，这一语句在整个异�
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
