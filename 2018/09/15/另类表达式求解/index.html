@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>nyoj305另类表达式求值（栈） | GageShan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="c/c++" />
+  
+  
+  
+  
+  <meta name="description" content="一、题目描述表达式求值时间限制：3000 ms  |  内存限制：65535 KB难度：3描述  Dr.Kong设计的机器人卡多掌握了加减法运算以后，最近又学会了一些简单的函数求值，比如，它知道函数min(20,23)的值是20 ，add(10,98) 的值是108等等。经过训练，Dr.Kong设计的机器人卡多甚至会计算一种嵌套的更复杂的表达式。假设表达式可以简单定义为:">
+<meta name="keywords" content="c&#x2F;c++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NYOJ305另类表达式求值（栈）">
+<meta property="og:url" content="http://yoursite.com/2018/09/15/另类表达式求解/index.html">
+<meta property="og:site_name" content="GageShan&#39;s blog">
+<meta property="og:description" content="一、题目描述表达式求值时间限制：3000 ms  |  内存限制：65535 KB难度：3描述  Dr.Kong设计的机器人卡多掌握了加减法运算以后，最近又学会了一些简单的函数求值，比如，它知道函数min(20,23)的值是20 ，add(10,98) 的值是108等等。经过训练，Dr.Kong设计的机器人卡多甚至会计算一种嵌套的更复杂的表达式。假设表达式可以简单定义为:">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/*BRFNNBQQHbN01oqk8soICOitevs54hhrjY8Ez9JvMQ!/b/dFIBAAAAAAAA&ek=1&kp=1&pt=0&bo=tgN2ArYDdgIBACc!&tl=1&tm=1536998400&sce=0-12-12&rf=viewer_311">
+<meta property="og:updated_time" content="2018-09-15T08:40:24.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NYOJ305另类表达式求值（栈）">
+<meta name="twitter:description" content="一、题目描述表达式求值时间限制：3000 ms  |  内存限制：65535 KB难度：3描述  Dr.Kong设计的机器人卡多掌握了加减法运算以后，最近又学会了一些简单的函数求值，比如，它知道函数min(20,23)的值是20 ，add(10,98) 的值是108等等。经过训练，Dr.Kong设计的机器人卡多甚至会计算一种嵌套的更复杂的表达式。假设表达式可以简单定义为:">
+<meta name="twitter:image" content="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/*BRFNNBQQHbN01oqk8soICOitevs54hhrjY8Ez9JvMQ!/b/dFIBAAAAAAAA&ek=1&kp=1&pt=0&bo=tgN2ArYDdgIBACc!&tl=1&tm=1536998400&sce=0-12-12&rf=viewer_311">
+  
+    <link rel="alternate" href="/atom.xml" title="GageShan&#39;s blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/friends"] = "friends"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="GageShan&#39;s blog" rel="home"> GageShan&#39;s blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">谨言慎行，勤思能动</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/friends">friends</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-另类表达式求解" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+      <a class="article-gallery-img fancybox" href="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/*BRFNNBQQHbN01oqk8soICOitevs54hhrjY8Ez9JvMQ!/b/dFIBAAAAAAAA&ek=1&kp=1&pt=0&bo=tgN2ArYDdgIBACc!&tl=1&tm=1536998400&sce=0-12-12&rf=viewer_311" rel="gallery_cjm36hd1p000068tx1n9q9hjk">
+        <img src="http://a3.qpic.cn/psb?/V11e15LV3RWYH9/*BRFNNBQQHbN01oqk8soICOitevs54hhrjY8Ez9JvMQ!/b/dFIBAAAAAAAA&ek=1&kp=1&pt=0&bo=tgN2ArYDdgIBACc!&tl=1&tm=1536998400&sce=0-12-12&rf=viewer_311" itemprop="image">
+      </a>
+    
+  </div>
+</div>
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      NYOJ305另类表达式求值（栈）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/09/15/另类表达式求解/" class="article-date">
+	  <time datetime="2018-09-15T08:35:59.739Z" itemprop="datePublished">September 15, 2018</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、题目描述"><a href="#一、题目描述" class="headerlink" title="一、题目描述"></a>一、题目描述</h1><p>表达式求值<br>时间限制：3000 ms  |  内存限制：65535 KB<br>难度：3<br>描述</p>
+<blockquote>
+<p>Dr.Kong设计的机器人卡多掌握了加减法运算以后，最近又学会了一些简单的函数求值，比如，它知道函数min(20,23)的值是20 ，add(10,98) 的值是108等等。经过训练，Dr.Kong设计的机器人卡多甚至会计算一种嵌套的更复杂的表达式。<br>假设表达式可以简单定义为:<br><a id="more"></a></p>
+<ol>
+<li>一个正的十进制数 x 是一个表达式。</li>
+<li>如果 x 和 y 是 表达式，则 函数min(x,y )也是表达式,其值为x,y 中的最小数。</li>
+<li>如果 x 和 y 是 表达式，则 函数max(x,y )也是表达式,其值为x,y 中的最大数。</li>
+<li>如果 x 和 y 是 表达式，则 函数add(x,y )也是表达式,其值为x,y 之和。<br>例如， 表达式 max(add(1,2),7) 的值为 7。<br>请你编写程序，对于给定的一组表达式，帮助 Dr.Kong 算出正确答案，以便校对卡多计算的正误。</li>
+</ol>
+</blockquote>
+<p>输入</p>
+<blockquote>
+<p>第一行： N 表示要计算的表达式个数 （1≤ N ≤ 10）<br>接下来有N行， 每行是一个字符串，表示待求值的表达式<br>（表达式中不会有多余的空格，每行不超过300个字符，表达式中出现的十进制数都不<br>超过1000。）</p>
+</blockquote>
+<p>输出</p>
+<blockquote>
+<p>输出有N行，每一行对应一个表达式的值。</p>
+</blockquote>
+<p>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">add(1,2) </span><br><span class="line">max(1,999) </span><br><span class="line">add(min(1,1000),add(100,99))</span><br></pre></td></tr></table></figure></p>
+<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">999</span><br><span class="line">200</span><br></pre></td></tr></table></figure></p>
+<h1 id="二、题解"><a href="#二、题解" class="headerlink" title="二、题解"></a>二、题解</h1><p>本题是栈应用的类型。<br>首先定义两个栈，一个用来存放运算符（记为栈1），一个用来存放待计算的数据（记为栈2）。<br>从字符串首开始遍历直到尾部，若发现add串（在这里我们只需要识别字符a和字符d），则表示需要求和，将其存入栈1中。若发现min串、max串继续存放。若遍历到的是数字，则存入栈2，需要注意的是，由于输入的是字符串，在识别数据就要小心了。比如识别 47，首先识别到4，这时候可以发现后面还跟着7，4是十位上的数，7是各位上的数，如果在识别是不能处理，那么4就会被单独当成一个数存入栈2中，7也如此。具体看代码。<br>举例<br>add(min(1,1000),add(100,99))<br>1、字符串遍历，到add处，将其进栈1，用“加”代替，那么这时候栈1：加-&gt;null;<br>2、遍历到min，将其精栈1，用“小”代替，栈1：加-&gt;小-&gt;null；<br>3、遍历到1，通过处理将得到的数字进栈2，栈2：1-&gt;null;<br>4、遍历到1000串，处理得到1000进栈2，栈2：1-&gt;1000-&gt;null;<br>5、遍历到），说明此时需要计算数据了，查看栈1栈首的元素，发现此时为小，表明前面两个数据需要比较大小求得较小的数据，拿栈2中栈首元素与次首元素比较，就是1和1000比较得到1，栈2退栈一位，此时栈2：1-&gt;null；将比较得到的数据赋给栈首元素，那么栈2：1-&gt;null；处理完栈2，发现刚才栈1中的栈首得到了应用，将其退栈一位，栈1：加-&gt;null；<br>6、遍历到add处，用“加”代替，进栈，栈1：加-&gt;加-&gt;null;<br>7、接着遍历100，99，分别将他们进栈2，此时栈2：1-&gt;100-&gt;99-&gt;null；<br>8、遍历到），计算数据，栈1中栈首元素为加，则栈2中100和99相加的199，退栈，赋值。栈2：1-&gt;199-&gt;null。栈1退栈一位；<br>9、遍历到），计算数据，栈1中栈首元素为加，则栈2中1和199相加的199，退栈，赋值。栈2：200-&gt;null。栈1退栈一位；<br>10、200为表达式值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#define MAXSIZE 300+10</span><br><span class="line">struct Stack1</span><br><span class="line">&#123;</span><br><span class="line">	int flag[MAXSIZE];</span><br><span class="line">	int top;</span><br><span class="line">&#125;;</span><br><span class="line">struct Stack2</span><br><span class="line">&#123;</span><br><span class="line">	int number[MAXSIZE];</span><br><span class="line">	int top;</span><br><span class="line">&#125;;</span><br><span class="line">double calculate(char str[]);</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int Case;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;Case);</span><br><span class="line">	while(Case--)&#123;</span><br><span class="line">		char str[MAXSIZE];</span><br><span class="line">		scanf(&quot;%s&quot;,str);</span><br><span class="line">		double ans=calculate(str);</span><br><span class="line">		printf(&quot;%.0lf\n&quot;,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">double calculate(char str[])</span><br><span class="line">&#123;</span><br><span class="line">	struct Stack1 stack1;	//字符栈 </span><br><span class="line">	struct Stack2 stack2;	//数字栈 </span><br><span class="line">	stack1.top=stack2.top=-1;</span><br><span class="line">	int value=0;</span><br><span class="line">	for(int i=0;i&lt;strlen(str);i++)&#123;</span><br><span class="line">		if(str[i]==&apos;a&apos;&amp;&amp;str[i-1]!=&apos;m&apos;)&#123;//避免与求最大值的max区分开</span><br><span class="line">			value=0;</span><br><span class="line">			stack1.top++;</span><br><span class="line">			stack1.flag[stack1.top]=1;</span><br><span class="line">		&#125;</span><br><span class="line">		if(str[i]==&apos;m&apos;)&#123;</span><br><span class="line">			value=0;</span><br><span class="line">			stack1.top++;</span><br><span class="line">			if(str[i+1]==&apos;i&apos;)</span><br><span class="line">				stack1.flag[stack1.top]=2;//判断求最小值 </span><br><span class="line">			else if(str[i+2]==&apos;x&apos;)</span><br><span class="line">				stack1.flag[stack1.top]=3;//判断求最大值 </span><br><span class="line">		&#125;</span><br><span class="line">		if(str[i]==&apos;,&apos;)</span><br><span class="line">			value=0; </span><br><span class="line">		if(str[i]&gt;=&apos;0&apos;&amp;&amp;str[i]&lt;=&apos;9&apos;)&#123;</span><br><span class="line">			if(str[i-1]&gt;=&apos;0&apos;&amp;&amp;str[i]&lt;=&apos;9&apos;)&#123;</span><br><span class="line">				value=value*10+str[i]-48;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				value=str[i]-48;//字符转数字</span><br><span class="line">			&#125;</span><br><span class="line">			if(str[i+1]&lt;&apos;0&apos;||str[i+1]&gt;&apos;9&apos;)&#123;</span><br><span class="line">				stack2.top++;</span><br><span class="line">				stack2.number[stack2.top]=value;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int temp=0;</span><br><span class="line">		if(str[i]==&apos;)&apos;)&#123;</span><br><span class="line">			value=0;</span><br><span class="line">			switch(stack1.flag[stack1.top])&#123;</span><br><span class="line">				case 1: temp=stack2.number[stack2.top]+stack2.number[stack2.top-1];</span><br><span class="line">						stack2.top--;</span><br><span class="line">						stack2.number[stack2.top]=temp;</span><br><span class="line">						break;</span><br><span class="line">				case 2: if(stack2.number[stack2.top]&gt;=stack2.number[stack2.top-1])</span><br><span class="line">							stack2.top--;</span><br><span class="line">						else&#123;</span><br><span class="line">							temp=stack2.number[stack2.top];</span><br><span class="line">							stack2.top--;</span><br><span class="line">							stack2.number[stack2.top]=temp; </span><br><span class="line">						&#125;</span><br><span class="line">						break;</span><br><span class="line">				case 3: if(stack2.number[stack2.top]&lt;=stack2.number[stack2.top-1])</span><br><span class="line">							stack2.top--;</span><br><span class="line">						else&#123;</span><br><span class="line">							temp=stack2.number[stack2.top];</span><br><span class="line">							stack2.top--; </span><br><span class="line">							stack2.number[stack2.top]=temp; </span><br><span class="line">						&#125; 			 </span><br><span class="line">			&#125;</span><br><span class="line">			stack1.top--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return double(stack2.number[stack2.top]); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>继续补题ing…</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/">c/c++</a></li></ul>
+
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/14/走迷宫/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">走迷宫（迷宫问题补题）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、题目描述"><span class="nav-number">1.</span> <span class="nav-text">一、题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、题解"><span class="nav-number">2.</span> <span class="nav-text">二、题解</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 GageShan&#39;s blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/friends" class="mobile-nav-link">Friends</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
