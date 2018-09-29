@@ -369,17 +369,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/09/08/C#/语言熟练之计算器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/09/08/C#/语言熟练之计算器/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -505,15 +494,7 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
-
+    <div id="gitalk-container"></div>
   
 
 
@@ -855,26 +836,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/09/08/C#/语言熟练之计算器/';
-          this.page.identifier = '2018/09/08/C#/语言熟练之计算器/';
-          this.page.title = '语言熟练之计算器（c#实现）';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -909,7 +870,7 @@
         var gitalk = new Gitalk({
           clientID: 'd64f79f424fbe44c10f0',
           clientSecret: '5d22e89b165cf542c2cf1a360475c5f7621291c5',
-          repo: 'gageshan.github.io',
+          repo: 'GageShan.github.io',
           owner: 'GageShan',
           admin: ['GageShan'],
           id: location.pathname,
