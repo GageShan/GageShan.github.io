@@ -83,20 +83,21 @@
 
 
 
-<meta name="description" content="皇后问题最重要的就是递归回溯思维。从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。 一、数组加回溯弄清楚了回溯怎么回事，就可以进行第二步了。如何判断在该位置可以放置皇后呢？举个例子来说，在图中，小圆圈代表在当前位置试探性放置，由于皇后是一行一行地放置，也就是说只需要判断位于它上方的位置，而与它位置想冲突的，就是左上角右上角和正上方了。定义一个二维数组e">
+<meta name="description" content="皇后问题最重要的就是递归回溯思维。从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。">
 <meta name="keywords" content="c&#x2F;c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="皇后问题">
 <meta property="og:url" content="http://yoursite.com/2018/09/25/数据结构/N皇后/index.html">
 <meta property="og:site_name" content="GageShan&#39;s blog">
-<meta property="og:description" content="皇后问题最重要的就是递归回溯思维。从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。 一、数组加回溯弄清楚了回溯怎么回事，就可以进行第二步了。如何判断在该位置可以放置皇后呢？举个例子来说，在图中，小圆圈代表在当前位置试探性放置，由于皇后是一行一行地放置，也就是说只需要判断位于它上方的位置，而与它位置想冲突的，就是左上角右上角和正上方了。定义一个二维数组e">
+<meta property="og:description" content="皇后问题最重要的就是递归回溯思维。从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://a2.qpic.cn/psb?/V11e15LV3RWYH9/YL5MbliCaI7c4S*.RXb.la5I72C2Pt1wrsvqWdSAUDU!/b/dDUBAAAAAAAA&ek=1&kp=1&pt=0&bo=3wDiAN8A4gABACc!&tl=1&tm=1537858800&sce=0-12-12&rf=viewer_311">
-<meta property="og:updated_time" content="2018-09-25T07:31:02.920Z">
+<meta property="og:image" content="http://yoursite.com/css/images/皇后问题.png">
+<meta property="og:image" content="http://yoursite.com/css/images/皇后问题.png">
+<meta property="og:updated_time" content="2018-09-29T08:20:58.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="皇后问题">
-<meta name="twitter:description" content="皇后问题最重要的就是递归回溯思维。从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。 一、数组加回溯弄清楚了回溯怎么回事，就可以进行第二步了。如何判断在该位置可以放置皇后呢？举个例子来说，在图中，小圆圈代表在当前位置试探性放置，由于皇后是一行一行地放置，也就是说只需要判断位于它上方的位置，而与它位置想冲突的，就是左上角右上角和正上方了。定义一个二维数组e">
-<meta name="twitter:image" content="http://a2.qpic.cn/psb?/V11e15LV3RWYH9/YL5MbliCaI7c4S*.RXb.la5I72C2Pt1wrsvqWdSAUDU!/b/dDUBAAAAAAAA&ek=1&kp=1&pt=0&bo=3wDiAN8A4gABACc!&tl=1&tm=1537858800&sce=0-12-12&rf=viewer_311">
+<meta name="twitter:description" content="皇后问题最重要的就是递归回溯思维。从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。">
+<meta name="twitter:image" content="http://yoursite.com/css/images/皇后问题.png">
 
 
 
@@ -406,26 +407,10 @@
 
       
       
-        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-          
-          
-            <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox"
-                 href="http://a2.qpic.cn/psb?/V11e15LV3RWYH9/YL5MbliCaI7c4S*.RXb.la5I72C2Pt1wrsvqWdSAUDU!/b/dDUBAAAAAAAA&ek=1&kp=1&pt=0&bo=3wDiAN8A4gABACc!&tl=1&tm=1537858800&sce=0-12-12&rf=viewer_311" rel="gallery_cjmn1x6ey0006actx6kz2z5o2"
-                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="http://a2.qpic.cn/psb?/V11e15LV3RWYH9/YL5MbliCaI7c4S*.RXb.la5I72C2Pt1wrsvqWdSAUDU!/b/dDUBAAAAAAAA&ek=1&kp=1&pt=0&bo=3wDiAN8A4gABACc!&tl=1&tm=1537858800&sce=0-12-12&rf=viewer_311" itemprop="contentUrl"/>
-              </a>
-            
-          
-
-          
-          </div>
-        </div>
-      
 
       
-        <p>皇后问题最重要的就是递归回溯思维。<br>从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。</p>
-<h1 id="一、数组加回溯"><a href="#一、数组加回溯" class="headerlink" title="一、数组加回溯"></a>一、数组加回溯</h1><p>弄清楚了回溯怎么回事，就可以进行第二步了。<br>如何判断在该位置可以放置皇后呢？举个例子来说，<img src="/css/images/皇后问题.png" alt="草图"><br>在图中，小圆圈代表在当前位置试探性放置，由于皇后是一行一行地放置，也就是说只需要判断位于它上方的位置，而与它位置想冲突的，就是左上角右上角和正上方了。<br>定义一个二维数组eq[10][10]，如果在当前位置(i,j)放置了皇后,就让eq[i][j]=1;<br><a id="more"></a></p>
+        <p>皇后问题最重要的就是递归回溯思维。<br>从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。<br><a id="more"></a></p>
+<h1 id="一、数组加回溯"><a href="#一、数组加回溯" class="headerlink" title="一、数组加回溯"></a>一、数组加回溯</h1><p>弄清楚了回溯怎么回事，就可以进行第二步了。<br>如何判断在该位置可以放置皇后呢？举个例子来说，<img src="/css/images/皇后问题.png" alt="草图"><br>在图中，小圆圈代表在当前位置试探性放置，由于皇后是一行一行地放置，也就是说只需要判断位于它上方的位置，而与它位置想冲突的，就是左上角右上角和正上方了。<br>定义一个二维数组eq[10][10]，如果在当前位置(i,j)放置了皇后,就让eq[i][j]=1;</p>
 <h2 id="2、代码说明"><a href="#2、代码说明" class="headerlink" title="2、代码说明"></a>2、代码说明</h2><p>以八皇后为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#include&lt;cstdlib&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#define SIZE 8</span><br><span class="line">using namespace std;</span><br><span class="line">int ep[SIZE][SIZE]=&#123;0&#125;;</span><br><span class="line">int num=0;</span><br><span class="line">void judge(int x);</span><br><span class="line">bool check(int x,int y);</span><br><span class="line">void print();</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	judge(0);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">void judge(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int j;</span><br><span class="line">	for(j=0;j&lt;SIZE;j++)&#123;</span><br><span class="line">		ep[x][j]=1;//先在该位置放置皇后 </span><br><span class="line">		if(check(x,j)==true)&#123;</span><br><span class="line">			/*若这个位置可以放置，则判断整个棋盘是否全部放完*/ </span><br><span class="line">			if(x==SIZE-1)</span><br><span class="line">				print();</span><br><span class="line">			else </span><br><span class="line">				/*若这个位置可以放置，则这一行的皇后放置完成，转而判断下一行的皇后放置*/ </span><br><span class="line">				judge(x+1); </span><br><span class="line">		&#125;</span><br><span class="line">		/*若这个位置不可以放置，就把该位置的状态恢复，转而判断这一行的下一个位置*/ 	</span><br><span class="line">		ep[x][j]=0;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">bool check(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	/*判断正上方是否有皇后*/ </span><br><span class="line">	for(int i=0;i&lt;x;i++)</span><br><span class="line">		if(ep[i][y]==1)</span><br><span class="line">			return false;</span><br><span class="line">	/*判断左上方是否有皇后*/ </span><br><span class="line">	int i=x-1;</span><br><span class="line">	int j=y-1;</span><br><span class="line">	while(i&gt;=0&amp;&amp;j&gt;=0)&#123;</span><br><span class="line">		if(ep[i][j]==1)//若有，则不可放置，返回假 </span><br><span class="line">			return false;</span><br><span class="line">		i--;</span><br><span class="line">		j--;</span><br><span class="line">	&#125;</span><br><span class="line">	/*判断当前位置右上角是否有皇后*/ </span><br><span class="line">	i=x-1;</span><br><span class="line">	j=y+1;</span><br><span class="line">	while(i&gt;=0&amp;&amp;j&lt;SIZE)&#123;</span><br><span class="line">		if(ep[i][j]==1)//若有皇后，说明这个位置不可以放置 </span><br><span class="line">			return false;</span><br><span class="line">		i--;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br><span class="line">void print()</span><br><span class="line">&#123;</span><br><span class="line">	num++;</span><br><span class="line">	cout&lt;&lt;&quot;No. &quot;&lt;&lt;num&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;SIZE;i++)&#123;</span><br><span class="line">		for(int j=0;j&lt;SIZE;j++)</span><br><span class="line">			cout&lt;&lt;ep[i][j]&lt;&lt;&apos; &apos;;</span><br><span class="line">		cout&lt;&lt;endl;</span><br><span class="line">	&#125;		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="二、栈加回溯"><a href="#二、栈加回溯" class="headerlink" title="二、栈加回溯"></a>二、栈加回溯</h1><p>说是栈，其实可以不用栈的结构，而是用栈存储数据的思想。<br>用栈数组来存储数据，非常方便递归回溯。<br>定义stack[10]，top=-1；<br>用top来存当前位置的行坐标，用stack[top]来存当前位置的列坐标。<br>再次用到这个图<img src="/css/images/皇后问题.png" alt="草图">，那么当前位置可表示为(2,2)，用栈存储就是stack[2]=2；判断它正上方是否有皇后，那就只需要看整个栈里面是否有与这个位置的列坐标相等的数了，需要做的就是遍历整个栈；<br>代码表示为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(int i=0;i&lt;top;i++)&#123;</span><br><span class="line">	if(stack1[i]==stack1[top])</span><br><span class="line">		return false;</span><br></pre></td></tr></table></figure>
