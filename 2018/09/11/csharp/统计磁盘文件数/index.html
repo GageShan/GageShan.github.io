@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="小玩具," />
 
 
 
@@ -98,17 +98,20 @@
 
 
 
-<meta name="description" content="我也渣，一起学">
-<meta name="keywords" content="个人记录生活学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Welcome To My World">
-<meta property="og:url" content="https://shann.xyz/categories/c/index.html">
+<meta name="description" content="一、想法想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。">
+<meta name="keywords" content="小玩具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计磁盘文件数量（c#实现）">
+<meta property="og:url" content="https://shann.xyz/2018/09/11/csharp/统计磁盘文件数/index.html">
 <meta property="og:site_name" content="Welcome To My World">
-<meta property="og:description" content="我也渣，一起学">
+<meta property="og:description" content="一、想法想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://shann.xyz/css/images/文件统计20180911232729.png">
+<meta property="og:updated_time" content="2018-10-11T09:16:16.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome To My World">
-<meta name="twitter:description" content="我也渣，一起学">
+<meta name="twitter:title" content="统计磁盘文件数量（c#实现）">
+<meta name="twitter:description" content="一、想法想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。">
+<meta name="twitter:image" content="https://shann.xyz/css/images/文件统计20180911232729.png">
 
 
 
@@ -138,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/categories/c/"/>
+  <link rel="canonical" href="https://shann.xyz/2018/09/11/csharp/统计磁盘文件数/"/>
 
 
 
 
 
-  <title>Category: c# | Welcome To My World</title>
+  <title>统计磁盘文件数量（c#实现） | Welcome To My World</title>
   
 
 
@@ -172,7 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -310,139 +313,227 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>c#<small>Category</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2018/09/11/csharp/统计磁盘文件数/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一杯冰水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome To My World">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/11/C#/统计磁盘文件数/" itemprop="url">
-              
-                <span itemprop="name">统计磁盘文件数量（c#实现）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">统计磁盘文件数量（c#实现）</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-11T23:34:59+08:00"
-              content="2018-09-11" >
-          09-11
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T23:34:59+08:00">
+                2018-09-11
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-11T17:16:16+08:00">
+                2018-10-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/csharp/" itemprop="url" rel="index">
+                    <span itemprop="name">csharp</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/11/csharp/统计磁盘文件数/" class="leancloud_visitors" data-flag-title="统计磁盘文件数量（c#实现）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/09/C#/C#中try catch finally用法/" itemprop="url">
-              
-                <span itemprop="name">c#中try catch finally用法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-09T23:19:35+08:00"
-              content="2018-09-09" >
-          09-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/08/C#/语言熟练之计算器/" itemprop="url">
-              
-                <span itemprop="name">语言熟练之计算器（c#实现）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-08T20:59:18+08:00"
-              content="2018-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/07/C#/验证回文字符串/" itemprop="url">
-              
-                <span itemprop="name">验证回文字符串（c#实现）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-07T12:34:18+08:00"
-              content="2018-09-07" >
-          09-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="一、想法"><a href="#一、想法" class="headerlink" title="一、想法"></a>一、想法</h1><p>想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。<br><a id="more"></a></p>
+<h1 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h1><p>编译环境：Visual Studio 2017<br>页面控件： Button、Label、TextBox、ListBox<br>应用项目：.NET Framework</p>
+<p>解决方案：<br>1、首先识别磁盘第一层（就是点开磁盘后所显示的）中有多少文件夹<br>2、然后从上往下从第一个文件夹（记为文件夹A）开始识别，若文件夹A中还有若干个子文件夹，则又从第一个子文件夹开始识别<br>3、接2，直到文件夹里没有其他子文件夹了，则开始统计文件的数量</p>
+<p>4、接3，统计完当前文件夹里的文件后，返回上一层，也就是与当前文件夹处于同一层。这就是递归处理了，以前写过，递归算法不要深究，逻辑对递归一定对。<br>注意事项：在用到GetDirectories方法时，要在命名空间添加<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">System</span>.IO;</span><br></pre></td></tr></table></figure></p>
+<p>使用截图: <img src="/css/images/文件统计20180911232729.png" alt=""></p>
+<h1 id="三、实现"><a href="#三、实现" class="headerlink" title="三、实现"></a>三、实现</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.ComponentModel;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> 小轮子之统计文件数</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> partial <span class="class"><span class="keyword">class</span> <span class="title">Form1</span> :</span> Form</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">PathName_TextChanged</span><span class="params">(object sender, EventArgs e)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="comment">/*吃好睡好身体好*/</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">button1_Click</span><span class="params">(object sender, EventArgs e)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            MessageBox.Show(<span class="string">"统计中，请耐心等待..."</span>);</span><br><span class="line">            <span class="built_in">string</span> str = PathName.Text.ToString();</span><br><span class="line">            <span class="keyword">long</span> count = GetFiles(str);</span><br><span class="line">            MessageBox.Show(count.ToString(), <span class="string">"共有文件数"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">long</span> <span class="title">GetFiles</span><span class="params">(<span class="built_in">string</span> path)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">long</span> count = <span class="number">0L</span>;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                var files = Directory.GetFiles(path);</span><br><span class="line">                count += files.Length;</span><br><span class="line">                var dirs = Directory.GetDirectories(path);</span><br><span class="line">                foreach (var dir in dirs)</span><br><span class="line">                &#123;</span><br><span class="line">                    count += GetFiles(dir);<span class="comment">//递归实现深度查找</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception e)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">/* 欲渡黄河冰塞川</span></span><br><span class="line"><span class="comment">                 * 将登太行雪满山</span></span><br><span class="line"><span class="comment">                 * 闲来垂钓碧溪上</span></span><br><span class="line"><span class="comment">                 * 忽复乘舟梦日边</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
+    <div>
+      
+           <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
 
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    一杯冰水
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://shann.xyz/2018/09/11/csharp/统计磁盘文件数/" title="统计磁盘文件数量（c#实现）">https://shann.xyz/2018/09/11/csharp/统计磁盘文件数/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小玩具/" rel="tag"><i class="fa fa-tag"></i> 小玩具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/09/csharp/C#中try catch finally用法/" rel="next" title="c#中try catch finally用法">
+                <i class="fa fa-chevron-left"></i> c#中try catch finally用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/数据结构/迷宫求解/" rel="prev" title="迷宫求解">
+                迷宫求解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -450,6 +541,12 @@
 
 
           
+
+  
+    <div id="gitalk-container"></div>
+  
+
+
 
         </div>
         
@@ -472,8 +569,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -505,7 +611,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -516,7 +622,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -641,6 +747,22 @@ show_date_time();
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、想法"><span class="nav-number">1.</span> <span class="nav-text">一、想法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、原理"><span class="nav-number">2.</span> <span class="nav-text">二、原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、实现"><span class="nav-number">3.</span> <span class="nav-text">三、实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -818,6 +940,10 @@ show_date_time();
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -858,6 +984,22 @@ show_date_time();
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'd64f79f424fbe44c10f0',
+          clientSecret: '5d22e89b165cf542c2cf1a360475c5f7621291c5',
+          repo: 'GageShan.github.io',
+          owner: 'GageShan',
+          admin: ['GageShan'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 

@@ -109,21 +109,21 @@
   </entry>
   <entry>
     <title><![CDATA[统计磁盘文件数量（c#实现）]]></title>
-    <url>%2F2018%2F09%2F11%2FC%23%2F%E7%BB%9F%E8%AE%A1%E7%A3%81%E7%9B%98%E6%96%87%E4%BB%B6%E6%95%B0%2F</url>
+    <url>%2F2018%2F09%2F11%2Fcsharp%2F%E7%BB%9F%E8%AE%A1%E7%A3%81%E7%9B%98%E6%96%87%E4%BB%B6%E6%95%B0%2F</url>
     <content type="text"><![CDATA[一、想法想到能不能写一个小程序用来统计磁盘中有多少个文件呢？虽然系统可以统计出来，但如果自己也可以写出来会不会更舒服，而且这也可以作为c#实践的练手玩具啊啊啊啊？想到了就去做？让我造个轮子出来吧，orz。 二、原理编译环境：Visual Studio 2017页面控件： Button、Label、TextBox、ListBox应用项目：.NET Framework 解决方案：1、首先识别磁盘第一层（就是点开磁盘后所显示的）中有多少文件夹2、然后从上往下从第一个文件夹（记为文件夹A）开始识别，若文件夹A中还有若干个子文件夹，则又从第一个子文件夹开始识别3、接2，直到文件夹里没有其他子文件夹了，则开始统计文件的数量 4、接3，统计完当前文件夹里的文件后，返回上一层，也就是与当前文件夹处于同一层。这就是递归处理了，以前写过，递归算法不要深究，逻辑对递归一定对。注意事项：在用到GetDirectories方法时，要在命名空间添加1using System.IO; 使用截图: 三、实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657using System;using System.Collections.Generic;using System.ComponentModel;using System.Data;using System.Drawing;using System.Linq;using System.Text;using System.Threading.Tasks;using System.IO;using System.Windows.Forms;namespace 小轮子之统计文件数&#123; public partial class Form1 : Form &#123; public Form1() &#123; InitializeComponent(); &#125; private void PathName_TextChanged(object sender, EventArgs e) &#123; /*吃好睡好身体好*/ &#125; private void button1_Click(object sender, EventArgs e) &#123; MessageBox.Show("统计中，请耐心等待..."); string str = PathName.Text.ToString(); long count = GetFiles(str); MessageBox.Show(count.ToString(), "共有文件数"); &#125; static long GetFiles(string path) &#123; long count = 0L; try &#123; var files = Directory.GetFiles(path); count += files.Length; var dirs = Directory.GetDirectories(path); foreach (var dir in dirs) &#123; count += GetFiles(dir);//递归实现深度查找 &#125; &#125; catch (Exception e) &#123; /* 欲渡黄河冰塞川 * 将登太行雪满山 * 闲来垂钓碧溪上 * 忽复乘舟梦日边 */ &#125; return count; &#125; &#125;&#125;]]></content>
       <categories>
-        <category>c#</category>
+        <category>csharp</category>
       </categories>
       <tags>
-        <tag>小轮子</tag>
+        <tag>小玩具</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[c#中try catch finally用法]]></title>
-    <url>%2F2018%2F09%2F09%2FC%23%2FC%23%E4%B8%ADtry%20catch%20finally%E7%94%A8%E6%B3%95%2F</url>
+    <url>%2F2018%2F09%2F09%2Fcsharp%2FC%23%E4%B8%ADtry%20catch%20finally%E7%94%A8%E6%B3%95%2F</url>
     <content type="text"><![CDATA[一、处理机制1、基本语法123456789101112try&#123; //语句&#125;catch&#123; //语句&#125;finally&#123; //语句&#125; try：将可能产生异常的代码块放到try中，这一语句在整个异常处理中不可缺少catch：如果try中的代码出现了异常，则在这一块中需给出异常处理程序，提示使用者出现了怎样的问题。这一语句与下面的finally语句两者必须有一个，可以都有，若两者都有，finally语句在最后。当然这一语句可以有多条，用以处理不同的代码异常。这里还要指出的是catch语句抓取异常分为三种形式。 1、catch{…..代码…..} 一般形式，这样的子句将抓取任何try中出现的异常2、catch(Exception){…..代码…..} 特定形式，这样的子句抓取try中与Exception匹配的异常3、catch(Exception e){…..代码…..} 带对象的特定形式，其中e为异常变量，在这里可以该异常变量并获得与其相关得信息 如123456catch (Exception e)&#123; Console.WriteLine("Message:&#123;0&#125;", e.Message); Console.WriteLine("Source:&#123;0&#125;", e.Source); Console.WriteLine("Stack:&#123;0&#125;", e.StackTrace);&#125; finally：这一语句如果出现，则不管try语句中是否出现异常，finally包涵的代码都要执行，在这里特别要说明得是即使try语块中有return语句，finally块中得语句也要先执行完然后才能执行return语句。如：123456789101112131415try&#123; var number = 5; if (number &lt;= 10) &#123; Console.WriteLine("天生我材必有用"); return; &#125; else Console.WriteLine("人生得意须尽欢");&#125;finally&#123; Console.WriteLine("千金散尽还复来");&#125; 2、异常代码示例我们都知道，被除数不能为0。那么要一个数除以0会发生什么情况呢？如没有异常处理机制，程序会直接中断，俗称的程序崩了或者说“闪退”？但如有，就不会发生这种情况了，程序会提示使用者哪里哪里出现了什么什么问题，提示之后程序继续运行。无处理机制：12345678910111213namespace 验证try_catch&#123; class Program &#123; static void Main(string[] args) &#123; var number1 = 10; var number2 = 0; number1 /= number2; //程序运行到这里会报错 Console.WriteLine(number1); &#125; &#125; &#125; 有处理机制：1234567891011121314151617181920namespace 验证try_catch&#123; class Program &#123; static void Main(string[] args) &#123; try &#123; var number1 = 10; var number2 = 0; number1 /= number2;//抛出异常 Console.WriteLine(number1); &#125; catch //抓住异常 &#123; Console.WriteLine("There has an error --Keep on running!"); &#125; &#125; &#125;&#125; 3、小结12345678910111213141516try&#123; //可能出现异常得代码放入其中&#125;catch&#123; //抓取异常并提示信息&#125;catch&#123; //可以有多个catch语块用来抓取不同得异常&#125;finally&#123; //只要有该语块则一定要执行且在&#125; 二、解读try catch程序123456789101112131415161718192021222324252627282930313233343536373839404142using System;using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;namespace 验证try_catch&#123; class Program &#123; private static void PrintString(string str) &#123; if (str == null) throw new ArgumentException();//抛出异常 &#125; static void Main(string[] args) &#123; string str = null; try &#123; PrintString(str); &#125; catch (ArgumentException e) &#123; /*抓住来自PrintString函数抛来的异常 e为异常变量，通过打印与之相关得信息我们可以知道程序出现了什么问题 */ Console.WriteLine("Message:&#123;0&#125;",e.Message); &#125; catch(Exception) &#123; Console.WriteLine("今朝有酒今朝醉"); &#125; finally &#123; Console.WriteLine("知我者谓我心忧，不知我者谓我何求"); &#125; Console.ReadLine(); &#125; &#125;&#125;]]></content>
       <categories>
-        <category>c#</category>
+        <category>csharp</category>
       </categories>
       <tags>
         <tag>编程实验</tag>
@@ -131,21 +131,21 @@
   </entry>
   <entry>
     <title><![CDATA[语言熟练之计算器（c#实现）]]></title>
-    <url>%2F2018%2F09%2F08%2FC%23%2F%E8%AF%AD%E8%A8%80%E7%86%9F%E7%BB%83%E4%B9%8B%E8%AE%A1%E7%AE%97%E5%99%A8%2F</url>
+    <url>%2F2018%2F09%2F08%2Fcsharp%2F%E8%AF%AD%E8%A8%80%E7%86%9F%E7%BB%83%E4%B9%8B%E8%AE%A1%E7%AE%97%E5%99%A8%2F</url>
     <content type="text"><![CDATA[一、大致介绍本次的编程实验是为了更进一步熟练c#语言，现写下实验过程。 1、工具选用这个计算器可以解决int64位内的+、-、*、/运算。在设计实验时，选用的是.NET Framework，页面控件选择了 Button、Label、TextBox。编译环境：Visual Studio 2017 2、处理异常在测试数据的时候，我发现不输入数据直接点击运算符号时，会出现异常，所以在这里步，用到了try{}catch{}语句，也算是知道如何抓取异常。（之后会专门写下try{}catch{}的使用方法） 3、运行截图 二、代码训练123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100using System;using System.Collections.Generic;using System.ComponentModel;using System.Data;using System.Drawing;using System.Linq;using System.Text;using System.Threading.Tasks;using System.Windows.Forms;namespace 计算器&#123; public partial class Form1 : Form &#123; public Form1() &#123; InitializeComponent(); &#125; private void label1_Click(object sender, EventArgs e) &#123; /* 人生得意须尽欢 */ &#125; /* 莫使金樽空对月 */ private void number1_TextChanged(object sender, EventArgs e) &#123; /* 天生我材必有用 千金散尽还复来 */ &#125; private void button1_Click(object sender, EventArgs e) //处理加法运算 &#123; try &#123; double value1 = double.Parse(number1.Text); double value2 = double.Parse(number2.Text); string result = (value1 + value2).ToString(); MessageBox.Show(result); &#125; catch &#123; MessageBox.Show("傻嗨，把两个数都输完(￣▽￣)"); &#125; &#125; private void button2_Click(object sender, EventArgs e)//处理减法运算 &#123; try &#123; double value1 = double.Parse(number1.Text); double value2 = double.Parse(number2.Text); string result = (value1 - value2).ToString(); MessageBox.Show(result); &#125; catch &#123; MessageBox.Show("傻嗨，把两个数都输完(￣▽￣)"); &#125; &#125; private void button3_Click(object sender, EventArgs e)//处理乘法运算 &#123; try &#123; double value1 = double.Parse(number1.Text); double value2 = double.Parse(number2.Text); string result = (value1 * value2).ToString(); MessageBox.Show(result); &#125; catch &#123; MessageBox.Show("傻嗨，把两个数都输完(￣▽￣)"); &#125; &#125; private void button4_Click(object sender, EventArgs e)//处理除法运算 &#123; try &#123; double value1 = double.Parse(number1.Text); double value2 = double.Parse(number2.Text); string result = (value1 / value2).ToString(); MessageBox.Show(result); &#125; catch &#123; MessageBox.Show("傻嗨，把两个数都输完(￣▽￣)"); &#125; &#125; &#125;&#125; 三、总结完成这个简单计算器后，我将其跟手机上的计算器做了对比。当然运算功能上没有可比性，只是在页面设计上，我觉得还有改进的地方。比如输入框输入的不是数字时抛出的异常却是把两个数字输完，这个bug我还没有改过来。其实我觉得在键入非数字的符号时，程序可以提示使用者键入了非数字。然涉及到知识盲区了，囧rz。如有更好的想法，欢迎在评论区留言，一起找bug，改bug。人生多少欢乐事，尽在debug中。]]></content>
       <categories>
-        <category>c#</category>
+        <category>csharp</category>
       </categories>
       <tags>
-        <tag>小轮子</tag>
+        <tag>小玩具</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[验证回文字符串（c#实现）]]></title>
-    <url>%2F2018%2F09%2F07%2FC%23%2F%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <url>%2F2018%2F09%2F07%2Fcsharp%2F%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[最近在学习c#语言，为提高c#熟练度，特意到leetcode上写题，现写下代码 回文字符串概念：一个字符串从左往右数和从右往左数是一样的。 12345678910111213141516171819202122232425262728293031using System;namespace 验证回文字符串__leetcode&#123; class Program &#123; static void Main(string[] args) &#123; string s = "A man, a plan, a canal: Panama"; bool result = IsPalindrome(s); Console.WriteLine(result); Console.ReadLine(); &#125; public static bool IsPalindrome(string s) &#123; string s1 = ""; s = s.ToUpper(); for (int i = 0; i &lt; s.Length; i++) &#123; if ((s[i] &gt;= 'A' &amp;&amp; s[i] &lt;= 'Z') || (s[i] &gt;= '0' &amp;&amp; s[i] &lt;= '9')) s1 += s[i]; &#125; Console.WriteLine(s1); char[] arr = s1.ToCharArray(); Array.Reverse(arr); string str = new string(arr); return str == s1; &#125; &#125;&#125;]]></content>
       <categories>
-        <category>c#</category>
+        <category>csharp</category>
       </categories>
       <tags>
         <tag>基础算法</tag>
