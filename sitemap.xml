@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shann.xyz/about/index.html</loc>
+    
+    <lastmod>2018-10-27T11:45:49.382Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shann.xyz/2018/10/27/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/%E8%BF%B7%E5%AE%AB%E5%AF%BB%E8%B7%AF%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     
     <lastmod>2018-10-27T11:28:34.912Z</lastmod>
@@ -180,13 +187,6 @@
     <loc>https://shann.xyz/2018/08/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/NYOJ63%E5%B0%8F%E7%8C%B4%E5%AD%90%E4%B8%8B%E8%90%BD/</loc>
     
     <lastmod>2018-09-29T08:18:57.277Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shann.xyz/about/index.html</loc>
-    
-    <lastmod>2018-09-29T07:45:14.876Z</lastmod>
     
   </url>
   
