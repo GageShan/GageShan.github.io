@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu14.04mysql卸载与重装]]></title>
+    <url>%2F2018%2F11%2F08%2F%E6%95%B0%E6%8D%AE%E5%BA%93%2FMySQL%E5%8D%B8%E8%BD%BD%E9%87%8D%E8%A3%85%2F</url>
+    <content type="text"><![CDATA[搭环境的遇到的问题，记录下来 安装MySQL1sudo apt-get install mysql-server mysql-client 卸载查看MySQL版本1mysql -V 选择MySQL的版本然后卸载1sudo apt-get autoremove --purge mysql-server-5.5 以下依次进行1sudo apt-get remove mysql-server 1sudo apt-get autoremove mysql-server 1sudo apt-get remove mysql-common 清理残留数据1dpkg -l |grep ^rc|awk '&#123;print $2&#125;' |sudo xargs dpkg -P 参考博文：Ubuntu彻底卸载MySQL、Apache2和Php的方法教程]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ubuntu14.04文件操作]]></title>
     <url>%2F2018%2F11%2F06%2FLinux%2Fubuntu14.04%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%2F</url>
     <content type="text"><![CDATA[使用xshell连接云服务器一些文件操作 安装rzsz1apt-get install lrzsz rzsz说明：sz命令 发送文件到本地： #sz filenamerz命令 将本地上传文件到服务器 #rz执行该命令后，在弹出框中选择要上传的文件即可 新建文件夹1mkdir filename]]></content>
