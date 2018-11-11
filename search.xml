@@ -36,7 +36,7 @@
   <entry>
     <title><![CDATA[ubuntu14.04文件操作]]></title>
     <url>%2F2018%2F11%2F06%2FLinux%2Fubuntu14.04%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[使用xshell连接云服务器一些文件操作 安装rzsz1apt-get install lrzsz rzsz说明：sz命令 发送文件到本地： #sz filenamerz命令 将本地上传文件到服务器 #rz执行该命令后，在弹出框中选择要上传的文件即可 新建文件夹1mkdir filename]]></content>
+    <content type="text"><![CDATA[使用xshell连接云服务器一些文件操作 安装rzsz1apt-get install lrzsz rzsz说明：sz命令 发送文件到本地： #sz filenamerz命令 将本地上传文件到服务器 #rz执行该命令后，在弹出框中选择要上传的文件即可 新建文件夹1mkdir filename 重命名文件1mv filename1 filename2 这也是移动某文件到另一文件目录下的操作]]></content>
       <categories>
         <category>Linux</category>
       </categories>
