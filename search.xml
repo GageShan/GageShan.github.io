@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nyoj-13-会场安排问题（贪心入门]]></title>
+    <url>%2F2018%2F12%2F01%2F%E8%B4%AA%E5%BF%83%2Fnyoj14%E4%BC%9A%E5%9C%BA%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[描述会场安排问题学校的小礼堂每天都会有许多活动，有时间这些活动的计划时间会发生冲突，需要选择出一些活动进行举办。小刘的工作就是安排学校小礼堂的活动，每个时间最多安排一个活动。现在小刘有一些活动计划的时间表，他想尽可能的安排更多的活动，请问他该如何安排。输入第一行是一个整型数m(m&lt;100)表示共有m组测试数据。每组测试数据的第一行是一个整数n(1&lt;n&lt;10000)表示该测试数据共有n个活动。随后的n行，每行有两个正整数Bi,Ei(0&lt;=Bi,Ei&lt;10000),分别表示第i个活动的起始与结束时间（Bi&lt;=Ei)输出对于每一组输入，输出最多能够安排的活动数量。每组的输出占一行样例输入12345678221 1010 1131 1010 1111 20 样例输出1212 提示注意：如果上一个活动在t时间结束，下一个活动最早应该在t+1时间开始 题解活动越早结束，剩余的时间就越多。那么每次找最早结束的活动，然后继续在剩下的活动中找最小的。当然这些满足一个条件，即如提示说明。 代码123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;//--const int MAXSIZE=10000+5;class node&#123; public: int Bi; int Ei;&#125;;node a[MAXSIZE];//--bool cmp(node a,node b)&#123; return a.Ei&lt;b.Ei;&#125;int main()&#123; int Case; cin&gt;&gt;Case; while(Case--)&#123; int n; cin&gt;&gt;n; for(int i=0;i&lt;n;i++) cin&gt;&gt;a[i].Bi&gt;&gt;a[i].Ei; sort(a,a+n,cmp); int ans=1; int t=0; for(int i=1;i&lt;n;i++)&#123; if(a[i].Bi&gt;a[t].Ei)&#123; ans++; t=i; &#125; &#125; cout&lt;&lt;ans&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[新建 Microsoft Office Word 文档]]></title>
     <url>%2F2018%2F11%2F30%2F%E7%AE%80%E5%8D%95%E9%A2%98%2F%E6%96%B0%E5%BB%BAms%E6%96%87%E6%A1%A3%2F</url>
     <content type="text"><![CDATA[描述链接：https://ac.nowcoder.com/acm/contest/190/I来源：牛客网 CSL正在学习《计算机办公自动化》文件的建立与删除。 CSL发现，当他新建一个word文档时，会得到一个名为”新建 Microsoft Office Word 文档.doc”的文件，再新建一个，则名为”新建 Microsoft Office Word 文档(2).doc”，再新建，便是”新建 Microsoft Office Word 文档(3).doc”。不断新建，编号不断递增。倘若他已经新建了三个文档，然后删除了”新建 Microsoft Office Word 文档(2).doc”，再新建一个就又会得到一个”新建 Microsoft Office Word 文档(2).doc”。严格来说，Windows在每次新建文档时，都会选取一个与已有文件编号不重复的最小正整数作为新文档的编号。 现在，请你编程模拟以上过程，支持以下两种操作： New：新建一个word文档，反馈新建的文档的编号； Delete id：删除一个编号为id的word文档，反馈删除是否成功。 初始时一个文件都没有，”新建 Microsoft Office Word 文档.doc”的编号算作1。输入描述:第一行一个正整数n表示操作次数，接下来n行，每行表示一个操作。若该行为”New”，则表示新建，为:Delete id”则表示要删除编号为id的文档，其中id为一个正整数。操作按输入顺序依次进行。操作次数不超过100000，删除编号的数值不超过100000。输出描述:对于输入的每一个操作，输出其反馈结果。对于新建操作，输出新建的文档的编号；对于删除操作，反馈删除是否成功：如果删除的文件存在，则删除成功，输出”Successful”，否则输出”Failed”。示例1输入1234567891011121312NewNewNewDelete 2NewDelete 4Delete 3Delete 1NewNewNewDelete 4 输出123456789101112123Successful2FailedSuccessfulSuccessful134Successful 题解学到set，好开心。用set&lt;int&gt;来维护可以创建的队列，然后模拟。 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt;#include&lt;map&gt;#include&lt;set&gt;using namespace std;const int MAXSIZE=100000+5;int main()&#123; int Case; cin&gt;&gt;Case; set&lt;int&gt; st; set&lt;int&gt;::iterator it; for(int i=1;i&lt;=MAXSIZE;i++) st.insert(i); while(Case--)&#123; string str; cin&gt;&gt;str; if(str=="New")&#123; it=st.begin(); cout&lt;&lt;*it&lt;&lt;endl; st.erase(it); &#125; else&#123; int a; cin&gt;&gt;a; if(!st.count(a))&#123; cout&lt;&lt;"Successful"&lt;&lt;endl; st.insert(a); &#125; else cout&lt;&lt;"Failed"&lt;&lt;endl; &#125; &#125; return 0;&#125;]]></content>
