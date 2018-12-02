@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nyoj-71-独木舟上的旅行（贪心入门]]></title>
+    <url>%2F2018%2F12%2F02%2F%E8%B4%AA%E5%BF%83%2Fnyoj71%E7%8B%AC%E6%9C%A8%E8%88%9F%E4%B8%8A%E7%9A%84%E6%97%85%E8%A1%8C%2F</url>
+    <content type="text"><![CDATA[描述独木舟上的旅行时间限制：3000 ms | 内存限制：65535 KB难度：2描述进行一次独木舟的旅行活动，独木舟可以在港口租到，并且之间没有区别。一条独木舟最多只能乘坐两个人，且乘客的总重量不能超过独木舟的最大承载量。我们要尽量减少这次活动中的花销，所以要找出可以安置所有旅客的最少的独木舟条数。现在请写一个程序，读入独木舟的最大承载量、旅客数目和每位旅客的重量。根据给出的规则，计算要安置所有旅客必须的最少的独木舟条数，并输出结果。输入第一行输入s,表示测试数据的组数；每组数据的第一行包括两个整数w，n，80&lt;=w&lt;=200,1&lt;=n&lt;=300，w为一条独木舟的最大承载量,n为人数；接下来的一组数据为每个人的重量（不能大于船的承载量）；输出每组人数所需要的最少独木舟的条数。样例输入1234567385 65 84 85 80 84 8390 390 45 60100 550 50 90 40 60 样例输出123533 题解以最小的体重为基准，再从最大体重中往下找，满足承载重就说明两者可以搭乘同一船，否则就只有最小的那一个独自搭船。然后依次选择剩下的最小体重。说明：一条船只能坐两人。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;//--const int MAXSIZE=300+5;//--int main()&#123; int Case; cin&gt;&gt;Case; while(Case--)&#123; int weith,people; cin&gt;&gt;weith&gt;&gt;people; int a[MAXSIZE]; for(int i=0;i&lt;people;i++) cin&gt;&gt;a[i]; sort(a,a+people); int ans=0; for(int i=0;i&lt;people;i++)&#123; if(a[i]!=0)&#123; int value=weith-a[i]; for(int j=people-1;j&gt;i;j--)&#123; if(value&gt;=a[j]&amp;&amp;a[j]!=0)&#123; value=value-a[j]; a[j]=0; break; &#125; &#125; ans++; &#125; &#125; cout&lt;&lt;ans&lt;&lt;endl; &#125; return 0;&#125; /*385 65 84 85 80 84 8390 390 45 60100 550 50 90 40 60*/]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[nyoj-13-会场安排问题（贪心入门]]></title>
     <url>%2F2018%2F12%2F01%2F%E8%B4%AA%E5%BF%83%2Fnyoj14%E4%BC%9A%E5%9C%BA%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98%2F</url>
     <content type="text"><![CDATA[描述会场安排问题学校的小礼堂每天都会有许多活动，有时间这些活动的计划时间会发生冲突，需要选择出一些活动进行举办。小刘的工作就是安排学校小礼堂的活动，每个时间最多安排一个活动。现在小刘有一些活动计划的时间表，他想尽可能的安排更多的活动，请问他该如何安排。输入第一行是一个整型数m(m&lt;100)表示共有m组测试数据。每组测试数据的第一行是一个整数n(1&lt;n&lt;10000)表示该测试数据共有n个活动。随后的n行，每行有两个正整数Bi,Ei(0&lt;=Bi,Ei&lt;10000),分别表示第i个活动的起始与结束时间（Bi&lt;=Ei)输出对于每一组输入，输出最多能够安排的活动数量。每组的输出占一行样例输入12345678221 1010 1131 1010 1111 20 样例输出1212 提示注意：如果上一个活动在t时间结束，下一个活动最早应该在t+1时间开始 题解活动越早结束，剩余的时间就越多。那么每次找最早结束的活动，然后继续在剩下的活动中找最小的。当然这些满足一个条件，即如提示说明。 代码123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;//--const int MAXSIZE=10000+5;class node&#123; public: int Bi; int Ei;&#125;;node a[MAXSIZE];//--bool cmp(node a,node b)&#123; return a.Ei&lt;b.Ei;&#125;int main()&#123; int Case; cin&gt;&gt;Case; while(Case--)&#123; int n; cin&gt;&gt;n; for(int i=0;i&lt;n;i++) cin&gt;&gt;a[i].Bi&gt;&gt;a[i].Ei; sort(a,a+n,cmp); int ans=1; int t=0; for(int i=1;i&lt;n;i++)&#123; if(a[i].Bi&gt;a[t].Ei)&#123; ans++; t=i; &#125; &#125; cout&lt;&lt;ans&lt;&lt;endl; &#125; return 0;&#125;]]></content>

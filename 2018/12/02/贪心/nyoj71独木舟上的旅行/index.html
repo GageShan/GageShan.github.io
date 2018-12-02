@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="c/c++," />
+  <meta name="keywords" content="基础算法," />
 
 
 
@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="一、题目描述郁闷的C小加（一）时间限制：1000 ms  |  内存限制：65535 KB难度：3描述  我们熟悉的表达式如a+b、a+b(c+d)等都属于中缀表达式。中缀表达式就是（对于双目运算符来说）操作符在两个操作数中间：num1 operand num2。同理，后缀表达式就是操作符在两个操作数之后：num1 num2 operand。ACM队的“C小加”正在郁闷怎样把一个中缀表达式转换为后">
-<meta name="keywords" content="c&#x2F;c++">
+<meta name="description" content="描述独木舟上的旅行时间限制：3000 ms  |  内存限制：65535 KB难度：2描述进行一次独木舟的旅行活动，独木舟可以在港口租到，并且之间没有区别。一条独木舟最多只能乘坐两个人，且乘客的总重量不能超过独木舟的最大承载量。我们要尽量减少这次活动中的花销，所以要找出可以安置所有旅客的最少的独木舟条数。现在请写一个程序，读入独木舟的最大承载量、旅客数目和每位旅客的重量。根据给出的规则，计算要安">
+<meta name="keywords" content="基础算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NYOJ257中缀式变后缀式">
-<meta property="og:url" content="https://shann.xyz/2018/09/17/数据结构/中缀式变后缀式/index.html">
+<meta property="og:title" content="nyoj-71-独木舟上的旅行（贪心入门">
+<meta property="og:url" content="https://shann.xyz/2018/12/02/贪心/nyoj71独木舟上的旅行/index.html">
 <meta property="og:site_name" content="Welcome To My Blog">
-<meta property="og:description" content="一、题目描述郁闷的C小加（一）时间限制：1000 ms  |  内存限制：65535 KB难度：3描述  我们熟悉的表达式如a+b、a+b(c+d)等都属于中缀表达式。中缀表达式就是（对于双目运算符来说）操作符在两个操作数中间：num1 operand num2。同理，后缀表达式就是操作符在两个操作数之后：num1 num2 operand。ACM队的“C小加”正在郁闷怎样把一个中缀表达式转换为后">
+<meta property="og:description" content="描述独木舟上的旅行时间限制：3000 ms  |  内存限制：65535 KB难度：2描述进行一次独木舟的旅行活动，独木舟可以在港口租到，并且之间没有区别。一条独木舟最多只能乘坐两个人，且乘客的总重量不能超过独木舟的最大承载量。我们要尽量减少这次活动中的花销，所以要找出可以安置所有旅客的最少的独木舟条数。现在请写一个程序，读入独木舟的最大承载量、旅客数目和每位旅客的重量。根据给出的规则，计算要安">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-29T08:23:27.307Z">
+<meta property="og:updated_time" content="2018-12-02T05:25:51.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NYOJ257中缀式变后缀式">
-<meta name="twitter:description" content="一、题目描述郁闷的C小加（一）时间限制：1000 ms  |  内存限制：65535 KB难度：3描述  我们熟悉的表达式如a+b、a+b(c+d)等都属于中缀表达式。中缀表达式就是（对于双目运算符来说）操作符在两个操作数中间：num1 operand num2。同理，后缀表达式就是操作符在两个操作数之后：num1 num2 operand。ACM队的“C小加”正在郁闷怎样把一个中缀表达式转换为后">
+<meta name="twitter:title" content="nyoj-71-独木舟上的旅行（贪心入门">
+<meta name="twitter:description" content="描述独木舟上的旅行时间限制：3000 ms  |  内存限制：65535 KB难度：2描述进行一次独木舟的旅行活动，独木舟可以在港口租到，并且之间没有区别。一条独木舟最多只能乘坐两个人，且乘客的总重量不能超过独木舟的最大承载量。我们要尽量减少这次活动中的花销，所以要找出可以安置所有旅客的最少的独木舟条数。现在请写一个程序，读入独木舟的最大承载量、旅客数目和每位旅客的重量。根据给出的规则，计算要安">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/2018/09/17/数据结构/中缀式变后缀式/"/>
+  <link rel="canonical" href="https://shann.xyz/2018/12/02/贪心/nyoj71独木舟上的旅行/"/>
 
 
 
 
 
-  <title>NYOJ257中缀式变后缀式 | Welcome To My Blog</title>
+  <title>nyoj-71-独木舟上的旅行（贪心入门 | Welcome To My Blog</title>
   
 
 
@@ -325,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2018/09/17/数据结构/中缀式变后缀式/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2018/12/02/贪心/nyoj71独木舟上的旅行/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="一杯冰水">
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NYOJ257中缀式变后缀式</h1>
+          <h1 class="post-title" itemprop="name headline">nyoj-71-独木舟上的旅行（贪心入门</h1>
         
 
         <div class="post-meta">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T14:04:47+08:00">
-                2018-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-02T13:24:56+08:00">
+                2018-12-02
               </time>
             
 
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-29T16:23:27+08:00">
-                2018-09-29
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-02T13:25:51+08:00">
+                2018-12-02
               </time>
             
           </span>
@@ -389,8 +389,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/贪心算法/" itemprop="url" rel="index">
+                    <span itemprop="name">贪心算法</span>
                   </a>
                 </span>
 
@@ -406,7 +406,7 @@
 
           
           
-             <span id="/2018/09/17/数据结构/中缀式变后缀式/" class="leancloud_visitors" data-flag-title="NYOJ257中缀式变后缀式">
+             <span id="/2018/12/02/贪心/nyoj71独木舟上的旅行/" class="leancloud_visitors" data-flag-title="nyoj-71-独木舟上的旅行（贪心入门">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -437,18 +437,11 @@
       
 
       
-        <h1 id="一、题目描述"><a href="#一、题目描述" class="headerlink" title="一、题目描述"></a>一、题目描述</h1><p>郁闷的C小加（一）<br>时间限制：1000 ms  |  内存限制：65535 KB<br>难度：3<br>描述</p>
-<blockquote>
-<p>我们熟悉的表达式如a+b、a+b<em>(c+d)等都属于中缀表达式。中缀表达式就是（对于双目运算符来说）操作符在两个操作数中间：num1 operand num2。同理，后缀表达式就是操作符在两个操作数之后：num1 num2 operand。ACM队的“C小加”正在郁闷怎样把一个中缀表达式转换为后缀表达式，现在请你设计一个程序，帮助C小加把中缀表达式转换成后缀表达式。为简化问题，操作数均为个位数，操作符只有+-</em>/ 和小括号。<br><a id="more"></a><br>输入<br>第一行输入T，表示有T组测试数据（T&lt;10）。<br>每组测试数据只有一行，是一个长度不超过1000的字符串，表示这个表达式。这个表达式里只包含+-*/与小括号这几种符号。其中小括号可以嵌套使用。数据保证输入的操作数中不会出现负数。并且输入数据不会出现不匹配现象。</p>
-</blockquote>
-<p>输出</p>
-<blockquote>
-<p>每组输出都单独成行，输出转换的后缀表达式。</p>
-</blockquote>
-<p>样例输入<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span>+<span class="number">2</span></span><br><span class="line">(<span class="number">1</span>+<span class="number">2</span>)*<span class="number">3</span>+<span class="number">4</span>*<span class="number">5</span></span><br></pre></td></tr></table></figure></p>
-<p>样例输出<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">12</span>+</span><br><span class="line"><span class="number">12</span>+<span class="number">3</span>*<span class="number">45</span>*+</span><br></pre></td></tr></table></figure></p>
-<h1 id="二、题解"><a href="#二、题解" class="headerlink" title="二、题解"></a>二、题解</h1><p>本题可以用栈来解决。<br>设置运算符的优先级，本题中令+、-的优先级为1，*、/的优先级为2，(的优先级为3。<br>遍历字符串，若发现运算符，将其优先级与栈首元素优先级比较，（如果栈为空直接进栈），若大于则该运算符进栈，若小于且栈首不为’(‘将栈首元素出栈然后将其进栈，若栈首为’(‘，无论何运算符，进栈。<br>若遍历到’)’，则将栈中元素出栈直到栈首为’(‘，最后把’(‘出栈。<br>遍历完字符串，若栈不为空，将栈中元素全部出栈。<br>代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 3000</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Stack</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> character[MAXSIZE];</span><br><span class="line">	<span class="keyword">int</span> top;</span><br><span class="line">	<span class="keyword">int</span> flag[MAXSIZE];<span class="comment">//优先级</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> Case;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;Case);</span><br><span class="line">	<span class="keyword">while</span>(Case--)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">char</span> str[MAXSIZE];</span><br><span class="line">	<span class="keyword">char</span> ch[MAXSIZE];</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Stack</span> <span class="title">stack</span>;</span></span><br><span class="line">	<span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">stack</span>.top=<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(str);i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(str[i]&gt;=<span class="string">'0'</span>&amp;&amp;str[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">			ch[count++]=str[i];</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">switch</span>(str[i])&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">				<span class="keyword">case</span> <span class="string">'+'</span>: <span class="keyword">if</span>(<span class="built_in">stack</span>.top==<span class="number">-1</span>)&#123;</span><br><span class="line">								<span class="built_in">stack</span>.top++;</span><br><span class="line">								<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]=str[i];</span><br><span class="line">								<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]=<span class="number">1</span>;</span><br><span class="line">							&#125;</span><br><span class="line">						   <span class="keyword">else</span>&#123;</span><br><span class="line">						   		<span class="keyword">if</span>(<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]!=<span class="number">3</span>)&#123;</span><br><span class="line">									<span class="keyword">if</span>(<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]==<span class="number">2</span>)&#123;</span><br><span class="line">										ch[count++]=<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top];</span><br><span class="line">						   		 		<span class="built_in">stack</span>.top--;</span><br><span class="line">									&#125;</span><br><span class="line">						   		 	<span class="keyword">if</span>(<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]==<span class="number">1</span>)&#123;</span><br><span class="line">						   				ch[count++]=<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top];</span><br><span class="line">						   				<span class="built_in">stack</span>.top--;</span><br><span class="line">						   			&#125;</span><br><span class="line">						   			<span class="built_in">stack</span>.top++;</span><br><span class="line">						   			<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]=str[i];</span><br><span class="line">						   			<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]=<span class="number">1</span>;</span><br><span class="line">						   		&#125;</span><br><span class="line">								<span class="keyword">else</span>&#123;</span><br><span class="line">								 	<span class="built_in">stack</span>.top++;</span><br><span class="line">								 	<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]=str[i];</span><br><span class="line">								 	<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]=<span class="number">1</span>;</span><br><span class="line">								 &#125; </span><br><span class="line">						   &#125;</span><br><span class="line">						   <span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">'*'</span>:</span><br><span class="line">				<span class="keyword">case</span> <span class="string">'/'</span>: <span class="keyword">if</span>(<span class="built_in">stack</span>.top==<span class="number">-1</span>)&#123;</span><br><span class="line">				 				<span class="built_in">stack</span>.top++;</span><br><span class="line">								<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]=str[i];</span><br><span class="line">								<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]=<span class="number">2</span>; 	</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="keyword">else</span>&#123;</span><br><span class="line">								<span class="keyword">if</span>(<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]==<span class="number">1</span>||<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]==<span class="number">3</span>)&#123;</span><br><span class="line">									<span class="built_in">stack</span>.top++;</span><br><span class="line">									<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]=str[i];</span><br><span class="line">									<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]=<span class="number">2</span>;</span><br><span class="line">								&#125;</span><br><span class="line">								<span class="keyword">else</span>&#123;</span><br><span class="line">									ch[count++]=<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top];</span><br><span class="line">									<span class="built_in">stack</span>.top--;</span><br><span class="line">									<span class="built_in">stack</span>.top++;</span><br><span class="line">									<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]=str[i];</span><br><span class="line">									<span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]=<span class="number">2</span>;</span><br><span class="line">								&#125;</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">'('</span>: <span class="built_in">stack</span>.top++;</span><br><span class="line">						  <span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]=<span class="string">'('</span>;</span><br><span class="line">						  <span class="built_in">stack</span>.flag[<span class="built_in">stack</span>.top]=<span class="number">3</span>;</span><br><span class="line">						  <span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">')'</span>: <span class="keyword">while</span>(<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top]!=<span class="string">'('</span>)&#123;</span><br><span class="line">								ch[count++]=<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top];</span><br><span class="line">								<span class="built_in">stack</span>.top--;</span><br><span class="line">							&#125;</span><br><span class="line">							<span class="built_in">stack</span>.top--;</span><br><span class="line">							<span class="keyword">break</span>;		</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">stack</span>.top!=<span class="number">-1</span>)&#123;</span><br><span class="line">		ch[count++]=<span class="built_in">stack</span>.character[<span class="built_in">stack</span>.top];</span><br><span class="line">		<span class="built_in">stack</span>.top--;</span><br><span class="line">	&#125;</span><br><span class="line">	ch[count]=<span class="string">'\0'</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s\n"</span>,ch);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+        <hr>
+<h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>独木舟上的旅行<br>时间限制：3000 ms  |  内存限制：65535 KB<br>难度：2<br>描述<br>进行一次独木舟的旅行活动，独木舟可以在港口租到，并且之间没有区别。一条独木舟最多只能乘坐两个人，且乘客的总重量不能超过独木舟的最大承载量。我们要尽量减少这次活动中的花销，所以要找出可以安置所有旅客的最少的独木舟条数。现在请写一个程序，读入独木舟的最大承载量、旅客数目和每位旅客的重量。根据给出的规则，计算要安置所有旅客必须的最少的独木舟条数，并输出结果。<br><a id="more"></a><br>输入<br>第一行输入s,表示测试数据的组数；<br>每组数据的第一行包括两个整数w，n，80&lt;=w&lt;=200,1&lt;=n&lt;=300，w为一条独木舟的最大承载量,n为人数；<br>接下来的一组数据为每个人的重量（不能大于船的承载量）；<br>输出<br>每组人数所需要的最少独木舟的条数。<br>样例输入<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line"><span class="symbol">85 </span><span class="number">6</span></span><br><span class="line"><span class="symbol">5 </span><span class="number">84</span> <span class="number">85</span> <span class="number">80</span> <span class="number">84</span> <span class="number">83</span></span><br><span class="line"><span class="symbol">90 </span><span class="number">3</span></span><br><span class="line"><span class="symbol">90 </span><span class="number">45</span> <span class="number">60</span></span><br><span class="line"><span class="symbol">100 </span><span class="number">5</span></span><br><span class="line"><span class="symbol">50 </span><span class="number">50</span> <span class="number">90</span> <span class="number">40</span> <span class="number">60</span></span><br></pre></td></tr></table></figure></p>
+<p>样例输出<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>以最小的体重为基准，再从最大体重中往下找，满足承载重就说明两者可以搭乘同一船，否则就只有最小的那一个独自搭船。然后依次选择剩下的最小体重。<br>说明：一条船只能坐两人。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//--</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE=<span class="number">300</span>+<span class="number">5</span>;</span><br><span class="line"><span class="comment">//--</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> Case;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;Case;</span><br><span class="line">	<span class="keyword">while</span>(Case--)&#123;</span><br><span class="line">		<span class="keyword">int</span> weith,people;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;weith&gt;&gt;people;</span><br><span class="line">		<span class="keyword">int</span> a[MAXSIZE];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;people;i++)</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">		sort(a,a+people);</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;people;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]!=<span class="number">0</span>)&#123; </span><br><span class="line">				<span class="keyword">int</span> value=weith-a[i];</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=people<span class="number">-1</span>;j&gt;i;j--)&#123;</span><br><span class="line">					<span class="keyword">if</span>(value&gt;=a[j]&amp;&amp;a[j]!=<span class="number">0</span>)&#123;</span><br><span class="line">						value=value-a[j];</span><br><span class="line">						a[j]=<span class="number">0</span>;</span><br><span class="line">						<span class="keyword">break</span>; </span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">3</span></span><br><span class="line"><span class="comment">85 6</span></span><br><span class="line"><span class="comment">5 84 85 80 84 83</span></span><br><span class="line"><span class="comment">90 3</span></span><br><span class="line"><span class="comment">90 45 60</span></span><br><span class="line"><span class="comment">100 5</span></span><br><span class="line"><span class="comment">50 50 90 40 60</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -476,7 +469,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://shann.xyz/2018/09/17/数据结构/中缀式变后缀式/" title="NYOJ257中缀式变后缀式">https://shann.xyz/2018/09/17/数据结构/中缀式变后缀式/</a>
+    <a href="https://shann.xyz/2018/12/02/贪心/nyoj71独木舟上的旅行/" title="nyoj-71-独木舟上的旅行（贪心入门">https://shann.xyz/2018/12/02/贪心/nyoj71独木舟上的旅行/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -491,7 +484,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c-c/" rel="tag"><i class="fa fa-tag"></i> c/c++</a>
+            <a href="/tags/基础算法/" rel="tag"><i class="fa fa-tag"></i> 基础算法</a>
           
         </div>
       
@@ -504,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/15/数据结构/另类表达式求解/" rel="next" title="NYOJ305另类表达式求值（栈）">
-                <i class="fa fa-chevron-left"></i> NYOJ305另类表达式求值（栈）
+              <a href="/2018/12/01/贪心/nyoj14会场安排问题/" rel="next" title="nyoj-13-会场安排问题（贪心入门">
+                <i class="fa fa-chevron-left"></i> nyoj-13-会场安排问题（贪心入门
               </a>
             
           </div>
@@ -513,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/19/数据结构/中缀式变后缀式2/" rel="prev" title="NYOJ465中缀式变后缀式（套题）">
-                NYOJ465中缀式变后缀式（套题） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -760,7 +749,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、题目描述"><span class="nav-number">1.</span> <span class="nav-text">一、题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、题解"><span class="nav-number">2.</span> <span class="nav-text">二、题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
