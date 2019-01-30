@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="基础算法," />
 
 
 
@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="大佬们  Z-坤-K禹都一只猫Collation&amp;amp;Seek Group 蔚然博客一木博客">
-<meta name="keywords" content="个人记录生活学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="friends">
-<meta property="og:url" content="https://shann.xyz/friends/index.html">
+<meta name="description" content="题目某天KID利用飞行器飞到了一个金银岛上，上面有许多珍贵的金属，KID虽然更喜欢各种宝石的艺术品，可是也不拒绝这样珍贵的金属。但是他只带着一个口袋，口袋至多只能装重量为w的物品。岛上金属有s个种类, 每种金属重量不同，分别为n 1, n 2, … , n s，同时每个种类的金属总的价值也不同，分别为v 1,v 2, …, v s。KID想一次带走价值尽可能多的金属，问他最多能带走价值多少的金属。">
+<meta name="keywords" content="基础算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="金银岛">
+<meta property="og:url" content="https://shann.xyz/2019/01/30/贪心/金银岛/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="大佬们  Z-坤-K禹都一只猫Collation&amp;amp;Seek Group 蔚然博客一木博客">
+<meta property="og:description" content="题目某天KID利用飞行器飞到了一个金银岛上，上面有许多珍贵的金属，KID虽然更喜欢各种宝石的艺术品，可是也不拒绝这样珍贵的金属。但是他只带着一个口袋，口袋至多只能装重量为w的物品。岛上金属有s个种类, 每种金属重量不同，分别为n 1, n 2, … , n s，同时每个种类的金属总的价值也不同，分别为v 1,v 2, …, v s。KID想一次带走价值尽可能多的金属，问他最多能带走价值多少的金属。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-30T11:22:10.406Z">
+<meta property="og:updated_time" content="2019-01-30T08:25:51.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="friends">
-<meta name="twitter:description" content="大佬们  Z-坤-K禹都一只猫Collation&amp;amp;Seek Group 蔚然博客一木博客">
+<meta name="twitter:title" content="金银岛">
+<meta name="twitter:description" content="题目某天KID利用飞行器飞到了一个金银岛上，上面有许多珍贵的金属，KID虽然更喜欢各种宝石的艺术品，可是也不拒绝这样珍贵的金属。但是他只带着一个口袋，口袋至多只能装重量为w的物品。岛上金属有s个种类, 每种金属重量不同，分别为n 1, n 2, … , n s，同时每个种类的金属总的价值也不同，分别为v 1,v 2, …, v s。KID想一次带走价值尽可能多的金属，问他最多能带走价值多少的金属。">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/friends/"/>
+  <link rel="canonical" href="https://shann.xyz/2019/01/30/贪心/金银岛/"/>
 
 
 
 
 
-  <title>friends | GageShan</title>
+  <title>金银岛 | GageShan</title>
   
 
 
@@ -313,36 +313,218 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/01/30/贪心/金银岛/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一杯冰水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">friends</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body han-init-context">
         
         
-          <p align="left"><font face="微软雅黑" color="black" size="8"> 大佬们</font></p>
-
-<p><a href="https://z-ac-k.github.io/" target="_blank" rel="noopener">Z-坤-K</a><br><a href="https://olei.me" target="_blank" rel="noopener">禹都一只猫</a><br><a href="http://zwcblog.top./" target="_blank" rel="noopener">Collation&amp;Seek Group </a><br><a href="https://www.mxsina.com" target="_blank" rel="noopener">蔚然博客</a><br><a href="https://aidabuda.cn" target="_blank" rel="noopener">一木博客</a></p>
-
+          <h1 class="post-title" itemprop="name headline">金银岛</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-30T16:21:16+08:00">
+                2019-01-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-30T16:25:51+08:00">
+                2019-01-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/贪心算法/" itemprop="url" rel="index">
+                    <span itemprop="name">贪心算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/30/贪心/金银岛/" class="leancloud_visitors" data-flag-title="金银岛">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>某天KID利用飞行器飞到了一个金银岛上，上面有许多珍贵的金属，KID虽然更喜欢各种宝石的艺术品，可是也不拒绝这样珍贵的金属。但是他只带着一个口袋，口袋至多只能装重量为w的物品。岛上金属有s个种类, 每种金属重量不同，分别为n 1, n 2, … , n s，同时每个种类的金属总的价值也不同，分别为v 1,v 2, …, v s。KID想一次带走价值尽可能多的金属，问他最多能带走价值多少的金属。注意到金属是可以被任意分割的，并且金属的价值和其重量成正比。<br><a id="more"></a><br>Input<br>第1行是测试数据的组数k，后面跟着k组输入。 </p>
+<p>每组测试数据占3行，第1行是一个正整数w (1 &lt;= w &lt;= 10000)，表示口袋承重上限。第2行是一个正整数s (1 &lt;= s &lt;=100)，表示金属种类。第3行有2s个正整数，分别为n 1, v 1, n 2, v 2, … , n s, v s分别为第一种，第二种，…，第s种金属的总重量和总价值(1 &lt;= n i &lt;= 10000, 1 &lt;= v i &lt;= 10000)。<br>Output<br>k行，每行输出对应一个输入。输出应精确到小数点后2位。<br>Sample Input<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">50</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">10</span> <span class="number">100</span> <span class="number">50</span> <span class="number">30</span> <span class="number">7</span> <span class="number">34</span> <span class="number">87</span> <span class="number">100</span></span><br><span class="line"><span class="number">10000</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">1</span> <span class="number">43</span> <span class="number">43</span> <span class="number">323</span> <span class="number">35</span> <span class="number">45</span> <span class="number">43</span> <span class="number">54</span> <span class="number">87</span> <span class="number">43</span></span><br></pre></td></tr></table></figure></p>
+<p>Sample Output<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">171<span class="selector-class">.93</span></span><br><span class="line">508<span class="selector-class">.00</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>该题跟圣诞老人题类似<a href="https://shann.xyz/2019/01/30/%E8%B4%AA%E5%BF%83/%E5%9C%A3%E8%AF%9E%E8%80%81%E4%BA%BA%E7%9A%84%E7%A4%BC%E7%89%A9-Santa%20Clau%E2%80%99s%20Gifts%20/">传送</a>，单位重量内价值越高优先选择。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE=<span class="number">10000</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> weight;</span><br><span class="line">	<span class="keyword">int</span> value;</span><br><span class="line">	<span class="keyword">double</span> single;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(struct Node a,struct Node b)</span></span>&#123;<span class="keyword">return</span> a.single&gt;b.single;&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> Case;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;Case;</span><br><span class="line">	<span class="keyword">while</span>(Case--)&#123;</span><br><span class="line">		<span class="keyword">int</span> w;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;w;</span><br><span class="line">		<span class="keyword">int</span> s;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">Node</span> <span class="title">arr</span>[<span class="title">MAXSIZE</span>];</span> </span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s;i++)&#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;arr[i].weight&gt;&gt;arr[i].value;</span><br><span class="line">			arr[i].single=arr[i].value*<span class="number">1.0</span>/arr[i].weight;</span><br><span class="line">		&#125;</span><br><span class="line">		sort(arr,arr+s,cmp);</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">double</span> allVal=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;s&amp;&amp;(sum+arr[i].weight)&lt;=w;i++)&#123;</span><br><span class="line">			sum+=arr[i].weight;</span><br><span class="line">			allVal+=arr[i].value;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;s)</span><br><span class="line">			allVal=allVal+(w-sum)*arr[i].single;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>,allVal);</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
     
     
+    <div>
+      
+           <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    一杯冰水
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://shann.xyz/2019/01/30/贪心/金银岛/" title="金银岛">https://shann.xyz/2019/01/30/贪心/金银岛/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础算法/" rel="tag"><i class="fa fa-tag"></i> 基础算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/30/贪心/圣诞老人的礼物-Santa Clau’s Gifts /" rel="next" title="圣诞老人的礼物-Santa Clau’s Gifts">
+                <i class="fa fa-chevron-left"></i> 圣诞老人的礼物-Santa Clau’s Gifts
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -379,8 +561,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -548,6 +739,22 @@ show_date_time();
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

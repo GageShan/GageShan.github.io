@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[金银岛]]></title>
+    <url>%2F2019%2F01%2F30%2F%E8%B4%AA%E5%BF%83%2F%E9%87%91%E9%93%B6%E5%B2%9B%2F</url>
+    <content type="text"><![CDATA[题目某天KID利用飞行器飞到了一个金银岛上，上面有许多珍贵的金属，KID虽然更喜欢各种宝石的艺术品，可是也不拒绝这样珍贵的金属。但是他只带着一个口袋，口袋至多只能装重量为w的物品。岛上金属有s个种类, 每种金属重量不同，分别为n 1, n 2, … , n s，同时每个种类的金属总的价值也不同，分别为v 1,v 2, …, v s。KID想一次带走价值尽可能多的金属，问他最多能带走价值多少的金属。注意到金属是可以被任意分割的，并且金属的价值和其重量成正比。Input第1行是测试数据的组数k，后面跟着k组输入。 每组测试数据占3行，第1行是一个正整数w (1 &lt;= w &lt;= 10000)，表示口袋承重上限。第2行是一个正整数s (1 &lt;= s &lt;=100)，表示金属种类。第3行有2s个正整数，分别为n 1, v 1, n 2, v 2, … , n s, v s分别为第一种，第二种，…，第s种金属的总重量和总价值(1 &lt;= n i &lt;= 10000, 1 &lt;= v i &lt;= 10000)。Outputk行，每行输出对应一个输入。输出应精确到小数点后2位。Sample Input1234567250410 100 50 30 7 34 87 1001000051 43 43 323 35 45 43 54 87 43 Sample Output12171.93508.00 题解该题跟圣诞老人题类似传送，单位重量内价值越高优先选择。 代码12345678910111213141516171819202122232425262728293031323334353637#include&lt;iostream&gt;#include&lt;algorithm&gt;const int MAXSIZE=10000+5;using namespace std;struct Node&#123; int weight; int value; double single;&#125;;bool cmp(struct Node a,struct Node b)&#123;return a.single&gt;b.single;&#125;int main()&#123; int Case; cin&gt;&gt;Case; while(Case--)&#123; int w; cin&gt;&gt;w; int s; cin&gt;&gt;s; struct Node arr[MAXSIZE]; for(int i=0;i&lt;s;i++)&#123; cin&gt;&gt;arr[i].weight&gt;&gt;arr[i].value; arr[i].single=arr[i].value*1.0/arr[i].weight; &#125; sort(arr,arr+s,cmp); int sum=0; int i=0; double allVal=0; for(i=0;i&lt;s&amp;&amp;(sum+arr[i].weight)&lt;=w;i++)&#123; sum+=arr[i].weight; allVal+=arr[i].value; &#125; if(i&lt;s) allVal=allVal+(w-sum)*arr[i].single; printf("%.2lf\n",allVal); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[圣诞老人的礼物-Santa Clau’s Gifts]]></title>
     <url>%2F2019%2F01%2F30%2F%E8%B4%AA%E5%BF%83%2F%E5%9C%A3%E8%AF%9E%E8%80%81%E4%BA%BA%E7%9A%84%E7%A4%BC%E7%89%A9-Santa%20Clau%E2%80%99s%20Gifts%20%2F</url>
     <content type="text"><![CDATA[题目圣诞节来临了，在城市A中圣诞老人准备分发糖果，现在有多箱不同的糖果，每箱糖果有自己的价值和重量，每箱糖果都可以拆分成任意散装组合带走。圣诞老人的驯鹿最多只能承受一定重量的糖果，请问圣诞老人最多能带走多大价值的糖果。Input第一行由两个部分组成，分别为糖果箱数正整数n(1 &lt;= n &lt;= 100)，驯鹿能承受的最大重量正整数w（0 &lt; w &lt; 10000），两个数用空格隔开。其余n行每行对应一箱糖果，由两部分组成，分别为一箱糖果的价值正整数v和重量正整数w，中间用空格隔开。Output输出圣诞老人能带走的糖果的最大总价值，保留1位小数。输出为一行，以换行符结束。Sample Input123454 15100 4412 8266 7591 2 Sample Output11193.0 题解由一箱糖果的总价值和它的总重量可以算出每一份重量所对应的价值，记为份重量=总价值/总重量。要尽可能地带走价值大的糖果，那么在载重允许范围内，份重量对应的糖果价值越大带走的糖果价值就越高。对份重量从高到底排序，选择即可 代码1234567891011121314151617181920212223242526272829303132333435363738#include&lt;iostream&gt;#include&lt;algorithm&gt;const int MAXSIZE=100+5;using namespace std;struct Santa&#123; int value; int weight; double single;&#125;;bool cmp(struct Santa a,struct Santa b)&#123;return a.single&gt;b.single;&#125;int main()&#123; struct Santa arr[MAXSIZE]; int n,w; while(cin&gt;&gt;n&gt;&gt;w)&#123; for(int i=0;i&lt;n;i++)&#123; cin&gt;&gt;arr[i].value&gt;&gt;arr[i].weight; arr[i].single=(arr[i].value*1.0)/(arr[i].weight*1.0); &#125; sort(arr,arr+n,cmp); int sum=0; double allVal=0; int i=0; while((arr[i].weight+sum)&lt;=w)&#123; allVal=allVal+arr[i].value; sum+=arr[i].weight; i++; if(i&gt;=n) break; &#125; if(i&lt;n) allVal=allVal+arr[i].single*(w-sum); printf("%.1lf\n",allVal); &#125; return 0;&#125;//AC]]></content>
