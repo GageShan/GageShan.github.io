@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[最少拦截系统 HDU - 1257]]></title>
+    <url>%2F2019%2F01%2F31%2F%E8%B4%AA%E5%BF%83%2F%E6%9C%80%E5%B0%91%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F%20HDU%20-%201257%20%2F</url>
+    <content type="text"><![CDATA[题目某国为了防御敌国的导弹袭击,发展出一种导弹拦截系统.但是这种导弹拦截系统有一个缺陷:虽然它的第一发炮弹能够到达任意的高度,但是以后每一发炮弹都不能超过前一发的高度.某天,雷达捕捉到敌国的导弹来袭.由于该系统还在试用阶段,所以只有一套系统,因此有可能不能拦截所有的导弹.怎么办呢?多搞几套系统呗!你说说倒蛮容易,成本呢?成本是个大问题啊.所以俺就到这里来求救了,请帮助计算一下最少需要多少套拦截系统.Input输入若干组数据.每组数据包括:导弹总个数(正整数),导弹依此飞来的高度(雷达给出的高度数据是不大于30000的正整数,用空格分隔)Output对应每组数据输出拦截所有导弹最少要配备多少套这种导弹拦截系统.Sample Input18 389 207 155 300 299 170 158 65 Sample Output12 题解导弹是依次飞来的并且每一发都不能超过前一发的高度，可知当后一个导弹的高度高于前一个时，就需要一个新的拦截系统。如果仅仅是这么想，就会被坑了。因为之前的拦截系统的最后一发炮弹的高度可能比新的拦截系统的高度要高。比如这组数据 389 207 155 300 299 170 158 65 100，不想清楚后一种可能那么就需要三套，实际上两套就行了。 代码123456789101112131415161718192021222324252627282930313233343536#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int MAXSIZE=50000;int main()&#123; int n; while(cin&gt;&gt;n)&#123; int sum=0; int arr[MAXSIZE]; for(int i=0;i&lt;n;i++) cin&gt;&gt;arr[i]; int check=1; for(int i=0;i&lt;n;)&#123; if(check==i) break; check=i; int first=arr[i]; int flag=1; for(int j=i+1;j&lt;n;j++)&#123; if(first&gt;arr[j]&amp;&amp;arr[j]!=0)&#123; first=arr[j]; arr[j]=0; &#125; if(flag==1&amp;&amp;first&lt;arr[j])&#123; flag=0; i=j; &#125; &#125; &#125; for(int i=0;i&lt;n;i++) if(arr[i]!=0) sum++; cout&lt;&lt;sum&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Saving HDU HDU - 2111]]></title>
+    <url>%2F2019%2F01%2F31%2F%E8%B4%AA%E5%BF%83%2FSaving%20HDU%20HDU%20-%202111%20%2F</url>
+    <content type="text"><![CDATA[题目话说上回讲到海东集团面临内外交困，公司的元老也只剩下XHD夫妇二人了。显然，作为多年拼搏的商人，XHD不会坐以待毙的。 一天，当他正在苦思冥想解困良策的时候，突然想到了自己的传家宝，那是公司成立的时候，父亲作为贺礼送来的一个锦囊，徐父当时交代，不到万不得已的时候，不要打开它。“现在不正是最需要的时候吗？”，一边想，XHD一边找到了这个精心保管的锦囊，打开一看，里面只有一句话“杭城北麓千人洞有宝”。 二话不说，XHD拿起一个大口袋就出发了，这个千人洞他是知道的，小的时候，爸爸曾经带他来过这个隐蔽的路口，并告诉他，这是千人洞。他现在才明白爸爸当初这句话的含义。 尽管有点印象，XHD还是花了很大的精力才找到这个异常隐蔽的洞口，走进一看，几乎惊呆了，真的是眼花缭乱！不过尽管宝贝的种类不少，但是每种宝贝的量并不多，当然，每种宝贝单位体积的价格也不一样，为了挽救HDU，现在请你帮忙尽快计算出来XHD最多能带回多少价值的宝贝？（假设宝贝可以分割，分割后的价值和对应的体积成正比）Input输入包含多个测试实例，每个实例的第一行是两个整数v和n(v,n&lt;100)，分别表示口袋的容量和宝贝的种类，接着的n行每行包含2个整数pi和mi(0&lt;pi,mi&lt;10)，分别表示某种宝贝的单价和对应的体积，v为0的时候结束输入。Output对于每个测试实例，请输出XHD最多能取回多少价值的宝贝，每个实例的输出占一行。Sample Input12342 23 12 30 Sample Output15 经过锦囊相助，HDU会脱离危机吗？欲知后事如何，且听下回分解—— 题解对宝贝的价值从高到底排序，再贪心 代码12345678910111213141516171819202122232425262728293031323334#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int MAXSIZE=500+5;struct Node&#123; int pi; int mi;&#125;;bool cmp(struct Node a,struct Node b)&#123; return a.pi&gt;b.pi;&#125;int main()&#123; int v,n; while(cin&gt;&gt;v)&#123; if(v==0) break; cin&gt;&gt;n; struct Node arr[MAXSIZE]; for(int i=0;i&lt;n;i++) cin&gt;&gt;arr[i].pi&gt;&gt;arr[i].mi; sort(arr,arr+n,cmp); int sum=0; int allVal=0; int i=0; for(i=0;i&lt;n&amp;&amp;((sum+arr[i].mi)&lt;=v);i++)&#123; sum+=arr[i].mi; allVal+=arr[i].pi*arr[i].mi; //if(i&gt;=n) break; &#125; if(i&lt;n) allVal+=(v-sum)*arr[i].pi; cout&lt;&lt;allVal&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[老人是真饿了 HDU - 2187]]></title>
+    <url>%2F2019%2F01%2F31%2F%E8%B4%AA%E5%BF%83%2F%E8%80%81%E4%BA%BA%E6%98%AF%E7%9C%9F%E9%A5%BF%E4%BA%86%20HDU%20-%202187%20%2F</url>
+    <content type="text"><![CDATA[题目时间：2008年5月16日（震后第4天）地点：汶川县牛脑寨人物：羌族老奶奶 【转载整理】牛脑寨是一个全村600多人的羌族寨子，震后几天，这里依然能常常听到隆隆的声音，那是对面山上石头不断滑落的声音。在完成整个突击队的抢修移动基站的任务后，我提着相机开始记录这里的受创情况。突然，我的视线里出现一个羌族老人，这让我无比的震惊，要知道，那是一个极陡的坡，这个佝偻着腰的老人是怎么艰难地爬上来的？她上来做什么？ 老人背后是极陡的坡，她只有一只眼睛有依稀的视力，望着满地废墟，她徘徊了很久。家在哪里，她极力地用很低的视力找寻着。她曾经的家就在旁边，但是满目废墟已经让老人看不出来。她举目远眺，期望那里能看到家的一点点痕迹。原来家就在旁边，左手抓住一个房橼，努力让自己站住，地震过去三天了，她第一次回到曾经的家。 一个倒塌的柜子，里面装着一丝希望，老人很吃力地搬动掩盖在柜子上的薪柴。老人找到一把木匠用的刨子，老泪纵横，或许有哪个逝去的亲人是木匠。睹物思人，逝者已矣。 继续找，一把散碎的挂面出现在我的眼前。她颤颤巍巍地捞起铺满灰尘的挂面，再次流出了眼泪……看着她仔细地把挂面放进胸前的围腰里，我顿然感觉到，这是老人在得到外援之前赖以生存的口粮了，如果不是交通中断，外部救援进不来，老人家又何必拖着80多岁的躯体，强忍失去亲人的痛苦，重新回到这夺取她亲人生命的废墟，寻找这点点挂面？老人是真饿了…… 老人佝偻着腰，低声喃喃地念着那两句话“你们走了，我可怎么活”，拿着那对我们身处城市的人们微不足道的挂面，远去了…… PS: 拍完这组照片后我才知道，5月14号军用运输飞机第一次给汶川空投救援物资就掉在牛脑寨，受灾的村民们没有占为己有，而是汗流浃背地走了两个小时背到山下的县城交给政府。 对于幸存的灾民来说，最急待解决的显然是温饱问题，救灾部队一边在组织人员全力打通交通，一边在组织采购粮食。现在假设下拨了一定数量的救灾经费要去市场采购大米（散装）。如果市场有m种大米，各种大米的单价和重量已知，请问，为了满足更多灾民的需求，最多能采购多少重量的大米呢？Input输入数据首先包含一个正整数C，表示有C组测试用例，每组测试用例的第一行是两个整数n和m（0&lt;n&lt;=1000,0&lt;m&lt;=1000）,分别表示经费的金额和大米的种类，然后是m行数据，每行包含2个整数p和h(1&lt;=p&lt;=25,1&lt;=h&lt;=100)，分别表示单价和对应大米的重量。Output对于每组测试数据，请输出能够购买大米的最多重量（你可以假设经费买不光所有的大米）。每个实例的输出占一行，保留2位小数。Sample Input123417 23 34 4 Sample Output12.33 题解对大米的价格从低到高排序，再贪心过一遍 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt;#include&lt;algorithm&gt; using namespace std;const int MAXSIZE=1000+5;struct Node&#123; int p; int h;&#125;;bool cmp(struct Node a,struct Node b)&#123; return a.p&lt;b.p;&#125;int main()&#123; int Case; cin&gt;&gt;Case; while(Case--)&#123; int n,m; cin&gt;&gt;n&gt;&gt;m; struct Node arr[MAXSIZE]; for(int i=0;i&lt;m;i++) cin&gt;&gt;arr[i].p&gt;&gt;arr[i].h; sort(arr,arr+m,cmp); int i=0; int sum=0; double allVal=0; int S=0; for(i=0;i&lt;m&amp;&amp;((sum+arr[i].p*arr[i].h)&lt;=n);i++)&#123; sum+=arr[i].p*arr[i].h; S+=arr[i].h; &#125; if(i&lt;m) allVal=(n-sum)/arr[i].p+(n-sum)%arr[i].p*1.0/arr[i].p; printf("%.2lf\n",allVal+S); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Bookshelf]]></title>
+    <url>%2F2019%2F01%2F30%2F%E8%B4%AA%E5%BF%83%2Fbookshelf%2F</url>
+    <content type="text"><![CDATA[题目Farmer John recently bought a bookshelf for cow library, but the shelf is getting filled up quite quickly, and now the only available space is at the top. Each of the N cows (1 &lt;= N &lt;= 20,000) has some height of H_i (1 &lt;= H_i &lt;= 10,000) and a total height summed across all N cows of S. The bookshelf has a height of B (1 &lt;= B &lt;= S &lt; 2,000,000,007). To reach the top of the bookshelf taller than the tallest cow, one or more of the cows can stand on top of each other in a stack, so that their total height is the sum of each of their individual heights. This total height must be no less than the height of the bookshelf. Since more cows than necessary in the stack can be dangerous, your job is to find the set of cows that produces a stack of the smallest number of cows possible such that the stack can reach the bookshelf.Input Line 1: Two space-separated integers: N and B Lines 2..N+1: Line i+1 contains a single integer: H_iOutput Line 1: A single integer representing the size of the smallest set of cows that can reach the bookshelf.Sample Input12345676 4061811131911 Sample Output13 Hint1234567INPUT DETAILS: Six cows; bookshelf height 40. Cow heights fall in the range 6..19. OUTPUT DETAILS: One way to reach 40 with 3 cows is 18+11+13; many others exist 题解不断贪最大高度直到高于height即可。 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;algorithm&gt;const int MAXSIZE=20000+5;using namespace std;bool cmp(int a,int b)&#123;return a&gt;b;&#125;int main()&#123; int N,height; while(cin&gt;&gt;N&gt;&gt;height)&#123; int arr[MAXSIZE]; for(int i=0;i&lt;N;i++) cin&gt;&gt;arr[i]; sort(arr,arr+N,cmp); int sum=0; int i=0; for(i=0;i&lt;N;i++)&#123; sum+=arr[i]; if(sum&gt;=height) break; &#125; cout&lt;&lt;i&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[金银岛]]></title>
     <url>%2F2019%2F01%2F30%2F%E8%B4%AA%E5%BF%83%2F%E9%87%91%E9%93%B6%E5%B2%9B%2F</url>
     <content type="text"><![CDATA[题目某天KID利用飞行器飞到了一个金银岛上，上面有许多珍贵的金属，KID虽然更喜欢各种宝石的艺术品，可是也不拒绝这样珍贵的金属。但是他只带着一个口袋，口袋至多只能装重量为w的物品。岛上金属有s个种类, 每种金属重量不同，分别为n 1, n 2, … , n s，同时每个种类的金属总的价值也不同，分别为v 1,v 2, …, v s。KID想一次带走价值尽可能多的金属，问他最多能带走价值多少的金属。注意到金属是可以被任意分割的，并且金属的价值和其重量成正比。Input第1行是测试数据的组数k，后面跟着k组输入。 每组测试数据占3行，第1行是一个正整数w (1 &lt;= w &lt;= 10000)，表示口袋承重上限。第2行是一个正整数s (1 &lt;= s &lt;=100)，表示金属种类。第3行有2s个正整数，分别为n 1, v 1, n 2, v 2, … , n s, v s分别为第一种，第二种，…，第s种金属的总重量和总价值(1 &lt;= n i &lt;= 10000, 1 &lt;= v i &lt;= 10000)。Outputk行，每行输出对应一个输入。输出应精确到小数点后2位。Sample Input1234567250410 100 50 30 7 34 87 1001000051 43 43 323 35 45 43 54 87 43 Sample Output12171.93508.00 题解该题跟圣诞老人题类似传送，单位重量内价值越高优先选择。 代码12345678910111213141516171819202122232425262728293031323334353637#include&lt;iostream&gt;#include&lt;algorithm&gt;const int MAXSIZE=10000+5;using namespace std;struct Node&#123; int weight; int value; double single;&#125;;bool cmp(struct Node a,struct Node b)&#123;return a.single&gt;b.single;&#125;int main()&#123; int Case; cin&gt;&gt;Case; while(Case--)&#123; int w; cin&gt;&gt;w; int s; cin&gt;&gt;s; struct Node arr[MAXSIZE]; for(int i=0;i&lt;s;i++)&#123; cin&gt;&gt;arr[i].weight&gt;&gt;arr[i].value; arr[i].single=arr[i].value*1.0/arr[i].weight; &#125; sort(arr,arr+s,cmp); int sum=0; int i=0; double allVal=0; for(i=0;i&lt;s&amp;&amp;(sum+arr[i].weight)&lt;=w;i++)&#123; sum+=arr[i].weight; allVal+=arr[i].value; &#125; if(i&lt;s) allVal=allVal+(w-sum)*arr[i].single; printf("%.2lf\n",allVal); &#125; return 0;&#125;]]></content>
