@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[最长上升子序列 CSU - 1047]]></title>
+    <url>%2F2019%2F02%2F03%2F%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%2F%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97%20CSU%20-%201047%20%2F</url>
+    <content type="text"><![CDATA[题目名词解释： 一串数字比如1、5、3、6、9、8、10，它的子序列是从左到右不连续的若干个数，比如1、5、6，3、9、8、10都是它的子序列。 最长上升子序列即从左到右严格增长的最长的一个子序列，1、5、6、9、10就是这个序列的一个最长上升子序列。 给出若干序列，求出每个序列的最长上升子序列长度。Input 多组数据，每组第一行正整数n，1 &lt;= n &lt;= 1000，第二行n个空格隔开的不大于1,000,000的正整数。 Output 每组数据输出一行，最长上升子序列的长度。 Sample Input1271 5 3 6 9 8 10 Sample Output15 思路若一个序列为a[n]，记录当前元素的最长上升序列的长度为dp[n]。每个元素要满足1# 代码 #include #includeusing namespace std;const int MAXSIZE=1000+5;int getMax(int dp[],int arr[],int x){ int max=0; for(int i=0;i&lt;x;i++) //求0-x间的最大dp if(arr[i]&lt;arr[x]){ if(dp[i]&gt;max) max=dp[i]; } return max;}int main(){ int dp[MAXSIZE]; int arr[MAXSIZE]; int n; while(cin&gt;&gt;n){ for(int i=0;i&lt;n;i++){ scanf(“%d”,&amp;arr[i]); dp[i]=1; } for(int i=1;i&lt;n;i++) dp[i]+=getMax(dp,arr,i); int ans=0; for(int i=0;i&lt;n;i++) if(ans&lt;dp[i]) ans=dp[i]; cout&lt;&lt;ans&lt;&lt;endl; } return 0;}`]]></content>
+      <categories>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一只小蜜蜂... HDU - 2044 (简单dp)]]></title>
     <url>%2F2019%2F02%2F02%2F%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%2F%E4%B8%80%E5%8F%AA%E5%B0%8F%E8%9C%9C%E8%9C%82...%20HDU%20-%202044%20(%E7%AE%80%E5%8D%95dp)%2F</url>
     <content type="text"><![CDATA[题目有一只经过训练的蜜蜂只能爬向右侧相邻的蜂房，不能反向爬行。请编程计算蜜蜂从蜂房a爬到蜂房b的可能路线数。其中，蜂房的结构如下所示。 Input输入数据的第一行是一个整数N,表示测试实例的个数，然后是N 行数据，每行包含两个整数a和b(0&lt;a&lt;b&lt;50)。Output对于每个测试实例，请输出蜜蜂从蜂房a爬到蜂房b的可能路线数，每个实例的输出占一行。Sample Input12321 23 6 Sample Output1213 思路由蜂房的结构可以看到，蜂房1可以直接到达蜂房3，蜂房2也可以直接达到蜂房3，那么到达蜂房3的路线为蜂房1的路线加蜂房2的路线，递推公式12此题注意数值范围，（long long int ）。# 代码 #includeusing namespace std;int main(){ int n; long long int dp[550]; dp[1]=1; dp[2]=1; cin&gt;&gt;n; while(n–){ int a,b; cin&gt;&gt;a&gt;&gt;b; dp[a]=1; dp[a+1]=1; for(int i=a+2;i&lt;=b;i++) dp[i]=dp[i-1]+dp[i-2]; cout&lt;&lt;dp[b]&lt;&lt;endl; } return 0;}`]]></content>
