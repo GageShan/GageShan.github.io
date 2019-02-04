@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[单词数 HDU - 2072]]></title>
+    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>STL</category>
+      </categories>
+      <tags>
+        <tag>HDU</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[单词数 HDU - 2072]]></title>
+    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%20HDU%20-%202072%2F</url>
+    <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>STL</category>
+      </categories>
+      <tags>
+        <tag>HDU</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Repair the Wall HDU - 2124]]></title>
     <url>%2F2019%2F02%2F03%2F%E8%B4%AA%E5%BF%83%2FRepair%20the%20Wall%20HDU%20-%202124%20%2F</url>
     <content type="text"><![CDATA[题目Long time ago , Kitty lived in a small village. The air was fresh and the scenery was very beautiful. The only thing that troubled her is the typhoon. When the typhoon came, everything is terrible. It kept blowing and raining for a long time. And what made the situation worse was that all of Kitty’s walls were made of wood.One day, Kitty found that there was a crack in the wall. The shape of the crack isa rectangle with the size of 1×L (in inch). Luckly Kitty got N blocks and a saw(锯子) from her neighbors.The shape of the blocks were rectangle too, and the width of all blocks were 1 inch. So, with the help of saw, Kitty could cut down some of the blocks(of course she could use it directly without cutting) and put them in the crack, and the wall may be repaired perfectly, without any gap. Now, Kitty knew the size of each blocks, and wanted to use as fewer as possible of the blocks to repair the wall, could you help her ?InputThe problem contains many test cases, please process to the end of file( EOF ).Each test case contains two lines.In the first line, there are two integers L(0&lt;L&lt;1000000000) and N(0&lt;=N&lt;600) whichmentioned above.In the second line, there are N positive integers. The i th integer Ai(0&lt;Ai&lt;1000000000 ) means that the i th block has the size of 1×Ai (in inch).OutputFor each test case , print an integer which represents the minimal number of blocks are needed.If Kitty could not repair the wall, just print “impossible” instead.Sample Input12345 33 2 15 22 1 Sample Output122impossible 思路这道题的大致意思是有个长为Len的缺口，要用尽可能少的砖去补上它，题目告诉了砖的长度。对砖的长度从大到小排序再贪心即可 代码123456789101112131415161718192021222324252627#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int MAXSIZE=600+6;bool cmp(int a,int b)&#123;return a&gt;b;&#125;int main()&#123; int Len,N; while(cin&gt;&gt;Len&gt;&gt;N)&#123; int arr[MAXSIZE]; for(int i=0;i&lt;N;i++) scanf("%d",&amp;arr[i]); sort(arr,arr+N,cmp); int ans=0; int sum=0; for(int i=0;i&lt;N;i++)&#123; if(sum&lt;Len)&#123; ans++; sum+=arr[i]; &#125; &#125; if(sum&lt;Len) cout&lt;&lt;"impossible"&lt;&lt;endl; else cout&lt;&lt;ans&lt;&lt;endl; &#125; return 0;&#125;]]></content>
