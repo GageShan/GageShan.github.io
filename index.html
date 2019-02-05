@@ -325,6 +325,177 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/02/05/STL/排名 HDU - 1236/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一杯冰水">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/05/STL/排名 HDU - 1236/" itemprop="url">排名 HDU - 1236</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T23:05:06+08:00">
+                2019-02-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-05T23:05:19+08:00">
+                2019-02-05
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/STL/" itemprop="url" rel="index">
+                    <span itemprop="name">STL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/05/STL/排名 HDU - 1236/" class="leancloud_visitors" data-flag-title="排名 HDU - 1236">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>今天的上机考试虽然有实时的Ranklist，但上面的排名只是根据完成的题数排序，没有考虑<br>每题的分值，所以并不是最后的排名。给定录取分数线，请你写程序找出最后通过分数线的<br>考生，并将他们的成绩按降序打印。<br>Input<br>测试输入包含若干场考试的信息。每场考试信息的第1行给出考生人数N ( 0 &lt; N<br>&lt; 1000 )、考题数M ( 0 &lt; M &lt; = 10 )、分数线（正整数）G；第2行排序给出第1题至第M题的正整数分值；以下N行，每行给出一<br>名考生的准考证号（长度不超过20的字符串）、该生解决的题目总数m、以及这m道题的题号<br>（题目号由1到M）。<br>当读入的考生人数为0时，输入结束，该场考试不予处理。<br>Output<br>对每场考试，首先在第1行输出不低于分数线的考生人数n，随后n行按分数从高<br>到低输出上线考生的考号与分数，其间用1空格分隔。若有多名考生分数相同，则按他们考<br>号的升序输出。<br>Sample Input<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">25</span></span><br><span class="line"><span class="number">10</span> <span class="number">10</span> <span class="number">12</span> <span class="number">13</span> <span class="number">15</span></span><br><span class="line">CS004 <span class="number">3</span> <span class="number">5</span> <span class="number">1</span> <span class="number">3</span></span><br><span class="line">CS003 <span class="number">5</span> <span class="number">2</span> <span class="number">4</span> <span class="number">1</span> <span class="number">3</span> <span class="number">5</span></span><br><span class="line">CS002 <span class="number">2</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line">CS001 <span class="number">3</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">40</span></span><br><span class="line"><span class="number">10</span> <span class="number">30</span></span><br><span class="line">CS001 <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">2</span> <span class="number">3</span> <span class="number">20</span></span><br><span class="line"><span class="number">10</span> <span class="number">10</span> <span class="number">10</span></span><br><span class="line">CS000000000000000001 <span class="number">0</span></span><br><span class="line">CS000000000000000002 <span class="number">2</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>Sample Output<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br><span class="line">CS003 <span class="number">60</span></span><br><span class="line">CS001 <span class="number">37</span></span><br><span class="line">CS004 <span class="number">37</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line">CS000000000000000002 <span class="number">20</span></span><br><span class="line">```  </span><br><span class="line">Hint</span><br><span class="line">Huge input, scanf is recommended.</span><br><span class="line"># 思路</span><br><span class="line">sort函数的应用。</span><br><span class="line"># 代码</span><br></pre></td></tr></table></figure></p>
+<p>#include<iostream></iostream></p>
+<p>#include<string></string></p>
+<p>#include<algorithm><br>using namespace std;<br>struct List{<br>    string str;<br>    int score;<br>};<br>bool cmp(struct List a,struct List b){<br>    if(a.score==b.score)<br>        return a.str&lt;b.str;<br>    return a.score&gt;b.score;<br>}<br>int main(){<br>    int people,size,maxScore;<br>    while(scanf(“%d”,&amp;people)&amp;&amp;people!=0){<br>        scanf(“%d%d”,&amp;size,&amp;maxScore);<br>        int perScore[11];<br>        for(int i=1;i&lt;=size;i++)<br>            scanf(“%d”,&amp;perScore[i]);<br>        struct List stu[1000+5];<br>        int count=0;<br>        for(int i=0;i&lt;people;i++){<br>            stu[i].score=0;<br>            cin&gt;&gt;stu[i].str;<br>            int a;<br>            scanf(“%d”,&amp;a);<br>            while(a–){<br>                int b;<br>                scanf(“%d”,&amp;b);<br>                stu[i].score+=perScore[b];<br>            }<br>            if(stu[i].score&gt;=maxScore)<br>                count++;<br>        }<br>        sort(stu,stu+people,cmp);<br>        cout&lt;&lt;count&lt;&lt;endl;<br>        for(int i=0;i&lt;people;i++)<br>            if(stu[i].score&gt;=maxScore)<br>                cout&lt;&lt;stu[i].str&lt;&lt;’ ‘&lt;&lt;stu[i].score&lt;&lt;endl;<br>    }<br>    return 0;<br>}<br><code>`</code></algorithm></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/02/05/STL/Gunner II HDU - 5233 /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1528,180 +1699,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/02/01/贪心/今年暑假不AC HDU - 2037 /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一杯冰水">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/01/贪心/今年暑假不AC HDU - 2037 /" itemprop="url">今年暑假不AC HDU - 2037</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-01T23:44:42+08:00">
-                2019-02-01
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-01T23:45:07+08:00">
-                2019-02-01
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/贪心算法/" itemprop="url" rel="index">
-                    <span itemprop="name">贪心算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/02/01/贪心/今年暑假不AC HDU - 2037 /" class="leancloud_visitors" data-flag-title="今年暑假不AC HDU - 2037">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>“今年暑假不AC？”<br>“是的。”<br>“那你干什么呢？”<br>“看世界杯呀，笨蛋！”<br>“@#$%^&amp;*%…” </p>
-<p>确实如此，世界杯来了，球迷的节日也来了，估计很多ACMer也会抛开电脑，奔向电视了。<br>作为球迷，一定想看尽量多的完整的比赛，当然，作为新时代的好青年，你一定还会看一些其它的节目，比如新闻联播（永远不要忘记关心国家大事）、非常6+7、超级女生，以及王小丫的《开心辞典》等等，假设你已经知道了所有你喜欢看的电视节目的转播时间表，你会合理安排吗？（目标是能看尽量多的完整节目）<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/01/贪心/今年暑假不AC HDU - 2037 /" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1760,7 +1757,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1782,7 +1779,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1951,7 +1948,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.3k字</span>
+  <span class="post-count">博客全站共40.8k字</span>
 </div>
         
 

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[排名 HDU - 1236]]></title>
+    <url>%2F2019%2F02%2F05%2FSTL%2F%E6%8E%92%E5%90%8D%20HDU%20-%201236%2F</url>
+    <content type="text"><![CDATA[题目今天的上机考试虽然有实时的Ranklist，但上面的排名只是根据完成的题数排序，没有考虑每题的分值，所以并不是最后的排名。给定录取分数线，请你写程序找出最后通过分数线的考生，并将他们的成绩按降序打印。Input测试输入包含若干场考试的信息。每场考试信息的第1行给出考生人数N ( 0 &lt; N&lt; 1000 )、考题数M ( 0 &lt; M &lt; = 10 )、分数线（正整数）G；第2行排序给出第1题至第M题的正整数分值；以下N行，每行给出一名考生的准考证号（长度不超过20的字符串）、该生解决的题目总数m、以及这m道题的题号（题目号由1到M）。当读入的考生人数为0时，输入结束，该场考试不予处理。Output对每场考试，首先在第1行输出不低于分数线的考生人数n，随后n行按分数从高到低输出上线考生的考号与分数，其间用1空格分隔。若有多名考生分数相同，则按他们考号的升序输出。Sample Input12345678910111213144 5 2510 10 12 13 15CS004 3 5 1 3CS003 5 2 4 1 3 5CS002 2 1 2CS001 3 2 3 51 2 4010 30CS001 1 22 3 2010 10 10CS000000000000000001 0CS000000000000000002 2 1 20 Sample Output123456789101112133CS003 60CS001 37CS004 3701CS000000000000000002 20``` HintHuge input, scanf is recommended.# 思路sort函数的应用。# 代码 #include #include #includeusing namespace std;struct List{ string str; int score;};bool cmp(struct List a,struct List b){ if(a.score==b.score) return a.str&lt;b.str; return a.score&gt;b.score;}int main(){ int people,size,maxScore; while(scanf(“%d”,&amp;people)&amp;&amp;people!=0){ scanf(“%d%d”,&amp;size,&amp;maxScore); int perScore[11]; for(int i=1;i&lt;=size;i++) scanf(“%d”,&amp;perScore[i]); struct List stu[1000+5]; int count=0; for(int i=0;i&lt;people;i++){ stu[i].score=0; cin&gt;&gt;stu[i].str; int a; scanf(“%d”,&amp;a); while(a–){ int b; scanf(“%d”,&amp;b); stu[i].score+=perScore[b]; } if(stu[i].score&gt;=maxScore) count++; } sort(stu,stu+people,cmp); cout&lt;&lt;count&lt;&lt;endl; for(int i=0;i&lt;people;i++) if(stu[i].score&gt;=maxScore) cout&lt;&lt;stu[i].str&lt;&lt;’ ‘&lt;&lt;stu[i].score&lt;&lt;endl; } return 0;}`]]></content>
+      <categories>
+        <category>STL</category>
+      </categories>
+      <tags>
+        <tag>水题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Gunner II HDU - 5233]]></title>
     <url>%2F2019%2F02%2F05%2FSTL%2FGunner%20II%20HDU%20-%205233%20%2F</url>
     <content type="text"><![CDATA[题目Long long ago, there was a gunner whose name is Jack. He likes to go hunting very much. One day he go to the grove. There are n birds and n trees. The i-th bird stands on the top of the i-th tree. The trees stand in straight line from left to the right. Every tree has its height. Jack stands on the left side of the left most tree. When Jack shots a bullet in height H to the right, the nearest bird which stands in the tree with height H will falls.Jack will shot many times, he wants to know which bird will fall during each shot.InputThere are multiple test cases (about 5), every case gives n, m in the first line, n indicates there are n trees and n birds, m means Jack will shot m times. In the second line, there are n numbers h[1],h[2],h[3],…,h[n] which describes the height of the trees. In the third line, there are m numbers q[1],q[2],q[3],…,q[m] which describes the height of the Jack’s shots. Please process to the end of file. [Technical Specification] All input items are integers. 1&lt;=n,m&lt;=100000(10^5) 1&lt;=h[i],q[i]&lt;=1000000000(10^9)OutputFor each q[i], output an integer in a single line indicates the id of bird Jack shots down. If Jack can’t shot any bird, just output -1. The id starts from 1.Sample Input1235 51 2 3 4 11 3 1 4 2 Sample Output12345678910111213542``` HintHuge input, fast IO is recommended.# 思路定义map容器时，元素类型设置为queue队列。学到了学到了，tql。# 代码 #include #include #include #includeusing namespace std;int main(){ int n,m; while(cin&gt;&gt;n&gt;&gt;m){ map&lt;int,queue &gt; mp; int a; for(int i=1;i&lt;=n;i++){ scanf(“%d”,&amp;a); mp[a].push(i); } for(int i=0;i&lt;m;i++){ scanf(“%d”,&amp;a); if(mp[a].size()==0) cout&lt;&lt;”-1”; else{ cout&lt;&lt;mp[a].front(); mp[a].pop(); } cout&lt;&lt;endl; } } return 0;} `]]></content>
@@ -13,7 +24,7 @@
   </entry>
   <entry>
     <title><![CDATA[单词数 HDU - 2072]]></title>
-    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%2F</url>
+    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%20HDU%20-%202072%2F</url>
     <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
       <categories>
         <category>STL</category>
@@ -24,7 +35,7 @@
   </entry>
   <entry>
     <title><![CDATA[单词数 HDU - 2072]]></title>
-    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%20HDU%20-%202072%2F</url>
+    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
       <categories>
         <category>STL</category>
