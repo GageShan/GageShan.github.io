@@ -24,17 +24,6 @@
   </entry>
   <entry>
     <title><![CDATA[单词数 HDU - 2072]]></title>
-    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
-      <categories>
-        <category>STL</category>
-      </categories>
-      <tags>
-        <tag>HDU</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[单词数 HDU - 2072]]></title>
     <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%20HDU%20-%202072%2F</url>
     <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
       <categories>
