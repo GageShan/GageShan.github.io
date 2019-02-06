@@ -14,18 +14,7 @@
   <entry>
     <title><![CDATA[Gunner II HDU - 5233]]></title>
     <url>%2F2019%2F02%2F05%2FSTL%2FGunner%20II%20HDU%20-%205233%20%2F</url>
-    <content type="text"><![CDATA[题目Long long ago, there was a gunner whose name is Jack. He likes to go hunting very much. One day he go to the grove. There are n birds and n trees. The i-th bird stands on the top of the i-th tree. The trees stand in straight line from left to the right. Every tree has its height. Jack stands on the left side of the left most tree. When Jack shots a bullet in height H to the right, the nearest bird which stands in the tree with height H will falls.Jack will shot many times, he wants to know which bird will fall during each shot.InputThere are multiple test cases (about 5), every case gives n, m in the first line, n indicates there are n trees and n birds, m means Jack will shot m times. In the second line, there are n numbers h[1],h[2],h[3],…,h[n] which describes the height of the trees. In the third line, there are m numbers q[1],q[2],q[3],…,q[m] which describes the height of the Jack’s shots. Please process to the end of file. [Technical Specification] All input items are integers. 1&lt;=n,m&lt;=100000(10^5) 1&lt;=h[i],q[i]&lt;=1000000000(10^9)OutputFor each q[i], output an integer in a single line indicates the id of bird Jack shots down. If Jack can’t shot any bird, just output -1. The id starts from 1.Sample Input1235 51 2 3 4 11 3 1 4 2 Sample Output12345678910111213542``` HintHuge input, fast IO is recommended.# 思路定义map容器时，元素类型设置为queue队列。学到了学到了，tql。# 代码 #include #include #include #includeusing namespace std;int main(){ int n,m; while(cin&gt;&gt;n&gt;&gt;m){ map&lt;int,queue &gt; mp; int a; for(int i=1;i&lt;=n;i++){ scanf(“%d”,&amp;a); mp[a].push(i); } for(int i=0;i&lt;m;i++){ scanf(“%d”,&amp;a); if(mp[a].size()==0) cout&lt;&lt;”-1”; else{ cout&lt;&lt;mp[a].front(); mp[a].pop(); } cout&lt;&lt;endl; } } return 0;} `]]></content>
-      <categories>
-        <category>STL</category>
-      </categories>
-      <tags>
-        <tag>HDU</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[单词数 HDU - 2072]]></title>
-    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%20HDU%20-%202072%2F</url>
-    <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[题目Long long ago, there was a gunner whose name is Jack. He likes to go hunting very much. One day he go to the grove. There are n birds and n trees. The i-th bird stands on the top of the i-th tree. The trees stand in straight line from left to the right. Every tree has its height. Jack stands on the left side of the left most tree. When Jack shots a bullet in height H to the right, the nearest bird which stands in the tree with height H will falls.Jack will shot many times, he wants to know which bird will fall during each shot.InputThere are multiple test cases (about 5), every case gives n, m in the first line, n indicates there are n trees and n birds, m means Jack will shot m times. In the second line, there are n numbers h[1],h[2],h[3],…,h[n] which describes the height of the trees. In the third line, there are m numbers q[1],q[2],q[3],…,q[m] which describes the height of the Jack’s shots. Please process to the end of file. [Technical Specification] All input items are integers. 1&lt;=n,m&lt;=100000(10^5) 1&lt;=h[i],q[i]&lt;=1000000000(10^9)OutputFor each q[i], output an integer in a single line indicates the id of bird Jack shots down. If Jack can’t shot any bird, just output -1. The id starts from 1.Sample Input1235 51 2 3 4 11 3 1 4 2 Sample Output12345678910111213542``` # 思路定义map容器时，元素类型设置为queue队列。学到了学到了，tql。# 代码 #include #include #include #includeusing namespace std;int main(){ int n,m; while(cin&gt;&gt;n&gt;&gt;m){ map&lt;int,queue &gt; mp; int a; for(int i=1;i&lt;=n;i++){ scanf(“%d”,&amp;a); mp[a].push(i); } for(int i=0;i&lt;m;i++){ scanf(“%d”,&amp;a); if(mp[a].size()==0) cout&lt;&lt;”-1”; else{ cout&lt;&lt;mp[a].front(); mp[a].pop(); } cout&lt;&lt;endl; } } return 0;} `]]></content>
       <categories>
         <category>STL</category>
       </categories>
@@ -36,6 +25,17 @@
   <entry>
     <title><![CDATA[单词数 HDU - 2072]]></title>
     <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>STL</category>
+      </categories>
+      <tags>
+        <tag>HDU</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[单词数 HDU - 2072]]></title>
+    <url>%2F2019%2F02%2F04%2FSTL%2F%E5%8D%95%E8%AF%8D%E6%95%B0%20HDU%20-%202072%2F</url>
     <content type="text"><![CDATA[题目lily的好朋友xiaoou333最近很空，他想了一件没有什么意义的事情，就是统计一篇文章里不同单词的总数。下面你的任务是帮助xiaoou333解决这个问题。Input有多组数据，每组一行，每组就是一篇小文章。每篇小文章都是由小写字母和空格组成，没有标点符号，遇到#时表示输入结束。Output每组只输出一个整数，其单独成行，该整数代表一篇文章里不同单词的总数。Sample Input12you are my friend# Sample Output14 思路练习map？ 代码1234567891011121314151617181920212223#include&lt;iostream&gt;#include&lt;map&gt;using namespace std;int main()&#123; map&lt;string,int&gt; mp; string str; int k=0; while(getline(cin,str)&amp;&amp;str!="#")&#123; string t=""; k=0; mp.clear(); for(int i=0;i&lt;int(str.size());i++)&#123; t=""; while(str[i]&lt;='z'&amp;&amp;str[i]&gt;='a') t+=str[i++]; if(t!="") mp[t]=k++; &#125; cout&lt;&lt;mp.size()&lt;&lt;endl; &#125; return 0;&#125;]]></content>
       <categories>
         <category>STL</category>
