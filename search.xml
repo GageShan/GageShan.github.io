@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Max Sum HDU - 1003]]></title>
+    <url>%2F2019%2F02%2F09%2F%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%2FMax%20Sum%20HDU%20-%201003%20%2F</url>
+    <content type="text"><![CDATA[题目Given a sequence a[1],a[2],a[3]……a[n], your job is to calculate the max sum of a sub-sequence. For example, given (6,-1,5,4,-7), the max sum in this sequence is 6 + (-1) + 5 + 4 = 14.InputThe first line of the input contains an integer T(1&lt;=T&lt;=20) which means the number of test cases. Then T lines follow, each line starts with a number N(1&lt;=N&lt;=100000), then N integers followed(all the integers are between -1000 and 1000).OutputFor each test case, you should output two lines. The first line is “Case #:”, # means the number of the test case. The second line contains three integers, the Max Sum in the sequence, the start position of the sub-sequence, the end position of the sub-sequence. If there are more than one result, output the first one. Output a blank line between two cases.Sample Input12325 6 -1 5 4 -77 0 6 -1 1 -6 7 -5 Sample Output12345Case 1:14 1 4Case 2:7 1 6 思路dp[i]=max{dp[i-1]+arr[i],arr[i]},0&lt;=i&lt;n 代码1234567891011121314151617181920212223242526272829303132333435#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;using namespace std;const int MAXSIZE=100000+5;int arr[MAXSIZE]; int main()&#123; int T; cin&gt;&gt;T; int t=1; while(T--)&#123; int N; cin&gt;&gt;N; for(int i=1;i&lt;=N;i++) scanf("%d",&amp;arr[i]); int besti=1,bestj=1,tempi=1; int ans=arr[1],sum=arr[1]; for(int i=2;i&lt;=N;i++)&#123; if(sum&lt;0) &#123; sum=0; tempi=i; &#125; sum+=arr[i]; if(ans&lt;sum)&#123;ans=sum;besti=tempi;bestj=i;&#125; &#125; // printf("Case ");// cout&lt;&lt;t++&lt;&lt;":"&lt;&lt;endl&lt;&lt;ans&lt;&lt;" "&lt;&lt;besti&lt;&lt;" "&lt;&lt;bestj&lt;&lt;" "&lt;&lt;endl; printf("Case %d:\n%d %d %d\n",t++,ans,besti,bestj); if(T) printf("\n");// if(T)cout&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Longest Ordered Subsequence POJ - 2533]]></title>
+    <url>%2F2019%2F02%2F09%2F%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%2FLongest%20Ordered%20Subsequence%20POJ%20-%202533%2F</url>
+    <content type="text"><![CDATA[题目A numeric sequence of ai is ordered if a1 &lt; a2 &lt; … &lt; aN. Let the subsequence of the given numeric sequence ( a1, a2, …, aN) be any sequence ( ai1, ai2, …, aiK), where 1 &lt;= i1 &lt; i2 &lt; … &lt; iK &lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g., (1, 7), (3, 4, 8) and many others. All longest ordered subsequences are of length 4, e. g., (1, 3, 5, 8).Your program, when given the numeric sequence, must find the length of its longest ordered subsequence.InputThe first line of input file contains the length of sequence N. The second line contains the elements of sequence - N integers in the range from 0 to 10000 each, separated by spaces. 1 &lt;= N &lt;= 1000OutputOutput file must contain a single integer - the length of the longest ordered subsequence of the given sequence.Sample Input1271 7 3 5 9 4 8 Sample Output14 思路dp[i]=max(dp[j]){0&lt;=j&lt;i} 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt;using namespace std;const int MAXSIZE=1005;int dp[MAXSIZE];int arr[MAXSIZE];int find(int x)&#123; int max=0,j=0; for(int i=0;i&lt;x;i++) if(max&lt;dp[i]&amp;&amp;arr[x]&gt;arr[i])&#123; max=dp[i]; j=i; &#125; return max;&#125; int main()&#123; int N; cin&gt;&gt;N; for(int i=0;i&lt;N;i++)&#123; cin&gt;&gt;arr[i]; dp[i]=1; &#125; for(int i=1;i&lt;N;i++) dp[i]+=find(i); int ans=0; for(int i=0;i&lt;N;i++) if(ans&lt;dp[i]) ans=dp[i]; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125;]]></content>
+      <categories>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[迷宫城堡 HDU - 1269]]></title>
     <url>%2F2019%2F02%2F07%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%2F%E8%BF%B7%E5%AE%AB%E5%9F%8E%E5%A0%A1%20HDU%20-%201269%20%2F</url>
     <content type="text"><![CDATA[题目为了训练小希的方向感，Gardon建立了一座大城堡，里面有N个房间(N&lt;=10000)和M条通道(M&lt;=100000)，每个通道都是单向的，就是说若称某通道连通了A房间和B房间，只说明可以通过这个通道由A房间到达B房间，但并不说明通过它可以由B房间到达A房间。Gardon需要请你写个程序确认一下是否任意两个房间都是相互连通的，即：对于任意的i和j，至少存在一条路径可以从房间i到房间j，也存在一条路径可以从房间j到房间i。Input输入包含多组数据，输入的第一行有两个数：N和M，接下来的M行每行有两个数a和b，表示了一条通道可以从A房间来到B房间。文件最后以两个0结束。Output对于输入的每组数据，如果任意两个房间都是相互连接的，输出”Yes”，否则输出”No”。Sample Input1234567893 31 22 33 13 31 22 33 20 0 Sample Output12YesNo 思路用vector来表示邻接表，对每个元素深搜一遍。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344#include&lt;iostream&gt;#include&lt;cstdlib&gt;#include&lt;cstring&gt;#include&lt;vector&gt;using namespace std;const int MAXSIZE=10000+5;vector&lt;int &gt; edge[MAXSIZE];int visit[MAXSIZE];void DFS(int count)&#123; visit[count]=1; for(int i=0;i&lt;int(edge[count].size());i++)&#123; int x=edge[count][i]; if(visit[x]==0) DFS(x); &#125;&#125;int main()&#123; int N,M; while(cin&gt;&gt;N&gt;&gt;M)&#123; if(N==0&amp;&amp;M==0) break; for(int i=1;i&lt;=N;i++) edge[i].clear(); for(int i=1;i&lt;=M;i++)&#123; int a,b; cin&gt;&gt;a&gt;&gt;b; edge[a].push_back(b); &#125; int flag=1; for(int i=1;i&lt;=N;i++)&#123; memset(visit,0,sizeof(visit)); DFS(i); for(int j=1;j&lt;=N;j++) if(visit[j]==0)&#123; flag=0; break; &#125; if(flag==0) break; &#125; if(flag==0) cout&lt;&lt;"No"; else cout&lt;&lt;"Yes"; cout&lt;&lt;endl; &#125; return 0;&#125;]]></content>
