@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="题目Due to recent rains, water has pooled in various places in Farmer John’s field, which is represented by a rectangle of N x M (1 &amp;lt;= N &amp;lt;= 100; 1 &amp;lt;= M &amp;lt;= 100) squares. Each square contains">
+<meta name="description" content="题目There is a rectangular room, covered with square tiles. Each tile is colored either red or black. A man is standing on a black tile. From a tile, he can move to one of four adjacent tiles. But he ca">
 <meta name="keywords" content="DFS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lake Counting POJ - 2386">
-<meta property="og:url" content="https://shann.xyz/2019/02/11/简单搜索/Lake Counting POJ - 2386/index.html">
+<meta property="og:title" content="Red and Black HDU - 1312">
+<meta property="og:url" content="https://shann.xyz/2019/02/11/简单搜索/Red and Black HDU - 1312/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="题目Due to recent rains, water has pooled in various places in Farmer John’s field, which is represented by a rectangle of N x M (1 &amp;lt;= N &amp;lt;= 100; 1 &amp;lt;= M &amp;lt;= 100) squares. Each square contains">
+<meta property="og:description" content="题目There is a rectangular room, covered with square tiles. Each tile is colored either red or black. A man is standing on a black tile. From a tile, he can move to one of four adjacent tiles. But he ca">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-10T16:57:47.330Z">
+<meta property="og:updated_time" content="2019-02-11T13:39:53.727Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lake Counting POJ - 2386">
-<meta name="twitter:description" content="题目Due to recent rains, water has pooled in various places in Farmer John’s field, which is represented by a rectangle of N x M (1 &amp;lt;= N &amp;lt;= 100; 1 &amp;lt;= M &amp;lt;= 100) squares. Each square contains">
+<meta name="twitter:title" content="Red and Black HDU - 1312">
+<meta name="twitter:description" content="题目There is a rectangular room, covered with square tiles. Each tile is colored either red or black. A man is standing on a black tile. From a tile, he can move to one of four adjacent tiles. But he ca">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/2019/02/11/简单搜索/Lake Counting POJ - 2386/"/>
+  <link rel="canonical" href="https://shann.xyz/2019/02/11/简单搜索/Red and Black HDU - 1312/"/>
 
 
 
 
 
-  <title>Lake Counting POJ - 2386 | GageShan</title>
+  <title>Red and Black HDU - 1312 | GageShan</title>
   
 
 
@@ -325,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/02/11/简单搜索/Lake Counting POJ - 2386/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/02/11/简单搜索/Red and Black HDU - 1312/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="一杯冰水">
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Lake Counting POJ - 2386</h1>
+          <h1 class="post-title" itemprop="name headline">Red and Black HDU - 1312</h1>
         
 
         <div class="post-meta">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T00:57:07+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T21:39:38+08:00">
                 2019-02-11
               </time>
             
@@ -370,7 +370,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-11T00:57:47+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-11T21:39:53+08:00">
                 2019-02-11
               </time>
             
@@ -406,7 +406,7 @@
 
           
           
-             <span id="/2019/02/11/简单搜索/Lake Counting POJ - 2386/" class="leancloud_visitors" data-flag-title="Lake Counting POJ - 2386">
+             <span id="/2019/02/11/简单搜索/Red and Black HDU - 1312/" class="leancloud_visitors" data-flag-title="Red and Black HDU - 1312">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -437,23 +437,12 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>Due to recent rains, water has pooled in various places in Farmer John’s field, which is represented by a rectangle of N x M (1 &lt;= N &lt;= 100; 1 &lt;= M &lt;= 100) squares. Each square contains either water (‘W’) or dry land (‘.’). Farmer John would like to figure out how many ponds have formed in his field. A pond is a connected set of squares with water in them, where a square is considered adjacent to all eight of its neighbors.<br><a id="more"></a><br>Given a diagram of Farmer John’s field, determine how many ponds he has.<br>Input</p>
-<ul>
-<li><p>Line 1: Two space-separated integers: N and M </p>
-</li>
-<li><p>Lines 2..N+1: M characters per line representing one row of Farmer John’s field. Each character is either ‘W’ or ‘.’. The characters do not have spaces between them.<br>Output</p>
-</li>
-<li>Line 1: The number of ponds in Farmer John’s field.<br>Sample Input<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> <span class="number">12</span></span><br><span class="line">W.......<span class="selector-class">.WW</span>.</span><br><span class="line"><span class="selector-class">.WWW</span>.....WWW</span><br><span class="line">...<span class="selector-class">.WW</span>..<span class="selector-class">.WW</span>.</span><br><span class="line">........<span class="selector-class">.WW</span>.</span><br><span class="line">........<span class="selector-class">.W</span>..</span><br><span class="line">.<span class="selector-class">.W</span>.....<span class="selector-class">.W</span>..</span><br><span class="line"><span class="selector-class">.W</span><span class="selector-class">.W</span>....<span class="selector-class">.WW</span>.</span><br><span class="line">W<span class="selector-class">.W</span><span class="selector-class">.W</span>....<span class="selector-class">.W</span>.</span><br><span class="line"><span class="selector-class">.W</span><span class="selector-class">.W</span>.....<span class="selector-class">.W</span>.</span><br><span class="line">.<span class="selector-class">.W</span>......<span class="selector-class">.W</span>.</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>Sample Output<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></p>
-<p><code>Hint</code><br>OUTPUT DETAILS:<br>There are three ponds: one in the upper left, one in the lower left,and one along the right side.</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>dfs算法的简单应用。<br>对整张图来说</p>
-<p><li>遍历整个图</li></p>
-<p><li>每遇到一个<strong>W</strong>，这水池数加1，同时将它改为<strong>.</strong></li></p>
-<p><li>以上一步遇到的<strong>W</strong>为起点，搜索与它相连的位置，若发现<strong>W</strong>，则将它改为<strong>.</strong>，然后又搜索这个点周围的位置</li></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE=<span class="number">100</span>+<span class="number">5</span>;</span><br><span class="line"><span class="built_in">string</span> str[MAXSIZE];</span><br><span class="line"><span class="keyword">int</span> N,M;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	str[x][y]=<span class="string">'.'</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x<span class="number">-1</span>;i&lt;=x+<span class="number">1</span>;i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=y<span class="number">-1</span>;j&lt;=y+<span class="number">1</span>;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i&gt;=<span class="number">0</span>&amp;&amp;i&lt;N&amp;&amp;j&gt;=<span class="number">0</span>&amp;&amp;j&lt;M&amp;&amp;str[i][j]==<span class="string">'W'</span>)</span><br><span class="line">				DFS(i,j);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;N&gt;&gt;M)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) <span class="built_in">cin</span>&gt;&gt;str[i];</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;M;j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(str[i][j]==<span class="string">'W'</span>)&#123;</span><br><span class="line">					ans++;</span><br><span class="line">					DFS(i,j);	</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>There is a rectangular room, covered with square tiles. Each tile is colored either red or black. A man is standing on a black tile. From a tile, he can move to one of four adjacent tiles. But he can’t move on red tiles, he can move only on black tiles.<br><a id="more"></a><br>Write a program to count the number of black tiles which he can reach by repeating the moves described above.<br>Input<br>The input consists of multiple data sets. A data set starts with a line containing two positive integers W and H; W and H are the numbers of tiles in the x- and y- directions, respectively. W and H are not more than 20. </p>
+<p>There are H more lines in the data set, each of which includes W characters. Each character represents the color of a tile as follows. </p>
+<p>‘.’ - a black tile<br>‘#’ - a red tile<br>‘@’ - a man on a black tile(appears exactly once in a data set)<br>Output<br>For each data set, your program should output a line which contains the number of tiles he can reach from the initial tile (including itself).<br>Sample Input<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span> <span class="number">9</span></span><br><span class="line">....#.</span><br><span class="line">.....#</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">#@...#</span><br><span class="line">.#..#.</span><br><span class="line"><span class="number">11</span> <span class="number">9</span></span><br><span class="line">.#.........</span><br><span class="line">.#.#######.</span><br><span class="line">.#.#.....#.</span><br><span class="line">.#.#.###.#.</span><br><span class="line">.#.#..@#.#.</span><br><span class="line">.#.#####.#.</span><br><span class="line">.#.......#.</span><br><span class="line">.#########.</span><br><span class="line">...........</span><br><span class="line"><span class="number">11</span> <span class="number">6</span></span><br><span class="line">..#..#..#..</span><br><span class="line">..#..#..#..</span><br><span class="line">..#..#..###</span><br><span class="line">..#..#..#@.</span><br><span class="line">..#..#..#..</span><br><span class="line">..#..#..#..</span><br><span class="line"><span class="number">7</span> <span class="number">7</span></span><br><span class="line">..#.#..</span><br><span class="line">..#.#..</span><br><span class="line">###.###</span><br><span class="line">...@...</span><br><span class="line">###.###</span><br><span class="line">..#.#..</span><br><span class="line">..#.#..</span><br><span class="line"><span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>Sample Output<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">45</span></span><br><span class="line"><span class="number">59</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">13</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>dfs简单应用。<br>从起点出发，搜索上下左右可走的位置。当找到位置后，又以该元素为起点来搜索。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXSIZE=<span class="number">20</span>+<span class="number">4</span>;</span><br><span class="line"><span class="built_in">string</span> str[MAXSIZE];</span><br><span class="line"><span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> N,M;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	ans++;</span><br><span class="line">	str[x][y]=<span class="string">'#'</span>;</span><br><span class="line">	<span class="comment">//cout&lt;&lt;x&lt;&lt;' '&lt;&lt;y&lt;&lt;endl;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x<span class="number">-1</span>;i&lt;=x+<span class="number">1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i&gt;=<span class="number">0</span>&amp;&amp;i&lt;M&amp;&amp;str[i][y]==<span class="string">'.'</span>)</span><br><span class="line">			DFS(i,y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=y<span class="number">-1</span>;j&lt;=y+<span class="number">1</span>;j++)</span><br><span class="line">		<span class="keyword">if</span>(j&gt;=<span class="number">0</span>&amp;&amp;j&lt;N&amp;&amp;str[x][j]==<span class="string">'.'</span>)</span><br><span class="line">			DFS(x,j);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;N&gt;&gt;M)&#123;</span><br><span class="line">		<span class="keyword">if</span>(N==<span class="number">0</span>&amp;&amp;M==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">		ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> startX=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> startY=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;M;i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++)&#123;</span><br><span class="line">				<span class="built_in">cin</span>&gt;&gt;str[i][j];</span><br><span class="line">				<span class="keyword">if</span>(str[i][j]==<span class="string">'@'</span>)&#123;</span><br><span class="line">					startX=i;</span><br><span class="line">					startY=j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		DFS(startX,startY);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="comment">//	cout&lt;&lt;startX&lt;&lt;' '&lt;&lt;startY&lt;&lt;endl;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -481,7 +470,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://shann.xyz/2019/02/11/简单搜索/Lake Counting POJ - 2386/" title="Lake Counting POJ - 2386">https://shann.xyz/2019/02/11/简单搜索/Lake Counting POJ - 2386/</a>
+    <a href="https://shann.xyz/2019/02/11/简单搜索/Red and Black HDU - 1312/" title="Red and Black HDU - 1312">https://shann.xyz/2019/02/11/简单搜索/Red and Black HDU - 1312/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -509,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/09/动态规划/Max Sum HDU - 1003 /" rel="next" title="Max Sum HDU - 1003">
-                <i class="fa fa-chevron-left"></i> Max Sum HDU - 1003
+              <a href="/2019/02/11/简单搜索/Lake Counting POJ - 2386/" rel="next" title="Lake Counting POJ - 2386">
+                <i class="fa fa-chevron-left"></i> Lake Counting POJ - 2386
               </a>
             
           </div>
@@ -518,10 +507,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/11/简单搜索/Red and Black HDU - 1312/" rel="prev" title="Red and Black HDU - 1312">
-                Red and Black HDU - 1312 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
