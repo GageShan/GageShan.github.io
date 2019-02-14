@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="GageShan">
 <meta property="og:description" content="题目Long long ago, there was a gunner whose name is Jack. He likes to go hunting very much. One day he go to the grove. There are n birds and n trees. The i-th bird stands on the top of the i-th tree. T">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-06T14:56:05.752Z">
+<meta property="og:updated_time" content="2019-02-14T17:44:14.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gunner II HDU - 5233">
 <meta name="twitter:description" content="题目Long long ago, there was a gunner whose name is Jack. He likes to go hunting very much. One day he go to the grove. There are n birds and n trees. The i-th bird stands on the top of the i-th tree. T">
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-06T22:56:05+08:00">
-                2019-02-06
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-15T01:44:14+08:00">
+                2019-02-15
               </time>
             
           </span>
@@ -437,21 +437,13 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>Long long ago, there was a gunner whose name is Jack. He likes to go hunting very much. One day he go to the grove. There are n birds and n trees. The i-th bird stands on the top of the i-th tree. The trees stand in straight line from left to the right. Every tree has its height. Jack stands on the left side of the left most tree. When Jack shots a bullet in height H to the right, the nearest bird which stands in the tree with height H will falls.<br><a id="more"></a><br>Jack will shot many times, he wants to know which bird will fall during each shot.<br>Input<br>There are multiple test cases (about 5), every case gives n, m in the first line, n indicates there are n trees and n birds, m means Jack will shot m times. </p>
-<p>In the second line, there are n numbers h[1],h[2],h[3],…,h[n] which describes the height of the trees. </p>
-<p>In the third line, there are m numbers q[1],q[2],q[3],…,q[m] which describes the height of the Jack’s shots. </p>
-<p>Please process to the end of file. </p>
-<p>[Technical Specification] </p>
-<p>All input items are integers. </p>
-<p>1&lt;=n,m&lt;=100000(10^5) </p>
-<p>1&lt;=h[i],q[i]&lt;=1000000000(10^9)<br>Output<br>For each q[i], output an integer in a single line indicates the id of bird Jack shots down. If Jack can’t shot any bird, just output -1. </p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>Long long ago, there was a gunner whose name is Jack. He likes to go hunting very much. One day he go to the grove. There are n birds and n trees. The i-th bird stands on the top of the i-th tree. The trees stand in straight line from left to the right. Every tree has its height. Jack stands on the left side of the left most tree. When Jack shots a bullet in height H to the right, the nearest bird which stands in the tree with height H will falls.<br><a id="more"></a><br>Jack will shot many times, he wants to know which bird will fall during each shot.<br>Input<br>There are multiple test cases (about 5), every case gives n, m in the first line, n indicates there are n trees and n birds, m means Jack will shot m times.<br>In the second line, there are n numbers h[1],h[2],h[3],…,h[n] which describes the height of the trees.<br>In the third line, there are m numbers q[1],q[2],q[3],…,q[m] which describes the height of the Jack’s shots.<br>Please process to the end of file.<br>“Technical Specification”<br>All input items are integers.<br>1&lt;=n,m&lt;=100000(10^5)<br>1&lt;=h[i],q[i]&lt;=1000000000(10^9)<br>Output<br>For each q[i], output an integer in a single line indicates the id of bird Jack shots down. If Jack can’t shot any bird, just output -1. </p>
 <p>The id starts from 1.<br>Sample Input<br><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">5 </span><span class="number">5</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">1</span></span><br><span class="line"><span class="symbol">1 </span><span class="number">3</span> <span class="number">1</span> <span class="number">4</span> <span class="number">2</span></span><br></pre></td></tr></table></figure></p>
-<p>Sample Output<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"># 思路</span><br><span class="line">定义map容器时，元素类型设置为queue队列。</span><br><span class="line">学到了学到了，tql。</span><br><span class="line"></span><br><span class="line"># 代码</span><br></pre></td></tr></table></figure></p>
+<p>Sample Output<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line">```  </span><br><span class="line"># 思路</span><br><span class="line">定义map容器时，元素类型设置为queue队列。</span><br><span class="line">学到了学到了，tql。</span><br><span class="line"># 代码</span><br></pre></td></tr></table></figure></p>
 <p>#include<iostream></iostream></p>
 <p>#include<set></set></p>
 <p>#include<map></map></p>
-<p>#include<queue><br>using namespace std;<br>int main(){<br>    int n,m;<br>    while(cin&gt;&gt;n&gt;&gt;m){<br>        map&lt;int,queue<int> &gt; mp;<br>        int a;<br>        for(int i=1;i&lt;=n;i++){<br>            scanf(“%d”,&amp;a);<br>            mp[a].push(i);<br>        }<br>        for(int i=0;i&lt;m;i++){<br>            scanf(“%d”,&amp;a);<br>            if(mp[a].size()==0)<br>                cout&lt;&lt;”-1”;<br>            else{<br>                cout&lt;&lt;mp[a].front();<br>                mp[a].pop();<br>            }<br>            cout&lt;&lt;endl;<br>        }<br>    }<br>    return 0;<br>}</int></queue></p>
-<p><code>`</code></p>
+<p>#include<queue><br>using namespace std;<br>int main(){<br>    int n,m;<br>    while(cin&gt;&gt;n&gt;&gt;m){<br>        map&lt;int,queue<int> &gt; mp;<br>        int a;<br>        for(int i=1;i&lt;=n;i++){<br>            scanf(“%d”,&amp;a);<br>            mp[a].push(i);<br>        }<br>        for(int i=0;i&lt;m;i++){<br>            scanf(“%d”,&amp;a);<br>            if(mp[a].size()==0)<br>                cout&lt;&lt;”-1”;<br>            else{<br>                cout&lt;&lt;mp[a].front();<br>                mp[a].pop();<br>            }<br>            cout&lt;&lt;endl;<br>        }<br>    }<br>    return 0;<br>}<br><code>`</code></int></queue></p>
 
       
     </div>
@@ -607,7 +599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -629,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -814,7 +806,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共45k字</span>
+  <span class="post-count">博客全站共45.8k字</span>
 </div>
         
 
