@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="STL容器总结一下近些时间写题用到的stl容器骚操作写法。">
+<meta name="description" content="总结一下近些时间写题用到的stl容器骚操作写法。">
 <meta name="keywords" content="个人记录生活学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STL常用技巧">
 <meta property="og:url" content="https://shann.xyz/2019/02/15/STL/STL常用技巧/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="STL容器总结一下近些时间写题用到的stl容器骚操作写法。">
+<meta property="og:description" content="总结一下近些时间写题用到的stl容器骚操作写法。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-14T18:05:51.999Z">
+<meta property="og:updated_time" content="2019-02-14T18:11:57.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="STL常用技巧">
-<meta name="twitter:description" content="STL容器总结一下近些时间写题用到的stl容器骚操作写法。">
+<meta name="twitter:description" content="总结一下近些时间写题用到的stl容器骚操作写法。">
 
 
 
@@ -370,7 +370,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-15T02:05:51+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-02-15T02:11:57+08:00">
                 2019-02-15
               </time>
             
@@ -437,8 +437,8 @@
       
 
       
-        <h2 id="STL容器"><a href="#STL容器" class="headerlink" title="STL容器"></a>STL容器</h2><p>总结一下近些时间写题用到的stl容器骚操作写法。<br><a id="more"></a></p>
-<hr>
+        <p>总结一下近些时间写题用到的stl容器骚操作写法。<br><a id="more"></a></p>
+<h2 id="STL容器"><a href="#STL容器" class="headerlink" title="STL容器"></a>STL容器</h2><hr>
 <h3 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="keyword">int</span> y;</span><br><span class="line">	<span class="keyword">int</span> dis;</span><br><span class="line">	node(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> dis):x(x),y(y),dis(dis)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">queue</span>&lt;node&gt; qu;</span><br><span class="line">qu.push(x);</span><br><span class="line">qu.pop();</span><br></pre></td></tr></table></figure>
 <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><h4 id="value值为queue容器"><a href="#value值为queue容器" class="headerlink" title="value值为queue容器"></a>value值为queue容器</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="built_in">queue</span> &gt; mp;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(“%d”,&amp;a);</span><br><span class="line">	mp[a].push(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(“%d”,&amp;a);</span><br><span class="line">	<span class="keyword">if</span>(mp[a].size()==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;”<span class="number">-1</span>”;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;mp[a].front();</span><br><span class="line">		mp[a].pop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Map的按Key排序"><a href="#Map的按Key排序" class="headerlink" title="Map的按Key排序"></a>Map的按Key排序</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span>&#123;</span></span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="built_in">string</span> s1,<span class="built_in">string</span> s2)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> s1.length()&gt;s1.length();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>,cmp&gt; mp;</span><br><span class="line"><span class="comment">//#include &lt;functional&gt;</span></span><br><span class="line"><span class="comment">//map&lt;string,int,greater&lt;string&gt; &gt;mp;</span></span><br></pre></td></tr></table></figure>
