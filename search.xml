@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[快速幂模板]]></title>
+    <url>%2F2019%2F03%2F10%2F%E6%95%B0%E5%AD%A6%2F%E5%BF%AB%E9%80%9F%E5%B9%82%2F</url>
+    <content type="text"><![CDATA[12345678910111213typedef long long ll;const int mod=100000007;ll fast_pow(ll a,ll b) &#123; ll ans=1; a%=mod; while(b) &#123; if(b&amp;1) ans=ans%mod*a%mod%mod; a=a%mod*a%mod%mod; b&gt;&gt;=1; &#125; return ans%mod;&#125;]]></content>
+      <categories>
+        <category>数学</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[int，long，long long范围]]></title>
     <url>%2F2019%2F03%2F10%2F%E6%A8%A1%E6%9D%BF%2Flong%20long%E8%8C%83%E5%9B%B4%2F</url>
     <content type="text"><![CDATA[原文地址：ACM博客_kuangbin unsigned int 0～4294967295 int 2147483648～2147483647 unsigned long 0～4294967295 long 2147483648～2147483647 long long的最大值：9223372036854775807 long long的最小值：-9223372036854775808 unsigned long long的最大值：18446744073709551615 __int64的最大值：9223372036854775807 __int64的最小值：-9223372036854775808 unsigned __int64的最大值：18446744073709551615]]></content>
@@ -8,7 +19,7 @@
   <entry>
     <title><![CDATA[gcd模板]]></title>
     <url>%2F2019%2F03%2F09%2F%E6%95%B0%E5%AD%A6%2Fgcd%E6%A8%A1%E6%9D%BF%2F</url>
-    <content type="text"><![CDATA[12345int gcd(int a,int b)&#123; return b==0?a:gcd(b,a%b);&#125;最大公约数val=gcd(a,b);最小公倍数val=a*b/gcd(a,b);]]></content>
+    <content type="text"><![CDATA[12345int gcd(int a,int b)&#123; return b==0?a:gcd(b,a%b);&#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出]]></content>
       <categories>
         <category>数学</category>
       </categories>

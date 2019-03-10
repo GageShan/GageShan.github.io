@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a*b/gcd(a,b);">
+<meta name="description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出">
 <meta name="keywords" content="gcd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gcd模板">
 <meta property="og:url" content="https://shann.xyz/2019/03/09/数学/gcd模板/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a*b/gcd(a,b);">
+<meta property="og:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-09T12:35:02.464Z">
+<meta property="og:updated_time" content="2019-03-10T10:59:53.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gcd模板">
-<meta name="twitter:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a*b/gcd(a,b);">
+<meta name="twitter:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出">
 
 
 
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-09T20:35:02+08:00">
-                2019-03-09
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-10T18:59:53+08:00">
+                2019-03-10
               </time>
             
           </span>
@@ -437,7 +437,7 @@
       
 
       
-        <figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> <span class="built_in">gcd</span>(<span class="built_in">int</span> a,<span class="built_in">int</span> b)&#123;</span><br><span class="line">	return b==<span class="number">0</span>?<span class="symbol">a:gc</span>d(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line">最大公约数val=<span class="built_in">gcd</span>(a,b);</span><br><span class="line">最小公倍数val=a*b/<span class="built_in">gcd</span>(a,b);</span><br></pre></td></tr></table></figure>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b==<span class="number">0</span>?a:gcd(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line">最大公约数val=gcd(a,b);</span><br><span class="line">最小公倍数val=a/gcd(a,b)*b;<span class="comment">//防止a*b溢出</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -583,7 +583,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -605,7 +605,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -774,7 +774,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共51.2k字</span>
+  <span class="post-count">博客全站共51.3k字</span>
 </div>
         
 
