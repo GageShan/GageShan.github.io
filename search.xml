@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Crossing River POJ - 1700 （经典题）]]></title>
+    <url>%2F2019%2F04%2F07%2F%E8%B4%AA%E5%BF%83%2FCrossing%20River%20POJ%20-%201700%20%EF%BC%88%E7%BB%8F%E5%85%B8%E9%A2%98%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目A group of N people wishes to go across a river with only one boat, which can at most carry two persons. Therefore some sort of shuttle arrangement must be arranged in order to row the boat back and forth so that all people may cross. Each person has a different rowing speed; the speed of a couple is determined by the speed of the slower one. Your job is to determine a strategy that minimizes the time for these people to get across.InputThe first line of the input contains a single integer T (1 &lt;= T &lt;= 20), the number of test cases. Then T cases follow. The first line of each case contains N, and the second line contains N integers giving the time for each people to cross the river. Each case is preceded by a blank line. There won’t be more than 1000 people and nobody takes more than 100 seconds to cross.OutputFor each test case, print a line containing the total number of seconds required for all the N people to cross the river.Sample Input123141 2 5 10 Sample Output117 思路刚开始看到这题时，脑海里首先想到的是让速度最快的的人一趟趟地来回接送，这样就可以使得回来的时间最少，从而总时间最少。然而，却发现这种方法连样列都过不了，那么这种方法肯定是有问题。接着忽然想到，如果先把最快和次快的先运过去，让最快的回来，再让最慢和次慢的过去，让次快的回来，这样子，就把最慢和次慢的运过去，其中运最慢和次慢的时间为{最慢}，而不是像第一段中的为{最慢+次慢}。再一次写好，交上去，WA。。。。又想到，这不是贪心吗！贪心肯定是每次着眼于当前最有利的吗？明白了。1、最快和最慢运过去，最快回来；再，最快和次慢过去，最快回来。2、最快和次快运过去，最快回来；再，最慢和次慢过去，次快回来。这两种方案都可以把最慢和次慢运过去，即取两者所花时间最少方案。 代码12345678910111213141516171819202122232425262728293031323334353637#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int MAXN=1e6;int n;int arr[MAXN];bool cmp(int a,int b) &#123; return a&lt;b;&#125;int main() &#123; // freopen("in.txt","r",stdin); int Case; cin&gt;&gt;Case; while(Case--) &#123; cin&gt;&gt;n; for(int i=1;i&lt;=n;i++) cin&gt;&gt;arr[i]; sort(arr+1,arr+n+1,cmp); int ans=0; int i; for(i=n;i&gt;3;i-=2) &#123; int MIN=min(arr[i]+arr[i-1]+2*arr[1],arr[1]+2*arr[2]+arr[i]); ans+=MIN; &#125; if(i==3) ans+=arr[1]+arr[2]+arr[3]; else if(i==2) ans+=arr[2]; else ans+=arr[1]; cout&lt;&lt;ans&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>贪心算法</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[快速幂模板]]></title>
     <url>%2F2019%2F03%2F10%2F%E6%95%B0%E5%AD%A6%2F%E5%BF%AB%E9%80%9F%E5%B9%82%2F</url>
     <content type="text"><![CDATA[12345678910111213typedef long long ll;const int mod=100000007;ll fast_pow(ll a,ll b) &#123; ll ans=1; a%=mod; while(b) &#123; if(b&amp;1) ans=ans%mod*a%mod%mod; a=a%mod*a%mod%mod; b&gt;&gt;=1; &#125; return ans%mod;&#125;]]></content>
