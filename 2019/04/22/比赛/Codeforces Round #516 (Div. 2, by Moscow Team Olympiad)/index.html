@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="GageShan">
 <meta property="og:description" content="A    Make a triangle!题目Masha has three sticks of length a, b and c centimeters respectively. In one minute Masha can pick one arbitrary stick and increase its length by one centimeter. She is not allo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-22T12:10:20.379Z">
+<meta property="og:updated_time" content="2019-04-23T13:21:42.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces Round">
 <meta name="twitter:description" content="A    Make a triangle!题目Masha has three sticks of length a, b and c centimeters respectively. In one minute Masha can pick one arbitrary stick and increase its length by one centimeter. She is not allo">
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T20:10:20+08:00">
-                2019-04-22
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-23T21:21:42+08:00">
+                2019-04-23
               </time>
             
           </span>
@@ -477,7 +477,133 @@ return 0;
 <p>16<br>gagadbcgghhchbdf<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Output</span></span><br></pre></td></tr></table></figure></p>
 <p>abccbaghghghgdfd<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Note</span><br><span class="line">In <span class="keyword">the</span> <span class="keyword">first</span> example, <span class="built_in">string</span> <span class="string">"ololo"</span> has <span class="number">9</span> palindromic substrings: <span class="string">"o"</span>, <span class="string">"l"</span>, <span class="string">"o"</span>, <span class="string">"l"</span>, <span class="string">"o"</span>, <span class="string">"olo"</span>, <span class="string">"lol"</span>, <span class="string">"olo"</span>, <span class="string">"ololo"</span>. Note, <span class="keyword">that</span> even though <span class="keyword">some</span> substrings coincide, they are counted <span class="keyword">as</span> many <span class="keyword">times</span> <span class="keyword">as</span> they appear <span class="keyword">in</span> <span class="keyword">the</span> resulting <span class="built_in">string</span>.</span><br><span class="line"></span><br><span class="line">In <span class="keyword">the</span> <span class="keyword">second</span> example, <span class="keyword">the</span> palindromic <span class="built_in">count</span> <span class="keyword">of</span> <span class="built_in">string</span> <span class="string">"abccbaghghghgdfd"</span> <span class="keyword">is</span> <span class="number">29.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 思路</span></span><br><span class="line">给定一个字符串，求能组回文子串的最多种数。其实这个题目考思维。对于字符串`abccba`，如果能看到`aabbcc`所组成的回文子串的数量一样多的话，就简洁明了了。</span><br><span class="line"></span><br><span class="line"><span class="comment">## 代码</span></span><br></pre></td></tr></table></figure></p>
 <p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;</p>
-<p>const int MAXN=100000+10;<br>char str[MAXN];<br>int main() {<br>    int n;<br>    cin&gt;&gt;n;<br>    cin&gt;&gt;str;<br>    sort(str,str+n);<br>    cout&lt;&lt;str&lt;&lt;endl;<br>    return 0;<br>}<br><code>`</code></p>
+<p>const int MAXN=100000+10;<br>char str[MAXN];<br>int main() {<br>    int n;<br>    cin&gt;&gt;n;<br>    cin&gt;&gt;str;<br>    sort(str,str+n);<br>    cout&lt;&lt;str&lt;&lt;endl;<br>    return 0;<br>}<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># D Labyrinth CodeForces </span></span><br><span class="line"><span class="comment">## 题目</span></span><br><span class="line">You are playing <span class="keyword">some</span> computer game. One <span class="keyword">of</span> <span class="keyword">its</span> levels puts you <span class="keyword">in</span> a maze consisting <span class="keyword">of</span> n lines, each <span class="keyword">of</span> which <span class="keyword">contains</span> m cells. Each cell either <span class="keyword">is</span> free <span class="keyword">or</span> <span class="keyword">is</span> occupied <span class="keyword">by</span> an obstacle. The starting cell <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> row r <span class="keyword">and</span> column c. In one step you can move one square up, left, down <span class="keyword">or</span> right, <span class="keyword">if</span> <span class="keyword">the</span> target cell <span class="keyword">is</span> <span class="keyword">not</span> occupied <span class="keyword">by</span> an obstacle. You can't move beyond <span class="keyword">the</span> boundaries <span class="keyword">of</span> <span class="keyword">the</span> labyrinth.</span><br><span class="line"></span><br><span class="line">Unfortunately, your keyboard <span class="keyword">is</span> <span class="keyword">about</span> <span class="keyword">to</span> break, so you can move left no more than x <span class="keyword">times</span> <span class="keyword">and</span> move right no more than y <span class="keyword">times</span>. There are no restrictions <span class="keyword">on</span> <span class="keyword">the</span> <span class="built_in">number</span> <span class="keyword">of</span> moves up <span class="keyword">and</span> down <span class="keyword">since</span> <span class="keyword">the</span> keys used <span class="keyword">to</span> move up <span class="keyword">and</span> down are <span class="keyword">in</span> perfect condition.</span><br><span class="line"></span><br><span class="line">Now you would like <span class="keyword">to</span> determine <span class="keyword">for</span> each cell whether there exists a sequence <span class="keyword">of</span> moves <span class="keyword">that</span> will <span class="keyword">put</span> you <span class="keyword">from</span> <span class="keyword">the</span> starting cell <span class="keyword">to</span> this particular one. How many cells <span class="keyword">of</span> <span class="keyword">the</span> board have this <span class="keyword">property</span>?</span><br><span class="line"></span><br><span class="line">Input</span><br><span class="line">The <span class="keyword">first</span> line <span class="keyword">contains</span> two integers n, m (<span class="number">1</span> ≤ n, m ≤ <span class="number">2000</span>) — <span class="keyword">the</span> <span class="built_in">number</span> <span class="keyword">of</span> rows <span class="keyword">and</span> <span class="keyword">the</span> <span class="built_in">number</span> columns <span class="keyword">in</span> <span class="keyword">the</span> labyrinth respectively.</span><br><span class="line"></span><br><span class="line">The <span class="keyword">second</span> line <span class="keyword">contains</span> two integers r, c (<span class="number">1</span> ≤ r ≤ n, <span class="number">1</span> ≤ c ≤ m) — index <span class="keyword">of</span> <span class="keyword">the</span> row <span class="keyword">and</span> index <span class="keyword">of</span> <span class="keyword">the</span> column <span class="keyword">that</span> define <span class="keyword">the</span> starting cell.</span><br><span class="line"></span><br><span class="line">The <span class="keyword">third</span> line <span class="keyword">contains</span> two integers x, y (<span class="number">0</span> ≤ x, y ≤ <span class="number">109</span>) — <span class="keyword">the</span> maximum allowed <span class="built_in">number</span> <span class="keyword">of</span> movements <span class="keyword">to</span> <span class="keyword">the</span> left <span class="keyword">and</span> <span class="keyword">to</span> <span class="keyword">the</span> right respectively.</span><br><span class="line"></span><br><span class="line">The next n lines describe <span class="keyword">the</span> labyrinth. Each <span class="keyword">of</span> them has <span class="built_in">length</span> <span class="keyword">of</span> m <span class="keyword">and</span> consists only <span class="keyword">of</span> symbols '.' <span class="keyword">and</span> '*'. The j-th <span class="built_in">character</span> <span class="keyword">of</span> <span class="keyword">the</span> i-th line corresponds <span class="keyword">to</span> <span class="keyword">the</span> cell <span class="keyword">of</span> labyrinth <span class="keyword">at</span> row i <span class="keyword">and</span> column j. Symbol '.' denotes <span class="keyword">the</span> free cell, <span class="keyword">while</span> symbol '*' denotes <span class="keyword">the</span> cell <span class="keyword">with</span> an obstacle.</span><br><span class="line"></span><br><span class="line">It <span class="keyword">is</span> guaranteed, <span class="keyword">that</span> <span class="keyword">the</span> starting cell <span class="keyword">contains</span> no obstacles.</span><br><span class="line"></span><br><span class="line">Output</span><br><span class="line">Print exactly one <span class="built_in">integer</span> — <span class="keyword">the</span> <span class="built_in">number</span> <span class="keyword">of</span> cells <span class="keyword">in</span> <span class="keyword">the</span> labyrinth, which are reachable <span class="keyword">from</span> starting cell, including <span class="keyword">the</span> starting cell itself.</span><br><span class="line"></span><br><span class="line">Examples</span><br><span class="line">Input</span><br></pre></td></tr></table></figure></p>
+<p>4 5<br>3 2<br>1 2<br>…..<br>.<strong>*.<br>…</strong><br>*….<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Output</span></span><br></pre></td></tr></table></figure></p>
+<p>10<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Input</span></span><br></pre></td></tr></table></figure></p>
+<p>4 4<br>2 2<br>0 1<br>….<br>..*.<br>….<br>….<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Output</span></span><br></pre></td></tr></table></figure></p>
+<p>7<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Note</span><br><span class="line">Cells, reachable <span class="keyword">in</span> <span class="keyword">the</span> corresponding example, are marked <span class="keyword">with</span> <span class="string">'+'</span>.</span><br><span class="line"></span><br><span class="line">First example:</span><br></pre></td></tr></table></figure></p>
+<p>+++..<br>+<strong>*.<br>+++</strong><br>*+++.<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Second</span> examp<span class="symbol">le:</span></span><br></pre></td></tr></table></figure></p>
+<p>.++.<br>.+*.<br>.++.<br>.++.<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 思路</span></span></span><br><span class="line">由起点出发，在向左向右转有次数限制的条件下问能到达最大的位置。</span><br><span class="line">先是用传统的BFS写了一遍，WA，后来发现某个位置可由不同的位置到达，这些位置带来的状态转变也不一定相同。</span><br><span class="line">例如，</span><br></pre></td></tr></table></figure></p>
+<p>…<strong>***</strong><br>.<em>.<strong>**</strong></em><br>.<em>.<strong>**</strong></em><br>.<em>.<strong>**</strong></em><br>.<em>.<strong>**</strong></em><br>.<em>.</em>……<br>.<em>.</em>@<strong>*</strong><br>.*……..<br>.<strong><em>**</em></strong>.<br>……….<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">在某个关键位置`@`，假如由位置<span class="number">1</span>带来的状态是左右转次数都为<span class="number">0</span>，就导致这个</span><br><span class="line">点无法向左或向右转造成的结果是后面可能会有更多可达到的位置但是由于这个点`@`已经无法访问，使得就算有另外的位置达到这里的左右转次数不为零也没有用。所以需要定义一种谁先访问谁后访问的顺序来避免这种情况。</span><br><span class="line"></span><br><span class="line">### 双端队列解法</span><br><span class="line">由题知，上下移动不消耗次数，左右移动消耗次数，那么就可以只要能向上或向下就向上或向下移动，当无法上下移动时才左右移动。使用双端队列，将能上下移动的位置放在队头，左右移动的位置放在队尾。</span><br><span class="line">### 优先队列解法</span><br><span class="line">其实优先队列解法与双端队列解法思想是一样的，那就是能上下移动就上下移动，而上下移动不会消耗左右移动次数，也就是说左移动次数加上右移动次数大的优先访问。</span><br><span class="line">## 代码（deque）</span><br></pre></td></tr></table></figure></p>
+<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;</p>
+<p>const int MAXN=2e3+10;<br>struct node{<br>    int x,y,dep;<br>    int left,right;<br>    node(int x,int y,int dep,int left,int right):x(x),y(y),dep(dep),left(left),right(right){}<br>//    bool operator &lt; (const node &amp;a) const {return (right)&gt;(a.right);}<br>}; </p>
+<p>deque<node> qu;<br>int n,m;<br>int r,c;<br>int leftCount,rightCount;<br>int visit[MAXN][MAXN];<br>string str[MAXN];<br>int ans;<br>int dx[]={1,-1,0,0};<br>int dy[]={0,0,1,-1};</node></p>
+<p>void BFS(int x,int y,int left,int right) {<br>    while(!qu.empty()) qu.pop_back();</p>
+<pre><code>memset(visit,0,sizeof(visit));
+
+qu.push_front(node(x,y,0,left,right));
+visit[x][y]=1;
+while(!qu.empty()) {
+
+    node t=qu.front();qu.pop_front();
+
+    for(int i=0;i&lt;4;i++) {
+
+        int tx=t.x+dx[i];
+        int ty=t.y+dy[i];
+
+        if(tx&gt;=0&amp;&amp;tx&lt;n&amp;&amp;ty&gt;=0&amp;&amp;ty&lt;m&amp;&amp;!visit[tx][ty]&amp;&amp;str[tx][ty]==&apos;.&apos;) {
+</code></pre><p>//                visit[t.x][t.y]=0;</p>
+<pre><code>            if(0==i||1==i) {
+                qu.push_front(node(tx,ty,t.dep+1,t.left,t.right));
+                visit[tx][ty]=1;
+                ans++;
+            }
+            else if(2==i) {
+                if(t.right&gt;0) {
+                    qu.push_back(node(tx,ty,t.dep+1,t.left,t.right-1));
+                    visit[tx][ty]=1;
+                    ans++;
+                }
+
+
+            }
+            else if(3==i) {
+                if(t.left&gt;0) {
+                    qu.push_back(node(tx,ty,t.dep+1,t.left-1,t.right));
+                    visit[tx][ty]=1;
+                    ans++;
+                    }
+                }
+        }
+
+    }
+}
+</code></pre><p>}<br>int main() {</p>
+<pre><code>ios::sync_with_stdio(false);
+ans=1;
+cin&gt;&gt;n&gt;&gt;m;
+cin&gt;&gt;r&gt;&gt;c;
+cin&gt;&gt;leftCount&gt;&gt;rightCount;
+for(int i=0;i&lt;n;i++) {
+    cin&gt;&gt;str[i];
+}
+
+
+BFS(r-1,c-1,leftCount,rightCount);
+cout&lt;&lt;ans&lt;&lt;endl;
+
+return 0;
+</code></pre><p>}<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 代码（priority_queue）</span></span></span><br></pre></td></tr></table></figure></p>
+<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;</p>
+<p>const int MAXN=2e3+10;<br>struct node{<br>    int x,y,dep;<br>    int left,right;<br>    node(int x,int y,int dep,int left,int right):x(x),y(y),dep(dep),left(left),right(right){}<br>    bool operator &lt; (const node &amp;a) const {return (left+right)&lt;(a.left+a.right);}<br>}; </p>
+<p>priority_queue<node> qu;<br>int n,m;<br>int r,c;<br>int leftCount,rightCount;<br>int visit[MAXN][MAXN];<br>string str[MAXN];<br>int ans;<br>int dx[]={1,-1,0,0};<br>int dy[]={0,0,1,-1};</node></p>
+<p>void BFS(int x,int y,int left,int right) {<br>    while(!qu.empty()) qu.pop();</p>
+<pre><code>memset(visit,0,sizeof(visit));
+
+qu.push(node(x,y,0,left,right));
+visit[x][y]=1;
+while(!qu.empty()) {
+
+    node t=qu.top();qu.pop();
+
+    for(int i=0;i&lt;4;i++) {
+
+        int tx=t.x+dx[i];
+        int ty=t.y+dy[i];
+
+        if(tx&gt;=0&amp;&amp;tx&lt;n&amp;&amp;ty&gt;=0&amp;&amp;ty&lt;m&amp;&amp;!visit[tx][ty]&amp;&amp;str[tx][ty]==&apos;.&apos;) {
+</code></pre><p>//                visit[t.x][t.y]=0;</p>
+<pre><code>            if(0==i||1==i) {
+                qu.push(node(tx,ty,t.dep+1,t.left,t.right));
+                visit[tx][ty]=1;
+                ans++;
+            }
+            else if(2==i) {
+                if(t.right&gt;0) {
+                    qu.push(node(tx,ty,t.dep+1,t.left,t.right-1));
+                    visit[tx][ty]=1;
+                    ans++;
+                }
+
+
+            }
+            else if(3==i) {
+                if(t.left&gt;0) {
+                    qu.push(node(tx,ty,t.dep+1,t.left-1,t.right));
+                    visit[tx][ty]=1;
+                    ans++;
+                    }
+                }
+        }
+
+    }
+}
+</code></pre><p>}<br>int main() {</p>
+<pre><code>ios::sync_with_stdio(false);
+ans=1;
+cin&gt;&gt;n&gt;&gt;m;
+cin&gt;&gt;r&gt;&gt;c;
+cin&gt;&gt;leftCount&gt;&gt;rightCount;
+for(int i=0;i&lt;n;i++) {
+    cin&gt;&gt;str[i];
+}
+
+BFS(r-1,c-1,leftCount,rightCount);
+cout&lt;&lt;ans&lt;&lt;endl;
+
+return 0;
+</code></pre><p>}<br><code>`</code></p>
 
       
     </div>
@@ -844,7 +970,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.3k字</span>
+  <span class="post-count">博客全站共56.7k字</span>
 </div>
         
 
