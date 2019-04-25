@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[KATHTHI SPOJ - KATHTHI （BFS+deque）]]></title>
+    <url>%2F2019%2F04%2F25%2F%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2%2FKATHTHI%20SPOJ%20-%20KATHTHI%20%EF%BC%88BFS%2Bdeque%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[题目Kathiresan is initially locked at cell (0,0) in a highly guarded rectangular prison of order RxC. He must reach the gate at (R-1,C-1) in order to escape from the prison. Kathiresan can move from any cell, to any of it’s 4 adjacent cells (North, East, West and South). If Kathiresan is currently at (x1,y1), then he can move to (x2,y2) if and only if abs(x2-x1)+abs(y2-y1) == 1 and 0&lt;=x2&lt;R and 0&lt;=y2&lt;C Kathiresan somehow manages to get the map of the prison.If map[x1][y1] == map[x2][y2] then Kathiresan can move from (x1,y1) to (x2,y2) without killing any guards.If map[x1][y1] != map[x2][y2], then Kathiresan can move from (x1,y1) to (x2,y2) by killing a guard.Given the map of the prison, find the minimum number of guards Kathiresan must kill in order to escape from the prison.Input: The first line consists of an integer t, the number of test cases. For each test case, the first line consists of two integers R and C representing the order of the rectangular prison followed by R strings representing the map of the rectangular prison. Output: For each test case find the minimum number of guards Kathiresan must kill in order to escape from the prison. Input Constraints: 1 &lt;= t &lt;= 10 2 &lt;= R &lt;= 1000 2 &lt;= C &lt;= 1000 ‘a’ &lt;= map[i][j] &lt;= ‘z’ Sample Input:123456789101112131415161718192042 2aaaa2 3abcdef6 6akacccaaacfcamdfccaokhddzyxwdpzyxwdd5 5abbbcabaccaaaccaefcicdgdd Sample Output: 12340322 思路题意为求最少杀人数，如果周围的字母与当前所在位置字母相同，则可以直接走过去，如果不相同就需要杀掉一个守卫。那么可以用一个双端队列来维护当前所走路径。如果周围字母与当前字母相同，就推到队头，否则推到队尾。不过在写这个题目时，发现有个地方跟以前我写搜索时有点不一样。那就是visit数组的应用，以前写搜索在将位置推入队列时直接将这个位置变为已访问状态，而这个题是当这个位置被拿出来使用时才变成已访问状态。这样做的好处在于，可能在某种情况下，其他位置先访问到终点时将终点变为不可访问后，最优位置就无法访问了，从而无法求得最优解，又学到一招qwq。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#include&lt;bits/stdc++.h&gt;using namespace std;const int MAXN=1e3+10;struct node&#123; int x,y,dep; node(int x,int y,int dep):x(x),y(y),dep(dep)&#123;&#125;&#125;;deque&lt;node&gt; qu;int visit[MAXN][MAXN];string str[MAXN];int n,m;int ans;int dx[]=&#123;0,0,1,-1&#125;;int dy[]=&#123;1,-1,0,0&#125;;void BFS() &#123; memset(visit,0,sizeof(visit)); while(!qu.empty()) qu.pop_front(); qu.push_front(node(0,0,0));// visit[0][0]=1; int cnt=0; while(!qu.empty()) &#123; node t=qu.front();qu.pop_front(); if(t.x==n-1&amp;&amp;t.y==m-1) ans=min(ans,t.dep); if(visit[t.x][t.y])continue; visit[t.x][t.y]=1; for(int i=0;i&lt;4;i++) &#123; int tx=t.x+dx[i]; int ty=t.y+dy[i]; if(tx&gt;=0&amp;&amp;tx&lt;n&amp;&amp;ty&gt;=0&amp;&amp;ty&lt;m&amp;&amp;!visit[tx][ty]) &#123; if(str[tx][ty]==str[t.x][t.y]) qu.push_front(node(tx,ty,t.dep)); else qu.push_back(node(tx,ty,t.dep+1)); &#125; &#125; &#125;&#125;int main() &#123;// freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin); ios::sync_with_stdio(false); int T; cin&gt;&gt;T; while(T--) &#123; cin&gt;&gt;n&gt;&gt;m; ans=0x3f3f3f3f; for(int i=0;i&lt;n;i++) cin&gt;&gt;str[i]; BFS(); cout&lt;&lt;ans&lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>简单搜索</category>
+      </categories>
+      <tags>
+        <tag>基础算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[划水日常]]></title>
     <url>%2F2019%2F04%2F23%2F%E5%88%92%E6%B0%B4%E6%97%A5%E5%B8%B8%2F</url>
-    <content type="text"><![CDATA[记录学习训练中的日常，时刻提醒自己哪些事情不能做。 时间 a题数量 算法学习 杂 心情 2019.4.22 1 字符串 总结上周末比赛题目 (。・∀・)ノ 2019.4.23 1 双端队列解BFS 湘大谢神来讲座 qwq]]></content>
+    <content type="text"><![CDATA[记录学习训练中的日常，时刻提醒自己哪些事情不能做。 时间 a题数量 算法学习 杂 心情 2019.4.22 1 字符串 总结上周末比赛题目 (。・∀・)ノ 2019.4.23 1 双端队列解BFS 湘大谢神来讲座 qwq 2019.4.24 1 马拉车算法求回文字符串 如此巧妙的算法，神往 (￣y▽￣)╭ Ohohoho….. 2019.4.25 3 双端队列解BFS/DFS随机解 果不其然，cf又掉分了 ┗( T﹏T )┛]]></content>
   </entry>
   <entry>
     <title><![CDATA[Codeforces-516-Div.2]]></title>
