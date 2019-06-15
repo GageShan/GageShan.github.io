@@ -519,17 +519,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[最小新整数]]></title>
-    <url>%2F2019%2F01%2F30%2F%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F%2F%E6%9C%80%E5%B0%8F%E6%96%B0%E6%95%B4%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[题目给定一个十进制正整数n(0 &lt; n &lt; 1000000000)，每个数位上数字均不为0。n的位数为m。现在从m位中删除k位(0&lt;k &lt; m)，求生成的新整数最小为多少？例如: n = 9128456, k = 2, 则生成的新整数最小为12456Input第一行t, 表示有t组数据；接下来t行，每一行表示一组测试数据，每组测试数据包含两个数字n, k。Outputt行，每行一个数字，表示从n中删除k位后得到的最小整数。Sample Input12329128456 21444 3 Sample Output12124561 题解前一位数与后一位数比较，若大于后一位就删掉它。 代码123456789101112131415161718192021222324#include&lt;iostream&gt;#include&lt;cstring&gt;using namespace std;int main()&#123; int Case; cin&gt;&gt;Case; while(Case--)&#123; char str[20]; int k; cin&gt;&gt;str&gt;&gt;k; while(k--)&#123; for(int i=0;i&lt;strlen(str);i++)&#123; if(str[i]&gt;str[i+1])&#123; for(int j=i;j&lt;strlen(str);j++) str[j]=str[j+1]; break; &#125; &#125; &#125; cout&lt;&lt;str&lt;&lt;endl; &#125; return 0;&#125;]]></content>
-      <categories>
-        <category>简单模拟</category>
-      </categories>
-      <tags>
-        <tag>基础算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Not half of the heart]]></title>
     <url>%2F2018%2F12%2F09%2F%E9%9A%8F%E7%AC%94%E6%9D%82%E6%83%B3%2Fifeelsad%2F</url>
     <content type="text"><![CDATA[好像每到这个时期，都不知道干些什么 见到那些想要学的习东西，python/前端 都提不起兴趣。 已在这过了一年半了，好快，不久，又是考研了 送走一届又一届 当轮到我时 是否还记得入学时许下的承若。 想到了毕业 又担心自己一事无成 打开电脑，敲下一行行的代码不能使我心安。 外界的嘈杂 尚不及内心的一半 以后无穷无尽的压力 有过绝望。 以前的人们 在19岁时感受到过生活的压力吗 肯定是有的 那么当他们绝望时 是什么支撑着走下去。 熬夜到2点好像已经习惯了 以前可没这样 熬到这时候又做了些什么 没有答案 或许自己也不知道为什么又熬夜了，呵呵。 古来圣贤皆寂寞 唯有饮者留其名 我是谁 我以前干了些什么 我现在在干什么 我以后要干什么。 也曾看过你的微博 也曾删掉联系方式 也曾留恋虚无缥缈的念想 现在 想着 过去了 就不要想了。 莫问前路无知己 天下谁人不识君。 子在川上曰：逝者如斯夫，不舍昼夜 都说时间可以消磨过去的痕迹 可为什么痕迹越来越深了。 2019愿你走的每一步都是坚定而扎实的。]]></content>
