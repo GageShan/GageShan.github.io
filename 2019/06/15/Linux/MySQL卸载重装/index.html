@@ -402,6 +402,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/15/Linux/MySQL卸载重装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/15/Linux/MySQL卸载重装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -545,7 +556,15 @@
           
 
   
-    <div id="gitalk-container"></div>
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
   
 
 
@@ -641,12 +660,6 @@
                     <a href="https://github.com/gageshan" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="gageshan.yi@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
@@ -943,6 +956,26 @@ show_date_time();
 
   
 
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://shann.xyz/2019/06/15/Linux/MySQL卸载重装/';
+          this.page.identifier = '2019/06/15/Linux/MySQL卸载重装/';
+          this.page.title = 'Ubuntu14.04mysql卸载与重装';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -970,22 +1003,6 @@ show_date_time();
 
 
 
-
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script src="/js/src/md5.min.js"></script>
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: 'd64f79f424fbe44c10f0',
-          clientSecret: '5d22e89b165cf542c2cf1a360475c5f7621291c5',
-          repo: 'GageShan.github.io',
-          owner: 'GageShan',
-          admin: ['GageShan'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
 
   
 
