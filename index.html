@@ -476,6 +476,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/01/课程设计/Linux基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/01/课程设计/Linux基础/" itemprop="url">Linux课设-用gcc实现Linux简单命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T20:41:00+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-01T20:52:03+08:00">
+                2019-07-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/课程设计/" itemprop="url" rel="index">
+                    <span itemprop="name">课程设计</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/01/课程设计/Linux基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/07/01/课程设计/Linux基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>题目四：利用gcc实现 ls , cp, pwd, cd 常用的linux命令功能<br>用gcc实现一些常用的linux命令功能，具体实现如下如下命令：</p>
+<ul>
+<li>mkdir 创建目录</li>
+<li>rm 删除文件或目录</li>
+<li>cp 复制文件</li>
+<li>cd 更改路径</li>
+<li>exit 退出系统</li>
+<li>pwd  打印当前路径</li>
+<li>ll 列出当前路径的所有文件或目录</li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;dirent.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  MAXN  1024</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mkdirs</span><span class="params">(<span class="keyword">char</span> dir[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> str[MAXN];</span><br><span class="line">	<span class="built_in">strcpy</span>(str,dir);</span><br><span class="line">	<span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; len; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(str[i] == <span class="string">'/'</span>) &#123;</span><br><span class="line">			str[i] = <span class="string">'\0'</span>;</span><br><span class="line">			<span class="keyword">if</span>(access(str,<span class="number">0</span>) != <span class="number">0</span>) </span><br><span class="line">				mkdir(str,<span class="number">0777</span>);</span><br><span class="line">			str[i] = <span class="string">'/'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(len &gt; <span class="number">0</span> &amp;&amp; access(str,<span class="number">0</span>) != <span class="number">0</span>)</span><br><span class="line">		mkdir(str,<span class="number">07770</span>);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rmdirs</span><span class="params">(<span class="keyword">char</span> dir[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> dirname[MAXN];</span><br><span class="line">	<span class="built_in">strcpy</span>(dirname,dir);</span><br><span class="line">	<span class="keyword">int</span> ans = rmdir(dirname);</span><br><span class="line">	<span class="keyword">if</span>(ans)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"rm:can't remove %s: No such file or directory\n"</span>,dirname);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exits</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> <span class="title">pwds</span><span class="params">(<span class="keyword">int</span> op)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> buf[MAXN];</span><br><span class="line">	getcwd(buf,<span class="keyword">sizeof</span>(buf));</span><br><span class="line">	<span class="keyword">if</span>(op == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"[%s]$ "</span>,buf); </span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,buf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cps</span><span class="params">(<span class="keyword">char</span> file1[],<span class="keyword">char</span> file2[])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> f1 = open(file1,O_RDWR|O_CREAT,<span class="number">0777</span>);</span><br><span class="line">        <span class="keyword">int</span> f2 = open(file2,O_RDWR|O_CREAT,<span class="number">0777</span>);</span><br><span class="line">        <span class="keyword">char</span> buff[MAXN];</span><br><span class="line">        read(f1,buff,MAXN);</span><br><span class="line">        <span class="keyword">int</span> len = <span class="built_in">strlen</span>(buff);</span><br><span class="line">        write(f2,buff,len);</span><br><span class="line">        close(f1);</span><br><span class="line">        close(f2);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cds</span><span class="params">(<span class="keyword">char</span> dirname[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> name[MAXN];</span><br><span class="line">	<span class="built_in">strcpy</span>(name,dirname);</span><br><span class="line">	<span class="keyword">if</span>(chdir(name) != <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"cd: %s :No such directory\n"</span>,dirname);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lists</span><span class="params">(<span class="keyword">char</span> dirname[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> name[MAXN];</span><br><span class="line">	<span class="built_in">strcpy</span>(name,dirname);</span><br><span class="line"><span class="comment">//	if(strcmp(dirname,"test") == 0) </span></span><br><span class="line"><span class="comment">//		printf("Hello world");</span></span><br><span class="line">	<span class="comment">//strcpy(name,"test");</span></span><br><span class="line">        DIR *dirp = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">dirent</span> *<span class="title">entry</span>;</span></span><br><span class="line">	dirp = opendir(name);</span><br><span class="line">        <span class="keyword">if</span>(dirp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"ll: %s: No such directory\n"</span>,name);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">        	<span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">	        <span class="keyword">while</span>(entry = readdir(dirp)) &#123;</span><br><span class="line">	                <span class="built_in">printf</span>(<span class="string">"filename %d = %s\n"</span>,i,entry-&gt;d_name);</span><br><span class="line">                	i++;</span><br><span class="line">        	&#125;</span><br><span class="line">        	closedir(dirp);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">menu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> running = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span>(running) &#123;</span><br><span class="line">		pwds(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">char</span> fun[MAXN];</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,fun);</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">strcmp</span>(fun,<span class="string">"exit"</span>) == <span class="number">0</span>) </span><br><span class="line">			exits();</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(fun,<span class="string">"mkdir"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">char</span> filename[MAXN];</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,filename);</span><br><span class="line">			<span class="keyword">int</span> len = <span class="built_in">strlen</span>(filename);</span><br><span class="line">			<span class="keyword">if</span>(len &gt; <span class="number">512</span>) &#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"filename is too long\n"</span>);</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				mkdirs(filename);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(fun,<span class="string">"pwd"</span>) == <span class="number">0</span>) </span><br><span class="line">			pwds(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(fun,<span class="string">"rm"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">char</span> dirname[MAXN];</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,dirname);</span><br><span class="line">			<span class="keyword">int</span> len = <span class="built_in">strlen</span>(dirname);</span><br><span class="line">			<span class="keyword">if</span>(len &gt; <span class="number">512</span>) </span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"dirname is too long\n"</span>);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				rmdirs(dirname);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(fun,<span class="string">"cd"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">char</span> dirname[MAXN];</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,dirname);</span><br><span class="line">			<span class="keyword">int</span> len = <span class="built_in">strlen</span>(dirname);</span><br><span class="line">			<span class="keyword">if</span>(len &gt; <span class="number">512</span>) </span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"dirname is too long\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> cds(dirname);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(fun,<span class="string">"ll"</span>) == <span class="number">0</span>)	&#123;</span><br><span class="line">			<span class="keyword">char</span> dirname[MAXN];</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>,dirname);</span><br><span class="line">			<span class="keyword">int</span> len = <span class="built_in">strlen</span>(dirname);</span><br><span class="line">			<span class="keyword">if</span>(len &gt; <span class="number">512</span>) </span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"dirname is too long\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> lists(dirname);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(fun,<span class="string">"cp"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">char</span> file1[MAXN],file2[MAXN];</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,file1,file2);</span><br><span class="line">			<span class="keyword">int</span> len1 = <span class="built_in">strlen</span>(file1);</span><br><span class="line">			<span class="keyword">int</span> len2 = <span class="built_in">strlen</span>(file2);</span><br><span class="line">			<span class="keyword">if</span>(len1 &gt; <span class="number">512</span>) &#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%s filename is too long\n"</span>,file1);</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(len2 &gt; <span class="number">512</span>) &#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%s filename is too long\n"</span>,file2);</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				cps(file1,file2);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"Instruction error\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	menu();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h1><p><font face="微软雅黑" size="10px" color="red">写代码就是为了快乐呀。</font></p>
+<p>在刚开始学linux时，基本是对着那个小黑框发呆，把书上的命令一个字符一个字符的敲进去，看着路径转换，列出所有目录或文件名，感觉大不同于之前接触到的windows的图形界面，以前在Windows上看到什么点击就可以了，而在命令行上，基本上用不到鼠标。用cd命令改变路径时，也在想这是怎么实现的，可能跟做C语言课设有点类似，在一个死循环内不断地输入字符，这些字符又被拿去匹配，看是执行什么命令。也有过疑惑，这么多的命令，这么多次的匹配，执行的速度感觉还不算太慢，是用到了什么算法，疑是字典树，哈哈，可能这就是只搞了ACM的通病吧。</p><br><p>其实，也在网上找过，在百度上搜索了一些命令的实现源码，也幻想过能有一天自己写的代码能够被加到Linux系统里面，哈哈。这次课程设计刚好就有一个实现Linux一些简单命令的任务，所以不用思考就选了这个了，模仿了Linux系统的输入格式界面，让当前路径在最前面显示，还抄了Linux系统的$符号，囧rz。首先模仿的命令就是pwd命令，打印当前文件路径，往实现pwd命令的函数里传入一个用于选择的参数，分别为在$前打印路径名和就单纯的pwd命令。在重现这些命令过程中，最疑惑的就是ll命令了，输出当前路径下所有目录和文件，刚开始写的时候，一直把传入的目录名用“”括起来当成字符串处理了，这就造成了“dirname”这样一种情况，而实际上应该是dirname就可以了，在这里浪费了好多时间！</p><br><p>最终还是完成了啊，看着在Linux系统上运行的仿Linux命令，莫名的喜感。</p>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-I/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -651,7 +829,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-H/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
@@ -670,7 +848,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-J/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了</a></h1>
+                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）H andy和购物</a></h1>
         
 
         <div class="post-meta">
@@ -698,34 +876,12 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T16:17:51+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:53:12+08:00">
                 2019-06-30
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -735,9 +891,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/30/比赛/北信科十一届竞赛-J/#comments" itemprop="discussionUrl">
+                <a href="/2019/06/30/比赛/北信科十一届竞赛-H/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-J/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -767,19 +923,16 @@
       
         
           
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/J" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/J</a><br>来源：牛客网</p>
-<p>andy又开始种树了，他觉得老用魔法不太好，这次他决定老老实实地每天种一棵树，第i天种一颗高度为hi的树，按理说老老实实种树就完事了，哪有那么多问题呢？但是他们学校有个叫kotori的人，非常爱砍树，每天都会把所有andy已经种下的树砍掉ci，如果第i天的时候某棵树的高度已经小于等于ci了，那么这棵树就会死亡，以后再也不会被砍了。并且如果到了第n天，有一些树还没被砍，那么kotori就会在第n + 1天把这些树全部砍死。</p>
-<p>输入描述:<br>第一行输入一个整数n，表示andy会种n天的树。</p>
-<p>第二行含有n个数hi，表示andy在第i天种的树的高度为hi米。</p>
-<p>第三行含有n个ci，表示kotori在第i天把所有andy已经种下的树砍掉ci。<br>1 &lt;= n, hi, ci &lt;= 105<br>输出描述:<br>输出一行n个数di，每个数后面有一个空格(包括最后一个数)，最后需要换行。</p>
-<p>表示andy第i天种的树会在第di天死亡，如果第n天这棵树还没有死亡，则输出n + 1。</p>
-<p>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">5 7 5 4 1 7 4 3 10 6 </span><br><span class="line">6 4 2 4 1 8 5 7 3 5</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 4 4 4 5 6 7 8 11 11</span><br></pre></td></tr></table></figure></p>
-<p>说明<br>第1天andy种的树高度为5，这天kotori要把andy已经种下的所有树砍掉6，所以第1棵树在第1天就死掉了。</p>
-<p>第2天andy种的树高度为7，第2天被kotori砍掉了4，还剩3，第3天被kotori砍掉了2，还剩1。第4天被砍掉4，所以它在第4天死亡。</p>
-<p>第10天andy种下的数高度为6，第10天被kotori砍掉了5，还剩1，也就是说它在第10天还没有死亡，所以它会在第11天被kotori砍死（参见题目描述最后一句）。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先求下砍树高度的前缀和，那么对于前缀数组的每个数就是每天所要砍掉树的长度总和。就可以将问题转化为：对于每棵树来讲，它的总长度就是前一天所要砍掉的长度加上现存的长度，然后就是求出总长度在哪一天能全部砍完了。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">ll arr[MAXN];</span><br><span class="line">ll brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;arr[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;brr[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		brr[i]+=brr[i<span class="number">-1</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		ll tmp=arr[i]+brr[i<span class="number">-1</span>];</span><br><span class="line">		ll pos=lower_bound(brr+<span class="number">1</span>,brr+n+<span class="number">1</span>,tmp)-brr;</span><br><span class="line">		<span class="keyword">if</span>(pos&gt;=<span class="number">1</span>&amp;&amp;pos&lt;=n)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld "</span>,pos);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld "</span>,n+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/H" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/H</a><br>来源：牛客网</p>
+<p>andy要去市场买n件货物，每件货物的价格为ai。商家为了吸引顾客，给每个买N件货物的顾客一个折扣清单，清单上有N个小于1的小数bj表示折扣。对于每个折扣bj，由用户自行决定用它使哪个货物的价格变成bj * ai，并且只能用一次。<br>andy想让你帮他算一下他最少的花费。</p>
+<p>输入描述:<br>先输入一个正整数t，代表样例的组数。（1≤t≤10）</p>
+<p>对于每个样例：</p>
+<p>第一行，输入一个正整数n（1≤n≤1000）。</p>
+<p>第二行包含n个整数，第i个整数a[i]代表第i个商品的原价。（1≤a[i]≤1e9）</p>
+<p>第三行包含n个小数b[i]，含义如题目描述。（0≤b[i]≤1）<br>输出描述:<br>对于每个样例，输出一个实数s，保留3位小数，表示最小的花费。<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">0.1 0.2 0.3 0.4 0.5</span><br></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.500</span><br></pre></td></tr></table></figure></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单贪心。<br>拿最高价格对应最大折扣即可。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">double</span> lb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">lb arr[MAXN];</span><br><span class="line">lb brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--) &#123;</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;arr[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;brr[i]);</span><br><span class="line">			</span><br><span class="line">		sort(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>);</span><br><span class="line">		sort(brr+<span class="number">1</span>,brr+n+<span class="number">1</span>);</span><br><span class="line">		lb ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=n;i&lt;=n;i++,j--)</span><br><span class="line">			ans+=arr[i]*brr[j];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.3Lf\n"</span>,ans); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1009,7 +1162,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-H/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
@@ -1028,7 +1181,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）H andy和购物</a></h1>
+                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-J/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了</a></h1>
         
 
         <div class="post-meta">
@@ -1056,12 +1209,34 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:53:12+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T16:17:51+08:00">
                 2019-06-30
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/比赛/" itemprop="url" rel="index">
+                    <span itemprop="name">比赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1071,9 +1246,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/30/比赛/北信科十一届竞赛-H/#comments" itemprop="discussionUrl">
+                <a href="/2019/06/30/比赛/北信科十一届竞赛-J/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-J/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1103,16 +1278,19 @@
       
         
           
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/H" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/H</a><br>来源：牛客网</p>
-<p>andy要去市场买n件货物，每件货物的价格为ai。商家为了吸引顾客，给每个买N件货物的顾客一个折扣清单，清单上有N个小于1的小数bj表示折扣。对于每个折扣bj，由用户自行决定用它使哪个货物的价格变成bj * ai，并且只能用一次。<br>andy想让你帮他算一下他最少的花费。</p>
-<p>输入描述:<br>先输入一个正整数t，代表样例的组数。（1≤t≤10）</p>
-<p>对于每个样例：</p>
-<p>第一行，输入一个正整数n（1≤n≤1000）。</p>
-<p>第二行包含n个整数，第i个整数a[i]代表第i个商品的原价。（1≤a[i]≤1e9）</p>
-<p>第三行包含n个小数b[i]，含义如题目描述。（0≤b[i]≤1）<br>输出描述:<br>对于每个样例，输出一个实数s，保留3位小数，表示最小的花费。<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">0.1 0.2 0.3 0.4 0.5</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.500</span><br></pre></td></tr></table></figure></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单贪心。<br>拿最高价格对应最大折扣即可。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">double</span> lb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">lb arr[MAXN];</span><br><span class="line">lb brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--) &#123;</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;arr[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;brr[i]);</span><br><span class="line">			</span><br><span class="line">		sort(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>);</span><br><span class="line">		sort(brr+<span class="number">1</span>,brr+n+<span class="number">1</span>);</span><br><span class="line">		lb ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=n;i&lt;=n;i++,j--)</span><br><span class="line">			ans+=arr[i]*brr[j];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.3Lf\n"</span>,ans); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/J" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/J</a><br>来源：牛客网</p>
+<p>andy又开始种树了，他觉得老用魔法不太好，这次他决定老老实实地每天种一棵树，第i天种一颗高度为hi的树，按理说老老实实种树就完事了，哪有那么多问题呢？但是他们学校有个叫kotori的人，非常爱砍树，每天都会把所有andy已经种下的树砍掉ci，如果第i天的时候某棵树的高度已经小于等于ci了，那么这棵树就会死亡，以后再也不会被砍了。并且如果到了第n天，有一些树还没被砍，那么kotori就会在第n + 1天把这些树全部砍死。</p>
+<p>输入描述:<br>第一行输入一个整数n，表示andy会种n天的树。</p>
+<p>第二行含有n个数hi，表示andy在第i天种的树的高度为hi米。</p>
+<p>第三行含有n个ci，表示kotori在第i天把所有andy已经种下的树砍掉ci。<br>1 &lt;= n, hi, ci &lt;= 105<br>输出描述:<br>输出一行n个数di，每个数后面有一个空格(包括最后一个数)，最后需要换行。</p>
+<p>表示andy第i天种的树会在第di天死亡，如果第n天这棵树还没有死亡，则输出n + 1。</p>
+<p>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">5 7 5 4 1 7 4 3 10 6 </span><br><span class="line">6 4 2 4 1 8 5 7 3 5</span><br></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 4 4 4 5 6 7 8 11 11</span><br></pre></td></tr></table></figure></p>
+<p>说明<br>第1天andy种的树高度为5，这天kotori要把andy已经种下的所有树砍掉6，所以第1棵树在第1天就死掉了。</p>
+<p>第2天andy种的树高度为7，第2天被kotori砍掉了4，还剩3，第3天被kotori砍掉了2，还剩1。第4天被砍掉4，所以它在第4天死亡。</p>
+<p>第10天andy种下的数高度为6，第10天被kotori砍掉了5，还剩1，也就是说它在第10天还没有死亡，所以它会在第11天被kotori砍死（参见题目描述最后一句）。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先求下砍树高度的前缀和，那么对于前缀数组的每个数就是每天所要砍掉树的长度总和。就可以将问题转化为：对于每棵树来讲，它的总长度就是前一天所要砍掉的长度加上现存的长度，然后就是求出总长度在哪一天能全部砍完了。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">ll arr[MAXN];</span><br><span class="line">ll brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;arr[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;brr[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		brr[i]+=brr[i<span class="number">-1</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		ll tmp=arr[i]+brr[i<span class="number">-1</span>];</span><br><span class="line">		ll pos=lower_bound(brr+<span class="number">1</span>,brr+n+<span class="number">1</span>,tmp)-brr;</span><br><span class="line">		<span class="keyword">if</span>(pos&gt;=<span class="number">1</span>&amp;&amp;pos&lt;=n)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld "</span>,pos);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld "</span>,n+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1503,187 +1681,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-B/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）B kotori和气球</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:18:42+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:26:18+08:00">
-                2019-06-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/30/比赛/北信科十一届竞赛-B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/B" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/B</a><br>来源：牛客网</p>
-<p>题目描述<br>kotori最近迷上了摆气球的游戏。她一共有n种气球，每种气球有无数个。她要拿出若干个气球摆成一排。</p>
-<p>但是，由于气球被施放了魔法，同样种类的气球如果相邻会发生爆炸，因此若两个相邻的气球种类相同被视为不合法的。</p>
-<p>kotori想知道，摆成一排m个一共有多少种不同的方案？</p>
-<p>由于该数可能过大，只需要输出其对109取模的结果。</p>
-<p>输入描述:<br>输入仅有一行，为两个整数n和m(1≤n,m≤100)<br>输出描述:<br>输出一个整数，为方案数对109取模的结果。</p>
-<p>示例1</p>
-<p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure></p>
-<p>说明</p>
-<ul>
-<li>假设3种气球标记为1、2、3，那么共有以下6种方案：[1,2] [1,3] [2,1] [2,3] [3,1] [3,2]。</li>
-</ul>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>相邻的位置不能放置相同的气球，易得这是各排列组合问题，也就是第一个位置有n种摆法，剩下的就是n-1种了。<br>其实，这道题还是数据规模太小了，稍微大点就要用到快速幂了。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ll n,m;</span><br><span class="line">    scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m);</span><br><span class="line">    ll ans=n;</span><br><span class="line">    for(int i=2;i&lt;=m;i++)</span><br><span class="line">        ans=ans*(n-1)%109;</span><br><span class="line">    printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1742,7 +1739,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1936,7 +1933,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共67.2k字</span>
+  <span class="post-count">博客全站共68.4k字</span>
 </div>
         
 <div class="busuanzi-count">
