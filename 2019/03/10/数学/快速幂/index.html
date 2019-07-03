@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="模板," />
+  <meta name="keywords" content="快速幂," />
 
 
 
@@ -99,16 +99,16 @@
 
 
 <meta name="description" content="12345678910111213typedef long long ll;const int mod=100000007;ll fast_pow(ll a,ll b) &amp;#123;	ll ans=1;	a%=mod;	while(b) &amp;#123;		if(b&amp;amp;1)			ans=ans%mod*a%mod%mod;		a=a%mod*a%mod%mod;		b&amp;gt;&amp;gt;=1;	&amp;#">
-<meta name="keywords" content="模板">
+<meta name="keywords" content="快速幂">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速幂模板">
+<meta property="og:title" content="快速幂(个人加深理解)">
 <meta property="og:url" content="https://shann.xyz/2019/03/10/数学/快速幂/index.html">
 <meta property="og:site_name" content="GageShan">
 <meta property="og:description" content="12345678910111213typedef long long ll;const int mod=100000007;ll fast_pow(ll a,ll b) &amp;#123;	ll ans=1;	a%=mod;	while(b) &amp;#123;		if(b&amp;amp;1)			ans=ans%mod*a%mod%mod;		a=a%mod*a%mod%mod;		b&amp;gt;&amp;gt;=1;	&amp;#">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-10T10:59:22.956Z">
+<meta property="og:updated_time" content="2019-07-02T03:33:48.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快速幂模板">
+<meta name="twitter:title" content="快速幂(个人加深理解)">
 <meta name="twitter:description" content="12345678910111213typedef long long ll;const int mod=100000007;ll fast_pow(ll a,ll b) &amp;#123;	ll ans=1;	a%=mod;	while(b) &amp;#123;		if(b&amp;amp;1)			ans=ans%mod*a%mod%mod;		a=a%mod*a%mod%mod;		b&amp;gt;&amp;gt;=1;	&amp;#">
 
 
@@ -145,7 +145,7 @@
 
 
 
-  <title>快速幂模板 | GageShan</title>
+  <title>快速幂(个人加深理解) | GageShan</title>
   
 
 
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">快速幂模板</h1>
+          <h1 class="post-title" itemprop="name headline">快速幂(个人加深理解)</h1>
         
 
         <div class="post-meta">
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-10T18:59:22+08:00">
-                2019-03-10
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-02T11:33:48+08:00">
+                2019-07-02
               </time>
             
           </span>
@@ -442,7 +442,9 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">typedef long long ll;</span><br><span class="line">const int mod=100000007;</span><br><span class="line">ll fast_pow(ll a,ll b) &#123;</span><br><span class="line">	ll ans=1;</span><br><span class="line">	a%=mod;</span><br><span class="line">	while(b) &#123;</span><br><span class="line">		if(b&amp;1)</span><br><span class="line">			ans=ans%mod*a%mod%mod;</span><br><span class="line">		a=a%mod*a%mod%mod;</span><br><span class="line">		b&gt;&gt;=1;</span><br><span class="line">	&#125;</span><br><span class="line">	return ans%mod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">100000007</span>;</span><br><span class="line"><span class="function">ll <span class="title">fast_pow</span><span class="params">(ll a,ll b)</span> </span>&#123;</span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	a%=mod;</span><br><span class="line">	<span class="keyword">while</span>(b) &#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			ans=ans%mod*a%mod%mod;</span><br><span class="line">		a=a%mod*a%mod%mod;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans%mod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="理解："><a href="#理解：" class="headerlink" title="理解："></a>理解：</h3><p>对于一个十进制数都可以化成二进制，即10<sub>10</sub>==1010<sub>2</sub>，10<sub>10</sub>也可以写成这样2<sup>3</sup>+2<sup>1</sup>。<br><br><br>那么现在要求计算10<sup>10</sup>%mod，就可以转化为10<sup>(2<sup>3</sup>+2<sup>1</sup>)</sup>%mod，观察到在10的二进制数表示上当某位为1时，才与ans相乘，其余只是不断地由2<sup>1</sup>累乘到2<sup>2</sup>再到2<sup>4</sup>，而不用一个个去计算2<em>2\</em>2了。</p>
+
       
     </div>
     
@@ -470,7 +472,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://shann.xyz/2019/03/10/数学/快速幂/" title="快速幂模板">https://shann.xyz/2019/03/10/数学/快速幂/</a>
+    <a href="https://shann.xyz/2019/03/10/数学/快速幂/" title="快速幂(个人加深理解)">https://shann.xyz/2019/03/10/数学/快速幂/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -485,7 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/模板/" rel="tag"><i class="fa fa-tag"></i> 模板</a>
+            <a href="/tags/快速幂/" rel="tag"><i class="fa fa-tag"></i> 快速幂</a>
           
         </div>
       
@@ -574,8 +576,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -586,7 +597,7 @@
             </a>
             
               <p class="site-author-name" itemprop="name">学号021</p>
-              <p class="site-description motion-element" itemprop="description">你将遇到的不幸，都是你所蹉跎时间的报应</p>
+              <p class="site-description motion-element" itemprop="description">永远都有更好的未来值得去奋斗</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -596,7 +607,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -618,7 +629,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -747,6 +758,23 @@ show_date_time();
         </div>
       </section>
 <iframe height="100" weight="260" src="https://player.bilibili.com/player.html?aid=26597687&cid=45759200&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"> </iframe>      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解："><span class="nav-number">1.</span> <span class="nav-text">理解：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+        
+      <!--/noindex-->
+      
 
       
 
@@ -790,7 +818,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共68.4k字</span>
+  <span class="post-count">博客全站共68.6k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -949,7 +977,7 @@ show_date_time();
         var disqus_config = function () {
           this.page.url = 'https://shann.xyz/2019/03/10/数学/快速幂/';
           this.page.identifier = '2019/03/10/数学/快速幂/';
-          this.page.title = '快速幂模板';
+          this.page.title = '快速幂(个人加深理解)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';

@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出">
+<meta name="description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出 证明：a和b的最大公约数与b和a%b的最大公约数相同。设a和b的公约数为d，那么  a=nd ① b=md ②(n,m为自然数)  记a%b=r，可得a=bp+r ③将①、②">
 <meta name="keywords" content="gcd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gcd模板">
+<meta property="og:title" content="gcd(个人加深理解)">
 <meta property="og:url" content="https://shann.xyz/2019/03/09/数学/gcd模板/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出">
+<meta property="og:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出 证明：a和b的最大公约数与b和a%b的最大公约数相同。设a和b的公约数为d，那么  a=nd ① b=md ②(n,m为自然数)  记a%b=r，可得a=bp+r ③将①、②">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-10T11:00:20.167Z">
+<meta property="og:updated_time" content="2019-07-02T03:02:43.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gcd模板">
-<meta name="twitter:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出">
+<meta name="twitter:title" content="gcd(个人加深理解)">
+<meta name="twitter:description" content="12345int gcd(int a,int b)&amp;#123;	return b==0?a:gcd(b,a%b);&amp;#125;最大公约数val=gcd(a,b);最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出 证明：a和b的最大公约数与b和a%b的最大公约数相同。设a和b的公约数为d，那么  a=nd ① b=md ②(n,m为自然数)  记a%b=r，可得a=bp+r ③将①、②">
 
 
 
@@ -145,7 +145,7 @@
 
 
 
-  <title>gcd模板 | GageShan</title>
+  <title>gcd(个人加深理解) | GageShan</title>
   
 
 
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">gcd模板</h1>
+          <h1 class="post-title" itemprop="name headline">gcd(个人加深理解)</h1>
         
 
         <div class="post-meta">
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-10T19:00:20+08:00">
-                2019-03-10
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-02T11:02:43+08:00">
+                2019-07-02
               </time>
             
           </span>
@@ -443,6 +443,15 @@
 
       
         <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int gcd(int a,int b)&#123;</span><br><span class="line">	return b==0?a:gcd(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line">最大公约数val=gcd(a,b);</span><br><span class="line">最小公倍数val=a/gcd(a,b)*b;//防止a*b溢出</span><br></pre></td></tr></table></figure>
+<p>证明：a和b的最大公约数与b和a%b的最大公约数相同。<br>设a和b的公约数为d，那么</p>
+<ul>
+<li>a=nd ①</li>
+<li>b=md ②<br>(n,m为自然数)</li>
+</ul>
+<p><br><br>记a%b=r，可得a=bp+r ③<br><br>将①、②代入③中，化简得(n-mp)d=r ④，d是r得约数，由②可知，d也是b得约数，所以d是b和r的公约数，即d是b和a%b的公约数，联立①②，d是a和b的公约数。<br></p>
+<p>同理设d$’$是b和a%b的公约数，可求得d$’$也是a和b的公约数。</p>
+<p>结论：a和b与b和a%b的公约数相同，那么它们的最大公约数也相同。</p>
+
       
     </div>
     
@@ -470,7 +479,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://shann.xyz/2019/03/09/数学/gcd模板/" title="gcd模板">https://shann.xyz/2019/03/09/数学/gcd模板/</a>
+    <a href="https://shann.xyz/2019/03/09/数学/gcd模板/" title="gcd(个人加深理解)">https://shann.xyz/2019/03/09/数学/gcd模板/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -586,7 +595,7 @@
             </a>
             
               <p class="site-author-name" itemprop="name">学号021</p>
-              <p class="site-description motion-element" itemprop="description">你将遇到的不幸，都是你所蹉跎时间的报应</p>
+              <p class="site-description motion-element" itemprop="description">永远都有更好的未来值得去奋斗</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -596,7 +605,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">91</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -618,7 +627,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -790,7 +799,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共68.4k字</span>
+  <span class="post-count">博客全站共68.6k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -949,7 +958,7 @@ show_date_time();
         var disqus_config = function () {
           this.page.url = 'https://shann.xyz/2019/03/09/数学/gcd模板/';
           this.page.identifier = '2019/03/09/数学/gcd模板/';
-          this.page.title = 'gcd模板';
+          this.page.title = 'gcd(个人加深理解)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
