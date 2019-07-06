@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[中矿大-G-毕业生的纪念礼物(map+priority_queue)]]></title>
+    <url>%2F2019%2F07%2F06%2F%E6%AF%94%E8%B5%9B%2F%E5%8D%8E%E4%B8%BA%E6%9D%AF-%E4%B8%AD%E7%9F%BF%E5%A4%A7%E7%AB%9E%E8%B5%9B-G%2F</url>
+    <content type="text"><![CDATA[题目链接：https://ac.nowcoder.com/acm/contest/948/G来源：牛客网 现在有n个纪念品，每个纪念品都有一个种类r[i]，现在要求对每个毕业生分发三个种类不同的纪念品，现在需要你来计算下共可以发给多少个毕业生？输入描述:第一行一个整数n，1≤n≤100000，代表纪念品的个数；第二行包含n个整数，分别是r[1], r[2], r[3]……r[n]，1≤r[i]≤1e9，表示每个纪念品所属的种类。输出描述:输出一个整数，代表最多能够分发给的毕业生人数。示例1输入12141 1 2 2 3 3 4 4 4 4 5 5 5 5 输出14 示例2输入1271 2 3 4 5 6 7 输出12 思路每个毕业生需要发三种不同纪念品，问最多能发的人数。首先需要明确的是，数量少的纪念品一旦发完就没有了，三种不同的数量少的纪念品组合在一起发下去，反而没有一种数量少组合两种数量多的可发给毕业生的人数多。（样例一侧正了这一猜想）想到这，既然数量少的可以与任意数量的组合，到最后数量多的可能会有剩余，那么就让数量多得组合数量多的。 一开始没想到的：对数量多的组合，我一开始是取数量最多的三个，取它们中的最小值，也就是这三种物品组合在一起可发给毕业生的数量。但实际上这是有缺陷的，因为前面已经提到，要让数量最多的组合在一起，而当取三者最小值，各物品数量再减去最小数量时（此时，那个三者最小数量的物品已经耗尽），可能会有其他物品的数量已经大于前三者数量了，正确的做法是，每取三个数，让他们减1，ans加1，接着在继续取最大的三者。这样就可以保证，每次取得的物品数都是已有的物品中数量最多的。 错误代码1234567891011121314151617ll res(ll a,ll b,ll c) &#123; ll tmp=min(min(a,b),c); ans+=tmp; return tmp;&#125;void solve() &#123; while(qu.size()&gt;=3) &#123; int t1=qu.top();qu.pop(); int t2=qu.top();qu.pop(); int t3=qu.top();qu.pop(); int tmp=res(t1,t2,t3); t1-=tmp,t2-=tmp,t3-=tmp; if(t1) qu.push(t1); if(t2) qu.push(t2); if(t3) qu.push(t3); &#125;&#125; 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int MAXN=1e5+10;map&lt;ll,ll&gt; mp;priority_queue&lt;int&gt; qu;ll n;ll ans;void read() &#123; scanf("%lld",&amp;n); for(ll i=1;i&lt;=n;i++) &#123; ll a; scanf("%lld",&amp;a); mp[a]++; &#125;&#125;void init() &#123; map&lt;ll,ll&gt;::iterator it; for(it=mp.begin();it!=mp.end();it++) qu.push(it-&gt;second);&#125;ll res(ll a,ll b,ll c) &#123; ll tmp=min(min(a,b),c); ans+=tmp; return tmp; &#125;void solve() &#123; while(qu.size()&gt;=3) &#123; int t1=qu.top();qu.pop(); int t2=qu.top();qu.pop(); int t3=qu.top();qu.pop(); int tmp=1; t1-=tmp,t2-=tmp,t3-=tmp; ans++; if(t1) qu.push(t1); if(t2) qu.push(t2); if(t3) qu.push(t3); &#125;&#125;int main() &#123; read(); init(); solve(); printf("%lld\n",ans); return 0;&#125;]]></content>
+      <categories>
+        <category>比赛</category>
+      </categories>
+      <tags>
+        <tag>比赛</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[markdown一些常用语法]]></title>
     <url>%2F2019%2F07%2F02%2F%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7%2Fmarkdown%E8%AF%AD%E6%B3%95%2F</url>
     <content type="text"><![CDATA[上标、下标12&lt;sup&gt;上标&lt;/sup&gt;&lt;sub&gt;下标&lt;/sub&gt;]]></content>
@@ -28,6 +39,14 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[北信科第十一届程序设计竞赛（重现赛）H andy和购物]]></title>
+    <url>%2F2019%2F06%2F30%2F%E6%AF%94%E8%B5%9B%2F%E5%8C%97%E4%BF%A1%E7%A7%91%E5%8D%81%E4%B8%80%E5%B1%8A%E7%AB%9E%E8%B5%9B-H%2F</url>
+    <content type="text"><![CDATA[题目链接：https://ac.nowcoder.com/acm/contest/940/H来源：牛客网 andy要去市场买n件货物，每件货物的价格为ai。商家为了吸引顾客，给每个买N件货物的顾客一个折扣清单，清单上有N个小于1的小数bj表示折扣。对于每个折扣bj，由用户自行决定用它使哪个货物的价格变成bj * ai，并且只能用一次。andy想让你帮他算一下他最少的花费。 输入描述:先输入一个正整数t，代表样例的组数。（1≤t≤10） 对于每个样例： 第一行，输入一个正整数n（1≤n≤1000）。 第二行包含n个整数，第i个整数a[i]代表第i个商品的原价。（1≤a[i]≤1e9） 第三行包含n个小数b[i]，含义如题目描述。（0≤b[i]≤1）输出描述:对于每个样例，输出一个实数s，保留3位小数，表示最小的花费。示例1输入1234151 2 3 4 50.1 0.2 0.3 0.4 0.5 输出13.500 思路简单贪心。拿最高价格对应最大折扣即可。 代码1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;using namespace std;typedef long double lb;const int MAXN=1e3+10;lb arr[MAXN];lb brr[MAXN];int main()&#123; int t; scanf("%d",&amp;t); while(t--) &#123; int n; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%Lf",&amp;arr[i]); for(int i=1;i&lt;=n;i++) scanf("%Lf",&amp;brr[i]); sort(arr+1,arr+n+1); sort(brr+1,brr+n+1); lb ans=0; for(int i=1,j=n;i&lt;=n;i++,j--) ans+=arr[i]*brr[j]; printf("%.3Lf\n",ans); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>比赛</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了]]></title>
     <url>%2F2019%2F06%2F30%2F%E6%AF%94%E8%B5%9B%2F%E5%8C%97%E4%BF%A1%E7%A7%91%E5%8D%81%E4%B8%80%E5%B1%8A%E7%AB%9E%E8%B5%9B-J%2F</url>
     <content type="text"><![CDATA[题目链接：https://ac.nowcoder.com/acm/contest/940/J来源：牛客网 andy又开始种树了，他觉得老用魔法不太好，这次他决定老老实实地每天种一棵树，第i天种一颗高度为hi的树，按理说老老实实种树就完事了，哪有那么多问题呢？但是他们学校有个叫kotori的人，非常爱砍树，每天都会把所有andy已经种下的树砍掉ci，如果第i天的时候某棵树的高度已经小于等于ci了，那么这棵树就会死亡，以后再也不会被砍了。并且如果到了第n天，有一些树还没被砍，那么kotori就会在第n + 1天把这些树全部砍死。 输入描述:第一行输入一个整数n，表示andy会种n天的树。 第二行含有n个数hi，表示andy在第i天种的树的高度为hi米。 第三行含有n个ci，表示kotori在第i天把所有andy已经种下的树砍掉ci。1 &lt;= n, hi, ci &lt;= 105输出描述:输出一行n个数di，每个数后面有一个空格(包括最后一个数)，最后需要换行。 表示andy第i天种的树会在第di天死亡，如果第n天这棵树还没有死亡，则输出n + 1。 示例1输入123105 7 5 4 1 7 4 3 10 6 6 4 2 4 1 8 5 7 3 5 输出11 4 4 4 5 6 7 8 11 11 说明第1天andy种的树高度为5，这天kotori要把andy已经种下的所有树砍掉6，所以第1棵树在第1天就死掉了。 第2天andy种的树高度为7，第2天被kotori砍掉了4，还剩3，第3天被kotori砍掉了2，还剩1。第4天被砍掉4，所以它在第4天死亡。 第10天andy种下的数高度为6，第10天被kotori砍掉了5，还剩1，也就是说它在第10天还没有死亡，所以它会在第11天被kotori砍死（参见题目描述最后一句）。 思路首先求下砍树高度的前缀和，那么对于前缀数组的每个数就是每天所要砍掉树的长度总和。就可以将问题转化为：对于每棵树来讲，它的总长度就是前一天所要砍掉的长度加上现存的长度，然后就是求出总长度在哪一天能全部砍完了。 代码1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int MAXN=1e6+10;ll arr[MAXN];ll brr[MAXN];int main()&#123;// freopen("in.txt","r",stdin); int n; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%lld",&amp;arr[i]); for(int i=1;i&lt;=n;i++) scanf("%lld",&amp;brr[i]); for(int i=1;i&lt;=n;i++) brr[i]+=brr[i-1]; for(int i=1;i&lt;=n;i++) &#123; ll tmp=arr[i]+brr[i-1]; ll pos=lower_bound(brr+1,brr+n+1,tmp)-brr; if(pos&gt;=1&amp;&amp;pos&lt;=n) printf("%lld ",pos); else printf("%lld ",n+1); &#125; printf("\n"); return 0;&#125;]]></content>
@@ -45,14 +64,6 @@
       <categories>
         <category>比赛</category>
       </categories>
-      <tags>
-        <tag>比赛</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[北信科第十一届程序设计竞赛（重现赛）H andy和购物]]></title>
-    <url>%2F2019%2F06%2F30%2F%E6%AF%94%E8%B5%9B%2F%E5%8C%97%E4%BF%A1%E7%A7%91%E5%8D%81%E4%B8%80%E5%B1%8A%E7%AB%9E%E8%B5%9B-H%2F</url>
-    <content type="text"><![CDATA[题目链接：https://ac.nowcoder.com/acm/contest/940/H来源：牛客网 andy要去市场买n件货物，每件货物的价格为ai。商家为了吸引顾客，给每个买N件货物的顾客一个折扣清单，清单上有N个小于1的小数bj表示折扣。对于每个折扣bj，由用户自行决定用它使哪个货物的价格变成bj * ai，并且只能用一次。andy想让你帮他算一下他最少的花费。 输入描述:先输入一个正整数t，代表样例的组数。（1≤t≤10） 对于每个样例： 第一行，输入一个正整数n（1≤n≤1000）。 第二行包含n个整数，第i个整数a[i]代表第i个商品的原价。（1≤a[i]≤1e9） 第三行包含n个小数b[i]，含义如题目描述。（0≤b[i]≤1）输出描述:对于每个样例，输出一个实数s，保留3位小数，表示最小的花费。示例1输入1234151 2 3 4 50.1 0.2 0.3 0.4 0.5 输出13.500 思路简单贪心。拿最高价格对应最大折扣即可。 代码1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;using namespace std;typedef long double lb;const int MAXN=1e3+10;lb arr[MAXN];lb brr[MAXN];int main()&#123; int t; scanf("%d",&amp;t); while(t--) &#123; int n; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%Lf",&amp;arr[i]); for(int i=1;i&lt;=n;i++) scanf("%Lf",&amp;brr[i]); sort(arr+1,arr+n+1); sort(brr+1,brr+n+1); lb ans=0; for(int i=1,j=n;i&lt;=n;i++,j--) ans+=arr[i]*brr[j]; printf("%.3Lf\n",ans); &#125; return 0;&#125;]]></content>
       <tags>
         <tag>比赛</tag>
       </tags>
