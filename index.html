@@ -1471,159 +1471,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-H/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）H andy和购物</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:40:08+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:53:12+08:00">
-                2019-06-30
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/30/比赛/北信科十一届竞赛-H/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/H" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/H</a><br>来源：牛客网</p>
-<p>andy要去市场买n件货物，每件货物的价格为ai。商家为了吸引顾客，给每个买N件货物的顾客一个折扣清单，清单上有N个小于1的小数bj表示折扣。对于每个折扣bj，由用户自行决定用它使哪个货物的价格变成bj * ai，并且只能用一次。<br>andy想让你帮他算一下他最少的花费。</p>
-<p>输入描述:<br>先输入一个正整数t，代表样例的组数。（1≤t≤10）</p>
-<p>对于每个样例：</p>
-<p>第一行，输入一个正整数n（1≤n≤1000）。</p>
-<p>第二行包含n个整数，第i个整数a[i]代表第i个商品的原价。（1≤a[i]≤1e9）</p>
-<p>第三行包含n个小数b[i]，含义如题目描述。（0≤b[i]≤1）<br>输出描述:<br>对于每个样例，输出一个实数s，保留3位小数，表示最小的花费。<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">0.1 0.2 0.3 0.4 0.5</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.500</span><br></pre></td></tr></table></figure></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单贪心。<br>拿最高价格对应最大折扣即可。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">double</span> lb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">lb arr[MAXN];</span><br><span class="line">lb brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--) &#123;</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;arr[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;brr[i]);</span><br><span class="line">			</span><br><span class="line">		sort(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>);</span><br><span class="line">		sort(brr+<span class="number">1</span>,brr+n+<span class="number">1</span>);</span><br><span class="line">		lb ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=n;i&lt;=n;i++,j--)</span><br><span class="line">			ans+=arr[i]*brr[j];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.3Lf\n"</span>,ans); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-I/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1977,7 +1824,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-D/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-H/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
@@ -1996,7 +1843,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-D/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）D kotori和迷宫</a></h1>
+                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）H andy和购物</a></h1>
         
 
         <div class="post-meta">
@@ -2008,7 +1855,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:26:44+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:40:08+08:00">
                 2019-06-30
               </time>
             
@@ -2024,34 +1871,12 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:31:27+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:53:12+08:00">
                 2019-06-30
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -2061,9 +1886,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/30/比赛/北信科十一届竞赛-D/#comments" itemprop="discussionUrl">
+                <a href="/2019/06/30/比赛/北信科十一届竞赛-H/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-D/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-H/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2093,15 +1918,16 @@
       
         
           
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/D" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/D</a><br>来源：牛客网</p>
-<p>kotori在一个n*m迷宫里，迷宫的最外层被岩浆淹没，无法涉足，迷宫内有k个出口。kotori只能上下左右四个方向移动。她想知道有多少出口是她能到达的，最近的出口离她有多远？</p>
-<p>输入描述:<br>第一行为两个整数n和m，代表迷宫的行和列数 (1≤n,m≤30)</p>
-<p>后面紧跟着n行长度为m的字符串来描述迷宫。’k’代表kotori开始的位置，’.’代表道路，’*’代表墙壁，’e’代表出口。保证输入合法。<br>输出描述:<br>若有出口可以抵达，则输出2个整数，第一个代表kotori可选择的出口的数量，第二个代表kotori到最近的出口的步数。（注意，kotori到达出口一定会离开迷宫）</p>
-<p>若没有出口可以抵达，则输出-1。<br>示例1<br>输入<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span> <span class="number">8</span></span><br><span class="line">e.*.*e.*</span><br><span class="line">.**.*.*e</span><br><span class="line">..*k**..</span><br><span class="line">***.*.e*</span><br><span class="line">.**.*.**</span><br><span class="line">*......e</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 7</span><br></pre></td></tr></table></figure></p>
-<p>说明<br>可供选择坐标为[4,7]和[6,8]，到kotori的距离分别是8和7步。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单BFS，需要注意的是，一遇到出口就离开迷宫了，所以出口不能当作通道走，不能以此走到其他位置。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,dep;</span><br><span class="line">	node(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> dep):x(x),y(y),dep(dep)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="keyword">char</span> str[MAXN][MAXN];</span><br><span class="line"><span class="keyword">bool</span> visit[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> dx[]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">bool</span> flag;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;node&gt; qu;</span><br><span class="line">	qu.push(node(x,y,<span class="number">0</span>));</span><br><span class="line">	<span class="built_in">memset</span>(visit,<span class="literal">false</span>,<span class="keyword">sizeof</span>(visit));</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty()) &#123;</span><br><span class="line">		node t=qu.front();qu.pop();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(str[t.x][t.y]==<span class="string">'e'</span>) &#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			ans=min(ans,t.dep);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		visit[t.x][t.y]=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> tx=t.x+dx[i];</span><br><span class="line">			<span class="keyword">int</span> ty=t.y+dy[i];</span><br><span class="line">			<span class="keyword">if</span>(tx&gt;=<span class="number">0</span>&amp;&amp;tx&lt;n&amp;&amp;ty&gt;=<span class="number">0</span>&amp;&amp;ty&lt;m&amp;&amp;!visit[tx][ty]&amp;&amp;str[tx][ty]!=<span class="string">'*'</span>)</span><br><span class="line">				qu.push(node(tx,ty,t.dep+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">true</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">int</span> sx,sy;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">			<span class="keyword">if</span>(str[i][j]==<span class="string">'k'</span>) &#123;</span><br><span class="line">				sx=i;</span><br><span class="line">				sy=j;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">false</span>;</span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	<span class="keyword">while</span>(!flag) &#123;</span><br><span class="line">		BFS(sx,sy);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">0x3f3f3f3f</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,cnt,ans);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/H" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/H</a><br>来源：牛客网</p>
+<p>andy要去市场买n件货物，每件货物的价格为ai。商家为了吸引顾客，给每个买N件货物的顾客一个折扣清单，清单上有N个小于1的小数bj表示折扣。对于每个折扣bj，由用户自行决定用它使哪个货物的价格变成bj * ai，并且只能用一次。<br>andy想让你帮他算一下他最少的花费。</p>
+<p>输入描述:<br>先输入一个正整数t，代表样例的组数。（1≤t≤10）</p>
+<p>对于每个样例：</p>
+<p>第一行，输入一个正整数n（1≤n≤1000）。</p>
+<p>第二行包含n个整数，第i个整数a[i]代表第i个商品的原价。（1≤a[i]≤1e9）</p>
+<p>第三行包含n个小数b[i]，含义如题目描述。（0≤b[i]≤1）<br>输出描述:<br>对于每个样例，输出一个实数s，保留3位小数，表示最小的花费。<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">0.1 0.2 0.3 0.4 0.5</span><br></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.500</span><br></pre></td></tr></table></figure></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单贪心。<br>拿最高价格对应最大折扣即可。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">double</span> lb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">lb arr[MAXN];</span><br><span class="line">lb brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">while</span>(t--) &#123;</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;arr[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%Lf"</span>,&amp;brr[i]);</span><br><span class="line">			</span><br><span class="line">		sort(arr+<span class="number">1</span>,arr+n+<span class="number">1</span>);</span><br><span class="line">		sort(brr+<span class="number">1</span>,brr+n+<span class="number">1</span>);</span><br><span class="line">		lb ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=n;i&lt;=n;i++,j--)</span><br><span class="line">			ans+=arr[i]*brr[j];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.3Lf\n"</span>,ans); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -2282,6 +2108,180 @@
 <p>备注:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&lt;=n&lt;=10</span><br><span class="line"></span><br><span class="line">2&lt;=ai&lt;=1000</span><br></pre></td></tr></table></figure></p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单DFS。<br>把每个数的质因子求出来后，把所有答案搜一遍即可，注意不能从两个不同的数取相同的质因子。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">2e3</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vt[<span class="number">12</span>];</span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">12</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="keyword">int</span> qu[<span class="number">12</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isprime</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p=<span class="built_in">sqrt</span>(t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=p;i++)</span><br><span class="line">		<span class="keyword">if</span>(t%i==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> tmp=<span class="built_in">sqrt</span>(arr[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=arr[i];j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i]%j==<span class="number">0</span>&amp;&amp;isprime(j))</span><br><span class="line">				vt[i].push_back(j);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;i++) &#123;</span></span><br><span class="line"><span class="comment">//		cout&lt;&lt;arr[i]&lt;&lt;": ";</span></span><br><span class="line"><span class="comment">//		for(int j=0;j&lt;vt[i].size();j++)</span></span><br><span class="line"><span class="comment">//			cout&lt;&lt;vt[i][j]&lt;&lt;' ';</span></span><br><span class="line"><span class="comment">//		cout&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> cnt,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">		<span class="keyword">if</span>(qu[i]==x)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> cnt,<span class="keyword">int</span> sum,<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cnt&gt;=n) &#123;</span><br><span class="line">		ans=min(ans,sum);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vt[p].size();i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(judge(cnt,vt[p][i])) &#123;</span><br><span class="line">			qu[cnt]=vt[p][i];</span><br><span class="line">			DFS(cnt+<span class="number">1</span>,sum+vt[p][i],p+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i]);</span><br><span class="line">	init();</span><br><span class="line">	ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	DFS(<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">0x3f3f3f3f</span>)</span><br><span class="line">		ans=<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/30/比赛/北信科十一届竞赛-D/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）D kotori和迷宫</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:26:44+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:31:27+08:00">
+                2019-06-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/比赛/" itemprop="url" rel="index">
+                    <span itemprop="name">比赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/30/比赛/北信科十一届竞赛-D/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-D/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/D" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/D</a><br>来源：牛客网</p>
+<p>kotori在一个n*m迷宫里，迷宫的最外层被岩浆淹没，无法涉足，迷宫内有k个出口。kotori只能上下左右四个方向移动。她想知道有多少出口是她能到达的，最近的出口离她有多远？</p>
+<p>输入描述:<br>第一行为两个整数n和m，代表迷宫的行和列数 (1≤n,m≤30)</p>
+<p>后面紧跟着n行长度为m的字符串来描述迷宫。’k’代表kotori开始的位置，’.’代表道路，’*’代表墙壁，’e’代表出口。保证输入合法。<br>输出描述:<br>若有出口可以抵达，则输出2个整数，第一个代表kotori可选择的出口的数量，第二个代表kotori到最近的出口的步数。（注意，kotori到达出口一定会离开迷宫）</p>
+<p>若没有出口可以抵达，则输出-1。<br>示例1<br>输入<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span> <span class="number">8</span></span><br><span class="line">e.*.*e.*</span><br><span class="line">.**.*.*e</span><br><span class="line">..*k**..</span><br><span class="line">***.*.e*</span><br><span class="line">.**.*.**</span><br><span class="line">*......e</span><br></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 7</span><br></pre></td></tr></table></figure></p>
+<p>说明<br>可供选择坐标为[4,7]和[6,8]，到kotori的距离分别是8和7步。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单BFS，需要注意的是，一遇到出口就离开迷宫了，所以出口不能当作通道走，不能以此走到其他位置。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,dep;</span><br><span class="line">	node(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> dep):x(x),y(y),dep(dep)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="keyword">char</span> str[MAXN][MAXN];</span><br><span class="line"><span class="keyword">bool</span> visit[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> dx[]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">bool</span> flag;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;node&gt; qu;</span><br><span class="line">	qu.push(node(x,y,<span class="number">0</span>));</span><br><span class="line">	<span class="built_in">memset</span>(visit,<span class="literal">false</span>,<span class="keyword">sizeof</span>(visit));</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty()) &#123;</span><br><span class="line">		node t=qu.front();qu.pop();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(str[t.x][t.y]==<span class="string">'e'</span>) &#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			ans=min(ans,t.dep);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		visit[t.x][t.y]=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> tx=t.x+dx[i];</span><br><span class="line">			<span class="keyword">int</span> ty=t.y+dy[i];</span><br><span class="line">			<span class="keyword">if</span>(tx&gt;=<span class="number">0</span>&amp;&amp;tx&lt;n&amp;&amp;ty&gt;=<span class="number">0</span>&amp;&amp;ty&lt;m&amp;&amp;!visit[tx][ty]&amp;&amp;str[tx][ty]!=<span class="string">'*'</span>)</span><br><span class="line">				qu.push(node(tx,ty,t.dep+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">true</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">int</span> sx,sy;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">			<span class="keyword">if</span>(str[i][j]==<span class="string">'k'</span>) &#123;</span><br><span class="line">				sx=i;</span><br><span class="line">				sy=j;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">false</span>;</span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	<span class="keyword">while</span>(!flag) &#123;</span><br><span class="line">		BFS(sx,sy);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">0x3f3f3f3f</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,cnt,ans);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -2927,7 +2927,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2995,6 +2995,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="http://aidabuda.cn" title="一木博客" target="_blank">一木博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://luan.ma" title="乱码博客" target="_blank">乱码博客</a>
                   </li>
                 
               </ul>
