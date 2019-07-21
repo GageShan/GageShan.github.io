@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="比赛," />
+  <meta name="keywords" content="单调栈," />
 
 
 
@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="题目链接：https://ac.nowcoder.com/acm/contest/940/J来源：牛客网 andy又开始种树了，他觉得老用魔法不太好，这次他决定老老实实地每天种一棵树，第i天种一颗高度为hi的树，按理说老老实实种树就完事了，哪有那么多问题呢？但是他们学校有个叫kotori的人，非常爱砍树，每天都会把所有andy已经种下的树砍掉ci，如果第i天的时候某棵树的高度已经小于等于ci了，那">
-<meta name="keywords" content="比赛">
+<meta name="description" content="题目链接：https://ac.nowcoder.com/acm/contest/881/A来源：牛客网题目描述Two arrays u and v each with m distinct elements are called equivalent if and only if RMQ(u,l,r)=RMQ(v,l,r) for all 1≤l≤r≤mwhere RMQ(w,l,r) deno">
+<meta name="keywords" content="单调栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了">
-<meta property="og:url" content="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/index.html">
+<meta property="og:title" content="2019牛客暑期多校一 A-Equivalent Prefixes(单调栈)">
+<meta property="og:url" content="https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="题目链接：https://ac.nowcoder.com/acm/contest/940/J来源：牛客网 andy又开始种树了，他觉得老用魔法不太好，这次他决定老老实实地每天种一棵树，第i天种一颗高度为hi的树，按理说老老实实种树就完事了，哪有那么多问题呢？但是他们学校有个叫kotori的人，非常爱砍树，每天都会把所有andy已经种下的树砍掉ci，如果第i天的时候某棵树的高度已经小于等于ci了，那">
+<meta property="og:description" content="题目链接：https://ac.nowcoder.com/acm/contest/881/A来源：牛客网题目描述Two arrays u and v each with m distinct elements are called equivalent if and only if RMQ(u,l,r)=RMQ(v,l,r) for all 1≤l≤r≤mwhere RMQ(w,l,r) deno">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-30T08:17:51.613Z">
+<meta property="og:updated_time" content="2019-07-20T03:00:28.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了">
-<meta name="twitter:description" content="题目链接：https://ac.nowcoder.com/acm/contest/940/J来源：牛客网 andy又开始种树了，他觉得老用魔法不太好，这次他决定老老实实地每天种一棵树，第i天种一颗高度为hi的树，按理说老老实实种树就完事了，哪有那么多问题呢？但是他们学校有个叫kotori的人，非常爱砍树，每天都会把所有andy已经种下的树砍掉ci，如果第i天的时候某棵树的高度已经小于等于ci了，那">
+<meta name="twitter:title" content="2019牛客暑期多校一 A-Equivalent Prefixes(单调栈)">
+<meta name="twitter:description" content="题目链接：https://ac.nowcoder.com/acm/contest/881/A来源：牛客网题目描述Two arrays u and v each with m distinct elements are called equivalent if and only if RMQ(u,l,r)=RMQ(v,l,r) for all 1≤l≤r≤mwhere RMQ(w,l,r) deno">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/"/>
+  <link rel="canonical" href="https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/"/>
 
 
 
 
 
-  <title>北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了 | GageShan</title>
+  <title>2019牛客暑期多校一 A-Equivalent Prefixes(单调栈) | GageShan</title>
   
 
 
@@ -325,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了</h1>
+          <h1 class="post-title" itemprop="name headline">2019牛客暑期多校一 A-Equivalent Prefixes(单调栈)</h1>
         
 
         <div class="post-meta">
@@ -354,8 +354,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:40:08+08:00">
-                2019-06-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-20T09:57:49+08:00">
+                2019-07-20
               </time>
             
 
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T16:17:51+08:00">
-                2019-06-30
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-20T11:00:28+08:00">
+                2019-07-20
               </time>
             
           </span>
@@ -407,9 +407,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/06/30/比赛/北信科十一届竞赛-J/#comments" itemprop="discussionUrl">
+                <a href="/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科十一届竞赛-J/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -442,19 +442,23 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/J" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/J</a><br>来源：牛客网</p>
-<p>andy又开始种树了，他觉得老用魔法不太好，这次他决定老老实实地每天种一棵树，第i天种一颗高度为hi的树，按理说老老实实种树就完事了，哪有那么多问题呢？但是他们学校有个叫kotori的人，非常爱砍树，每天都会把所有andy已经种下的树砍掉ci，如果第i天的时候某棵树的高度已经小于等于ci了，那么这棵树就会死亡，以后再也不会被砍了。并且如果到了第n天，有一些树还没被砍，那么kotori就会在第n + 1天把这些树全部砍死。</p>
-<p>输入描述:<br>第一行输入一个整数n，表示andy会种n天的树。</p>
-<p>第二行含有n个数hi，表示andy在第i天种的树的高度为hi米。</p>
-<p>第三行含有n个ci，表示kotori在第i天把所有andy已经种下的树砍掉ci。<br>1 &lt;= n, hi, ci &lt;= 105<br>输出描述:<br>输出一行n个数di，每个数后面有一个空格(包括最后一个数)，最后需要换行。</p>
-<p>表示andy第i天种的树会在第di天死亡，如果第n天这棵树还没有死亡，则输出n + 1。</p>
-<p>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">5 7 5 4 1 7 4 3 10 6 </span><br><span class="line">6 4 2 4 1 8 5 7 3 5</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 4 4 4 5 6 7 8 11 11</span><br></pre></td></tr></table></figure></p>
-<p>说明<br>第1天andy种的树高度为5，这天kotori要把andy已经种下的所有树砍掉6，所以第1棵树在第1天就死掉了。</p>
-<p>第2天andy种的树高度为7，第2天被kotori砍掉了4，还剩3，第3天被kotori砍掉了2，还剩1。第4天被砍掉4，所以它在第4天死亡。</p>
-<p>第10天andy种下的数高度为6，第10天被kotori砍掉了5，还剩1，也就是说它在第10天还没有死亡，所以它会在第11天被kotori砍死（参见题目描述最后一句）。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先求下砍树高度的前缀和，那么对于前缀数组的每个数就是每天所要砍掉树的长度总和。就可以将问题转化为：对于每棵树来讲，它的总长度就是前一天所要砍掉的长度加上现存的长度，然后就是求出总长度在哪一天能全部砍完了。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">ll arr[MAXN];</span><br><span class="line">ll brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;arr[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;brr[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		brr[i]+=brr[i<span class="number">-1</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		ll tmp=arr[i]+brr[i<span class="number">-1</span>];</span><br><span class="line">		ll pos=lower_bound(brr+<span class="number">1</span>,brr+n+<span class="number">1</span>,tmp)-brr;</span><br><span class="line">		<span class="keyword">if</span>(pos&gt;=<span class="number">1</span>&amp;&amp;pos&lt;=n)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld "</span>,pos);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld "</span>,n+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/881/A" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/881/A</a><br>来源：牛客网<br>题目描述<br>Two arrays u and v each with m distinct elements are called equivalent if and only if RMQ(u,l,r)=RMQ(v,l,r) for all 1≤l≤r≤m<br>where RMQ(w,l,r) denotes the index of the minimum element among wl,wl+1,…,wr.<br>Since the array contains distinct elements, the definition of minimum is unambiguous.</p>
+<p>Bobo has two arrays a and b each with n distinct elements. Find the maximum number p≤np≤n where {a1,a2,…,ap} and {b1,b2,…,bp} are equivalent.<br>输入描述:<br>The input consists of several test cases and is terminated by end-of-file.</p>
+<p>The first line of each test case contains an integer n.<br>The second line contains n integers a1,a2,…,ana1,a2,…,an.<br>The third line contains n integers b1,b2,…,bnb1,b2,…,bn.</p>
+<ul>
+<li>1≤n≤10<sup>5</sup></li>
+<li>1≤ai,bi≤n</li>
+<li>{a1,a2,…,an} are distinct.</li>
+<li>{b1,b2,…,bn} are distinct.</li>
+<li>The sum of n does not exceed 5×10<sup>5</sup>.</li>
+</ul>
+<p>输出描述:<br>For each test case, print an integer which denotes the result.<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1 2</span><br><span class="line">2 1</span><br><span class="line">3</span><br><span class="line">2 1 3</span><br><span class="line">3 1 2</span><br><span class="line">5</span><br><span class="line">3 1 5 2 4</span><br><span class="line">5 2 4 3 1</span><br></pre></td></tr></table></figure></p>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>题目求最大p使得在区间[1,p]间，对于所有的区间段都有rmq(a)==rmq(b)。</p>
+<p>可以用两个栈分别记录两个数组的相关信息。<br>栈底就记录该数组在当前区间也就是[1,L]间最小的元素，它上面的值都比它大。那么用栈顶元素与数组中还未访问的元素（记该元素在数组中的位置为n）比较，如果栈顶元素大于未访问元素，表明在区间[n-1,n]内已经确定谁是最小的（也就是下标为n的元素）。栈顶元素出栈，继续比较，直到碰到栈顶数比arr[n]小，就表明在区间[1,n]间，栈顶元素是最小的，从而不需要拿栈顶所在数组位置（记位置为m）前的数与arr[n]比较了，因为之前已经确定区间[m,n]的情况，而不管在包含m的区间段内（如[1,m],[2,m]）,arr[m]是最小的。</p>
+<p>这样，分别统计两个栈的出栈情况，就可以求出最长的p了。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> arr[MAXN],brr[MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;brr[i]);</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s1,s2;</span><br><span class="line">        <span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s1.size()&amp;&amp;arr[s1.top()]&gt;arr[i]) &#123;</span><br><span class="line">                s1.pop();</span><br><span class="line">                t1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(s2.size()&amp;&amp;brr[s2.top()]&gt;brr[i]) &#123;</span><br><span class="line">                s2.pop();</span><br><span class="line">                t2++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(t1!=t2) &#123;</span><br><span class="line">                ans=i<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s1.push(i);</span><br><span class="line">            s2.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -482,7 +486,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/" title="北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了">https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/</a>
+    <a href="https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/" title="2019牛客暑期多校一 A-Equivalent Prefixes(单调栈)">https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -497,7 +501,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/比赛/" rel="tag"><i class="fa fa-tag"></i> 比赛</a>
+            <a href="/tags/单调栈/" rel="tag"><i class="fa fa-tag"></i> 单调栈</a>
           
         </div>
       
@@ -510,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/30/比赛/北信科十一届竞赛-H/" rel="next" title="北信科第十一届程序设计竞赛（重现赛）H andy和购物">
-                <i class="fa fa-chevron-left"></i> 北信科第十一届程序设计竞赛（重现赛）H andy和购物
+              <a href="/2019/07/07/数学/逆元/" rel="next" title="逆元(个人加深理解)">
+                <i class="fa fa-chevron-left"></i> 逆元(个人加深理解)
               </a>
             
           </div>
@@ -520,8 +524,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/30/比赛/北信科十一届竞赛-I/" rel="prev" title="北信科第十一届程序设计竞赛（重现赛）I andy种树">
-                北信科第十一届程序设计竞赛（重现赛）I andy种树 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/J-Fraction Comparision/" rel="prev" title="2019牛客暑期多校一 J-Fraction Comparision（取模技巧）">
+                2019牛客暑期多校一 J-Fraction Comparision（取模技巧） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -617,7 +621,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -639,7 +643,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -832,7 +836,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共70.4k字</span>
+  <span class="post-count">博客全站共71.9k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -989,9 +993,9 @@ show_date_time();
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://shann.xyz/2019/06/30/比赛/北信科十一届竞赛-J/';
-          this.page.identifier = '2019/06/30/比赛/北信科十一届竞赛-J/';
-          this.page.title = '北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了';
+          this.page.url = 'https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/';
+          this.page.identifier = '2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/';
+          this.page.title = '2019牛客暑期多校一 A-Equivalent Prefixes(单调栈)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';

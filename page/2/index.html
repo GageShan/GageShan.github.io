@@ -325,6 +325,535 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-B/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）B kotori和气球</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:18:42+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:26:18+08:00">
+                2019-06-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/比赛/" itemprop="url" rel="index">
+                    <span itemprop="name">比赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-B/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/B" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/B</a><br>来源：牛客网</p>
+<p>题目描述<br>kotori最近迷上了摆气球的游戏。她一共有n种气球，每种气球有无数个。她要拿出若干个气球摆成一排。</p>
+<p>但是，由于气球被施放了魔法，同样种类的气球如果相邻会发生爆炸，因此若两个相邻的气球种类相同被视为不合法的。</p>
+<p>kotori想知道，摆成一排m个一共有多少种不同的方案？</p>
+<p>由于该数可能过大，只需要输出其对109取模的结果。</p>
+<p>输入描述:<br>输入仅有一行，为两个整数n和m(1≤n,m≤100)<br>输出描述:<br>输出一个整数，为方案数对109取模的结果。</p>
+<p>示例1</p>
+<p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure></p>
+<p>说明</p>
+<ul>
+<li>假设3种气球标记为1、2、3，那么共有以下6种方案：[1,2] [1,3] [2,1] [2,3] [3,1] [3,2]。</li>
+</ul>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>相邻的位置不能放置相同的气球，易得这是各排列组合问题，也就是第一个位置有n种摆法，剩下的就是n-1种了。<br>其实，这道题还是数据规模太小了，稍微大点就要用到快速幂了。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    ll n,m;</span><br><span class="line">    scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m);</span><br><span class="line">    ll ans=n;</span><br><span class="line">    for(int i=2;i&lt;=m;i++)</span><br><span class="line">        ans=ans*(n-1)%109;</span><br><span class="line">    printf(&quot;%lld\n&quot;,ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/25/数学/牛客练习赛48-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/25/数学/牛客练习赛48-C/" itemprop="url">牛客练习赛48-小w的a=b问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-25T19:30:20+08:00">
+                2019-06-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-25T21:19:39+08:00">
+                2019-06-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/25/数学/牛客练习赛48-C/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/25/数学/牛客练习赛48-C/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://ac.nowcoder.com/acm/contest/923/C" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/923/C</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>分析发糖的情况：</p>
+<ul>
+<li>第一个人发糖，从位置pos开始向右每个人发一个糖，可以知道左右位置发糖数量是独立的，也就是说跟前面一个发多少个糖是没有关系的。那么每次前后发糖数量的递推公式为d[i-1]=d[i]。</li>
+<li>第二个人发糖，从位置pos开始向右发糖，遇到的第一个人发一个糖遇到的第二个人发两个糖……以此类推，遇到的第K个人发K个糖。假如在pos位置一共发了三次糖，那么d[i-1]=d1+d2+d3，d[i]=(d1+1)+(d2+2)+(d3+3)，可推导得d[i-1]=d[i]+3，推广到在pos位置发了n次糖，则d[i-1]+n=d[i]。</li>
+<li>第三个人发糖，从位置pos开始向右发糖，遇到的第一个人发一个，第二个发2$^2$，第三个发3$^2$个，第K个人发第K$^2$个糖。假如在pos位置一共发了三次糖，那么d[i-1]=d1$^2$+d2$^2$+d3$^2$，d[i]=(d1+1)$^2$+(d2+1)$^2$+(d3+1)$^2$，推导得d[i-1]+2(d1+d2+d2)+3=d[i],推广到发n次糖，那么d[i-1]+2(d1+d2+d2)+n=d[i]。还有一个问题，通过前后发糖得位置，可以知道(d1$^2$+d2$^2$+d3$^2$)的数量，但是却无法得知(d1+d2+d3)的值，实际上从前面发d1、d2、d3次糖可以知道，(d1+d2+d3)就是在当前位置发糖的次数，用一个数组sum表示就是sum[i]=sum[i-1]+n。</li>
+</ul>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> ll MOD=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">ll d1[MAXN];</span><br><span class="line">ll d2[MAXN];</span><br><span class="line">ll d3[MAXN];</span><br><span class="line">ll sum[MAXN];</span><br><span class="line">ll cnt[<span class="number">4</span>][MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("in.txt","r",stdin);</span></span><br><span class="line">    ll T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(d1,<span class="number">0</span>,<span class="keyword">sizeof</span>(d1));</span><br><span class="line">        <span class="built_in">memset</span>(d2,<span class="number">0</span>,<span class="keyword">sizeof</span>(d2));</span><br><span class="line">        <span class="built_in">memset</span>(d3,<span class="number">0</span>,<span class="keyword">sizeof</span>(d3));</span><br><span class="line">        <span class="built_in">memset</span>(sum,<span class="number">0</span>,<span class="keyword">sizeof</span>(sum));</span><br><span class="line">        <span class="built_in">memset</span>(cnt,<span class="number">0</span>,<span class="keyword">sizeof</span>(cnt));</span><br><span class="line">        ll n,m;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</span><br><span class="line">        <span class="keyword">while</span>(m--) &#123;</span><br><span class="line">            ll type,pos;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;type,&amp;pos);</span><br><span class="line">            <span class="keyword">if</span>(type==<span class="number">1</span>)</span><br><span class="line">                d1[pos]++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(type==<span class="number">2</span>)</span><br><span class="line">                cnt[<span class="number">2</span>][pos]++;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                cnt[<span class="number">3</span>][pos]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            cnt[<span class="number">2</span>][i]=(cnt[<span class="number">2</span>][i]+cnt[<span class="number">2</span>][i<span class="number">-1</span>])%MOD;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            cnt[<span class="number">3</span>][i]=(cnt[<span class="number">3</span>][i]+cnt[<span class="number">3</span>][i<span class="number">-1</span>])%MOD;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            sum[i]=(sum[i<span class="number">-1</span>]+cnt[<span class="number">3</span>][i])%MOD;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            d1[i]=(d1[i]+d1[i<span class="number">-1</span>])%MOD;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            d2[i]=(d2[i<span class="number">-1</span>]+cnt[<span class="number">2</span>][i])%MOD;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            d3[i]=(d3[i<span class="number">-1</span>]+<span class="number">2</span>*sum[i<span class="number">-1</span>]+cnt[<span class="number">3</span>][i])%MOD;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld "</span>,(d1[i]+d2[i]+d3[i])%MOD);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/22/数学/牛客练习赛48-B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/22/数学/牛客练习赛48-B/" itemprop="url">牛客练习赛48-小w的a=b问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-22T17:19:50+08:00">
+                2019-06-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-26T10:49:30+08:00">
+                2019-06-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/22/数学/牛客练习赛48-B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/22/数学/牛客练习赛48-B/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://ac.nowcoder.com/acm/contest/923/B" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/923/B</a></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>说实话，感觉还是做题做得少了，刚开始看到这个题时，脑子里想的全是暴力模拟，想着如何把阶乘转化为另外可以解决的形式。</p>
+<p>先前的想法：假如现在有两个数组，一个数组中的元素对另一个数组中的数求相差，如，a[1]=4，b[1]=2，那么a数组比b数组多一个4和一个3，计算数组间的相差，那么可以得到另外两个数组记录了不同的元素，这样就把阶乘转化为了连乘，最后将分别将两个数组的元素乘起来，再比较。但实际上，在计算相差时，可能得到的数据量特别的大。</p>
+<p>官方题解：先预处理每一个数的阶乘在不同模系下的结果求出来，保证结果不超longlong。那么对两个数组的元素，就已经求出了阶乘结果，就下来就只需要求连乘，同样，对连乘的结果在与对阶乘取模的相同模下取模，比较两个数组的答案是否相同即可。</p>
+<p>但这样并不严谨，因为不管你取的模系有多大（longlong范围内），总会有两个不相同的数对两个不同的数取模后的结果相同。在牛客的讨论群里问过出题人，得到的解答是能取到的这两个数的概率太低了。orz。</p>
+<p>所以，老老实实用质因数分解吧。</p>
+<p>这道题学到了，在所求结果可能超longlong的情况下，要借助取模公式化简结果，不同一昧的死暴力模拟。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>对不同模系取模代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll MAXN=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ll MOD[]=&#123;<span class="number">1000000000</span>+<span class="number">7</span>,<span class="number">1000000</span>+<span class="number">7</span>,<span class="number">100000000</span>+<span class="number">7</span>,<span class="number">20000000</span>+<span class="number">7</span>,<span class="number">10000000</span>+<span class="number">7</span>&#125;;</span><br><span class="line">ll arr[MAXN];</span><br><span class="line">ll brr[MAXN];</span><br><span class="line">ll pre[MAXN][<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//cout&lt;&lt;MOD[4]&lt;&lt;endl;</span></span><br><span class="line">    <span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</span><br><span class="line">        pre[<span class="number">0</span>][i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(ll j=<span class="number">1</span>;j&lt;=MAXN;j++)</span><br><span class="line">            pre[j][i]=pre[j<span class="number">-1</span>][i]*j%MOD[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        ll n,m;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;arr[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;brr[i]);</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</span><br><span class="line">            ll tmpa=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(ll j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">                tmpa=pre[arr[j]][i]*tmpa%MOD[i];</span><br><span class="line">            ll tmpb=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(ll j=<span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">                tmpb=pre[brr[j]][i]*tmpb%MOD[i];</span><br><span class="line">            <span class="keyword">if</span>(tmpa!=tmpb) &#123;</span><br><span class="line">                flag=<span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">"unequal\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"equal\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>质因数分解</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> prime[MAXN]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> primes[MAXN];</span><br><span class="line"><span class="keyword">int</span> arr[MAXN];</span><br><span class="line"><span class="keyword">int</span> brr[MAXN];</span><br><span class="line"><span class="keyword">int</span> cnt[<span class="number">2</span>][MAXN];</span><br><span class="line"><span class="keyword">int</span> pt;</span><br><span class="line"><span class="keyword">int</span> number[<span class="number">2</span>][MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">judgePrime</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!prime[i])</span><br><span class="line">			primes[pt++]=i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;pt&amp;&amp;(i*primes[j])&lt;=MAXN;j++)	&#123;</span><br><span class="line">			prime[i*primes[j]]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(!(i%primes[j]))</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divi</span><span class="params">(<span class="keyword">int</span> op,<span class="keyword">int</span> x,<span class="keyword">int</span> time)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmpx=x;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;primes[j]*primes[j]&lt;=tmpx;j++) &#123;</span><br><span class="line">        <span class="keyword">int</span> cnta=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(x%primes[j]==<span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(x&gt;<span class="number">1</span>&amp;&amp;x%primes[j]==<span class="number">0</span>) &#123;</span><br><span class="line">                cnta++;</span><br><span class="line">                x/=primes[j];</span><br><span class="line">                cnt[op][primes[j]]+=time;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x&gt;<span class="number">1</span>)</span><br><span class="line">        cnt[op][x]+=time;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    pt=<span class="number">0</span>;</span><br><span class="line">    judgePrime();</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n,m;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=max(m,n);i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">        	cnt[<span class="number">0</span>][i]=cnt[<span class="number">1</span>][i]=<span class="number">0</span>;</span><br><span class="line">        	number[<span class="number">0</span>][i]=number[<span class="number">1</span>][i]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> maxa=<span class="number">0</span>,maxb=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> a;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">            number[<span class="number">0</span>][a]++;</span><br><span class="line">            maxa=max(maxa,a);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> a;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">            number[<span class="number">1</span>][a]++;</span><br><span class="line">            maxb=max(maxb,a);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> maxaa=max(maxa,maxb);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=maxaa;i&gt;=<span class="number">1</span>;i--) &#123;</span><br><span class="line">        	number[<span class="number">0</span>][i<span class="number">-1</span>]+=number[<span class="number">0</span>][i];</span><br><span class="line">        	number[<span class="number">1</span>][i<span class="number">-1</span>]+=number[<span class="number">1</span>][i];</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=maxaa;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(number[<span class="number">0</span>][i]&gt;=<span class="number">1</span>) &#123;</span><br><span class="line">                divi(<span class="number">0</span>,i,number[<span class="number">0</span>][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(number[<span class="number">1</span>][i]&gt;=<span class="number">1</span>) &#123;</span><br><span class="line">                divi(<span class="number">1</span>,i,number[<span class="number">1</span>][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;        </span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;pt;i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt[<span class="number">0</span>][primes[i]]!=cnt[<span class="number">1</span>][primes[i]]) &#123;</span><br><span class="line">                flag=<span class="literal">false</span>;</span><br><span class="line"><span class="comment">//                cout&lt;&lt;primes[i]&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">//                cout&lt;&lt;cnt[0][primes[i]]&lt;&lt;' '&lt;&lt;cnt[1][primes[i]]&lt;&lt;endl;</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="built_in">printf</span>(<span class="string">"equal\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"unequal\n"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/20/简单搜索/洛谷P1019 单词接龙/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2409,506 +2938,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/04/23/划水日常/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/23/划水日常/" itemprop="url">划水日常</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-23T18:52:29+08:00">
-                2019-04-23
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-21T10:41:15+08:00">
-                2019-06-21
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/23/划水日常/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/04/23/划水日常/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>记录学习训练中的日常，时刻提醒自己哪些事情不能做。<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/23/划水日常/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/04/22/比赛/Codeforces-516-Div. 2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/22/比赛/Codeforces-516-Div. 2/" itemprop="url">Codeforces-516-Div.2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-22T20:09:54+08:00">
-                2019-04-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-24T09:55:16+08:00">
-                2019-04-24
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/22/比赛/Codeforces-516-Div. 2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/04/22/比赛/Codeforces-516-Div. 2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="A-Make-a-triangle"><a href="#A-Make-a-triangle" class="headerlink" title="A    Make a triangle!"></a>A    Make a triangle!</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Masha has three sticks of length a, b and c centimeters respectively. In one minute Masha can pick one arbitrary stick and increase its length by one centimeter. She is not allowed to break sticks.</p>
-<p>What is the minimum number of minutes she needs to spend increasing the stick’s length in order to be able to assemble a triangle of positive area. Sticks should be used as triangle’s sides (one stick for one side) and their endpoints should be located at triangle’s vertices.<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/比赛/Codeforces-516-Div. 2/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/04/19/比赛/CCPC2018-湖南全国邀请赛-重现赛/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/19/比赛/CCPC2018-湖南全国邀请赛-重现赛/" itemprop="url">CCPC2018-湖南全国邀请赛-重现赛</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-19T12:03:29+08:00">
-                2019-04-19
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T12:06:53+08:00">
-                2019-04-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/19/比赛/CCPC2018-湖南全国邀请赛-重现赛/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/04/19/比赛/CCPC2018-湖南全国邀请赛-重现赛/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="A-Easy-h-index-HDU-6276"><a href="#A-Easy-h-index-HDU-6276" class="headerlink" title="A - Easy $h$-index HDU - 6276"></a>A - Easy $h$-index HDU - 6276</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>比赛题目：<a href="http://acm.hdu.edu.cn/downloads/2018ccpc_hn.pdf" target="_blank" rel="noopener">http://acm.hdu.edu.cn/downloads/2018ccpc_hn.pdf</a> </p>
-<p>The h-index of an author is the largest h where he has at least h papers with citations not less than h. </p>
-<p>Bobo has published many papers.<br>Given a0,a1,a2,…,an which means Bobo has published ai papers with citations exactly i, find the h-index of Bobo.<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/19/比赛/CCPC2018-湖南全国邀请赛-重现赛/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2967,7 +2996,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2989,7 +3018,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -3165,7 +3194,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共70.4k字</span>
+  <span class="post-count">博客全站共71.9k字</span>
 </div>
         
 <div class="busuanzi-count">
