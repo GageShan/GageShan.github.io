@@ -476,6 +476,364 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/23/动态规划/银联极客2-码队GO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/23/动态规划/银联极客2-码队GO/" itemprop="url">银联极客第二场-码队GO（dp）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-23T00:43:38+08:00">
+                2019-07-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-23T08:49:29+08:00">
+                2019-07-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/动态规划/" itemprop="url" rel="index">
+                    <span itemprop="name">动态规划</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/23/动态规划/银联极客2-码队GO/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/07/23/动态规划/银联极客2-码队GO/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>码队最近开发了一款基于虚拟现实的「码队GO」寻宝手游，他打算在银联唐镇园区里测试这个游戏。这个游戏规定，必须选择一个正方形的空旷区域来寻宝。但银联唐镇园区里有很多地方都会有各种各样的障碍物，码队想要请你帮忙，帮他找到一个最佳的游戏测试区域。</p>
+<p>问题可以看成一个n×m 的方格，共有 n 行 m 列，每个小方格由 <em>  和  . 表示。（ </em> 代表是障碍物， .  代表是空地）。你需要在这片区域上选择一个面积最大的正方形，且保证这个正方形内是没有障碍物的。</p>
+<p>请你帮助码队找到这个最佳的正方形区域。</p>
+<p>输入格式</p>
+<p>有多组数据。</p>
+<p>第一行输入一个整数，表示有 T 组数据（ 1≤T≤20 ）。</p>
+<p>对于每一组测试数据：第一行输入两个整数 n,m，以空格分隔，表示方格为 n 行，m 列（1≤n,m≤300 ）。</p>
+<p>接下来输入 nn 行 mm 列方格，字符与字符之间无空格（字符仅可能为 *  或 .）。</p>
+<p>输出格式<br>对于每一组测试数据，输出一行。</p>
+<p>每行只包含一个整数，表示这个面积最大的正方形的面积。</p>
+<p>输出时每行末尾的多余空格，不影响答案正确性</p>
+<p>样例输入1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3 3</span><br><span class="line">***</span><br><span class="line">.**</span><br><span class="line">*..</span><br></pre></td></tr></table></figure></p>
+<p>样例输出1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<p>样例输入2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3 5</span><br><span class="line">.*...</span><br><span class="line">.....</span><br><span class="line">.....</span><br></pre></td></tr></table></figure></p>
+<p>样例输出2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>给定一个矩阵，问最大的只包含<code>.</code>的正方形的面积是多少。<br>可以知道，如果拿一个点当成正方形的右下角的顶点的话，该点能否构成正方形，由它左边、上边和左上方有多少<code>.</code>决定，而由正方形的性质可知，取三者最小值，就是该点能够构成的正方形的最大边长。<br>转移方程为<code>dp[i][j]=min(dp[i-1][j-1],dp[i-1][j],dp[i][j-1])+1</code>;</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> GCC optimize(2)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">305</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">char</span> str[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> dp[MAXN][MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,str[i]+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(str[i][j]==<span class="string">'.'</span>)</span><br><span class="line">               dp[i][j]=min(dp[i<span class="number">-1</span>][j<span class="number">-1</span>],min(dp[i<span class="number">-1</span>][j],dp[i][j<span class="number">-1</span>]))+<span class="number">1</span>;</span><br><span class="line">            ans=max(ans,dp[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        ans=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans*ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/23/技巧题/Traffic HDU - 6573 /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/23/技巧题/Traffic HDU - 6573 /" itemprop="url">Traffic HDU - 6573</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-23T00:16:21+08:00">
+                2019-07-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-07-23T00:42:44+08:00">
+                2019-07-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/思维题/" itemprop="url" rel="index">
+                    <span itemprop="name">思维题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/23/技巧题/Traffic HDU - 6573 /#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/07/23/技巧题/Traffic HDU - 6573 /" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://cn.vjudge.net/problem/HDU-6573" target="_blank" rel="noopener">https://cn.vjudge.net/problem/HDU-6573</a></p>
+<p>Avin is observing the cars at a crossroads. He finds that there are n cars running in the east-west direction with the i-th car passing the intersection at time ai . There are another m cars running in the north-south direction with the i-th car passing the intersection at time bi . If two cars passing the intersections at the same time, a traffic crash occurs. In order to achieve world peace and harmony, all the cars running in the north-south direction wait the same amount of integral time so that no two cars bump. You are asked the minimum waiting time.</p>
+<p>Input</p>
+<p>The first line contains two integers n and m (1 ≤ n, m ≤ 1, 000). The second line contains n distinct integers ai (1 ≤ ai ≤ 1, 000). The third line contains m distinct integers bi (1 ≤ bi ≤ 1, 000).</p>
+<p>Output</p>
+<p>Print a non-negative integer denoting the minimum waiting time.<br>Sample Input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1 2</span><br><span class="line">2</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure></p>
+<p>Sample Output<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br></pre></td></tr></table></figure></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>刚开始做，确实是没理解题意。实际上题目要求的是，南北方向行驶的车整体停下来的时间，求这个最小值。</p>
+<p>原先的做法：如果当前东西向的车与南北向的车在同一时间走，那么南北向车（记为a）就应该停下来，也就是停下来的时间加1，然后继续比较后面的车。实际上如果南北向后面的车（记为b）又与东西向的车通过时间相同，又要停下来，这时候b停下来2分钟，a只听了1分钟。这是不对的。南北向每辆车停的时间都要相同。</p>
+<p>正确做法：从0开始枚举南北向停车时间，那么当南北向的（通过时间+停止时间）也就是真正的停车时间都与东西向的通过时间不同，这就是最小停止时间。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e4</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> arr[MAXN],brr[MAXN];</span><br><span class="line"><span class="keyword">bool</span> ta[MAXN],tb[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m)!=EOF) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(ta,<span class="literal">false</span>,<span class="keyword">sizeof</span>(ta));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i]),ta[arr[i]]=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;brr[i]);</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="built_in">memset</span>(tb,<span class="literal">false</span>,<span class="keyword">sizeof</span>(tb));</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">                tb[brr[i]+ans]=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2000</span>;i++)</span><br><span class="line">                <span class="keyword">if</span>(ta[i]||tb[i])</span><br><span class="line">                    cnt++;</span><br><span class="line">            <span class="keyword">if</span>(cnt==n+m)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/E-ABBA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1979,6 +2337,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）I andy种树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:40:08+08:00">
+                2019-06-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:58:06+08:00">
+                2019-06-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/比赛/" itemprop="url" rel="index">
+                    <span itemprop="name">比赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/I" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/I</a><br>来源：牛客网</p>
+<p>题目描述<br>andy在他的庄园里种了n棵树，排列成一排，标号为1到n。最开始的时候n棵树的高度都是0，也就是种子刚刚被埋下，树还没有长出来。</p>
+<p>andy会一种魔法，他每使用一次魔法，就可以让树标号落在连续区间[l, r]里的树的高度增加1。他可以使用q次这种魔法，然后他很好奇，在使用了q次魔法之后，他的所有树的高度分别是多少呢？</p>
+<p>输入描述:<br>第一行输入两个整数n，q。(1&lt;= n, q &lt;= 1e5)</p>
+<p>接下来q行，每行输入两个整数l, r(l &lt;= r)，表示andy让标号落在区间[l, r]里的数高度都加1<br>输出描述:<br>输出有一行n个整数，每个整数后面有空格。输出末尾没有换行</p>
+<p>第i个数表示第i棵树的高度<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10 3</span><br><span class="line">1 3</span><br><span class="line">2 4</span><br><span class="line">3 3</span><br></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 1 0 0 0 0 0 0</span><br></pre></td></tr></table></figure></p>
+<p>说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">andy种了10棵树</span><br><span class="line"></span><br><span class="line">第一次使用魔法使得1、2、3棵树的高度增加1,</span><br><span class="line"></span><br><span class="line">所有树的高度为</span><br><span class="line"></span><br><span class="line">1 1 1 0 0 0 0 0 0 0</span><br><span class="line"></span><br><span class="line">第二次使用魔法使得2、3、4棵树的高度增加1，</span><br><span class="line"></span><br><span class="line">所有树的高度为</span><br><span class="line"></span><br><span class="line">1 2 2 1 0 0 0 0 0 0</span><br><span class="line"></span><br><span class="line">第三次使用魔法使得第3棵树的高度增加1</span><br><span class="line"></span><br><span class="line">所有树的高度为</span><br><span class="line"></span><br><span class="line">1 2 3 1 0 0 0 0 0 0</span><br></pre></td></tr></table></figure></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>前缀和。<br>每次使用魔法对区间[l,r]内的数加1，那么可以让[l,n]中的数都加1，同时让[r+1,n]内的数减1，这样就相当于区间[l,r]内的数加1了。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">ll arr[MAXN];</span><br><span class="line">ll brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="keyword">int</span> n,q;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">	<span class="built_in">memset</span>(arr,<span class="number">0</span>,<span class="keyword">sizeof</span>(arr));</span><br><span class="line">	<span class="built_in">memset</span>(brr,<span class="number">0</span>,<span class="keyword">sizeof</span>(brr));</span><br><span class="line">	<span class="keyword">while</span>(q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> l,r;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">		arr[l]++;</span><br><span class="line">		brr[r+<span class="number">1</span>]--;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		brr[i]+=brr[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld "</span>,arr[i]+brr[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2110,181 +2643,6 @@
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这道题我一开始没看清题意，我认成，每当放置一个皇后后，这个皇后是否会跟其他皇后相互攻击，而实际上是，每放置一个皇后，询问这个棋盘是否会有两个皇后相互攻击。所以当放置一个皇后后，如果这个皇后与其他皇后相互工作，那么此后整个棋盘都存在相互攻击的皇后。</p>
 <p>判断两个皇后能否相互攻击，只需要记录横、纵、45$^。$对角线、135$^。$对角线即可。也就分别是x、y、x+y、x-y+MAXN。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXM=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span>&lt;ll,<span class="keyword">bool</span>&gt; mp[<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> judge[MAXM]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">ll a[MAXM],b[MAXM];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//    freopen("in.txt","r",stdin);</span></span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;a[i],&amp;b[i]);</span><br><span class="line"> 		<span class="keyword">if</span>(mp[<span class="number">0</span>][a[i]]||mp[<span class="number">1</span>][b[i]]||mp[<span class="number">2</span>][a[i]+b[i]]||mp[<span class="number">3</span>][a[i]-b[i]]) &#123;</span><br><span class="line"> 			ans=min(ans,i);</span><br><span class="line">		 &#125; </span><br><span class="line">		mp[<span class="number">0</span>][a[i]]=<span class="literal">true</span>;</span><br><span class="line">        mp[<span class="number">1</span>][b[i]]=<span class="literal">true</span>;</span><br><span class="line">        mp[<span class="number">2</span>][a[i]+b[i]]=<span class="literal">true</span>;</span><br><span class="line">        mp[<span class="number">3</span>][a[i]-b[i]]=<span class="literal">true</span>;;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--) &#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;i);</span><br><span class="line">        <span class="keyword">if</span>(i&gt;=ans)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）I andy种树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:40:08+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:58:06+08:00">
-                2019-06-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/I" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/I</a><br>来源：牛客网</p>
-<p>题目描述<br>andy在他的庄园里种了n棵树，排列成一排，标号为1到n。最开始的时候n棵树的高度都是0，也就是种子刚刚被埋下，树还没有长出来。</p>
-<p>andy会一种魔法，他每使用一次魔法，就可以让树标号落在连续区间[l, r]里的树的高度增加1。他可以使用q次这种魔法，然后他很好奇，在使用了q次魔法之后，他的所有树的高度分别是多少呢？</p>
-<p>输入描述:<br>第一行输入两个整数n，q。(1&lt;= n, q &lt;= 1e5)</p>
-<p>接下来q行，每行输入两个整数l, r(l &lt;= r)，表示andy让标号落在区间[l, r]里的数高度都加1<br>输出描述:<br>输出有一行n个整数，每个整数后面有空格。输出末尾没有换行</p>
-<p>第i个数表示第i棵树的高度<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10 3</span><br><span class="line">1 3</span><br><span class="line">2 4</span><br><span class="line">3 3</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 1 0 0 0 0 0 0</span><br></pre></td></tr></table></figure></p>
-<p>说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">andy种了10棵树</span><br><span class="line"></span><br><span class="line">第一次使用魔法使得1、2、3棵树的高度增加1,</span><br><span class="line"></span><br><span class="line">所有树的高度为</span><br><span class="line"></span><br><span class="line">1 1 1 0 0 0 0 0 0 0</span><br><span class="line"></span><br><span class="line">第二次使用魔法使得2、3、4棵树的高度增加1，</span><br><span class="line"></span><br><span class="line">所有树的高度为</span><br><span class="line"></span><br><span class="line">1 2 2 1 0 0 0 0 0 0</span><br><span class="line"></span><br><span class="line">第三次使用魔法使得第3棵树的高度增加1</span><br><span class="line"></span><br><span class="line">所有树的高度为</span><br><span class="line"></span><br><span class="line">1 2 3 1 0 0 0 0 0 0</span><br></pre></td></tr></table></figure></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>前缀和。<br>每次使用魔法对区间[l,r]内的数加1，那么可以让[l,n]中的数都加1，同时让[r+1,n]内的数减1，这样就相当于区间[l,r]内的数加1了。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e6</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">ll arr[MAXN];</span><br><span class="line">ll brr[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="keyword">int</span> n,q;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">	<span class="built_in">memset</span>(arr,<span class="number">0</span>,<span class="keyword">sizeof</span>(arr));</span><br><span class="line">	<span class="built_in">memset</span>(brr,<span class="number">0</span>,<span class="keyword">sizeof</span>(brr));</span><br><span class="line">	<span class="keyword">while</span>(q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> l,r;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">		arr[l]++;</span><br><span class="line">		brr[r+<span class="number">1</span>]--;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		brr[i]+=brr[i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld "</span>,arr[i]+brr[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -2499,360 +2857,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-D/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）D kotori和迷宫</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:26:44+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:31:27+08:00">
-                2019-06-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-D/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-D/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/D" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/D</a><br>来源：牛客网</p>
-<p>kotori在一个n*m迷宫里，迷宫的最外层被岩浆淹没，无法涉足，迷宫内有k个出口。kotori只能上下左右四个方向移动。她想知道有多少出口是她能到达的，最近的出口离她有多远？</p>
-<p>输入描述:<br>第一行为两个整数n和m，代表迷宫的行和列数 (1≤n,m≤30)</p>
-<p>后面紧跟着n行长度为m的字符串来描述迷宫。’k’代表kotori开始的位置，’.’代表道路，’*’代表墙壁，’e’代表出口。保证输入合法。<br>输出描述:<br>若有出口可以抵达，则输出2个整数，第一个代表kotori可选择的出口的数量，第二个代表kotori到最近的出口的步数。（注意，kotori到达出口一定会离开迷宫）</p>
-<p>若没有出口可以抵达，则输出-1。<br>示例1<br>输入<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span> <span class="number">8</span></span><br><span class="line">e.*.*e.*</span><br><span class="line">.**.*.*e</span><br><span class="line">..*k**..</span><br><span class="line">***.*.e*</span><br><span class="line">.**.*.**</span><br><span class="line">*......e</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 7</span><br></pre></td></tr></table></figure></p>
-<p>说明<br>可供选择坐标为[4,7]和[6,8]，到kotori的距离分别是8和7步。</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单BFS，需要注意的是，一遇到出口就离开迷宫了，所以出口不能当作通道走，不能以此走到其他位置。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,dep;</span><br><span class="line">	node(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> dep):x(x),y(y),dep(dep)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="keyword">char</span> str[MAXN][MAXN];</span><br><span class="line"><span class="keyword">bool</span> visit[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> dx[]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">bool</span> flag;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;node&gt; qu;</span><br><span class="line">	qu.push(node(x,y,<span class="number">0</span>));</span><br><span class="line">	<span class="built_in">memset</span>(visit,<span class="literal">false</span>,<span class="keyword">sizeof</span>(visit));</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty()) &#123;</span><br><span class="line">		node t=qu.front();qu.pop();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(str[t.x][t.y]==<span class="string">'e'</span>) &#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			ans=min(ans,t.dep);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		visit[t.x][t.y]=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> tx=t.x+dx[i];</span><br><span class="line">			<span class="keyword">int</span> ty=t.y+dy[i];</span><br><span class="line">			<span class="keyword">if</span>(tx&gt;=<span class="number">0</span>&amp;&amp;tx&lt;n&amp;&amp;ty&gt;=<span class="number">0</span>&amp;&amp;ty&lt;m&amp;&amp;!visit[tx][ty]&amp;&amp;str[tx][ty]!=<span class="string">'*'</span>)</span><br><span class="line">				qu.push(node(tx,ty,t.dep+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">true</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">int</span> sx,sy;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">			<span class="keyword">if</span>(str[i][j]==<span class="string">'k'</span>) &#123;</span><br><span class="line">				sx=i;</span><br><span class="line">				sy=j;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">false</span>;</span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	<span class="keyword">while</span>(!flag) &#123;</span><br><span class="line">		BFS(sx,sy);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">0x3f3f3f3f</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,cnt,ans);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://ptfum0icu.bkt.clouddn.com/%E5%A4%B4%E5%83%8F1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-E/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）E kotori和素因子</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-30T13:26:44+08:00">
-                2019-06-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:39:31+08:00">
-                2019-06-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-E/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/06/30/比赛/北信科第十一届竞赛/北信科十一届竞赛-E/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/E" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/E</a><br>来源：牛客网</p>
-<p>kotori拿到了一些正整数。她决定从每个正整数取出一个素因子。但是，kotori有强迫症，她不允许两个不同的正整数取出相同的素因子。</p>
-<p>她想知道，最终所有取出的数的和的最小值是多少？</p>
-<p>注：若a%k==0，则称k是a的因子。若一个数有且仅有两个因子，则称其是素数。显然1只有一个因子，不是素数。</p>
-<p>输入描述:<br>第一行一个正整数n，代表kotori拿到正整数的个数。</p>
-<p>第二行共有n个数ai，表示每个正整数的值。</p>
-<p>保证不存在两个相等的正整数。</p>
-<p>1&lt;=n&lt;=10</p>
-<p>2&lt;=ai&lt;=1000<br>输出描述:<br>一个正整数，代表取出的素因子之和的最小值。若不存在合法的取法，则输出-1。<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">12 15 28 22</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">17</span><br></pre></td></tr></table></figure></p>
-<p>说明<br>分别取3，5，7，2，可保证取出的数之和最小<br>示例2<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">4 5 6 7 8</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure></p>
-<p>备注:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1&lt;=n&lt;=10</span><br><span class="line"></span><br><span class="line">2&lt;=ai&lt;=1000</span><br></pre></td></tr></table></figure></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单DFS。<br>把每个数的质因子求出来后，把所有答案搜一遍即可，注意不能从两个不同的数取相同的质因子。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">2e3</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vt[<span class="number">12</span>];</span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">12</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="keyword">int</span> qu[<span class="number">12</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isprime</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> p=<span class="built_in">sqrt</span>(t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=p;i++)</span><br><span class="line">		<span class="keyword">if</span>(t%i==<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> tmp=<span class="built_in">sqrt</span>(arr[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=arr[i];j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i]%j==<span class="number">0</span>&amp;&amp;isprime(j))</span><br><span class="line">				vt[i].push_back(j);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">	</span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;i++) &#123;</span></span><br><span class="line"><span class="comment">//		cout&lt;&lt;arr[i]&lt;&lt;": ";</span></span><br><span class="line"><span class="comment">//		for(int j=0;j&lt;vt[i].size();j++)</span></span><br><span class="line"><span class="comment">//			cout&lt;&lt;vt[i][j]&lt;&lt;' ';</span></span><br><span class="line"><span class="comment">//		cout&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> cnt,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">		<span class="keyword">if</span>(qu[i]==x)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> cnt,<span class="keyword">int</span> sum,<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cnt&gt;=n) &#123;</span><br><span class="line">		ans=min(ans,sum);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vt[p].size();i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(judge(cnt,vt[p][i])) &#123;</span><br><span class="line">			qu[cnt]=vt[p][i];</span><br><span class="line">			DFS(cnt+<span class="number">1</span>,sum+vt[p][i],p+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i]);</span><br><span class="line">	init();</span><br><span class="line">	ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	DFS(<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">0x3f3f3f3f</span>)</span><br><span class="line">		ans=<span class="number">-1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2911,7 +2915,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2922,7 +2926,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2933,7 +2937,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -3109,7 +3113,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共71.9k字</span>
+  <span class="post-count">博客全站共73.1k字</span>
 </div>
         
 <div class="busuanzi-count">
