@@ -476,6 +476,372 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/08/04/数学/Vasya and Triangle CodeForces - 1058D （几何）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/数学/Vasya and Triangle CodeForces - 1058D （几何）/" itemprop="url">Vasya and Triangle CodeForces - 1058D (几何推导)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T00:58:50+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-08-04T01:40:04+08:00">
+                2019-08-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/04/数学/Vasya and Triangle CodeForces - 1058D （几何）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/08/04/数学/Vasya and Triangle CodeForces - 1058D （几何）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://cn.vjudge.net/problem/CodeForces-1058D" target="_blank" rel="noopener">https://cn.vjudge.net/problem/CodeForces-1058D</a></p>
+<p>Vasya has got three integers n, m and k. He’d like to find three integer points (x1,y1), (x2,y2), (x3,y3), such that 0≤x1,x2,x3≤n, 0≤y1,y2,y3≤m and the area of the triangle formed by these points is equal to nmk.</p>
+<p>Help Vasya! Find such points (if it’s possible). If there are multiple solutions, print any of them.</p>
+<p>Input<br>The single line contains three integers n, m, k (1≤n,m≤109, 2≤k≤109).</p>
+<p>Output<br>If there are no such points, print “NO”.</p>
+<p>Otherwise print “YES” in the first line. The next three lines should contain integers xi,yi — coordinates of the points, one point per line. If there are multiple solutions, print any of them.</p>
+<p>You can print each letter in any case (upper or lower).</p>
+<p>Examples<br>Input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 3 3</span><br></pre></td></tr></table></figure></p>
+<p>Output<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">YES</span><br><span class="line">1 0</span><br><span class="line">2 3</span><br><span class="line">4 1</span><br></pre></td></tr></table></figure></p>
+<p>Input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 4 7</span><br></pre></td></tr></table></figure></p>
+<p>Output<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NO</span><br></pre></td></tr></table></figure></p>
+<p>Note<br>In the first example area of the triangle should be equal to nmk=4. The triangle mentioned in the output is pictured below:<br><img src="https://vj.ti12z.cn/526cc1451c74b3e8a0ecce3e12dbf931?v=1564400254" alt=""></p>
+<p>In the second example there is no triangle with area nm/k=16/7.</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>首先需要证明的是，①三个整数点构成的面积一定是整数。</p>
+<p>而需要证明①，需要明确一点，在以(0,0),(x,0),(0,y)三个顶点可以组成任意整数面积，如果以(0,0),(1,0),(0,y)，这样y取任意值，当然可以组成任意整数面积。</p>
+<p>那么以(0,0)为顶点的面积为S=x*y/2。</p>
+<p>要使得组成面积等于n*m/k，那么即是判断<code>x*y==n*m*2/k</code>，x*y为整数，即等式右边n*m*2要整除k，不能为无法满足。</p>
+<p>接下来问题就转化为分解<code>n*m*2/k</code>为两个整数一个x&lt;=n、一个y&lt;=m。</p>
+<p>首先如果k为偶数，那么直接除2先降一倍。接着求gcd(n,k)或gcd(m,k)，约分即可。<br>如果为奇数，那么求p=gcd(2<em>n,k)，如果2\</em>n无法整除k，那么2*n一定要除一个数，使得x&lt;=n，可以看出要满足题目条件的化，一定存在gcd(2*m,k)&gt;=2，接下来就是约分的事了。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b==<span class="number">0</span>?a:gcd(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll n,m,k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    <span class="keyword">if</span>(n*m*<span class="number">2</span>%k!=<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"NO"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>  &#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"YES"</span>);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"0 0"</span>);</span><br><span class="line">        <span class="keyword">if</span>(k%<span class="number">2</span>==<span class="number">0</span>) &#123;</span><br><span class="line">            k/=<span class="number">2</span>;</span><br><span class="line">            ll p=gcd(n,k);</span><br><span class="line">            ll x=n/p;k/=p;</span><br><span class="line">            ll y=m/k;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld 0\n"</span>,x);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0 %lld\n"</span>,y);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ll p=gcd(<span class="number">2</span>*n,k);</span><br><span class="line">        <span class="keyword">if</span>(p==<span class="number">1</span>) &#123;</span><br><span class="line">            p=gcd(<span class="number">2</span>*m,k);</span><br><span class="line"><span class="comment">//            cout&lt;&lt;p&lt;&lt;endl;</span></span><br><span class="line">            ll y=<span class="number">2</span>*m/p; k/=p;</span><br><span class="line">            ll x=n/k;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld 0\n"</span>,x);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0 %lld\n"</span>,y);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ll x=<span class="number">2</span>*n/p;k/=p;</span><br><span class="line">        ll y=m/k;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld 0\n"</span>,x);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"0 %lld\n"</span>,y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/08/04/数学/The World is a Theatre CodeForces - 131C (组合数)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/数学/The World is a Theatre CodeForces - 131C (组合数)/" itemprop="url">The World is a Theatre CodeForces - 131C (组合数)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T00:45:56+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-08-04T00:58:14+08:00">
+                2019-08-04
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/04/数学/The World is a Theatre CodeForces - 131C (组合数)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2019/08/04/数学/The World is a Theatre CodeForces - 131C (组合数)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://cn.vjudge.net/problem/CodeForces-131C" target="_blank" rel="noopener">https://cn.vjudge.net/problem/CodeForces-131C</a></p>
+<p>There are n boys and m girls attending a theatre club. To set a play “The Big Bang Theory”, they need to choose a group containing exactly t actors containing no less than 4 boys and no less than one girl. How many ways are there to choose a group? Of course, the variants that only differ in the composition of the troupe are considered different.</p>
+<p>Perform all calculations in the 64-bit type: long long for С/С++, int64 for Delphi and long for Java.</p>
+<p>Input<br>The only line of the input data contains three integers n, m, t (4 ≤ n ≤ 30, 1 ≤ m ≤ 30, 5 ≤ t ≤ n + m).</p>
+<p>Output<br>Find the required number of ways.</p>
+<p>Please do not use the %lld specificator to read or write 64-bit integers in С++. It is preferred to use cin, cout streams or the %I64d specificator.</p>
+<p>Examples<br>Input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 2 5</span><br></pre></td></tr></table></figure></p>
+<p>Output<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure></p>
+<p>Input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 3 5</span><br></pre></td></tr></table></figure></p>
+<p>Output<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这道题学到了组合数打表。</p>
+<p>p[i][j]表示在i个中选j个有多少种选法，借助杨辉三角推法，得到<code>p[i][j]=p[i-1][j-1]+p[i-1][j]l</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1000</span>;</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;MAXN;i++) &#123;</span><br><span class="line">    dp[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">        dp[i][j]=dp[i<span class="number">-1</span>][j]+dp[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么对于这道题，就不断地枚举i（i&gt;=4）个男生k-i（k-i&gt;=1）个女生的组合方法就可以了。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">400</span>;</span><br><span class="line"></span><br><span class="line">ll dp[MAXN][MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;MAXN;i++) &#123;</span><br><span class="line">        dp[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++)</span><br><span class="line">            dp[i][j]=dp[i<span class="number">-1</span>][j]+dp[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    ll n,m,k;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">4</span>;i&lt;=k<span class="number">-1</span>;i++)</span><br><span class="line">        ans+=dp[n][i]*dp[m][k-i];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/28/字符串/Ordered Binary String HihoCoder - 1326 （前缀和）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2640,360 +3006,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/" itemprop="url">2019牛客暑期多校一 A-Equivalent Prefixes(单调栈)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-20T09:57:49+08:00">
-                2019-07-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-20T11:00:28+08:00">
-                2019-07-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/07/20/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/881/A" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/881/A</a><br>来源：牛客网<br>题目描述<br>Two arrays u and v each with m distinct elements are called equivalent if and only if RMQ(u,l,r)=RMQ(v,l,r) for all 1≤l≤r≤m<br>where RMQ(w,l,r) denotes the index of the minimum element among wl,wl+1,…,wr.<br>Since the array contains distinct elements, the definition of minimum is unambiguous.</p>
-<p>Bobo has two arrays a and b each with n distinct elements. Find the maximum number p≤np≤n where {a1,a2,…,ap} and {b1,b2,…,bp} are equivalent.<br>输入描述:<br>The input consists of several test cases and is terminated by end-of-file.</p>
-<p>The first line of each test case contains an integer n.<br>The second line contains n integers a1,a2,…,ana1,a2,…,an.<br>The third line contains n integers b1,b2,…,bnb1,b2,…,bn.</p>
-<ul>
-<li>1≤n≤10<sup>5</sup></li>
-<li>1≤ai,bi≤n</li>
-<li>{a1,a2,…,an} are distinct.</li>
-<li>{b1,b2,…,bn} are distinct.</li>
-<li>The sum of n does not exceed 5×10<sup>5</sup>.</li>
-</ul>
-<p>输出描述:<br>For each test case, print an integer which denotes the result.<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1 2</span><br><span class="line">2 1</span><br><span class="line">3</span><br><span class="line">2 1 3</span><br><span class="line">3 1 2</span><br><span class="line">5</span><br><span class="line">3 1 5 2 4</span><br><span class="line">5 2 4 3 1</span><br></pre></td></tr></table></figure></p>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>题目求最大p使得在区间[1,p]间，对于所有的区间段都有rmq(a)==rmq(b)。</p>
-<p>可以用两个栈分别记录两个数组的相关信息。<br>栈底就记录该数组在当前区间也就是[1,L]间最小的元素，它上面的值都比它大。那么用栈顶元素与数组中还未访问的元素（记该元素在数组中的位置为n）比较，如果栈顶元素大于未访问元素，表明在区间[n-1,n]内已经确定谁是最小的（也就是下标为n的元素）。栈顶元素出栈，继续比较，直到碰到栈顶数比arr[n]小，就表明在区间[1,n]间，栈顶元素是最小的，从而不需要拿栈顶所在数组位置（记位置为m）前的数与arr[n]比较了，因为之前已经确定区间[m,n]的情况，而不管在包含m的区间段内（如[1,m],[2,m]）,arr[m]是最小的。</p>
-<p>这样，分别统计两个栈的出栈情况，就可以求出最长的p了。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> arr[MAXN],brr[MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;brr[i]);</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s1,s2;</span><br><span class="line">        <span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s1.size()&amp;&amp;arr[s1.top()]&gt;arr[i]) &#123;</span><br><span class="line">                s1.pop();</span><br><span class="line">                t1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(s2.size()&amp;&amp;brr[s2.top()]&gt;brr[i]) &#123;</span><br><span class="line">                s2.pop();</span><br><span class="line">                t2++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(t1!=t2) &#123;</span><br><span class="line">                ans=i<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s1.push(i);</span><br><span class="line">            s2.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/07/07/数学/逆元/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/07/数学/逆元/" itemprop="url">逆元(个人加深理解)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T17:06:18+08:00">
-                2019-07-07
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-07T18:26:46+08:00">
-                2019-07-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/" itemprop="url" rel="index">
-                    <span itemprop="name">数学</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/07/数学/逆元/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/07/07/数学/逆元/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>首先需要明确的是，在数论中不应该提及到除法运算，因为数论数研究整数的数学分支。</p>
-<p>那么，要求解a/b%p怎么办？（a，b，p都是较大的数，longlong范围内）。<br><br>直接求？会有精度损失！</p>
-<p>这时候就要借助到逆元这个工具了。</p>
-<p>设c是b的逆元，根据定义，b*c≡1 （mod p）。<br><br>a/b%p=a/b*1%p=a/b*b*c%p=a*c%p</p>
-<h1 id="如何求逆元"><a href="#如何求逆元" class="headerlink" title="如何求逆元"></a>如何求逆元</h1><h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>设模系p是一个质数。<br>由费马小定理：a<sup>p-1</sup>≡1%p，其中p-1就是比p小与p互质的数的数量。<br><br>a*a<sup>T</sup>≡1%p<br>那么a<sup>p-1</sup>%p=a*a<sup>T</sup>%p<br><br>a<sup>T</sup>=a<sup>p-2</sup>%p</p>
-<p>暂时只写这一种，未完待续……</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3052,7 +3064,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3074,7 +3086,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -3250,7 +3262,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共78.9k字</span>
+  <span class="post-count">博客全站共79.9k字</span>
 </div>
         
 <div class="busuanzi-count">
