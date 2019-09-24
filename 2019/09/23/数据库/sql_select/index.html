@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="图遍历,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="判断无向图是否连通">
-<meta name="keywords" content="图遍历">
+<meta name="description" content="Lesson 1基本语法1select col,another col from tables; 练习            idtitledirectoryearlength_minutes1Toy StoryJohn Lasseter1995812A Bug’s LifeJohn Lasseter1998953Toy Story 2John Lasseter1999934Monsters, I">
+<meta name="keywords" content="个人记录生活学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="判断连通图">
-<meta property="og:url" content="https://shann.xyz/2019/09/12/数据结构/判断连通图/index.html">
+<meta property="og:title" content="sql_select_queries实操">
+<meta property="og:url" content="https://shann.xyz/2019/09/23/数据库/sql_select/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="判断无向图是否连通">
+<meta property="og:description" content="Lesson 1基本语法1select col,another col from tables; 练习            idtitledirectoryearlength_minutes1Toy StoryJohn Lasseter1995812A Bug’s LifeJohn Lasseter1998953Toy Story 2John Lasseter1999934Monsters, I">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-10T13:03:34.000Z">
+<meta property="og:updated_time" content="2019-09-24T13:59:43.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="判断连通图">
-<meta name="twitter:description" content="判断无向图是否连通">
+<meta name="twitter:title" content="sql_select_queries实操">
+<meta name="twitter:description" content="Lesson 1基本语法1select col,another col from tables; 练习            idtitledirectoryearlength_minutes1Toy StoryJohn Lasseter1995812A Bug’s LifeJohn Lasseter1998953Toy Story 2John Lasseter1999934Monsters, I">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/2019/09/12/数据结构/判断连通图/">
+  <link rel="canonical" href="https://shann.xyz/2019/09/23/数据库/sql_select/">
 
 
 
 
 
-  <title>判断连通图 | GageShan</title>
+  <title>sql_select_queries实操 | GageShan</title>
   
 
 
@@ -323,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/判断连通图/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/23/数据库/sql_select/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
@@ -340,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">判断连通图</h1>
+          <h1 class="post-title" itemprop="name headline">sql_select_queries实操</h1>
         
 
         <div class="post-meta">
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T22:19:55+08:00">
+                2019-09-23
               </time>
             
 
@@ -368,8 +368,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-10T21:03:34+08:00">
-                2018-11-10
+              <time title="Post modified" itemprop="dateModified" datetime="2019-09-24T21:59:43+08:00">
+                2019-09-24
               </time>
             
           </span>
@@ -387,8 +387,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -405,8 +405,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/数据结构/判断连通图/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/判断连通图/" itemprop="commentCount"></span>
+                <a href="/2019/09/23/数据库/sql_select/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/23/数据库/sql_select/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -439,16 +439,41 @@
       
 
       
-        <hr>
-<p>判断无向图是否连通<br><a id="more"></a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>3967: 连通图<br>时间限制: 1 Sec  内存限制: 32 MB<br>提交: 4  解决: 4<br>题目描述<br>给定一个无向图和其中的所有边，判断这个图是否所有顶点都是连通的。 </p>
-<p>输入<br>每组数据的第一行是两个整数 n 和 m（0&lt;=n&lt;=1000）。n 表示图的顶点数目，m 表示图中边的数目。如果 n 为 0 表示输入结束。随后有 m 行数据，每行有两个值 x 和 y（0&lt;x, y &lt;=n），表示顶点 x 和 y 相连，顶点的编号从 1 开始计算。输入不保证这些边是否重复。 </p>
-<p>输出<br>对于每组输入数据，如果所有顶点都是连通的，输出”YES”，否则输出”NO”。 </p>
-<p>样例输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">4 3</span><br><span class="line">4 3</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">5 7</span><br><span class="line">3 5</span><br><span class="line">2 3</span><br><span class="line">1 3</span><br><span class="line">3 2</span><br><span class="line">2 5</span><br><span class="line">3 4</span><br><span class="line">4 1</span><br><span class="line">7 3</span><br><span class="line">6 2</span><br><span class="line">3 1</span><br><span class="line">5 6</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure></p>
-<p>样例输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">NO</span><br></pre></td></tr></table></figure></p>
-<p>前几天写图遍历时，一直是按照书上先把矩阵转化为邻接表再遍历，这次终于换了一种方式。<br>矩阵转邻接表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void MatToList(Graph *&amp;G, int n) &#123;</span><br><span class="line">	Anode *p;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for (int j = n; j &gt;=1; j--) &#123;</span><br><span class="line">			if (edge[i][j] == 1) &#123;</span><br><span class="line">				p = new Anode;</span><br><span class="line">				p-&gt;value = j;</span><br><span class="line">				p-&gt;next = G-&gt;adjlist[i].firstarc;</span><br><span class="line">				G-&gt;adjlist[i].firstarc = p;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>想明白邻接表后直接对表头赋值<br>如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void input(Graph *&amp;G, int m) &#123;</span><br><span class="line">	while (m--) &#123;</span><br><span class="line">		int a, b;</span><br><span class="line">		cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		Anode *p = new Anode;</span><br><span class="line">		Anode *q = new Anode;</span><br><span class="line"></span><br><span class="line">		p-&gt;value = b;</span><br><span class="line">		q-&gt;value = a;</span><br><span class="line"></span><br><span class="line">		p-&gt;next = G-&gt;adjlist[a].firstarc;</span><br><span class="line">		G-&gt;adjlist[a].firstarc = p;</span><br><span class="line"></span><br><span class="line">		q-&gt;next = G-&gt;adjlist[b].firstarc;</span><br><span class="line">		G-&gt;adjlist[b].firstarc = q;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXSIZE = 1000;</span><br><span class="line">int visited[MAXSIZE] = &#123; 0 &#125;;</span><br><span class="line">int edge[MAXSIZE][MAXSIZE] = &#123; 0 &#125;;</span><br><span class="line">class Anode &#123;</span><br><span class="line">public:</span><br><span class="line">	int value;</span><br><span class="line">	Anode *next;</span><br><span class="line">&#125;;</span><br><span class="line">class Adjlist &#123;</span><br><span class="line">public:</span><br><span class="line">	Anode *firstarc;</span><br><span class="line">&#125;;</span><br><span class="line">class Graph &#123;</span><br><span class="line">public:</span><br><span class="line">	Adjlist adjlist[MAXSIZE];</span><br><span class="line">&#125;;</span><br><span class="line">void initGraph(Graph *&amp;G, int n) &#123;</span><br><span class="line">	G = new Graph;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++)</span><br><span class="line">		G-&gt;adjlist[i].firstarc = NULL; //表头指针指向NULL</span><br><span class="line">&#125;</span><br><span class="line">void input(Graph *&amp;G, int m) &#123;</span><br><span class="line">	while (m--) &#123;</span><br><span class="line">		int a, b;</span><br><span class="line">		cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">		Anode *p = new Anode;</span><br><span class="line">		Anode *q = new Anode;</span><br><span class="line"></span><br><span class="line">		p-&gt;value = b;</span><br><span class="line">		q-&gt;value = a;</span><br><span class="line">		//头插法建表</span><br><span class="line">		p-&gt;next = G-&gt;adjlist[a].firstarc;</span><br><span class="line">		G-&gt;adjlist[a].firstarc = p;</span><br><span class="line"></span><br><span class="line">		q-&gt;next = G-&gt;adjlist[b].firstarc;</span><br><span class="line">		G-&gt;adjlist[b].firstarc = q;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void DFS(Graph *&amp;G, int count) &#123;</span><br><span class="line">	Anode *p;</span><br><span class="line">	visited[count] = 1;</span><br><span class="line">	p = G-&gt;adjlist[count].firstarc;</span><br><span class="line">	while (p != NULL) &#123;</span><br><span class="line">		if (visited[p-&gt;value] == 0)</span><br><span class="line">			DFS(G, p-&gt;value);  //递归深搜</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">bool isConnectedGraph(Graph *&amp;G, int n) &#123;</span><br><span class="line">	DFS(G, 1);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++)</span><br><span class="line">		if (visited[i] != 1) //只要有一个节点未被访问就返回</span><br><span class="line">			return false;</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n, m;</span><br><span class="line">	while (cin &gt;&gt; n &gt;&gt; m) &#123;</span><br><span class="line">		</span><br><span class="line">		for (int i = 1; i &lt;= MAXSIZE; i++) &#123;</span><br><span class="line">			visited[i] = 0 ;</span><br><span class="line">			for (int j = 1; j &lt;= MAXSIZE; j++) </span><br><span class="line">				edge[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">							</span><br><span class="line">		if (n == 0 &amp;&amp; m == 0) break;</span><br><span class="line">		Graph *G;</span><br><span class="line">		initGraph(G, n);//对图初始化</span><br><span class="line"></span><br><span class="line">		input(G,m);</span><br><span class="line">		if (isConnectedGraph(G, n))</span><br><span class="line">			cout &lt;&lt; &quot;YES&quot; &lt;&lt; endl;</span><br><span class="line">		else</span><br><span class="line">			cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Lesson-1"><a href="#Lesson-1" class="headerlink" title="Lesson 1"></a>Lesson 1</h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select col,another col from tables;</span><br></pre></td></tr></table></figure>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><div class="message" style></div><br>            <div class="datatable" datatableid="movies"><table class="table table-striped table-condensed"><tbody><tr><td class="column_name">id</td><td class="column_name">title</td><td class="column_name">director</td><td class="column_name">year</td><td class="column_name">length_minutes</td></tr><tr><td>1</td><td>Toy Story</td><td>John Lasseter</td><td>1995</td><td>81</td></tr><tr><td>2</td><td>A Bug’s Life</td><td>John Lasseter</td><td>1998</td><td>95</td></tr><tr><td>3</td><td>Toy Story 2</td><td>John Lasseter</td><td>1999</td><td>93</td></tr><tr><td>4</td><td>Monsters, Inc.</td><td>Pete Docter</td><td>2001</td><td>92</td></tr><tr><td>5</td><td>Finding Nemo</td><td>Andrew Stanton</td><td>2003</td><td>107</td></tr><tr><td>6</td><td>The Incredibles</td><td>Brad Bird</td><td>2004</td><td>116</td></tr><tr><td>7</td><td>Cars</td><td>John Lasseter</td><td>2006</td><td>117</td></tr><tr><td>8</td><td>Ratatouille</td><td>Brad Bird</td><td>2007</td><td>115</td></tr><tr><td>9</td><td>WALL-E</td><td>Andrew Stanton</td><td>2008</td><td>104</td></tr><tr><td>10</td><td>Up</td><td>Pete Docter</td><td>2009</td><td>101</td></tr><tr><td>11</td><td>Toy Story 3</td><td>Lee Unkrich</td><td>2010</td><td>103</td></tr><tr><td>12</td><td>Cars 2</td><td>John Lasseter</td><td>2011</td><td>120</td></tr><tr><td>13</td><td>Brave</td><td>Brenda Chapman</td><td>2012</td><td>102</td></tr><tr><td>14</td><td>Monsters University</td><td>Dan Scanlon</td><td>2013</td><td>110</td></tr></tbody></table></div><br>1、Find the title of each film<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT title FROM movies;</span><br></pre></td></tr></table></figure><br><br>2、Find the director of each film<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT director FROM movies;</span><br></pre></td></tr></table></figure><br><br>3、Find the title and director of each film<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT title,director FROM movies;</span><br></pre></td></tr></table></figure><br><br>4、Find the title and year of each film<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT title,year FROM movies;</span><br></pre></td></tr></table></figure><br><br>5、Find all the information about each film<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies;</span><br></pre></td></tr></table></figure><br><br># Lesson 2<br>## 基本语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select col from tables</span><br><span class="line">where some conditions;</span><br></pre></td></tr></table></figure><br><br><div class="datatable"><br>    <table class="table table-striped table-condensed"><br>        <tbody><tr><br>            <td style="width: 20%; text-align: center;">Operator</td><br>            <td style="width: 50%">Condition</td><br>            <td>SQL Example</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">=, !=, &lt; &lt;=, &gt;, &gt;=</td><br>            <td>Standard numerical operators</td><br>            <td>col_name <span class="faux-keyword">!=</span> 4</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">BETWEEN … AND …</td><br>            <td>Number is within range of two values (inclusive)</td><br>            <td>col_name <span class="faux-keyword">BETWEEN</span> 1.5 <span class="faux-keyword">AND</span> 10.5</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">NOT BETWEEN … AND …</td><br>            <td>Number is not within range of two values (inclusive)</td><br>            <td>col_name <span class="faux-keyword">NOT BETWEEN</span> 1 <span class="faux-keyword">AND</span> 10</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">IN (…)</td><br>            <td>Number exists in a list</td><br>            <td>col_name <span class="faux-keyword">IN</span> (2, 4, 6)</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">NOT IN (…)</td><br>            <td>Number does not exist in a list</td><br>            <td>col_name <span class="faux-keyword">NOT IN</span> (1, 3, 5)</td><br>        </tr><br>    </tbody></table><br></div>
+
+<h2 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h2><div class="datatable" datatableid="movies"><table class="table table-striped table-condensed"><tbody><tr><td class="column_name">id</td><td class="column_name">title</td><td class="column_name">director</td><td class="column_name">year</td><td class="column_name">length_minutes</td></tr><tr><td>1</td><td>Toy Story</td><td>John Lasseter</td><td>1995</td><td>81</td></tr><tr><td>2</td><td>A Bug’s Life</td><td>John Lasseter</td><td>1998</td><td>95</td></tr><tr><td>3</td><td>Toy Story 2</td><td>John Lasseter</td><td>1999</td><td>93</td></tr><tr><td>4</td><td>Monsters, Inc.</td><td>Pete Docter</td><td>2001</td><td>92</td></tr><tr><td>5</td><td>Finding Nemo</td><td>Andrew Stanton</td><td>2003</td><td>107</td></tr><tr><td>6</td><td>The Incredibles</td><td>Brad Bird</td><td>2004</td><td>116</td></tr><tr><td>7</td><td>Cars</td><td>John Lasseter</td><td>2006</td><td>117</td></tr><tr><td>8</td><td>Ratatouille</td><td>Brad Bird</td><td>2007</td><td>115</td></tr><tr><td>9</td><td>WALL-E</td><td>Andrew Stanton</td><td>2008</td><td>104</td></tr><tr><td>10</td><td>Up</td><td>Pete Docter</td><td>2009</td><td>101</td></tr><tr><td>11</td><td>Toy Story 3</td><td>Lee Unkrich</td><td>2010</td><td>103</td></tr><tr><td>12</td><td>Cars 2</td><td>John Lasseter</td><td>2011</td><td>120</td></tr><tr><td>13</td><td>Brave</td><td>Brenda Chapman</td><td>2012</td><td>102</td></tr><tr><td>14</td><td>Monsters University</td><td>Dan Scanlon</td><td>2013</td><td>110</td></tr></tbody></table></div>
+
+<p>1、Find the movie with a row id of 6<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where id=6;</span><br></pre></td></tr></table></figure></p>
+<p>2、Find the movies released in the years between 2000 and 2010\<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where year between 2000 and 2010;</span><br></pre></td></tr></table></figure></p>
+<p>3、Find the movies not released in the years between 2000 and 2010<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where year not between 2000 and 2010;</span><br></pre></td></tr></table></figure></p>
+<p>4、Find the first 5 Pixar movies and their release year<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where id in (1,2,3,4,5);</span><br></pre></td></tr></table></figure></p>
+<h1 id="Lesson-3"><a href="#Lesson-3" class="headerlink" title="Lesson 3"></a>Lesson 3</h1><div class="datatable"><br>    <table class="table table-striped table-condensed"><br>        <tbody><tr><br>            <!-- <td style="width: 15%; text-align: center;">Operator</td>
+            <td style="width: 60%">Condition</td>
+            <td>Example</td> --><br>        </tr><br>        <tr><br>            <td style="text-align: center;">=</td><br>            <td>Case sensitive exact string comparison (<em>notice the single equals</em>)</td><br>            <td>col_name <span class="faux-keyword">=</span> “abc”</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">!= or &lt;&gt;</td><br>            <td>Case sensitive exact string inequality comparison</td><br>            <td>col_name <span class="faux-keyword">!=</span> “abcd”</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">LIKE</td><br>            <td>Case insensitive exact string comparison</td><br>            <td>col_name <span class="faux-keyword">LIKE</span> “ABC”</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">NOT LIKE</td><br>            <td>Case insensitive exact string inequality comparison</td><br>            <td>col_name <span class="faux-keyword">NOT LIKE</span> “ABCD”</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">%</td><br>            <td>Used anywhere in a string to match<br>                a sequence of zero or more characters (only with LIKE or NOT LIKE)</td><br>            <td>col_name <span class="faux-keyword">LIKE</span> “%AT%”<br><br>                (matches “<span class="uline">AT</span>“, “<span class="uline">AT</span>TIC”, “C<span class="uline">AT</span>“<br>                    or even “B<span class="uline">AT</span>S”)</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">_</td><br>            <td>Used anywhere in a string to match<br>                a single character (only with LIKE or NOT LIKE)</td><br>            <td>col_name <span class="faux-keyword">LIKE</span> “AN_”<br><br>                (matches “<span class="uline">AN</span>D”, but not “<span class="uline">AN</span>“)</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">IN (…)</td><br>            <td>String exists in a list</td><br>            <td>col_name <span class="faux-keyword">IN</span> (“A”, “B”, “C”)</td><br>        </tr><br>        <tr><br>            <td style="text-align: center;">NOT IN (…)</td><br>            <td>String does not exist in a list</td><br>            <td>col_name <span class="faux-keyword">NOT IN</span> (“D”, “E”, “F”)</td><br>        </tr><br>    </tbody></table><br></div>
+
+<h2 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h2><table class="table table-striped table-condensed"><tbody><tr><td class="column_name">id</td><td class="column_name">title</td><td class="column_name">director</td><td class="column_name">year</td><td class="column_name">length_minutes</td></tr><tr><td>1</td><td>Toy Story</td><td>John Lasseter</td><td>1995</td><td>81</td></tr><tr><td>2</td><td>A Bug’s Life</td><td>John Lasseter</td><td>1998</td><td>95</td></tr><tr><td>3</td><td>Toy Story 2</td><td>John Lasseter</td><td>1999</td><td>93</td></tr><tr><td>4</td><td>Monsters, Inc.</td><td>Pete Docter</td><td>2001</td><td>92</td></tr><tr><td>5</td><td>Finding Nemo</td><td>Andrew Stanton</td><td>2003</td><td>107</td></tr><tr><td>6</td><td>The Incredibles</td><td>Brad Bird</td><td>2004</td><td>116</td></tr><tr><td>7</td><td>Cars</td><td>John Lasseter</td><td>2006</td><td>117</td></tr><tr><td>8</td><td>Ratatouille</td><td>Brad Bird</td><td>2007</td><td>115</td></tr><tr><td>9</td><td>WALL-E</td><td>Andrew Stanton</td><td>2008</td><td>104</td></tr><tr><td>10</td><td>Up</td><td>Pete Docter</td><td>2009</td><td>101</td></tr><tr><td>11</td><td>Toy Story 3</td><td>Lee Unkrich</td><td>2010</td><td>103</td></tr><tr><td>12</td><td>Cars 2</td><td>John Lasseter</td><td>2011</td><td>120</td></tr><tr><td>13</td><td>Brave</td><td>Brenda Chapman</td><td>2012</td><td>102</td></tr><tr><td>14</td><td>Monsters University</td><td>Dan Scanlon</td><td>2013</td><td>110</td></tr><tr><td>87</td><td>WALL-G</td><td>Brenda Chapman</td><td>2042</td><td>97</td></tr></tbody></table>
+
+<p>1、Find all the Toy Story movies<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where title like &quot;%Toy Story%&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>2、Find all the movies directed by John Lasseter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where director = &quot;John Lasseter&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>3、Find all the movies (and director) not directed by John Lasseter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where director != &quot;John Lasseter&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>4、Find all the WALL-* movies<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies where title like &quot;%WALL-%&quot;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Lesson-4"><a href="#Lesson-4" class="headerlink" title="Lesson 4"></a>Lesson 4</h1><h2 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT column, another_column, …</span><br><span class="line">FROM mytable</span><br><span class="line">WHERE condition(s)</span><br><span class="line">ORDER BY column ASC/DESC</span><br><span class="line">LIMIT num_limit OFFSET num_offset;</span><br><span class="line"></span><br><span class="line">//DISTINCT 在查询结果中删除重复的行</span><br><span class="line">//ASC 升序</span><br><span class="line">//DESC 降序</span><br><span class="line">//limit 表示限制查询后显示的数量</span><br><span class="line">//offset 表示从哪一行开始计数</span><br></pre></td></tr></table></figure>
+<h2 id="练习-3"><a href="#练习-3" class="headerlink" title="练习"></a>练习</h2><table class="table table-striped table-condensed"><tbody><tr><td class="column_name">id</td><td class="column_name">title</td><td class="column_name">director</td><td class="column_name">year</td><td class="column_name">length_minutes</td></tr><tr><td>1</td><td>Toy Story 2</td><td>John Lasseter</td><td>1999</td><td>93</td></tr><tr><td>2</td><td>Ratatouille</td><td>Brad Bird</td><td>2007</td><td>115</td></tr><tr><td>3</td><td>Toy Story</td><td>John Lasseter</td><td>1995</td><td>81</td></tr><tr><td>4</td><td>WALL-E</td><td>Andrew Stanton</td><td>2008</td><td>104</td></tr><tr><td>5</td><td>The Incredibles</td><td>Brad Bird</td><td>2004</td><td>116</td></tr><tr><td>6</td><td>Monsters University</td><td>Dan Scanlon</td><td>2013</td><td>110</td></tr><tr><td>7</td><td>Finding Nemo</td><td>Andrew Stanton</td><td>2003</td><td>107</td></tr><tr><td>8</td><td>Cars 2</td><td>John Lasseter</td><td>2011</td><td>120</td></tr><tr><td>9</td><td>A Bug’s Life</td><td>John Lasseter</td><td>1998</td><td>95</td></tr><tr><td>10</td><td>Cars</td><td>John Lasseter</td><td>2006</td><td>117</td></tr><tr><td>11</td><td>Up</td><td>Pete Docter</td><td>2009</td><td>101</td></tr><tr><td>12</td><td>Brave</td><td>Brenda Chapman</td><td>2012</td><td>102</td></tr><tr><td>13</td><td>Toy Story 3</td><td>Lee Unkrich</td><td>2010</td><td>103</td></tr><tr><td>14</td><td>Monsters, Inc.</td><td>Pete Docter</td><td>2001</td><td>92</td></tr></tbody></table>
+
+<p>1、List all directors of Pixar movies (alphabetically), without duplicates<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT distinct director FROM movies </span><br><span class="line">order by director ASC</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<p>2、List the last four Pixar movies released (ordered from most recent to least)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies </span><br><span class="line">order by year DESC</span><br><span class="line">limit 4</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<p>3、List the first five Pixar movies sorted alphabetically<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies </span><br><span class="line">order by title ASC</span><br><span class="line">limit 5</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<p>4、List the next five Pixar movies sorted alphabetically<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM movies </span><br><span class="line">order by title ASC</span><br><span class="line">limit 5 offset 5</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Lesson-5"><a href="#Lesson-5" class="headerlink" title="Lesson 5"></a>Lesson 5</h1><h2 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT column, another_column, …</span><br><span class="line">FROM mytable</span><br><span class="line">WHERE condition(s)</span><br><span class="line">ORDER BY column ASC/DESC</span><br><span class="line">LIMIT num_limit OFFSET num_offset;</span><br></pre></td></tr></table></figure>
+<h2 id="练习-4"><a href="#练习-4" class="headerlink" title="练习"></a>练习</h2><table class="table table-striped table-condensed"><tbody><tr><td class="column_name">city</td><td class="column_name">country</td><td class="column_name">population</td><td class="column_name">latitude</td><td class="column_name">longitude</td></tr><tr><td>Guadalajara</td><td>Mexico</td><td>1500800</td><td>20.659699</td><td>-103.349609</td></tr><tr><td>Toronto</td><td>Canada</td><td>2795060</td><td>43.653226</td><td>-79.383184</td></tr><tr><td>Houston</td><td>United States</td><td>2195914</td><td>29.760427</td><td>-95.369803</td></tr><tr><td>New York</td><td>United States</td><td>8405837</td><td>40.712784</td><td>-74.005941</td></tr><tr><td>Philadelphia</td><td>United States</td><td>1553165</td><td>39.952584</td><td>-75.165222</td></tr><tr><td>Havana</td><td>Cuba</td><td>2106146</td><td>23.05407</td><td>-82.345189</td></tr><tr><td>Mexico City</td><td>Mexico</td><td>8555500</td><td>19.432608</td><td>-99.133208</td></tr><tr><td>Phoenix</td><td>United States</td><td>1513367</td><td>33.448377</td><td>-112.074037</td></tr><tr><td>Los Angeles</td><td>United States</td><td>3884307</td><td>34.052234</td><td>-118.243685</td></tr><tr><td>Ecatepec de Morelos</td><td>Mexico</td><td>1742000</td><td>19.601841</td><td>-99.050674</td></tr><tr><td>Montreal</td><td>Canada</td><td>1717767</td><td>45.501689</td><td>-73.567256</td></tr><tr><td>Chicago</td><td>United States</td><td>2718782</td><td>41.878114</td><td>-87.629798</td></tr></tbody></table>
+
+<p>1、List all the Canadian cities and their populations<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM north_american_cities</span><br><span class="line">where country=&quot;Canada&quot;</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<p>2、Order all the cities in the United States by their latitude from north to south<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM north_american_cities</span><br><span class="line">where country=&quot;United States&quot;</span><br><span class="line">order by Latitude DESC</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<p>3、List all the cities west of Chicago, ordered from west to east<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM north_american_cities</span><br><span class="line">where longitude &lt; 	-87.629798</span><br><span class="line">order by longitude ASC</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<p>4、List the two largest cities in Mexico (by population)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM north_american_cities</span><br><span class="line">where country = &quot;Mexico&quot;</span><br><span class="line">order by population DESC</span><br><span class="line">limit 2</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+<p>5、List the third and fourth largest cities (by population) in the United States and their population<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM north_american_cities</span><br><span class="line">where country = &quot;United States&quot;</span><br><span class="line">order by population DESC</span><br><span class="line">limit 2 offset 2</span><br><span class="line">;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -476,7 +501,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://shann.xyz/2019/09/12/数据结构/判断连通图/" title="判断连通图">https://shann.xyz/2019/09/12/数据结构/判断连通图/</a>
+    <a href="https://shann.xyz/2019/09/23/数据库/sql_select/" title="sql_select_queries实操">https://shann.xyz/2019/09/23/数据库/sql_select/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -489,12 +514,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/图遍历/" rel="tag"><i class="fa fa-tag"></i> 图遍历</a>
-          
-        </div>
-      
 
       
       
@@ -504,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/12/数据结构/二叉树的创建及其遍历/" rel="next" title="二叉树的创建及其遍历">
-                <i class="fa fa-chevron-left"></i> 二叉树的创建及其遍历
+              <a href="/2019/09/21/java/类与对象实训/" rel="next" title="类与对象实训">
+                <i class="fa fa-chevron-left"></i> 类与对象实训
               </a>
             
           </div>
@@ -513,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/12/数据结构/另类表达式求解/" rel="prev" title="NYOJ305另类表达式求值（栈）">
-                NYOJ305另类表达式求值（栈） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -786,7 +801,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">2.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lesson-1"><span class="nav-number">1.</span> <span class="nav-text">Lesson 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.2.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-1"><span class="nav-number">1.3.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lesson-3"><span class="nav-number">2.</span> <span class="nav-text">Lesson 3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-2"><span class="nav-number">2.1.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lesson-4"><span class="nav-number">3.</span> <span class="nav-text">Lesson 4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法-1"><span class="nav-number">3.1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-3"><span class="nav-number">3.2.</span> <span class="nav-text">练习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lesson-5"><span class="nav-number">4.</span> <span class="nav-text">Lesson 5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法-2"><span class="nav-number">4.1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习-4"><span class="nav-number">4.2.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -994,9 +1009,9 @@ show_date_time();
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://shann.xyz/2019/09/12/数据结构/判断连通图/';
-          this.page.identifier = '2019/09/12/数据结构/判断连通图/';
-          this.page.title = '判断连通图';
+          this.page.url = 'https://shann.xyz/2019/09/23/数据库/sql_select/';
+          this.page.identifier = '2019/09/23/数据库/sql_select/';
+          this.page.title = 'sql_select_queries实操';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
