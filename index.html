@@ -473,6 +473,612 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/10/13/操作系统/银行家算法避免死锁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/13/操作系统/银行家算法避免死锁/" itemprop="url">银行家算法避免死锁问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-13T17:27:35+08:00">
+                2019-10-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-10-13T17:36:52+08:00">
+                2019-10-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/13/操作系统/银行家算法避免死锁/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/13/操作系统/银行家算法避免死锁/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>操作系统笔记</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在死锁避免方法中，把系统的状态分为安全状态和不安全状态。系统处于安全状态，可以避免发生死锁；而当系统处于不安全状态时，则可能发生死锁。<br>死锁是要尽量避免的。</p>
+<p>安全状态举例：</p>
+<p>现有P1、P2、P3三个进程，它们需要一定的资源才能完成各自的任务，每一种资源一旦被一个进程占用，就不予许另外的进程申请，而当某一进程完成任务时，该进程占用的资源就会释放，也就是说资源可被其它的进程使用。如果三个进程都无妨申请资源以完成各自的任务，这三个进程就会发生死锁。</p>
+<p>现在我们需要找到一条有效的执行序列，使得每一个进程都得以执行，不会出现无法申请资源而死锁。</p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>最大需求</th>
+<th>已分配</th>
+<th>还需要</th>
+<th>可用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>10</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>9</td>
+<td>2</td>
+<td>7</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table>
+<p>注<br>最大需求：进程需要该数量资源才能执行<br>已分配：已经分配给该进程的资源数量<br>还需要：即进程一旦申请申请到该数量的资源就可以执行，也就是`还需要 = 最大需求 - 已分配<br>可用：系统中还可以的申请的资源数量，每个尚未完成的进程都可以申请</p>
+<p>现在系统中还有3个资源可以被申请。此时，P1需要5个资源，P3需要7个资源，系统可分配的资源不足以分配使得它们执行，只能分配给还需资源数小于可分配数的P2进程。</p>
+<p>这样，那就分配2个资源给P2进程，可分配资源还剩下1个。P2进程得到后可执行完成，接着就会释放4个资源，由此，系统可分配资源就增加到了5个。</p>
+<p>P1进程还需要5个资源就可以执行完成，所以，我们就可以把可以分配的5个资源全部分配给P1进程，等P1进程执行完成释放10个资源后，可分配的资源就增加到了10个资源。</p>
+<p>把可分配资源全部分配给P3进程，使得P3进程执行完成。可分配资源就增加到了12个，当然，不用去管这个问题了，因为我们的进程都已经执行完毕。</p>
+<p>由此，我们可以找到一条安全的执行序列P2-&gt;P1-&gt;P3，使得三个进程得以安全的执行而不会发生死锁。</p>
+<p>在分配资源给一个进程时，我们需要先尝试着是否能分配资源，如果分配资源后，剩下的资源不足以使得还未完成的进程形成一条安全的执行序列，这就说明此时我们不能分配，如果能够形成安全的序列，则可以分配。</p>
+<p>某进程发出资源请求后，相应地可用资源减少，该进程的资源状态改变（也就是上面说的已分配、可用、还需资源数）。剩下的就是在所有进程中找到一条=使所有进程进入安全状态的执行序列。能找到，则可分配，否则不能。有个这个认识，我们就可以来说下<strong>银行家算法</strong>了。<br>（这段话是基于理论上的，实际上，要先确定能够分配，资源才会减少，但这并不会妨碍我们的解释）</p>
+<p>当一个新进程进入系统时，它必须申明在运行过程中，可能需要的每种资源类型的最大单元数，这个数量不应该超过系统所拥有的资源总数，否则无法执行这个新进程。银行家算法来确定当这个新进程发出资源请求时，是否能够满足这个请求。</p>
+<p>下面介绍下银行家算法中涉及到的数据结构。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>含义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Available</td>
+<td>一个含有M个元素的数组，每个元素代表每类资源的可用数量</td>
+<td>[1,2,3,4]</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>一个N*M的矩阵，Max[i][j]表示第i个进程需要的最大资源需求</td>
+<td>[[1,2,3],[1,2,3],[1,2,3]]</td>
+</tr>
+<tr>
+<td>Allocation</td>
+<td>一个N*M的矩阵，Allocation[i][j]表示第i个进程已经分配了多少资源</td>
+<td></td>
+</tr>
+<tr>
+<td>Need</td>
+<td>一个N*M的矩阵，Need[i][j]表示第i个进程还多少资源就可以参与执行</td>
+</tr>
+</tbody>
+</table>
+<p>事实上，这跟我们开篇所提到的安全状态举例类似，我们可以把Max看一个单个的数组，代表每个进程最大资源需求数，当然，已经从一类资源变为多种资源。Allocation和Need也是一样。在银行家算法中使用矩阵统一表示是为了方便。</p>
+<p>已知：Need = Max - Allocation</p>
+<p>当一个进程完成后，系统将回收该进程占用的资源，即 Available = Available + Max。</p>
+<p>银行家算法是为了避免进程死锁的，也就是说，系统提出资源请求时，会有一个Request数组，表示该进程请求的每类资源的数量。</p>
+<p>注意：</p>
+<ul>
+<li>Request &lt;= Need，否则认为出错，因为它申请的资源（Request）不能大于它实际需要的资源（Need）。</li>
+<li>Request &lt;= Available，否则认为出错，因为此时申请的资源（Request）已经超过系统可分配的资源，它必须等待</li>
+</ul>
+<h1 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h1><p>现系统中有5个进程，分别为P0、P1、P2、P3、P4和3类资源A、B、C。各类资源的数量分别为10、5、7。</p>
+<p>具体情况见下表</p>
+<p>表1</p>
+<table>
+<thead>
+<tr>
+<th>表1</th>
+<th>资源情况</th>
+<th>Max</th>
+<th>Allocation</th>
+<th>Need</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>进程</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P0</td>
+<td>7   5    3</td>
+<td>0   1   0</td>
+<td>7   4  3</td>
+<td>3    3   2</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P1</td>
+<td>3   2    1</td>
+<td>2   0   0</td>
+<td>1   2  2</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P2</td>
+<td>9   0    2</td>
+<td>3   0   2</td>
+<td>6   0  0</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p3</td>
+<td>2   2    2</td>
+<td>2   1   1</td>
+<td>0   1  1</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p4</td>
+<td>4   3    3</td>
+<td>0   0   2</td>
+<td>4   3  1</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们要来找一条能够让这5个进程不发生死锁的执行序列。</p>
+<p>需要知道一个进程一旦执行完毕，系统就可以收回该进程所占用的各类资源。所以或许我们可以总结出这样一条规则：总是将系统可以分配的资源全部分配给一个进程来帮助这个进程尽快执行完毕，这样等它执行完毕，系统就回收它占用的资源，从而就可以帮助其他需要资源的多的进程。也就是说，或许把资源分配给资源需求数少的进程是一种较优选择。</p>
+<p>如此一来，仔细分析上述表格，我们可以推导出这样一条执行序列：</p>
+<p>P1-&gt;P3-&gt;P4-&gt;P2-&gt;P0。</p>
+<p>对应</p>
+<p>表2：</p>
+<table>
+<thead>
+<tr>
+<th>表2</th>
+<th>资源情况</th>
+<th>Available</th>
+<th>Allocation</th>
+<th>Need</th>
+<th>Available + Allocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>进程</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P1</td>
+<td>3 3 2</td>
+<td>2 0 0</td>
+<td>1 2 2</td>
+<td>5 3 2</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P3</td>
+<td>5 3 2</td>
+<td>2 1 1</td>
+<td>0 1 1</td>
+<td>7 4 3</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P4</td>
+<td>7 4 3</td>
+<td>0 0 2</td>
+<td>4 3 1</td>
+<td>7 4 5</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p2</td>
+<td>7 4 5</td>
+<td>3 0 2</td>
+<td>6 0 0</td>
+<td>10 4 7</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p0</td>
+<td>10 4 7</td>
+<td>0 1 0</td>
+<td>7 4 3</td>
+<td>10 5 7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><p>此时P1请求资源，发出Request(1,0,2)，请求1个A资源，0个B资源，2个C资源。</p>
+<p>分析</p>
+<ul>
+<li>Request(1,0,2) &lt;= Need(1,2,2)</li>
+<li>Request(1,0,2) &lt;= Available(3 3 2)</li>
+</ul>
+<p>现在假设可以为它分配资源，那么P1的资源状态会有如下变化：<br>表3：</p>
+<table>
+<thead>
+<tr>
+<th>表3</th>
+<th>资源情况</th>
+<th>Max</th>
+<th>Allocation</th>
+<th>Need</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>进程</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P3</td>
+<td>3 2 2</td>
+<td>3 0 2</td>
+<td>0 2 0</td>
+<td>2 3 0</td>
+</tr>
+</tbody>
+</table>
+<p>也就是Allocation中A+1，C+2，Need中A-1，C-2。</p>
+<p>可以看到，此时，系统可以分配的资源就变为了Available(2,3,0)。知道了系统资源可分配量，我们就要在这5个进程中找一个安全序列。再次强调，如果可以找到，就说明<strong>假设的分配资源</strong>可以实现，否则不行。</p>
+<p>接着看5个进程的Need资源量，从中我们要找到一个进程为它分配资源。</p>
+<p>发现P3的Need(0,1,1) &lt;= Available(2,3,0)，如果将资源分配给他，P3进程得到资源后可立即执行，执行完毕后可释放资源，这也就意味着Available数量会增加，变化的Available(4,4 1)，就可以分配给那些资源需求量大的进程。直到全部进程执行完毕。</p>
+<p>表4：</p>
+<table>
+<thead>
+<tr>
+<th>表4</th>
+<th>资源情况</th>
+<th>Available</th>
+<th>Allocation</th>
+<th>Need</th>
+<th>Available + Allocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>进程</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P1</td>
+<td>2 3 0</td>
+<td>3 0 2</td>
+<td>0 2 0</td>
+<td>5 3 2</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P3</td>
+<td>5 3 2</td>
+<td>2 1 1</td>
+<td>0 1 1</td>
+<td>7 4 3</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P4</td>
+<td>7 4 3</td>
+<td>0 0 2</td>
+<td>4 3 1</td>
+<td>7 4 5</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p2</td>
+<td>7 4 5</td>
+<td>3 0 2</td>
+<td>6 0 0</td>
+<td>10 4 7</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p0</td>
+<td>10 4 7</td>
+<td>0 1 0</td>
+<td>7 4 3</td>
+<td>10 5 7</td>
+</tr>
+</tbody>
+</table>
+<p>安全序列：</p>
+<ul>
+<li>P1-&gt;P3-&gt;P4-&gt;P2-P0</li>
+<li>P1-&gt;P3-&gt;P4-&gt;P0-&gt;P2</li>
+</ul>
+<p>可以响应请求。</p>
+<h2 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h2><p>P4发出请求Request(3,3,0)。<br>分析</p>
+<ul>
+<li>Request(3,3,0) &lt;= Need(4,3,1)</li>
+<li>Request(3,3,0) &gt; Available(2,3,0)，不满足条件，让P4等待</li>
+</ul>
+<p>不能响应请求。</p>
+<h2 id="问题三"><a href="#问题三" class="headerlink" title="问题三"></a>问题三</h2><p>P0发出请求Request(0,2,0)<br>分析</p>
+<ul>
+<li>Request(0,2,0) &lt;= Need(7,4,3)</li>
+<li>Request(0,2,0) &lt;= Available(2,3,0)</li>
+</ul>
+<p>先假设可以分配资源，那么P0资源状态变化为</p>
+<p>表5：</p>
+<table>
+<thead>
+<tr>
+<th>表5</th>
+<th>资源情况</th>
+<th>Max</th>
+<th>Allocation</th>
+<th>Need</th>
+<th>Available</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>进程</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P0</td>
+<td>7 5 3</td>
+<td>0 3 0</td>
+<td>7 2 3</td>
+<td>2 1 0</td>
+</tr>
+</tbody>
+</table>
+<p>此时的系统资源为Available(2,1,0)，可以看到无法满足任何一个进程的Need请求。</p>
+<p>不响应请求。</p>
+<h2 id="问题四"><a href="#问题四" class="headerlink" title="问题四"></a>问题四</h2><p>P0发出请求Request(0,1,0)<br>分析</p>
+<ul>
+<li>Request(0,1,0) &lt;= Need(7,4,3)</li>
+<li>Request(0,1,0) &lt;= Available(3,3,2)</li>
+</ul>
+<p>可以找到这样一条安全序列<br>P1-&gt;P3-&gt;P4-&gt;P2-&gt;P0</p>
+<p>表6：</p>
+<table>
+<thead>
+<tr>
+<th>表6</th>
+<th>资源情况</th>
+<th>Available</th>
+<th>Allocation</th>
+<th>Need</th>
+<th>Available + Allocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>进程</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+<td>A  B  C</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P1</td>
+<td>3 2 2</td>
+<td>2 0 0</td>
+<td>1 2 2</td>
+<td>5 2 2</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P3</td>
+<td>5 2 2</td>
+<td>2 1 1</td>
+<td>0 1 1</td>
+<td>7 3 3</td>
+</tr>
+<tr>
+<td>-</td>
+<td>P4</td>
+<td>7 3 3</td>
+<td>0 0 2</td>
+<td>4 3 1</td>
+<td>7 3 5</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p2</td>
+<td>7 3 5</td>
+<td>3 0 2</td>
+<td>6 0 0</td>
+<td>10 3 7</td>
+</tr>
+<tr>
+<td>-</td>
+<td>p0</td>
+<td>10 3 7</td>
+<td>0 2 0</td>
+<td>7 3 3</td>
+<td>10 5 7</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/23/数据库/sql_select/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2749,178 +3355,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/最小新整数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/贪心/最小新整数/" itemprop="url">最小新整数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-18T14:48:42+08:00">
-                2019-06-18
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/贪心算法/" itemprop="url" rel="index">
-                    <span itemprop="name">贪心算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/贪心/最小新整数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/最小新整数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个十进制正整数n(0 &lt; n &lt; 1000000000)，每个数位上数字均不为0。n的位数为m。<br>现在从m位中删除k位(0&lt;k &lt; m)，求生成的新整数最小为多少？<br>例如: n = 9128456, k = 2, 则生成的新整数最小为12456<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/最小新整数/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2977,7 +3411,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">111</span>
+                  <span class="site-state-item-count">112</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2988,7 +3422,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2999,7 +3433,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -3188,7 +3622,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共81.2k字</span>
+  <span class="post-count">博客全站共83.8k字</span>
 </div>
         
 <div class="busuanzi-count">
