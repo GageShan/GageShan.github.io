@@ -323,1197 +323,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/" itemprop="url">2019牛客暑期多校一 A-Equivalent Prefixes(单调栈)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-20T11:00:30+08:00">
-                2019-07-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/比赛/2019牛客暑期多校训练营（第一场）/A-Equivalent Prefixes/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/881/A" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/881/A</a><br>来源：牛客网<br>题目描述<br>Two arrays u and v each with m distinct elements are called equivalent if and only if RMQ(u,l,r)=RMQ(v,l,r) for all 1≤l≤r≤m<br>where RMQ(w,l,r) denotes the index of the minimum element among wl,wl+1,…,wr.<br>Since the array contains distinct elements, the definition of minimum is unambiguous.</p>
-<p>Bobo has two arrays a and b each with n distinct elements. Find the maximum number p≤np≤n where {a1,a2,…,ap} and {b1,b2,…,bp} are equivalent.<br>输入描述:<br>The input consists of several test cases and is terminated by end-of-file.</p>
-<p>The first line of each test case contains an integer n.<br>The second line contains n integers a1,a2,…,ana1,a2,…,an.<br>The third line contains n integers b1,b2,…,bnb1,b2,…,bn.</p>
-<ul>
-<li>1≤n≤10<sup>5</sup></li>
-<li>1≤ai,bi≤n</li>
-<li>{a1,a2,…,an} are distinct.</li>
-<li>{b1,b2,…,bn} are distinct.</li>
-<li>The sum of n does not exceed 5×10<sup>5</sup>.</li>
-</ul>
-<p>输出描述:<br>For each test case, print an integer which denotes the result.<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1 2</span><br><span class="line">2 1</span><br><span class="line">3</span><br><span class="line">2 1 3</span><br><span class="line">3 1 2</span><br><span class="line">5</span><br><span class="line">3 1 5 2 4</span><br><span class="line">5 2 4 3 1</span><br></pre></td></tr></table></figure></p>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>题目求最大p使得在区间[1,p]间，对于所有的区间段都有rmq(a)==rmq(b)。</p>
-<p>可以用两个栈分别记录两个数组的相关信息。<br>栈底就记录该数组在当前区间也就是[1,L]间最小的元素，它上面的值都比它大。那么用栈顶元素与数组中还未访问的元素（记该元素在数组中的位置为n）比较，如果栈顶元素大于未访问元素，表明在区间[n-1,n]内已经确定谁是最小的（也就是下标为n的元素）。栈顶元素出栈，继续比较，直到碰到栈顶数比arr[n]小，就表明在区间[1,n]间，栈顶元素是最小的，从而不需要拿栈顶所在数组位置（记位置为m）前的数与arr[n]比较了，因为之前已经确定区间[m,n]的情况，而不管在包含m的区间段内（如[1,m],[2,m]）,arr[m]是最小的。</p>
-<p>这样，分别统计两个栈的出栈情况，就可以求出最长的p了。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> arr[MAXN],brr[MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;brr[i]);</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s1,s2;</span><br><span class="line">        <span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(s1.size()&amp;&amp;arr[s1.top()]&gt;arr[i]) &#123;</span><br><span class="line">                s1.pop();</span><br><span class="line">                t1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(s2.size()&amp;&amp;brr[s2.top()]&gt;brr[i]) &#123;</span><br><span class="line">                s2.pop();</span><br><span class="line">                t2++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(t1!=t2) &#123;</span><br><span class="line">                ans=i<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            s1.push(i);</span><br><span class="line">            s2.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/比赛/牛客练习赛49-A-筱玛爱地理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/比赛/牛客练习赛49-A-筱玛爱地理/" itemprop="url">牛客练习赛49-A-筱玛爱地理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-07T17:05:40+08:00">
-                2019-07-07
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/比赛/牛客练习赛49-A-筱玛爱地理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/比赛/牛客练习赛49-A-筱玛爱地理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/946/A" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/946/A</a><br>来源：牛客网</p>
-<p>筱玛是一个热爱地理的好筱玛。最近，在《地理II》作业本上，筱玛学到了“贝塔指数”的概念：<br>在经济地理学中，交通的联结度表示交通网络的发达程度，通常用贝塔指数来计算与比较。若用V<br>表示一个交通网络中结点的数量，用E表示边的数量，则贝塔指数的计算方式为：β=E/V.<br>“实践是检验真理的唯一标准”。作为一个热爱地理的好筱玛，她马上就把新学的知识应用到实践当中去。筱玛一口气出了n张交通网络规划图，其中第i张交通网络Gi有Vi个结点和Ei条边。筱玛一眼就看出了哪张图好、哪张图坏。但是作为一个负责任的好筱玛，她必须带领同学们一起进步。因此，她需要你将所有的n张图按照贝塔指数排序，并求出它们各自的贝塔指数在模10<sup>9</sup>+7意义下的值。</p>
-<p>输入描述:<br>第一行一个整数n，表示交通网络规划图的数量。<br>接下来n行，每行两个整数Vi和Ei，分别表示图Gi中的结点数量和边的量。<br>输出描述:<br>输出共n行，每行一个数，表示贝塔指数第i大的交通网络的贝塔指数在模<br>10<sup>9</sup>+7意义下的值。如果不能整除，输出分数取模后的结果。<br>示例1<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure></p>
-<p>说明<br>显然此时<br>β=E/V=3。<br>备注:<br>对于100%的数据，保证1≤n≤2×10<sup>5</sup>，1≤Vi,Ei≤10<sup>9</sup></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>我真的是太菜了。看到这个题，其实也想过精度问题，但我用了long double应该问题不大吧，事实证明我太菜了。<br>直接算的话，是会爆精度的，而且题目还说明了是要取在模10<sup>9</sup>+7意义下的值，所以要用到<strong>逆元</strong>。之前学长讲逆元的时候，没有这个意识，完全不知道有什么用处，现在知道了，因为这个题WA了21次，我菜。</p>
-<p>不多说了，还要注意在排序的时候，不能直接除，会有精度损失的，要将除法转化为乘法排序。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ll MOD=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">ll arr[MAXN],brr[MAXN];</span><br><span class="line">ll index1[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> arr[i]*brr[j]&lt;arr[j]*brr[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">fastPow</span><span class="params">(ll a,ll b)</span> </span>&#123;</span><br><span class="line">	ll ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b) &#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			ans=ans*a%MOD;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">		a=a*a%MOD;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;arr[i],&amp;brr[i]);</span><br><span class="line">		index1[i]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(index1+<span class="number">1</span>,index1+n+<span class="number">1</span>,cmp);</span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;i++)</span></span><br><span class="line"><span class="comment">//		cout&lt;&lt;arr[index[i]]&lt;&lt;' '&lt;&lt;brr[index[i]]&lt;&lt;endl;</span></span><br><span class="line">		</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,brr[index1[i]]*ll(fastPow(arr[index1[i]],MOD<span class="number">-2</span>))%MOD);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/比赛/华为杯-中矿大竞赛-G/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/比赛/华为杯-中矿大竞赛-G/" itemprop="url">中矿大-G-毕业生的纪念礼物(map+priority_queue)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-07-06T22:28:36+08:00">
-                2019-07-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/比赛/华为杯-中矿大竞赛-G/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/比赛/华为杯-中矿大竞赛-G/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/948/G" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/948/G</a><br>来源：牛客网</p>
-<p>现在有n个纪念品，每个纪念品都有一个种类r[i]，现在要求对每个毕业生分发三个种类不同的纪念品，现在需要你来计算下共可以发给多少个毕业生？<br>输入描述:<br>第一行一个整数n，1≤n≤100000，代表纪念品的个数；<br>第二行包含n个整数，分别是r[1], r[2], r[3]……r[n]，1≤r[i]≤1e9，表示每个纪念品所属的种类。<br>输出描述:<br>输出一个整数，代表最多能够分发给的毕业生人数。<br><br>示例1<br><br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">14</span><br><span class="line">1 1 2 2 3 3 4 4 4 4 5 5 5 5</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure></p>
-<p>示例2<br><br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">1 2 3 4 5 6 7</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>每个毕业生需要发三种不同纪念品，问最多能发的人数。首先需要明确的是，数量少的纪念品一旦发完就没有了，三种不同的数量少的纪念品组合在一起发下去，反而没有一种数量少组合两种数量多的可发给毕业生的人数多。（样例一侧正了这一猜想）想到这，既然数量少的可以与任意数量的组合，到最后数量多的可能会有剩余，那么就让数量多得组合数量多的。</p>
-<p>一开始没想到的：对数量多的组合，我一开始是取数量最多的三个，取它们中的最小值，也就是这三种物品组合在一起可发给毕业生的数量。但实际上这是有缺陷的，因为前面已经提到，要让数量最多的组合在一起，而当取三者最小值，各物品数量再减去最小数量时（此时，那个三者最小数量的物品已经耗尽），可能会有其他物品的数量已经大于前三者数量了，正确的做法是，每取三个数，让他们减1，ans加1，接着在继续取最大的三者。这样就可以保证，每次取得的物品数都是已有的物品中数量最多的。</p>
-<p>错误代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">res</span><span class="params">(ll a,ll b,ll c)</span> </span>&#123;</span><br><span class="line">    ll tmp=min(min(a,b),c);</span><br><span class="line">    ans+=tmp;</span><br><span class="line">    <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(qu.size()&gt;=<span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> t1=qu.top();qu.pop();</span><br><span class="line">        <span class="keyword">int</span> t2=qu.top();qu.pop();</span><br><span class="line">        <span class="keyword">int</span> t3=qu.top();qu.pop();</span><br><span class="line">        <span class="keyword">int</span> tmp=res(t1,t2,t3);</span><br><span class="line">        t1-=tmp,t2-=tmp,t3-=tmp;</span><br><span class="line">        <span class="keyword">if</span>(t1) qu.push(t1);</span><br><span class="line">        <span class="keyword">if</span>(t2) qu.push(t2);</span><br><span class="line">        <span class="keyword">if</span>(t3) qu.push(t3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">map</span>&lt;ll,ll&gt; mp;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;<span class="keyword">int</span>&gt; qu;</span><br><span class="line">ll n;</span><br><span class="line">ll ans;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">        ll a;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a);</span><br><span class="line">        mp[a]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;ll,ll&gt;::iterator it;</span><br><span class="line">    <span class="keyword">for</span>(it=mp.begin();it!=mp.end();it++)</span><br><span class="line">        qu.push(it-&gt;second);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">res</span><span class="params">(ll a,ll b,ll c)</span> </span>&#123;</span><br><span class="line">    ll tmp=min(min(a,b),c);</span><br><span class="line">    ans+=tmp;</span><br><span class="line">    <span class="keyword">return</span> tmp;	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(qu.size()&gt;=<span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> t1=qu.top();qu.pop();</span><br><span class="line">        <span class="keyword">int</span> t2=qu.top();qu.pop();</span><br><span class="line">        <span class="keyword">int</span> t3=qu.top();qu.pop();</span><br><span class="line">        <span class="keyword">int</span> tmp=<span class="number">1</span>;</span><br><span class="line">        t1-=tmp,t2-=tmp,t3-=tmp;</span><br><span class="line">        ans++;</span><br><span class="line">        <span class="keyword">if</span>(t1) qu.push(t1);</span><br><span class="line">        <span class="keyword">if</span>(t2) qu.push(t2);</span><br><span class="line">        <span class="keyword">if</span>(t3) qu.push(t3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    read();</span><br><span class="line">    init();</span><br><span class="line">    solve();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/比赛/The 16th Zhejiang Provincial Collegiate Programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/比赛/The 16th Zhejiang Provincial Collegiate Programming/" itemprop="url">The 16th Zhejiang Provincial Collegiate Programming</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-05-01T17:47:22+08:00">
-                2019-05-01
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/比赛/The 16th Zhejiang Provincial Collegiate Programming/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/比赛/The 16th Zhejiang Provincial Collegiate Programming/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="A-Sequence-in-the-Pocket-ZOJ-4104"><a href="#A-Sequence-in-the-Pocket-ZOJ-4104" class="headerlink" title="A - Sequence in the Pocket ZOJ - 4104"></a>A - Sequence in the Pocket ZOJ - 4104</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://cn.vjudge.net/problem/ZOJ-4104" target="_blank" rel="noopener">https://cn.vjudge.net/problem/ZOJ-4104</a><br>DreamGrid has just found an integer sequence  in his right pocket. As DreamGrid is bored, he decides to play with the sequence. He can perform the following operation any number of times (including zero time): select an element and move it to the beginning of the sequence.</p>
-<p>What’s the minimum number of operations needed to make the sequence non-decreasing?<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/比赛/The 16th Zhejiang Provincial Collegiate Programming/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/比赛/Codeforces-516-Div. 2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/比赛/Codeforces-516-Div. 2/" itemprop="url">Codeforces-516-Div.2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-24T09:55:18+08:00">
-                2019-04-24
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/比赛/Codeforces-516-Div. 2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/比赛/Codeforces-516-Div. 2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="A-Make-a-triangle"><a href="#A-Make-a-triangle" class="headerlink" title="A    Make a triangle!"></a>A    Make a triangle!</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Masha has three sticks of length a, b and c centimeters respectively. In one minute Masha can pick one arbitrary stick and increase its length by one centimeter. She is not allowed to break sticks.</p>
-<p>What is the minimum number of minutes she needs to spend increasing the stick’s length in order to be able to assemble a triangle of positive area. Sticks should be used as triangle’s sides (one stick for one side) and their endpoints should be located at triangle’s vertices.<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/比赛/Codeforces-516-Div. 2/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/比赛/CCPC2018-湖南全国邀请赛-重现赛/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/比赛/CCPC2018-湖南全国邀请赛-重现赛/" itemprop="url">CCPC2018-湖南全国邀请赛-重现赛</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-19T12:06:54+08:00">
-                2019-04-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/比赛/" itemprop="url" rel="index">
-                    <span itemprop="name">比赛</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/比赛/CCPC2018-湖南全国邀请赛-重现赛/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/比赛/CCPC2018-湖南全国邀请赛-重现赛/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="A-Easy-h-index-HDU-6276"><a href="#A-Easy-h-index-HDU-6276" class="headerlink" title="A - Easy $h$-index HDU - 6276"></a>A - Easy $h$-index HDU - 6276</h1><h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><p>比赛题目：<a href="http://acm.hdu.edu.cn/downloads/2018ccpc_hn.pdf" target="_blank" rel="noopener">http://acm.hdu.edu.cn/downloads/2018ccpc_hn.pdf</a> </p>
-<p>The h-index of an author is the largest h where he has at least h papers with citations not less than h. </p>
-<p>Bobo has published many papers.<br>Given a0,a1,a2,…,an which means Bobo has published ai papers with citations exactly i, find the h-index of Bobo.<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/比赛/CCPC2018-湖南全国邀请赛-重现赛/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/模板/堆优化prim模板  /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/模板/堆优化prim模板  /" itemprop="url">堆优化prim模板</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-05T16:44:16+08:00">
-                2019-03-05
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/模板/" itemprop="url" rel="index">
-                    <span itemprop="name">模板</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/模板/堆优化prim模板  /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/模板/堆优化prim模板  /" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>数据过大导致开大数组不实际时，用vector。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">const int MAXN=100000+10;</span><br><span class="line">const int inf=10e7;</span><br><span class="line">struct Node&#123;</span><br><span class="line">	int x,cost;</span><br><span class="line">	Node(int x,int cost):x(x),cost(cost)&#123;&#125;</span><br><span class="line">	friend bool operator &lt; (const Node &amp;a,const Node &amp;b) &#123;return a.cost&gt;b.cost;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;Node&gt; qu;</span><br><span class="line">int n,m;</span><br><span class="line">vector&lt;Node&gt; mp[MAXN];</span><br><span class="line">int visit[MAXN];</span><br><span class="line">int ans=0;</span><br><span class="line"></span><br><span class="line">void prim(int v) &#123;</span><br><span class="line">	memset(visit,0,sizeof(visit));</span><br><span class="line">	visit[v]=1;</span><br><span class="line">	int k=v;</span><br><span class="line">	for(int i=0;i&lt;mp[k].size();i++) &#123;</span><br><span class="line">		Node tmp=mp[k][i];</span><br><span class="line">		if(!visit[tmp.x])</span><br><span class="line">			qu.push(Node(tmp.x,tmp.cost));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	while(!qu.empty()) &#123;</span><br><span class="line">		Node tmp=qu.top();</span><br><span class="line">		qu.pop();</span><br><span class="line">		if(visit[tmp.x]) continue;</span><br><span class="line">		</span><br><span class="line">		ans+=tmp.cost;</span><br><span class="line">		k=tmp.x;</span><br><span class="line">		visit[k]=1;</span><br><span class="line">		for(int i=0;i&lt;mp[k].size();i++) &#123;</span><br><span class="line">			tmp=mp[k][i];</span><br><span class="line">			if(!visit[tmp.x])</span><br><span class="line">				qu.push(Node(tmp.x,tmp.cost));</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>较小数据量时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">const int inf=1000000;</span><br><span class="line">const int MAXN=500+5;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struct Node&#123;</span><br><span class="line">	int x,y,cost;</span><br><span class="line">	Node(int x,int y,int cost):x(x),y(y),cost(cost)&#123;&#125;</span><br><span class="line">	friend bool operator &lt; (const Node &amp;a,const Node &amp;b) &#123;return a.cost&gt;b.cost;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int ans=0; </span><br><span class="line">int n,m;</span><br><span class="line">int mp[MAXN][MAXN];</span><br><span class="line">priority_queue&lt;Node&gt; qu;</span><br><span class="line">int visit[MAXN*MAXN];</span><br><span class="line"></span><br><span class="line">void prim(int v) &#123;</span><br><span class="line">	</span><br><span class="line">	memset(visit,0,sizeof(visit));</span><br><span class="line">	while(!qu.empty())qu.pop();</span><br><span class="line">	visit[v]=1;</span><br><span class="line">	int k=v;</span><br><span class="line">	for(int i=1;i&lt;=n;i++) &#123;</span><br><span class="line">		for(int j=1;j&lt;=n;j++) </span><br><span class="line">			if(!visit[j]) </span><br><span class="line">				qu.push(Node(i,j,mp[k][j]));</span><br><span class="line">			</span><br><span class="line">		while(!qu.empty()&amp;&amp;visit[qu.top().y]) qu.pop();</span><br><span class="line">		if(qu.empty()) break;</span><br><span class="line">		Node now=qu.top();</span><br><span class="line">		ans+=now.cost;</span><br><span class="line">		k=now.y;</span><br><span class="line">		visit[k]=1;</span><br><span class="line">		qu.pop();</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/模板/long long范围/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2866,6 +1675,1218 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/数据结构课后练习题三栈与队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/数据结构/数据结构课后练习题三栈与队列/" itemprop="url">《数据结构 李春葆版》课后练习题三（栈与队列）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-27T14:49:26+08:00">
+                2018-10-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/12/数据结构/数据结构课后练习题三栈与队列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/数据结构课后练习题三栈与队列/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>开始做的话，是在灌水吧。栈与队列，刚开始接触这部分知识感觉不是很上手，然而又有什么关系呢？东西就在那里，你学与不学又能怎么样呢？如果总是逃避的难题，碰到真正地难题你还会有信心去面对吗？况且这不能算是难题。明天很美好，前提是你有能力获得美好。然而又有什么好玩的呢？一天又一天的过去，真正做了什么呢？学了什么呢？不清楚自己在做什么，时间并不会等人。做自己想做的，学自己想学的，不要把别人要求你的当成包袱。<br>
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/12/数据结构/数据结构课后练习题三栈与队列/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/另类表达式求解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/数据结构/另类表达式求解/" itemprop="url">NYOJ305另类表达式求值（栈）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-10-11T19:58:26+08:00">
+                2018-10-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/12/数据结构/另类表达式求解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/另类表达式求解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、题目描述"><a href="#一、题目描述" class="headerlink" title="一、题目描述"></a>一、题目描述</h1><p>表达式求值<br>时间限制：3000 ms  |  内存限制：65535 KB<br>难度：3<br>描述</p>
+<blockquote>
+<p>Dr.Kong设计的机器人卡多掌握了加减法运算以后，最近又学会了一些简单的函数求值，比如，它知道函数min(20,23)的值是20 ，add(10,98) 的值是108等等。经过训练，Dr.Kong设计的机器人卡多甚至会计算一种嵌套的更复杂的表达式。<br>假设表达式可以简单定义为:<br>
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/12/数据结构/另类表达式求解/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></blockquote></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/判断连通图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/数据结构/判断连通图/" itemprop="url">判断连通图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-10T21:03:34+08:00">
+                2018-11-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/12/数据结构/判断连通图/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/判断连通图/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <hr>
+<p>判断无向图是否连通<br>
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/12/数据结构/判断连通图/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/二叉树的创建及其遍历/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/数据结构/二叉树的创建及其遍历/" itemprop="url">二叉树的创建及其遍历</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-09-29T16:22:20+08:00">
+                2018-09-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/12/数据结构/二叉树的创建及其遍历/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/二叉树的创建及其遍历/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>二叉树是一种非常重要的数据结构，许多其他的数据结构都是基于二叉树发展推演过来的。用递归定义树的结构非常简洁，同样，递归遍历也非常简洁。在学习过程中，我发现递归算法往往只是一个简单的语句，<br>
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/12/数据结构/二叉树的创建及其遍历/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></blockquote></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/中缀式变后缀式2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/数据结构/中缀式变后缀式2/" itemprop="url">NYOJ465中缀式变后缀式（套题）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-09-29T16:23:38+08:00">
+                2018-09-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/12/数据结构/中缀式变后缀式2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/中缀式变后缀式2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、题目描述"><a href="#一、题目描述" class="headerlink" title="一、题目描述"></a>一、题目描述</h1><p>中缀式变后缀式<br>时间限制：1000 ms  |  内存限制：65535 KB<br>难度：3<br>描述</p>
+<blockquote>
+<p>人们的日常习惯是把算术表达式写成中缀式，但对于机器来说更“习惯于”后缀式，关于算术表达式的中缀式和后缀式的论述一般的数据结构书都有相关内容可供参看，这里不再赘述，现在你的任务是将中缀式变为后缀式。<br>
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/12/数据结构/中缀式变后缀式2/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></blockquote></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/中缀式变后缀式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/数据结构/中缀式变后缀式/" itemprop="url">NYOJ257中缀式变后缀式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-09-29T16:23:28+08:00">
+                2018-09-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/12/数据结构/中缀式变后缀式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/中缀式变后缀式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一、题目描述"><a href="#一、题目描述" class="headerlink" title="一、题目描述"></a>一、题目描述</h1><p>郁闷的C小加（一）<br>时间限制：1000 ms  |  内存限制：65535 KB<br>难度：3<br>描述</p>
+<blockquote>
+<p>我们熟悉的表达式如a+b、a+b<em>(c+d)等都属于中缀表达式。中缀表达式就是（对于双目运算符来说）操作符在两个操作数中间：num1 operand num2。同理，后缀表达式就是操作符在两个操作数之后：num1 num2 operand。ACM队的“C小加”正在郁闷怎样把一个中缀表达式转换为后缀表达式，现在请你设计一个程序，帮助C小加把中缀表达式转换成后缀表达式。为简化问题，操作数均为个位数，操作符只有+-</em>/ 和小括号。<br>
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/12/数据结构/中缀式变后缀式/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></blockquote></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/数据结构/N皇后/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/数据结构/N皇后/" itemprop="url">皇后问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-09-29T16:21:00+08:00">
+                2018-09-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/12/数据结构/N皇后/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/数据结构/N皇后/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>皇后问题最重要的就是递归回溯思维。<br>从第一行第一列开始逐级往下放皇后，若可以放置，则放置下一行的皇后，否则就退回到上一皇后的位置。<br>
+          
+
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/12/数据结构/N皇后/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2922,7 +2943,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3133,7 +3154,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共87.4k字</span>
+  <span class="post-count">博客全站共84k字</span>
 </div>
         
 <div class="busuanzi-count">
