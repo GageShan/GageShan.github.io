@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://shann.xyz/friends/index.html</loc>
+    <loc>https://shann.xyz/2020/01/28/%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2/%E7%AC%AC%E4%B8%80%E8%AE%B2%20%E9%80%92%E5%BD%92%E4%B8%8E%E9%80%92%E6%8E%A8/</loc>
     
-    <lastmod>2019-11-15T08:38:40.397Z</lastmod>
+    <lastmod>2020-02-02T07:40:25.601Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shann.xyz/2020/02/01/java/Java%E5%AE%9E%E7%8E%B0%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6/</loc>
+    
+    <lastmod>2020-02-02T07:40:23.714Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://shann.xyz/2019/11/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6/</loc>
     
-    <lastmod>2019-11-15T08:00:35.047Z</lastmod>
+    <lastmod>2019-11-16T13:39:23.835Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shann.xyz/friends/index.html</loc>
+    
+    <lastmod>2019-11-15T08:38:40.397Z</lastmod>
     
   </url>
   

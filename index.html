@@ -333,6 +333,443 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/02/01/java/Java实现解压zip文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/01/java/Java实现解压zip文件/" itemprop="url">Java实现批量解压zip文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-01T23:33:02+08:00">
+                2020-02-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-02T15:40:23+08:00">
+                2020-02-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/01/java/Java实现解压zip文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/01/java/Java实现解压zip文件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>到网上下载的教学视频一般都是经过层层压缩的，手动解压的耗时耗力，遂写了个程序自动解压。</p>
+<p>主要利用了Java核心库中的ZipInputStream类。</p>
+<p>代码：</p>
+<p>其中File src为目标文件，String des为要存储到的存储路径<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unZip</span><span class="params">(File src,String des)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    ZipInputStream zipInputStream = <span class="keyword">new</span> ZipInputStream(<span class="keyword">new</span> FileInputStream(src),</span><br><span class="line">            Charset.forName(<span class="string">"gbk"</span>));</span><br><span class="line"></span><br><span class="line">    ZipEntry zipEntry = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>((zipEntry = zipInputStream.getNextEntry()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(des + File.separator + zipEntry.getName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(zipEntry.isDirectory()) &#123;</span><br><span class="line">            file.mkdirs();</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        file.getParentFile().mkdirs();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> len;</span><br><span class="line">        FileOutputStream out = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>((len = zipInputStream.read(buffer)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            out.write(buffer,<span class="number">0</span>,len);</span><br><span class="line">        &#125;</span><br><span class="line">        out.close();</span><br><span class="line">    &#125;</span><br><span class="line">    zipInputStream.closeEntry();</span><br><span class="line">    zipInputStream.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>遇到的问题：<br>在定义ZipInputStream类时，如果不指定文件流的编码格式，则默认为utf-8。假如要解压的文件路径中包含中文，则会抛出异常：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> java.lang.IllegalArgumentException: malformed input off : 19, length : 1</span><br></pre></td></tr></table></figure></p>
+<p>这时就要手动指定编码格式了。</p>
+<p>见源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ZipInputStream</span><span class="params">(InputStream in)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(in, StandardCharsets.UTF_8);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ZipInputStream</span><span class="params">(InputStream in, Charset charset)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(<span class="keyword">new</span> PushbackInputStream(in, <span class="number">512</span>), <span class="keyword">new</span> Inflater(<span class="keyword">true</span>), <span class="number">512</span>);</span><br><span class="line">    usesDefaultInflater = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (in == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"in is null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (charset == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"charset is null"</span>);</span><br><span class="line">    <span class="keyword">this</span>.zc = ZipCoder.get(charset);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于ZipInputStream中是没有编码常量的，所以需要借助<code>Charset.forName(&quot;gbk&quot;)</code>来指定。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/01/28/简单搜索/第一讲 递归与递推/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/28/简单搜索/第一讲 递归与递推/" itemprop="url">第一讲 递归与递推</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T16:19:27+08:00">
+                2020-01-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-02T15:40:25+08:00">
+                2020-02-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/简单搜索/" itemprop="url" rel="index">
+                    <span itemprop="name">简单搜索</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/01/28/简单搜索/第一讲 递归与递推/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/28/简单搜索/第一讲 递归与递推/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="递归实现排列型枚举"><a href="#递归实现排列型枚举" class="headerlink" title="递归实现排列型枚举"></a>递归实现排列型枚举</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>把 1~n 这 n 个整数排成一行后随机打乱顺序，输出所有可能的次序。</p>
+<p>输入格式<br>一个整数n。</p>
+<p>输出格式<br>按照从小到大的顺序输出所有方案，每行1个。</p>
+<p>首先，同一行相邻两个数用一个空格隔开。</p>
+<p>其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面。</p>
+<p>数据范围<br>1≤n≤9<br>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">1 3 2</span><br><span class="line">2 1 3</span><br><span class="line">2 3 1</span><br><span class="line">3 1 2</span><br><span class="line">3 2 1</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这个题实际上就是对1-n进行全排列。</p>
+<p>现在可以想象有n个位置，一个位置只可以放入一个数字（1-n）。</p>
+<p>从第一个位置开始枚举每一个数字，当一个位置放入数字后就递归下一个位置的放置情况。直到所有情况处理完。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Integer&gt; ay = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">static</span> BufferedWriter out = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(System.out));</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(v == n) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i : ay) &#123;</span><br><span class="line">				out.write(i + <span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			out.write(<span class="string">'\n'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(visit[i] == <span class="number">0</span>) &#123;</span><br><span class="line">				ay.add(i);</span><br><span class="line">				visit[i] = <span class="number">1</span>;</span><br><span class="line">				dfs(v + <span class="number">1</span>);</span><br><span class="line">				ay.remove(ay.size() - <span class="number">1</span>);</span><br><span class="line">				visit[i] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		dfs(<span class="number">0</span>);</span><br><span class="line">		out.flush();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="递归实现指数型枚举"><a href="#递归实现指数型枚举" class="headerlink" title="递归实现指数型枚举"></a>递归实现指数型枚举</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>从 1~n 这 n 个整数中随机选取任意多个，输出所有可能的选择方案。</p>
+<p>输入格式<br>输入一个整数n。</p>
+<p>输出格式<br>每行输出一种方案。</p>
+<p>同一行内的数必须升序排列，相邻两个数用恰好1个空格隔开。</p>
+<p>对于没有选任何数的方案，输出空行。</p>
+<p>本题有自定义校验器（SPJ），各行（不同方案）之间的顺序任意。</p>
+<p>数据范围<br>1≤n≤15<br>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">2 3</span><br><span class="line">1</span><br><span class="line">1 3</span><br><span class="line">1 2</span><br><span class="line">1 2 3</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>这个题目思路大致与上一题相同，要注意的是对于每一组答案，前面的数字必须小于后面的数字。可以发现，在递归函数中循环遍历1-n，那么循环起始值以上一次取得的数值加1就可以了。</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Integer&gt; ay = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">16</span>];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">static</span> BufferedWriter out = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(System.out));</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> p)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(v == p) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i : ay) &#123;</span><br><span class="line">				out.write(i + <span class="string">" "</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			out.write(<span class="string">'\n'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">			<span class="keyword">if</span>(visit[i] == <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span>(!ay.isEmpty() &amp;&amp; ay.get(ay.size() - <span class="number">1</span>) &gt; i) &#123;</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				ay.add(i);</span><br><span class="line">				visit[i] = <span class="number">1</span>;</span><br><span class="line">				dfs(v,p + <span class="number">1</span>);</span><br><span class="line">				ay.remove(ay.size() - <span class="number">1</span>);</span><br><span class="line">				visit[i] = <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		out.write(<span class="string">'\n'</span>);</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			dfs(i,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		out.flush();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="费解的开关"><a href="#费解的开关" class="headerlink" title="费解的开关"></a>费解的开关</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p>你玩过“拉灯”游戏吗？25盏灯排成一个5x5的方形。每一个灯都有一个开关，游戏者可以改变它的状态。每一步，游戏者可以改变某一个灯的状态。游戏者改变一个灯的状态会产生连锁反应：和这个灯上下左右相邻的灯也要相应地改变其状态。</p>
+<p>我们用数字“1”表示一盏开着的灯，用数字“0”表示关着的灯。下面这种状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">10111</span><br><span class="line">01101</span><br><span class="line">10111</span><br><span class="line">10000</span><br><span class="line">11011</span><br></pre></td></tr></table></figure></p>
+<p>在改变了最左上角的灯的状态后将变成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">01111</span><br><span class="line">11101</span><br><span class="line">10111</span><br><span class="line">10000</span><br><span class="line">11011</span><br></pre></td></tr></table></figure></p>
+<p>再改变它正中间的灯后状态将变成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">01111</span><br><span class="line">11001</span><br><span class="line">11001</span><br><span class="line">10100</span><br><span class="line">11011</span><br></pre></td></tr></table></figure></p>
+<p>给定一些游戏的初始状态，编写程序判断游戏者是否可能在6步以内使所有的灯都变亮。</p>
+<p>输入格式</p>
+<p>第一行输入正整数n，代表数据中共有n个待解决的游戏初始状态。</p>
+<p>以下若干行数据分为n组，每组数据有5行，每行5个字符。每组数据描述了一个游戏的初始状态。各组数据间用一个空行分隔。</p>
+<p>输出格式</p>
+<p>一共输出n行数据，每行有一个小于等于6的整数，它表示对于输入数据中对应的游戏状态最少需要几步才能使所有灯变亮。</p>
+<p>对于某一个游戏初始状态，若6步以内无法使所有灯变亮，则输出“-1”。</p>
+<p>数据范围<br>0&lt;n≤500<br>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">00111</span><br><span class="line">01011</span><br><span class="line">10001</span><br><span class="line">11010</span><br><span class="line">11100</span><br><span class="line"></span><br><span class="line">11101</span><br><span class="line">11101</span><br><span class="line">11110</span><br><span class="line">11111</span><br><span class="line">11111</span><br><span class="line"></span><br><span class="line">01111</span><br><span class="line">11111</span><br><span class="line">11111</span><br><span class="line">11111</span><br><span class="line">11111</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">-1</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><p>对于这种开灯关灯问题（改变一个位置的状态会影响其它位置的状态）或许可以发现这样一种现象，那就是<strong>按一下再按一下相当于没有按</strong>。</p>
+<p>可以推出来，每一个位置最多可以按一下。</p>
+<p>现在来模拟一下状态。</p>
+<p>对于第一行的开关，如果有一个开关处于关的状态，那么能影响到这个开关的只能是它左边、右边、下边的开关。而像前面提到的每个开关只能按一次，当第一行的开关前面4个都处于开的状态，第5个处于关的状态，那么能影响到它的只能是它下面的开关，因为左边开关一旦按下势必会影响前面已经处理好的开关，而右边又没有开关了。</p>
+<p>此时就可以设定当第一行的开关处于关的状态，就按一下它下面的开关来改变它的状态。</p>
+<p>这样，对于第二行来说，第三行开关决定它的开关状态，以此类推。</p>
+<p>此时，就可以枚举第一行开关的所有情况，有了第一行开关的状态，就可以推出来整个开关矩阵的情况。</p>
+<p>求出最小步骤数。</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStreamWriter;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Acwing95</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>  MAXN = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] mg = <span class="keyword">new</span> <span class="keyword">int</span>[MAXN][MAXN];</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> ans = Integer.MAX_VALUE;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] tp = <span class="keyword">new</span> <span class="keyword">int</span>[MAXN][MAXN];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">inverse</span><span class="params">(<span class="keyword">int</span>[][] ay,<span class="keyword">int</span> i,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        ay[i][v] = (ay[i][v] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        ay[i][v - <span class="number">1</span>] = (ay[i][v - <span class="number">1</span>] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line">        ay[i][v + <span class="number">1</span>] = (ay[i][v + <span class="number">1</span>] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line">        ay[i + <span class="number">1</span>][v] = (ay[i + <span class="number">1</span>][v] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line">        ay[i - <span class="number">1</span>][v] = (ay[i - <span class="number">1</span>][v] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">5</span>; j++) &#123;</span><br><span class="line">                tp[i][j] = mg[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">5</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(tp[i - <span class="number">1</span>][j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    inverse(tp,i,j);</span><br><span class="line">                    p++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(tp[<span class="number">5</span>][i] == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(v == <span class="number">6</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = check();</span><br><span class="line">            <span class="keyword">if</span>(cnt == -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = Math.min(ans, cnt + p);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(v + <span class="number">1</span>,p);</span><br><span class="line">        inverse(mg,<span class="number">1</span>,v);</span><br><span class="line">        dfs(v + <span class="number">1</span>,p + <span class="number">1</span>);</span><br><span class="line">        inverse(mg,<span class="number">1</span>,v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line"></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        n = sc.nextInt();</span><br><span class="line">        <span class="keyword">while</span>(n-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            ans = Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">                String line = sc.next();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; line.length(); j++) &#123;</span><br><span class="line">                    mg[i][j + <span class="number">1</span>] = (<span class="keyword">int</span>)line.charAt(j) - <span class="number">48</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span>(ans == Integer.MAX_VALUE || ans &gt; <span class="number">6</span>) &#123;</span><br><span class="line">                ans = -<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="递归实现组合型枚举"><a href="#递归实现组合型枚举" class="headerlink" title="递归实现组合型枚举"></a>递归实现组合型枚举</h1><h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p>从 1~n 这 n 个整数中随机选出 m 个，输出所有可能的选择方案。</p>
+<p>输入格式<br>两个整数 n,m ,在同一行用空格隔开。</p>
+<p>输出格式<br>按照从小到大的顺序输出所有方案，每行1个。</p>
+<p>首先，同一行内的数升序排列，相邻两个数用一个空格隔开。</p>
+<p>其次，对于两个不同的行，对应下标的数一一比较，字典序较小的排在前面（例如1 3 5 7排在1 3 6 8前面）。</p>
+<p>数据范围<br>n&gt;0 ,<br>0≤m≤n ,<br>n+(n−m)≤25<br>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 3</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 </span><br><span class="line">1 2 4 </span><br><span class="line">1 2 5 </span><br><span class="line">1 3 4 </span><br><span class="line">1 3 5 </span><br><span class="line">1 4 5 </span><br><span class="line">2 3 4 </span><br><span class="line">2 3 5 </span><br><span class="line">2 4 5 </span><br><span class="line">3 4 5</span><br><span class="line">``` </span><br><span class="line">## 思路</span><br><span class="line">与全排列做法类似。指定递归函数出口为规定的数即可。</span><br><span class="line">## 代码 </span><br><span class="line">```Java</span><br><span class="line">import java.io.BufferedWriter;</span><br><span class="line">import java.io.OutputStreamWriter;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">	static int n,m;</span><br><span class="line">	static BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));</span><br><span class="line">	static ArrayList&lt;Integer&gt; ay = new ArrayList&lt;Integer&gt;();</span><br><span class="line">	static int[] visit = new int[30];</span><br><span class="line">	</span><br><span class="line">	public static void dfs(int v,int state) throws Exception&#123;</span><br><span class="line">		if(v == m) &#123;</span><br><span class="line">			for(int i : ay) &#123;</span><br><span class="line">				out.write(i + &quot; &quot;);</span><br><span class="line">			&#125;</span><br><span class="line">			out.write(&apos;\n&apos;);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		for(int i = state + 1; i &lt;= n; i++) &#123;</span><br><span class="line">			if(visit[i] == 0) &#123;</span><br><span class="line">				ay.add(i);</span><br><span class="line">				visit[i] = 1;</span><br><span class="line">				dfs(v + 1, i);</span><br><span class="line">				ay.remove(ay.size() - 1);</span><br><span class="line">				visit[i] = 0;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public static void main(String[] args) throws Exception&#123;</span><br><span class="line">		Scanner sc = new Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		m = sc.nextInt();</span><br><span class="line">		</span><br><span class="line">		dfs(0,0);</span><br><span class="line">		</span><br><span class="line">		out.flush();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="带分数"><a href="#带分数" class="headerlink" title="带分数"></a>带分数</h1><h2 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h2><p>100 可以表示为带分数的形式：100=3+69258/714<br>还可以表示为：100=82+3546/197<br>注意特征：带分数中，数字 1∼9 分别出现且只出现一次（不包含 0）。</p>
+<p>类似这样的带分数，100 有 11 种表示法。</p>
+<p>输入格式<br>一个正整数。</p>
+<p>输出格式<br>输出输入数字用数码 1∼9 不重复不遗漏地组成带分数表示的全部种数。</p>
+<p>数据范围<br>1≤N&lt;10^6</p>
+<p>输入样例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100</span><br></pre></td></tr></table></figure></p>
+<p>输出样例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11</span><br></pre></td></tr></table></figure></p>
+<p>输入样例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">105</span><br></pre></td></tr></table></figure></p>
+<p>输出样例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h2><p>这个题目要求1-9数字使用并且仅使用一次。</p>
+<p>把a、b、c三个数字当成字符串连接到一起，即是一组答案。可以发现，对于每一个由1-9数字组成的字符串都可以对其进行拆分，之后判断是否可以构成n。</p>
+<p>枚举字符串（即求全排列1-9），对于每一个字符串进行拆分，分成三部分，将这三部分换成整数，判断等式(n - a) * c = b（由n=a+b/c推导得来）是否成立。</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Acwing1209</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">long</span> n;</span><br><span class="line">	<span class="keyword">static</span> String line = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[] visit = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">toLong</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span> value = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;  str.length(); i++) &#123;</span><br><span class="line">			value = value * <span class="number">10</span> + (<span class="keyword">int</span>)str.charAt(i) - <span class="number">48</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> value;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">9</span>; j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> t = <span class="number">9</span> - i - j;</span><br><span class="line">				<span class="keyword">if</span>(t &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">long</span> a = toLong(line.substring(<span class="number">0</span>, i));</span><br><span class="line">				<span class="keyword">long</span> b = toLong(line.substring(i,i + j));</span><br><span class="line">				<span class="keyword">long</span> c = toLong(line.substring(i + j));</span><br><span class="line">				<span class="keyword">if</span>((n - a) * c == b) &#123;</span><br><span class="line">					ans++;</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(v == <span class="number">9</span>) &#123;</span><br><span class="line">			check();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(visit[i] == <span class="number">0</span>) &#123;</span><br><span class="line">				line += i;</span><br><span class="line">				visit[i] = <span class="number">1</span>;</span><br><span class="line">				dfs(v + <span class="number">1</span>);</span><br><span class="line">				visit[i] = <span class="number">0</span>;</span><br><span class="line">				line = line.substring(<span class="number">0</span>, line.length() - <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextLong();</span><br><span class="line">		dfs(<span class="number">0</span>);</span><br><span class="line">		System.out.println(ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="翻硬币"><a href="#翻硬币" class="headerlink" title="翻硬币"></a>翻硬币</h1><h2 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h2><p>小明正在玩一个“翻硬币”的游戏。</p>
+<p>桌上放着排成一排的若干硬币。我们用 * 表示正面，用 o 表示反面（是小写字母，不是零）。</p>
+<p>比如，可能情形是：<strong>oo*</strong>oooo</p>
+<p>如果同时翻转左边的两个硬币，则变为：oooo***oooo</p>
+<p>现在小明的问题是：如果已知了初始状态和要达到的目标状态，每次只能同时翻转相邻的两个硬币,那么对特定的局面，最少要翻动多少次呢？</p>
+<p>我们约定：把翻动相邻的两个硬币叫做一步操作。</p>
+<p>输入格式<br>两行等长的字符串，分别表示初始状态和要达到的目标状态。</p>
+<p>输出格式<br>一个整数，表示最小操作步数</p>
+<p>数据范围<br>输入字符串的长度均不超过100。<br>数据保证答案一定有解。</p>
+<p>输入样例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**********</span><br><span class="line">o****o****</span><br></pre></td></tr></table></figure></p>
+<p>输出样例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure></p>
+<p>输入样例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*o**o***o***</span><br><span class="line">*o***o**o***</span><br></pre></td></tr></table></figure></p>
+<p>输出样例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>类似于开灯问题。</p>
+<p>可以发现，对于一个硬币来说，翻两次相当于没翻，也就是说，一个硬币最多只能翻一次。</p>
+<p>对于最左边的硬币：能影响它状态的只有它自己和它右边第一个硬币。如果某一时刻它翻动一次，它自己和它右边的硬币状态改变。此时，对第二个硬币来讲，就不能翻动它自身，能影响它的只有它右边的硬币，以此类推，后边的硬币只能被它后一位影响。</p>
+<p>这样就好办了，对比目标串做出相应变化就行了。</p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> String src = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">static</span> String des = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> ans = Integer.MAX_VALUE;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		String str = src;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)  &#123;</span><br><span class="line">			<span class="keyword">if</span>(des.charAt(i) != str.charAt(i)) &#123;</span><br><span class="line">				str = inverse(str,i);</span><br><span class="line">				p++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(!des.equals(str)) &#123;</span><br><span class="line">			p = -<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> p;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">inverse</span><span class="params">(String str,<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(index == len) &#123;</span><br><span class="line">			<span class="keyword">return</span> str;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span>[] ch = str.toCharArray();</span><br><span class="line">		<span class="keyword">if</span>(ch[index] == <span class="string">'*'</span>) &#123;</span><br><span class="line">			ch[index] = <span class="string">'o'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			ch[index] = <span class="string">'*'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(ch[index + <span class="number">1</span>] == <span class="string">'*'</span>) &#123;</span><br><span class="line">			ch[index + <span class="number">1</span>] = <span class="string">'o'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			ch[index + <span class="number">1</span>] = <span class="string">'*'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> str = <span class="keyword">new</span> String(ch);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		src = sc.next();</span><br><span class="line">		len = src.length();</span><br><span class="line">		</span><br><span class="line">		des = sc.next();</span><br><span class="line">		<span class="keyword">int</span> cnt = check();</span><br><span class="line">		System.out.println(cnt);</span><br><span class="line">		sc.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="飞行员兄弟"><a href="#飞行员兄弟" class="headerlink" title="飞行员兄弟"></a>飞行员兄弟</h1><h2 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h2><p>“飞行员兄弟”这个游戏，需要玩家顺利的打开一个拥有16个把手的冰箱。</p>
+<p>已知每个把手可以处于以下两种状态之一：打开或关闭。</p>
+<p>只有当所有把手都打开时，冰箱才会打开。</p>
+<p>把手可以表示为一个4х4的矩阵，您可以改变任何一个位置[i,j]上把手的状态。</p>
+<p>但是，这也会使得第i行和第j列上的所有把手的状态也随着改变。</p>
+<p>请你求出打开冰箱所需的切换把手的次数最小值是多少。</p>
+<p>输入格式<br>输入一共包含四行，每行包含四个把手的初始状态。</p>
+<p>符号“+”表示把手处于闭合状态，而符号“-”表示把手处于打开状态。</p>
+<p>至少一个手柄的初始状态是关闭的。</p>
+<p>输出格式<br>第一行输出一个整数N，表示所需的最小切换把手次数。</p>
+<p>接下来N行描述切换顺序，每行输入两个整数，代表被切换状态的把手的行号和列号，数字之间用空格隔开。</p>
+<p>注意：如果存在多种打开冰箱的方式，则按照优先级整体从上到下，同行从左到右打开。</p>
+<p>数据范围<br>1≤i,j≤4<br>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-+--</span><br><span class="line">----</span><br><span class="line">----</span><br><span class="line">-+--</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">1 1</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br><span class="line">4 1</span><br><span class="line">4 3</span><br><span class="line">4 4</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h2><p>对于每一个把手，都有两种状态，一个是开，一个是关。枚举所有的状态，对每种状态判断是不是全打开就行了。</p>
+<p>注意，题目要求将改变的把手位置打印出来并且有顺序要求，那么只需要从最后往前面递归就行了。</p>
+<h2 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayDeque;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">	Node(<span class="keyword">int</span> x,<span class="keyword">int</span> y) &#123;</span><br><span class="line">		<span class="keyword">this</span>.x = x;</span><br><span class="line">		<span class="keyword">this</span>.y = y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[][] mg = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>][<span class="number">5</span>];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> ans = Integer.MAX_VALUE;</span><br><span class="line">	<span class="keyword">static</span> Deque&lt;Node&gt; stack = <span class="keyword">new</span> ArrayDeque&lt;Node&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Node&gt; ay = <span class="keyword">new</span> ArrayList&lt;Node&gt;();</span><br><span class="line">	<span class="keyword">static</span> ArrayList&lt;Node&gt; cur = <span class="keyword">new</span> ArrayList&lt;Node&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(mg[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">inverse</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(i != y) &#123;</span><br><span class="line">				mg[x][i] = (mg[x][i] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(i != x) &#123;</span><br><span class="line">				mg[i][y] = (mg[i][y] + <span class="number">1</span>) % <span class="number">2</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		mg[x][y] = (mg[x][y] + <span class="number">1</span>) %  <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(p &lt;= ans) &#123;</span><br><span class="line">			ans = p;</span><br><span class="line">			ay.clear();</span><br><span class="line">			<span class="keyword">for</span>(Node node : cur) &#123;</span><br><span class="line">				ay.add(node);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(v == -<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(check()) &#123;</span><br><span class="line">				judge(p);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> x = v / <span class="number">4</span>;</span><br><span class="line">		<span class="keyword">int</span> y = v % <span class="number">4</span>;</span><br><span class="line">		</span><br><span class="line">		dfs(v - <span class="number">1</span>,p);</span><br><span class="line">		</span><br><span class="line">		inverse(x,y);</span><br><span class="line">		cur.add(<span class="keyword">new</span> Node(x + <span class="number">1</span>,y + <span class="number">1</span>));</span><br><span class="line">		dfs(v - <span class="number">1</span>,p + <span class="number">1</span>);</span><br><span class="line">		cur.remove(cur.size() - <span class="number">1</span>);</span><br><span class="line">		inverse(x,y);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">			String line = sc.next();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; line.length(); j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(line.charAt(j) == <span class="string">'+'</span>) &#123;</span><br><span class="line">					mg[i][j] = <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					mg[i][j] = <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		dfs(<span class="number">15</span>,<span class="number">0</span>);</span><br><span class="line">		</span><br><span class="line">		System.out.println(ans);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = ay.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">			System.out.println(ay.get(i).x + <span class="string">" "</span> + ay.get(i).y);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/11/15/操作系统/处理机调度/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -380,8 +817,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-11-15T16:00:35+08:00">
-                2019-11-15
+              <time title="Post modified" itemprop="dateModified" datetime="2019-11-16T21:39:23+08:00">
+                2019-11-16
               </time>
             
           </span>
@@ -449,6 +886,39 @@
         
           
             <p>操作系统笔记</p>
+<h1 id="层次和目标"><a href="#层次和目标" class="headerlink" title="层次和目标"></a>层次和目标</h1><p>处理机调度分为三个层次，分别为</p>
+<ul>
+<li>高级调度（作业调度），将处于后备队列中的作业调入内存</li>
+<li>中级调度（内存调度），将暂时不能运行的进程调至外存等待</li>
+<li>低级调度（进程调度），决定就绪队列中的哪个进程（或线程）得到处理机资源</li>
+</ul>
+<p>不同类型的操作系统采用了不同的处理机调度算法。调度算法应当使得系统资源利用率尤其是处理机的利用率尽可能地高（资源利用率），要保证每个进程都能获得合理的CPU时间（公平性），还要保证系统的各种资源使用的平衡性（平衡性），另外对制定的策略只要需要就一定要执行（策略强制执行性）。</p>
+<h1 id="作业调度"><a href="#作业调度" class="headerlink" title="作业调度"></a>作业调度</h1><p>在多道批处理系统中，作业是用户提交给系统的一项想多独立的工作。作业不仅包含通常说的程序和数据还有配有一份作业说明书。</p>
+<p>当一个作业进入系统时，相应的调度程序为其建立一个作业控制块（Job Control Block，JCB），JCB中含有该作业的有关信息（比如作业标识、类型、优先级等），之后把这个作业放入后备队列中等待后续调度。</p>
+<p>作业从进入系统到运行结束经过了3个阶段。</p>
+<ul>
+<li>后备状态，系统建立JCB并将该作业放入后备队列等待作业调度。</li>
+<li>运行阶段，作业被作业调度进程分配相关的资源后调入就绪队列。</li>
+<li>完成状态，当作业完成或者发生异常情况提前结束，被系统收回已分配的资源。</li>
+</ul>
+<p>作业调度要根据JCB中相关信息检查系统中是否有足够的资源满足该作业的需求，之后按照相应的调度算法从外存中的后备队列中选取作业调入内存中的就绪队列，为其创建进程、分配相应的资源。</p>
+<p>作业调度应该调度哪些作业呢？这取决于系统采用的调度算法。比较常用的有先来先服务算法、短作业优先算法和高响应比优先调度算法。</p>
+<p>先来先服务算法（First come first served，FCFS）：FCFS算法按照作业到达系统的先后顺序来调度作业。</p>
+<p>短作业优先算法（Short job first SJF）：SJF算法按照作业的估计运行时间长短来调度作业。可以发现，这种算法有不少的缺点，实际上是很难估计作业的运行时间，而且这种算法对长作业是非常不利的，长作业的周转时间会明显的增长，完全忽视长作业的等待时间，导致长作业的实际完成时间被拉长，这是用户不想得到的结果。当用户急需完成某一任务，而该任务的估计运行时间较长，该紧急长作业在后备队列中等待被调度时，这时来了一个短作业，那么，短作业先被调度，紧急作业长延后无法被调度，不能保证紧急作业得到及时处理。</p>
+<p>高响应比优先调度算法（Highest response ratio next,HRRN）：HRRN算法结合了FCFS和SJF算法。为每一个作业设置一个优先级，在后备队列中作业按照优先级排序等待被调度。</p>
+<p>优先权 = $\frac{等待时间 + 要求服务时间}{要求服务时间}$<br>HRRN的缺点是在进行调度之前都要进行一次响应比计算，无疑这会增加系统开销。</p>
+<h1 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h1><p>在进行进程调度的时候首先要将当前正在使用处理机的进程的相关信息保存到进程的进程控制块中，比如程序计数器、寄存器中的内容。其次根据一定的调度算法选取就绪队列中的进程。最后将处理机分配给选取的进程，并将进程控制块中的相关信息填入处理机，让它从上次的断点处恢复运行。</p>
+<h2 id="进程调度的机制"><a href="#进程调度的机制" class="headerlink" title="进程调度的机制"></a>进程调度的机制</h2><ul>
+<li>排队器，按照一定的策略将进程排序</li>
+<li>分派器，根据调度程序选出进程，将其从就绪队列中取出，将处理机分配给该进程</li>
+<li>上下文切换器，在进行进程切换时，保存旧进程的相关信息，并将新进程的信息填入处理机中</li>
+</ul>
+<h2 id="进程调度方式"><a href="#进程调度方式" class="headerlink" title="进程调度方式"></a>进程调度方式</h2><p>1.非抢占式，一旦把处理机分配给某一进程后，除非这个进程发出中断或者异常，否则一直运行下去，直至完成。</p>
+<p>2.抢占式，这种调度方式允许调度程序根据某种原则去暂停某个正在执行的程序，转而将处理机分配给其他进程。</p>
+<p>注意，在分时系统中，只有抢占式才能实现人机交互。</p>
+<p>抢占式也并不是一种任意的行为，它也必须遵循一定的原则。<br>1.允许优先权高的抢占优先权低的。<br>2.允许新调入就绪队列中的短进程抢占正在运行的长进程，即当前运行的长进程的尚需运行时间明显比短进程要求运行时间长时，允许抢占。<br>3.如果调度算法是基于时间片原则的，当前进程在属于它的时间片内尚未执行完毕，可被其他进程抢占。</p>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><p>较常用的算法有基于时间片的轮转调度算法（Round robin，RR）。</p>
+<p>RR算法让就绪队列中进程每次仅能获得一个时间片，在一个时间片用完该进程还未执行完毕就换下一个进程。由此确保每个进程在一定时间间隔内都能获得一次处理机。</p>
 
           
         
@@ -3338,351 +3808,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/今年暑假不AC HDU - 2037 /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/贪心/今年暑假不AC HDU - 2037 /" itemprop="url">今年暑假不AC HDU - 2037</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-02-01T23:45:08+08:00">
-                2019-02-01
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/贪心算法/" itemprop="url" rel="index">
-                    <span itemprop="name">贪心算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/贪心/今年暑假不AC HDU - 2037 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/今年暑假不AC HDU - 2037 /" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>“今年暑假不AC？”<br>“是的。”<br>“那你干什么呢？”<br>“看世界杯呀，笨蛋！”<br>“@#$%^&amp;*%…” </p>
-<p>确实如此，世界杯来了，球迷的节日也来了，估计很多ACMer也会抛开电脑，奔向电视了。<br>作为球迷，一定想看尽量多的完整的比赛，当然，作为新时代的好青年，你一定还会看一些其它的节目，比如新闻联播（永远不要忘记关心国家大事）、非常6+7、超级女生，以及王小丫的《开心辞典》等等，假设你已经知道了所有你喜欢看的电视节目的转播时间表，你会合理安排吗？（目标是能看尽量多的完整节目）<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/今年暑假不AC HDU - 2037 /" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/Saving HDU HDU - 2111 /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/贪心/Saving HDU HDU - 2111 /" itemprop="url">Saving HDU HDU - 2111</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-31T23:29:44+08:00">
-                2019-01-31
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/贪心算法/" itemprop="url" rel="index">
-                    <span itemprop="name">贪心算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/贪心/Saving HDU HDU - 2111 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/Saving HDU HDU - 2111 /" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>话说上回讲到海东集团面临内外交困，公司的元老也只剩下XHD夫妇二人了。显然，作为多年拼搏的商人，XHD不会坐以待毙的。<br>  一天，当他正在苦思冥想解困良策的时候，突然想到了自己的传家宝，那是公司成立的时候，父亲作为贺礼送来的一个锦囊，徐父当时交代，不到万不得已的时候，不要打开它。“现在不正是最需要的时候吗？”，一边想，XHD一边找到了这个精心保管的锦囊，打开一看，里面只有一句话“杭城北麓千人洞有宝”。<br>  二话不说，XHD拿起一个大口袋就出发了，这个千人洞他是知道的，小的时候，爸爸曾经带他来过这个隐蔽的路口，并告诉他，这是千人洞。他现在才明白爸爸当初这句话的含义。<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/Saving HDU HDU - 2111 /" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3739,7 +3864,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3750,7 +3875,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -3885,7 +4010,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -3914,29 +4039,9 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共84.7k字</span>
+  <span class="post-count">博客全站共90.6k字</span>
 </div>
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      访客数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      人
-    </span>
-  
-
-  
-    <span class="site-pv">
-      总访问量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      次
-    </span>
-  
-</div>
-
 
 
 

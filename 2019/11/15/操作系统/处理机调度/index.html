@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="操作系统笔记">
+<meta name="description" content="操作系统笔记 层次和目标处理机调度分为三个层次，分别为  高级调度（作业调度），将处于后备队列中的作业调入内存 中级调度（内存调度），将暂时不能运行的进程调至外存等待 低级调度（进程调度），决定就绪队列中的哪个进程（或线程）得到处理机资源  不同类型的操作系统采用了不同的处理机调度算法。调度算法应当使得系统资源利用率尤其是处理机的利用率尽可能地高（资源利用率），要保证每个进程都能获得合理的CPU时">
 <meta name="keywords" content="个人记录生活学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="处理机调度">
 <meta property="og:url" content="https://shann.xyz/2019/11/15/操作系统/处理机调度/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="操作系统笔记">
+<meta property="og:description" content="操作系统笔记 层次和目标处理机调度分为三个层次，分别为  高级调度（作业调度），将处于后备队列中的作业调入内存 中级调度（内存调度），将暂时不能运行的进程调至外存等待 低级调度（进程调度），决定就绪队列中的哪个进程（或线程）得到处理机资源  不同类型的操作系统采用了不同的处理机调度算法。调度算法应当使得系统资源利用率尤其是处理机的利用率尽可能地高（资源利用率），要保证每个进程都能获得合理的CPU时">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-15T08:00:35.047Z">
+<meta property="og:updated_time" content="2019-11-16T13:39:23.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理机调度">
-<meta name="twitter:description" content="操作系统笔记">
+<meta name="twitter:description" content="操作系统笔记 层次和目标处理机调度分为三个层次，分别为  高级调度（作业调度），将处于后备队列中的作业调入内存 中级调度（内存调度），将暂时不能运行的进程调至外存等待 低级调度（进程调度），决定就绪队列中的哪个进程（或线程）得到处理机资源  不同类型的操作系统采用了不同的处理机调度算法。调度算法应当使得系统资源利用率尤其是处理机的利用率尽可能地高（资源利用率），要保证每个进程都能获得合理的CPU时">
 
 
 
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-11-15T16:00:35+08:00">
-                2019-11-15
+              <time title="Post modified" itemprop="dateModified" datetime="2019-11-16T21:39:23+08:00">
+                2019-11-16
               </time>
             
           </span>
@@ -426,11 +426,6 @@
           
 
           
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
 
           
 
@@ -450,6 +445,39 @@
 
       
         <p>操作系统笔记</p>
+<h1 id="层次和目标"><a href="#层次和目标" class="headerlink" title="层次和目标"></a>层次和目标</h1><p>处理机调度分为三个层次，分别为</p>
+<ul>
+<li>高级调度（作业调度），将处于后备队列中的作业调入内存</li>
+<li>中级调度（内存调度），将暂时不能运行的进程调至外存等待</li>
+<li>低级调度（进程调度），决定就绪队列中的哪个进程（或线程）得到处理机资源</li>
+</ul>
+<p>不同类型的操作系统采用了不同的处理机调度算法。调度算法应当使得系统资源利用率尤其是处理机的利用率尽可能地高（资源利用率），要保证每个进程都能获得合理的CPU时间（公平性），还要保证系统的各种资源使用的平衡性（平衡性），另外对制定的策略只要需要就一定要执行（策略强制执行性）。</p>
+<h1 id="作业调度"><a href="#作业调度" class="headerlink" title="作业调度"></a>作业调度</h1><p>在多道批处理系统中，作业是用户提交给系统的一项想多独立的工作。作业不仅包含通常说的程序和数据还有配有一份作业说明书。</p>
+<p>当一个作业进入系统时，相应的调度程序为其建立一个作业控制块（Job Control Block，JCB），JCB中含有该作业的有关信息（比如作业标识、类型、优先级等），之后把这个作业放入后备队列中等待后续调度。</p>
+<p>作业从进入系统到运行结束经过了3个阶段。</p>
+<ul>
+<li>后备状态，系统建立JCB并将该作业放入后备队列等待作业调度。</li>
+<li>运行阶段，作业被作业调度进程分配相关的资源后调入就绪队列。</li>
+<li>完成状态，当作业完成或者发生异常情况提前结束，被系统收回已分配的资源。</li>
+</ul>
+<p>作业调度要根据JCB中相关信息检查系统中是否有足够的资源满足该作业的需求，之后按照相应的调度算法从外存中的后备队列中选取作业调入内存中的就绪队列，为其创建进程、分配相应的资源。</p>
+<p>作业调度应该调度哪些作业呢？这取决于系统采用的调度算法。比较常用的有先来先服务算法、短作业优先算法和高响应比优先调度算法。</p>
+<p>先来先服务算法（First come first served，FCFS）：FCFS算法按照作业到达系统的先后顺序来调度作业。</p>
+<p>短作业优先算法（Short job first SJF）：SJF算法按照作业的估计运行时间长短来调度作业。可以发现，这种算法有不少的缺点，实际上是很难估计作业的运行时间，而且这种算法对长作业是非常不利的，长作业的周转时间会明显的增长，完全忽视长作业的等待时间，导致长作业的实际完成时间被拉长，这是用户不想得到的结果。当用户急需完成某一任务，而该任务的估计运行时间较长，该紧急长作业在后备队列中等待被调度时，这时来了一个短作业，那么，短作业先被调度，紧急作业长延后无法被调度，不能保证紧急作业得到及时处理。</p>
+<p>高响应比优先调度算法（Highest response ratio next,HRRN）：HRRN算法结合了FCFS和SJF算法。为每一个作业设置一个优先级，在后备队列中作业按照优先级排序等待被调度。</p>
+<p>优先权 = $\frac{等待时间 + 要求服务时间}{要求服务时间}$<br>HRRN的缺点是在进行调度之前都要进行一次响应比计算，无疑这会增加系统开销。</p>
+<h1 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h1><p>在进行进程调度的时候首先要将当前正在使用处理机的进程的相关信息保存到进程的进程控制块中，比如程序计数器、寄存器中的内容。其次根据一定的调度算法选取就绪队列中的进程。最后将处理机分配给选取的进程，并将进程控制块中的相关信息填入处理机，让它从上次的断点处恢复运行。</p>
+<h2 id="进程调度的机制"><a href="#进程调度的机制" class="headerlink" title="进程调度的机制"></a>进程调度的机制</h2><ul>
+<li>排队器，按照一定的策略将进程排序</li>
+<li>分派器，根据调度程序选出进程，将其从就绪队列中取出，将处理机分配给该进程</li>
+<li>上下文切换器，在进行进程切换时，保存旧进程的相关信息，并将新进程的信息填入处理机中</li>
+</ul>
+<h2 id="进程调度方式"><a href="#进程调度方式" class="headerlink" title="进程调度方式"></a>进程调度方式</h2><p>1.非抢占式，一旦把处理机分配给某一进程后，除非这个进程发出中断或者异常，否则一直运行下去，直至完成。</p>
+<p>2.抢占式，这种调度方式允许调度程序根据某种原则去暂停某个正在执行的程序，转而将处理机分配给其他进程。</p>
+<p>注意，在分时系统中，只有抢占式才能实现人机交互。</p>
+<p>抢占式也并不是一种任意的行为，它也必须遵循一定的原则。<br>1.允许优先权高的抢占优先权低的。<br>2.允许新调入就绪队列中的短进程抢占正在运行的长进程，即当前运行的长进程的尚需运行时间明显比短进程要求运行时间长时，允许抢占。<br>3.如果调度算法是基于时间片原则的，当前进程在属于它的时间片内尚未执行完毕，可被其他进程抢占。</p>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><p>较常用的算法有基于时间片的轮转调度算法（Round robin，RR）。</p>
+<p>RR算法让就绪队列中进程每次仅能获得一个时间片，在一个时间片用完该进程还未执行完毕就换下一个进程。由此确保每个进程在一定时间间隔内都能获得一次处理机。</p>
 
       
     </div>
@@ -509,6 +537,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/28/简单搜索/第一讲 递归与递推/" rel="prev" title="第一讲 递归与递推">
+                第一讲 递归与递推 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -572,8 +604,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -592,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -603,7 +644,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -724,6 +765,23 @@ show_date_time();
       </section>
 <!--<iframe height="100" weight="260" src="https://player.bilibili.com/player.html?aid=26597687&cid=45759200&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"> </iframe>-->
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#层次和目标"><span class="nav-number">1.</span> <span class="nav-text">层次和目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#作业调度"><span class="nav-number">2.</span> <span class="nav-text">作业调度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程调度"><span class="nav-number">3.</span> <span class="nav-text">进程调度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程调度的机制"><span class="nav-number">3.1.</span> <span class="nav-text">进程调度的机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程调度方式"><span class="nav-number">3.2.</span> <span class="nav-text">进程调度方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调度算法"><span class="nav-number">3.3.</span> <span class="nav-text">调度算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+        
+      <!--/noindex-->
+      
 
       
 
@@ -738,7 +796,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -767,29 +825,9 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共84.7k字</span>
+  <span class="post-count">博客全站共90.6k字</span>
 </div>
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      访客数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      人
-    </span>
-  
-
-  
-    <span class="site-pv">
-      总访问量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      次
-    </span>
-  
-</div>
-
 
 
 
