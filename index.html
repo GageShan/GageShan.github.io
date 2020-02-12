@@ -333,6 +333,280 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/02/04/二分/第二讲 二分与前缀和/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/头像1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/04/二分/第二讲 二分与前缀和/" itemprop="url">第二讲 二分与前缀和</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-04T15:35:17+08:00">
+                2020-02-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-12T18:08:10+08:00">
+                2020-02-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/二分-三分-分治/" itemprop="url" rel="index">
+                    <span itemprop="name">二分-三分-分治</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/04/二分/第二讲 二分与前缀和/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/04/二分/第二讲 二分与前缀和/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数的范围"><a href="#数的范围" class="headerlink" title="数的范围"></a>数的范围</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个按照升序排列的长度为n的整数数组，以及 q 个查询。</p>
+<p>对于每个查询，返回一个元素k的起始位置和终止位置（位置从0开始计数）。</p>
+<p>如果数组中不存在该元素，则返回“-1 -1”。</p>
+<p>输入格式<br>第一行包含整数n和q，表示数组长度和询问个数。</p>
+<p>第二行包含n个整数（均在1~10000范围内），表示完整数组。</p>
+<p>接下来q行，每行包含一个整数k，表示一个询问元素。</p>
+<p>输出格式<br>共q行，每行包含两个整数，表示所求元素的起始位置和终止位置。</p>
+<p>如果数组中不存在该元素，则返回“-1 -1”。</p>
+<p>数据范围<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1≤n≤100000</span><br><span class="line">1≤q≤10000</span><br><span class="line">1≤k≤10000</span><br></pre></td></tr></table></figure></p>
+<p>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">6 3</span><br><span class="line">1 2 2 3 3 4</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3 4</span><br><span class="line">5 5</span><br><span class="line">-1 -1</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>整数二分模板题。<br><img src="https://img-blog.csdnimg.cn/20200204160012747.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dhZ2VzaGFu,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[] q = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100100</span>];</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n,m;</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		m = sc.nextInt();</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			q[i] = sc.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(m-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> x = sc.nextInt();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">				<span class="keyword">int</span> mid = (l + r) /<span class="number">2</span>;</span><br><span class="line">				<span class="keyword">if</span>(q[mid] &gt;= x) &#123;</span><br><span class="line">					r = mid;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					l = mid + <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(q[l] == x) &#123;</span><br><span class="line">				System.out.print(l + <span class="string">" "</span>);</span><br><span class="line">				r = n - <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">					<span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">					<span class="keyword">if</span>(q[mid] &lt;= x) &#123;</span><br><span class="line">						l = mid;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> &#123;</span><br><span class="line">						r = mid - <span class="number">1</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(q[l] == x) &#123;</span><br><span class="line">					System.out.println(l);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				System.out.println(<span class="string">"-1 -1"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="数的三次方根"><a href="#数的三次方根" class="headerlink" title="数的三次方根"></a>数的三次方根</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>给定一个浮点数n，求它的三次方根。</p>
+<p>输入格式<br>共一行，包含一个浮点数n。</p>
+<p>输出格式<br>共一行，包含一个浮点数，表示问题的解。</p>
+<p>注意，结果保留6位小数。</p>
+<p>数据范围<br>−10000≤n≤10000<br>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1000.00</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.000000</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>实数二分。<br>要注意的点是当题目指出要保留多少位小数时，在计算时一般多指定两位参与运算。</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.DecimalFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">double</span> n = sc.nextDouble();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">double</span> l = -<span class="number">10000</span>d,r = <span class="number">10000</span>d;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(r - l &gt; <span class="number">1e-8</span>) &#123;</span><br><span class="line">			<span class="keyword">double</span> mid = (r + l) / <span class="number">2</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(mid * mid * mid &lt; n)  &#123;</span><br><span class="line">				l = mid;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> r = mid;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="keyword">new</span> DecimalFormat(<span class="string">"#.000000"</span>).format(l));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="子矩阵的和"><a href="#子矩阵的和" class="headerlink" title="子矩阵的和"></a>子矩阵的和</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p>输入一个n行m列的整数矩阵，再输入q个询问，每个询问包含四个整数x1, y1, x2, y2，表示一个子矩阵的左上角坐标和右下角坐标。</p>
+<p>对于每个询问输出子矩阵中所有数的和。</p>
+<p>输入格式<br>第一行包含三个整数n，m，q。</p>
+<p>接下来n行，每行包含m个整数，表示整数矩阵。</p>
+<p>接下来q行，每行包含四个整数x1, y1, x2, y2，表示一组询问。</p>
+<p>输出格式<br>共q行，每行输出一个询问的结果。</p>
+<p>数据范围<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1≤n,m≤1000,</span><br><span class="line">1≤q≤200000,</span><br><span class="line">1≤x1≤x2≤n,</span><br><span class="line">1≤y1≤y2≤m,</span><br><span class="line">−1000≤矩阵内元素的值≤1000</span><br></pre></td></tr></table></figure></p>
+<p>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 4 3</span><br><span class="line">1 7 2 4</span><br><span class="line">3 6 2 8</span><br><span class="line">2 1 2 3</span><br><span class="line">1 1 2 2</span><br><span class="line">2 1 3 4</span><br><span class="line">1 3 3 4</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">17</span><br><span class="line">27</span><br><span class="line">21</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><p>二维数组前缀和模板题。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mg[i][j] += mg[i - <span class="number">1</span>][j] + mg[i][j] - mg[i - <span class="number">1</span>][j -<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[][] row = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1005</span>][<span class="number">1005</span>];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[][] col = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1005</span>][<span class="number">1005</span>];</span><br><span class="line">	<span class="keyword">static</span> BufferedReader sc = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		String line = sc.readLine();</span><br><span class="line">		String src[] = line.split(<span class="string">" "</span>);</span><br><span class="line">		<span class="keyword">int</span> n = Integer.parseInt(src[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">int</span> m = Integer.parseInt(src[<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">int</span> q = Integer.parseInt(src[<span class="number">2</span>]);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			 line = sc.readLine();</span><br><span class="line">			src = line.split(<span class="string">" "</span>);</span><br><span class="line">			<span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(String str : src) &#123;</span><br><span class="line">				</span><br><span class="line">				row[i][j] = Integer.parseInt(str);</span><br><span class="line">				col[i][j] = col[i - <span class="number">1</span>][j] + col[i][j - <span class="number">1</span>] - col[i - <span class="number">1</span>][j - <span class="number">1</span>] + row[i][j];</span><br><span class="line">				</span><br><span class="line">				j++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(q--  &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			line = sc.readLine();</span><br><span class="line">			</span><br><span class="line">			src = line.split(<span class="string">" "</span>);</span><br><span class="line">			<span class="keyword">int</span> a = Integer.parseInt(src[<span class="number">0</span>]);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> b = Integer.parseInt(src[<span class="number">1</span>]);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> c = Integer.parseInt(src[<span class="number">2</span>]);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">int</span> d = Integer.parseInt(src[<span class="number">3</span>]);</span><br><span class="line">			System.out.println(col[c][d] - col[c][b - <span class="number">1</span>] - col[a - <span class="number">1</span>][d] + col[a - <span class="number">1</span>][b  - <span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="机器人跳跃问题"><a href="#机器人跳跃问题" class="headerlink" title="机器人跳跃问题"></a>机器人跳跃问题</h1><h2 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h2><p>机器人正在玩一个古老的基于DOS的游戏。</p>
+<p>游戏中有N+1座建筑——从0到N编号，从左到右排列。</p>
+<p>编号为0的建筑高度为0个单位，编号为 i 的建筑高度为H(i)个单位。</p>
+<p>起初，机器人在编号为0的建筑处。</p>
+<p>每一步，它跳到下一个（右边）建筑。</p>
+<p>假设机器人在第k个建筑，且它现在的能量值是E，下一步它将跳到第k+1个建筑。</p>
+<p>如果H(k+1)&gt;E，那么机器人就失去H(k+1)-E的能量值，否则它将得到E-H(k+1)的能量值。</p>
+<p>游戏目标是到达第N个建筑，在这个过程中能量值不能为负数个单位。</p>
+<p>现在的问题是机器人以多少能量值开始游戏，才可以保证成功完成游戏？</p>
+<p>输入格式<br>第一行输入整数N。</p>
+<p>第二行是N个空格分隔的整数，H(1),H(2),…,H(N)代表建筑物的高度。</p>
+<p>输出格式<br>输出一个整数，表示所需的最少单位的初始能量值。</p>
+<p>数据范围<br>1≤N,H(i)≤10^5,</p>
+<p>输入样例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">3 4 3 2 4</span><br></pre></td></tr></table></figure></p>
+<p>输出样例1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>输入样例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">4 4 4</span><br></pre></td></tr></table></figure></p>
+<p>输出样例2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure></p>
+<p>输入样例3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 6 4</span><br></pre></td></tr></table></figure></p>
+<p>输出样例3：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h2><p>二分答案。</p>
+<p>二分初始能量值（即0-10^5），将每次得到的数带入题中所给的条件，看能否满足要求，不断地缩小答案数量。</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXN = <span class="number">100005</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">long</span>[] q = <span class="keyword">new</span> <span class="keyword">long</span>[MAXN];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check1</span><span class="params">(<span class="keyword">long</span> mid)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(q[i] &gt; mid) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">long</span> mid)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span>(check1(mid)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(mid &lt; q[i]) &#123;</span><br><span class="line">				mid = mid - (q[i] - mid);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				mid = mid + (mid - q[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(mid &lt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			q[i] = sc.nextLong();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">long</span> l = <span class="number">0</span>, r = MAXN;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">			<span class="keyword">long</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span>(check(mid)) &#123;</span><br><span class="line">				r = mid;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				l = mid + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(l);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="四平方和"><a href="#四平方和" class="headerlink" title="四平方和"></a>四平方和</h1><h2 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h2><p>四平方和定理，又称为拉格朗日定理：</p>
+<p>每个正整数都可以表示为至多 4 个正整数的平方和。</p>
+<p>如果把 0 包括进去，就正好可以表示为 4 个数的平方和。</p>
+<p>比如：</p>
+<p>5=0^2+0^2+1^2+2^2</p>
+<p>7=1^2+1^2+1^2+2^2</p>
+<p>对于一个给定的正整数，可能存在多种平方和的表示法。</p>
+<p>要求你对 4 个数排序：</p>
+<p>0≤a≤b≤c≤d</p>
+<p>并对所有的可能表示法按 a,b,c,d 为联合主键升序排列，最后输出第一个表示法。</p>
+<p>输入格式<br>输入一个正整数 N。</p>
+<p>输出格式<br>输出4个非负整数，按从小到大排序，中间用空格分开。</p>
+<p>数据范围</p>
+<p>0&lt;N&lt;5∗10^6</p>
+<p>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 1 2</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>对于这样的题目，如果一开始找不出思路，那就开始想一个暴力的解法。</p>
+<p>可以看到，任意找4个数使得它们的平方的和等于给定的数，首先想到的就是4个循环解决。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; ; i++) &#123;</span><br><span class="line">	<span class="keyword">for</span>(j = i; ; j++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(t = j; ; t++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(k = t; ; k++) &#123;</span><br><span class="line">				i*i+j*j+k*k+t*t;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>明显的会超出时间。</p>
+<p>其实不妨这样想，假如现在已经求得了两个数的平方和了（记为a），那么另外两个数的平方和就是n-a=b。</p>
+<p>b可以怎么求呢？</p>
+<p>可以知道，如果a+b能够组成n，b一定要能够分成两个数的平方和，如果不能，那么说明组成a的两个整数不是答案。</p>
+<p>提前算好b的每种可能组合，之后查找即可。</p>
+<p>又因为只要字典序最小的答案，利用map的特性，只保存第一次组合即可。</p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n ;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		Map&lt;Integer,String&gt; map = <span class="keyword">new</span> HashMap&lt;Integer,String&gt;();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i * i &lt;= n; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i; i * i + j * j &lt;= n; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(!map.containsKey(i * i + j * j)) &#123;</span><br><span class="line">					map.put(i * i + j * j, i + <span class="string">" "</span> + j);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i * i &lt;= n; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i; i * i + j * j &lt;= n; j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> t = n - (i * i + j * j);</span><br><span class="line">				<span class="keyword">if</span>(map.containsKey(t)) &#123;</span><br><span class="line">					String ans = i + <span class="string">" "</span> + j + <span class="string">" "</span> +map.get(t);</span><br><span class="line">					System.out.println(ans);</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="分巧克力"><a href="#分巧克力" class="headerlink" title="分巧克力"></a>分巧克力</h1><h2 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h2><p>儿童节那天有 K 位小朋友到小明家做客。</p>
+<p>小明拿出了珍藏的巧克力招待小朋友们。</p>
+<p>小明一共有 N 块巧克力，其中第 i 块是 Hi×Wi 的方格组成的长方形。</p>
+<p>为了公平起见，小明需要从这 N 块巧克力中切出 K 块巧克力分给小朋友们。</p>
+<p>切出的巧克力需要满足：</p>
+<p>形状是正方形，边长是整数<br>大小相同<br>例如一块 6×5 的巧克力可以切出 6 块 2×2 的巧克力或者 2 块 3×3 的巧克力。</p>
+<p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小明计算出最大的边长是多少么？</p>
+<p>输入格式<br>第一行包含两个整数 N 和 K。</p>
+<p>以下 N 行每行包含两个整数 Hi 和 Wi。</p>
+<p>输入保证每位小朋友至少能获得一块 1×1 的巧克力。</p>
+<p>输出格式<br>输出切出的正方形巧克力最大可能的边长。</p>
+<p>数据范围<br>1≤N,K≤105,<br>1≤Hi,Wi≤105<br>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 10</span><br><span class="line">6 5</span><br><span class="line">5 6</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h2><p>二分答案。</p>
+<p>二分正方形的边长，将枚举的边长带入看能否满足题目条件。不断缩小答案。</p>
+<h2 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXN = <span class="number">100000</span> + <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> n, k;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] H = <span class="keyword">new</span> <span class="keyword">int</span>[MAXN];</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] W = <span class="keyword">new</span> <span class="keyword">int</span>[MAXN];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            cnt += (H[i] / mid) * (W[i] / mid);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(cnt &lt; k) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        n = sc.nextInt();</span><br><span class="line">        k = sc.nextInt();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            H[i] = sc.nextInt();</span><br><span class="line">            W[i] = sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">1</span>, r = MAXN;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> mid = (l + r + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(check(mid)) &#123;</span><br><span class="line">                l = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(r);</span><br><span class="line">        sc.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="K倍区间"><a href="#K倍区间" class="headerlink" title="K倍区间"></a>K倍区间</h1><h2 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h2><p>给定一个长度为 N 的数列，A1,A2,…AN，如果其中一段连续的子序列 Ai,Ai+1,…Aj 之和是 K 的倍数，我们就称这个区间 [i,j] 是 K 倍区间。</p>
+<p>你能求出数列中总共有多少个 K 倍区间吗？</p>
+<p>输入格式<br>第一行包含两个整数 N 和 K。</p>
+<p>以下 N 行每行包含一个整数 Ai。</p>
+<p>输出格式<br>输出一个整数，代表 K 倍区间的数目。</p>
+<p>数据范围</p>
+<p>1≤N,K≤100000,</p>
+<p>1≤Ai≤100000</p>
+<p>输入样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5 2</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure></p>
+<p>输出样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure></p>
+<h2 id="思路-6"><a href="#思路-6" class="headerlink" title="思路"></a>思路</h2><p>可以很容易的想到一个方法：枚举一段区间，求得这段区间和，能整除k即是一个答案。而快速求区间和可以利用前缀和算法。</p>
+<p>很快的写出暴力解法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(len = <span class="number">1</span>; len &lt;= n ; len++) &#123;</span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">1</span>; i &lt;=n ; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>((arr[i + len - <span class="number">1</span>] - arr[i - <span class="number">1</span>]) % k == <span class="number">0</span>) &#123;</span><br><span class="line">			ans++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中arr为前缀和数组。<br>推导算式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(arr[i + len - <span class="number">1</span>] - arr[i - <span class="number">1</span>]) % k == <span class="number">0</span>，</span><br><span class="line"></span><br><span class="line">(arr[i] - arr[j]) % k == <span class="number">0</span>，</span><br><span class="line"></span><br><span class="line">arr[i] % k == arr[j] % k</span><br></pre></td></tr></table></figure></p>
+<p>说明，在前缀和数组中，只要后面的数模k余数与前面的数模k余数相等，即满足答案。</p>
+<h2 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXN = <span class="number">100000</span> + <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n,k;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">long</span>[] q = <span class="keyword">new</span> <span class="keyword">long</span>[MAXN];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">long</span>[] p = <span class="keyword">new</span> <span class="keyword">long</span>[MAXN];</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		k = sc.nextInt();</span><br><span class="line">		<span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			q[i] = sc.nextInt();</span><br><span class="line">			q[i] = (q[i - <span class="number">1</span>] + q[i]) % k;</span><br><span class="line"></span><br><span class="line">			ans += p[(<span class="keyword">int</span>)q[i]];</span><br><span class="line">			p[(<span class="keyword">int</span>)q[i]]++;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(ans + p[<span class="number">0</span>]);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/02/01/java/Java实现解压zip文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3636,178 +3910,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/圣诞老人的礼物-Santa Clau’s Gifts /">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/贪心/圣诞老人的礼物-Santa Clau’s Gifts /" itemprop="url">圣诞老人的礼物-Santa Clau’s Gifts</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-01-30T16:16:22+08:00">
-                2019-01-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/贪心算法/" itemprop="url" rel="index">
-                    <span itemprop="name">贪心算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/12/贪心/圣诞老人的礼物-Santa Clau’s Gifts /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/圣诞老人的礼物-Santa Clau’s Gifts /" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>圣诞节来临了，在城市A中圣诞老人准备分发糖果，现在有多箱不同的糖果，每箱糖果有自己的价值和重量，每箱糖果都可以拆分成任意散装组合带走。圣诞老人的驯鹿最多只能承受一定重量的糖果，请问圣诞老人最多能带走多大价值的糖果。<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/圣诞老人的礼物-Santa Clau’s Gifts /" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3864,7 +3966,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-count">111</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -4039,7 +4141,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共90.6k字</span>
+  <span class="post-count">博客全站共93.7k字</span>
 </div>
         
 
