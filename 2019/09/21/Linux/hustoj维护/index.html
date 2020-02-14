@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('禁止访问！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="OJ运维,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="从10月5号开始OJ的导入数据，然，未知的总是让人恐惧。陆陆续续搞了多少天？网站挂了，数据库删了，一切重新来一遍吧。想到什么说什么啊！永远告诉自己啊！不要瞎操作啊！教训啊！你知道我这些天怎么过的啊！心里郁闷啊！明明是一样的操作啊！明明一样的环境啊！为什么得到不同的结果啊！">
+<meta name="keywords" content="OJ运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hustoj的一些操作">
+<meta property="og:url" content="https://shann.xyz/2019/09/21/Linux/hustoj维护/index.html">
+<meta property="og:site_name" content="GageShan">
+<meta property="og:description" content="从10月5号开始OJ的导入数据，然，未知的总是让人恐惧。陆陆续续搞了多少天？网站挂了，数据库删了，一切重新来一遍吧。想到什么说什么啊！永远告诉自己啊！不要瞎操作啊！教训啊！你知道我这些天怎么过的啊！心里郁闷啊！明明是一样的操作啊！明明一样的环境啊！为什么得到不同的结果啊！">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-17T07:13:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hustoj的一些操作">
+<meta name="twitter:description" content="从10月5号开始OJ的导入数据，然，未知的总是让人恐惧。陆陆续续搞了多少天？网站挂了，数据库删了，一切重新来一遍吧。想到什么说什么啊！永远告诉自己啊！不要瞎操作啊！教训啊！你知道我这些天怎么过的啊！心里郁闷啊！明明是一样的操作啊！明明一样的环境啊！为什么得到不同的结果啊！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://shann.xyz/2019/09/21/Linux/hustoj维护/">
+
+
+
+
+
+  <title>hustoj的一些操作 | GageShan</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-126801819-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GageShan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-friends">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-vk"></i> <br>
+            
+            friends
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/Linux/hustoj维护/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hustoj的一些操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:22+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-11-17T15:13:42+08:00">
+                2018-11-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/21/Linux/hustoj维护/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/Linux/hustoj维护/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>从10月5号开始OJ的导入数据，然，未知的总是让人恐惧。陆陆续续搞了多少天？网站挂了，数据库删了，一切重新来一遍吧。<br>想到什么说什么啊！永远告诉自己啊！不要瞎操作啊！教训啊！你知道我这些天怎么过的啊！心里郁闷啊！明明是一样的操作啊！明明一样的环境啊！为什么得到不同的结果啊！<br><a id="more"></a></p>
+<h1 id="navicat连接数据库"><a href="#navicat连接数据库" class="headerlink" title="navicat连接数据库"></a>navicat连接数据库</h1><p>要想navicat能够连接到数据库，需要满足两个条件<br>1、数据库用户有足够的权限访问数据库里说有的数据<br>2、开放3306端口</p>
+<h2 id="创建数据库用户并分配权限"><a href="#创建数据库用户并分配权限" class="headerlink" title="创建数据库用户并分配权限"></a>创建数据库用户并分配权限</h2><h3 id="登录数据库"><a href="#登录数据库" class="headerlink" title="登录数据库"></a>登录数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@Ubuntu:~# mysql -u root -p</span><br><span class="line">Enter password:</span><br></pre></td></tr></table></figure>
+<p>按提示输入密码<br><strong>注意：在数据库下所有命令都要以 ；结尾。</strong></p>
+<h2 id="查看数据库用户名"><a href="#查看数据库用户名" class="headerlink" title="查看数据库用户名"></a>查看数据库用户名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select host,user,password from mysql.user;</span><br></pre></td></tr></table></figure>
+<p>一般来说输入上面命令会出现如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select Host,user,password from mysql.user;</span><br><span class="line">+-----------+------------------+-------------------------------------------+</span><br><span class="line">| Host      | user             | password                                  |</span><br><span class="line">+-----------+------------------+-------------------------------------------+</span><br><span class="line">| localhost | root             | password</span><br><span class="line">| ubuntu    | root             | password</span><br><span class="line">| 127.0.0.1 | root             | password</span><br><span class="line">| ::1       | root             | password</span><br><span class="line">| localhost | debian-sys-maint | password</span><br><span class="line">| %         | passwords        | password</span><br><span class="line">+-----------+------------------+-------------------------------------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure></p>
+<p>其中Host栏目下的<strong>%</strong>代表该用户拥有所有的权限，<br>如果没有该用户，就需要创建。</p>
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create user youname identified by &apos;youname&apos;;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>其中第一个youname是你创建的这个数据库用户名的名称，第二个youname就是密码了。</p>
+<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; grant all privileges on *.* to &apos;youname&apos;@&apos;%&apos;identified by &apos;youname&apos; with grant option;           </span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>操作完成后刷新mysql用户权限相关表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; flush privileges ;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看端口开放"><a href="#查看端口开放" class="headerlink" title="查看端口开放"></a>查看端口开放</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -an | grep 3306</span><br></pre></td></tr></table></figure>
+<p>出现如下表示端口开放,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@Ubuntu:~# netstat -an | grep 3306</span><br><span class="line">tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN</span><br></pre></td></tr></table></figure></p>
+<p>若是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:3306</span><br></pre></td></tr></table></figure></p>
+<p>表示3306端口被本机IP绑定，外机无法访问，所以需要将其开放。</p>
+<p>打开my.cnf配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Ubuntu:~# vim /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure></p>
+<p>找到 bind-address =127.0.0.1，将其注释掉或者改为bind-address = 0.0.0.0<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># Instead of skip-networking the default is now to listen only on</span><br><span class="line"># localhost which is more compatible and is not less secure.</span><br><span class="line">bind-address           = 127.0.0.1</span><br><span class="line">#</span><br><span class="line"># * Fine Tuning</span><br><span class="line">#</span><br></pre></td></tr></table></figure></p>
+<p>如此navicat就可以连接上数据库了。</p>
+<h1 id="OJ重要的配置文件"><a href="#OJ重要的配置文件" class="headerlink" title="OJ重要的配置文件"></a>OJ重要的配置文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/home/judge/etc/judge.conf</span><br><span class="line">/home/judge/src/web/include/db_info.inc.php</span><br><span class="line">/etc/php5/fpm/php.ini 或 /etc/php7.0/fpm/php.ini</span><br><span class="line">/etc/nginx/sites-enabled/default</span><br></pre></td></tr></table></figure>
+<h2 id="开启考试模式"><a href="#开启考试模式" class="headerlink" title="开启考试模式"></a>开启考试模式</h2><p>因为学校作业练习的需要，在考试时需要改成比赛模式，以防止使用原来提交过的代码。<br>修改db_info.inc.php文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Ubuntu:~# vim /home/judge/src/web/include/db_info.inc.php</span><br></pre></td></tr></table></figure></p>
+<p>如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @session_start();</span><br><span class="line">	ini_set(&quot;display_errors&quot;,&quot;Off&quot;);  //set this to &quot;On&quot; for debugging  ,especially when no reason blank shows up.</span><br><span class="line">	ini_set(&quot;session.cookie_httponly&quot;, 1);   </span><br><span class="line">	header(&apos;X-Frame-Options:SAMEORIGIN&apos;);</span><br><span class="line">//for people using hustoj out of China , be careful of the last two line of this file !</span><br><span class="line">// connect db </span><br><span class="line">static 	$DB_HOST=&quot;localhost&quot;;</span><br><span class="line">static 	$DB_NAME=&quot;jol&quot;;</span><br><span class="line">static 	$DB_USER=&quot;root&quot;;</span><br><span class="line">static 	$DB_PASS=&quot;root&quot;;</span><br><span class="line">//上面四行中如果没有问题就不要动，都是默认好的。可能数据库账户密码不是root，这点并不影响。</span><br><span class="line">//16.04安装可能数据库账户密码为空，如果为空，账户填写为 root 密码填写 自己设置的。</span><br><span class="line">//如果需要改写的话一定要用vim或者vi打开</span><br><span class="line">static 	$OJ_NAME=&quot;HUSTOJ&quot;;</span><br><span class="line">static 	$OJ_HOME=&quot;./&quot;;</span><br><span class="line">static 	$OJ_ADMIN=&quot;root@localhost&quot;;</span><br><span class="line">static 	$OJ_DATA=&quot;/home/judge/data&quot;;</span><br><span class="line">static 	$OJ_BBS=&quot;discuss3&quot;;//&quot;bbs&quot; for phpBB3 bridge or &quot;discuss&quot; for mini-forum</span><br><span class="line">static  $OJ_ONLINE=false;</span><br><span class="line">static  $OJ_LANG=&quot;en&quot;;</span><br><span class="line">static  $OJ_SIM=false; </span><br><span class="line">static  $OJ_DICT=false;</span><br><span class="line">static  $OJ_LANGMASK=0; //1mC 2mCPP 4mPascal 8mJava 16mRuby 32mBash 1008 for security reason to mask all other language</span><br><span class="line">static  $OJ_EDITE_AREA=true;//true: syntax highlighting is active</span><br><span class="line">static  $OJ_ACE_EDITOR=true;</span><br><span class="line">static  $OJ_AUTO_SHARE=false;//true: One can view all AC submit if he/she has ACed it onece.</span><br><span class="line">static  $OJ_CSS=&quot;white.css&quot;;</span><br><span class="line">static  $OJ_SAE=false; //using sina application engine</span><br><span class="line">static  $OJ_VCODE=false;</span><br><span class="line">static  $OJ_APPENDCODE=false;</span><br><span class="line">static  $OJ_CE_PENALTY=false;</span><br><span class="line">static  $OJ_PRINTER=false;</span><br><span class="line">static  $OJ_MAIL=false;</span><br><span class="line">static  $OJ_MEMCACHE=false;</span><br><span class="line">static  $OJ_MEMSERVER=&quot;127.0.0.1&quot;;</span><br><span class="line">static  $OJ_MEMPORT=11211;</span><br><span class="line">static  $OJ_REDIS=false;</span><br><span class="line">static  $OJ_REDISSERVER=&quot;127.0.0.1&quot;;</span><br><span class="line">static  $OJ_REDISPORT=6379;</span><br><span class="line">static  $OJ_REDISQNAME=&quot;hustoj&quot;;</span><br><span class="line">static  $SAE_STORAGE_ROOT=&quot;http://hustoj-web.stor.sinaapp.com/&quot;;</span><br><span class="line">static  $OJ_TEMPLATE=&quot;bs3&quot;; //使用的默认模板</span><br><span class="line">if(isset($_GET[&apos;tp&apos;])) $OJ_TEMPLATE=$_GET[&apos;tp&apos;];</span><br><span class="line">static  $OJ_LOGIN_MOD=&quot;hustoj&quot;;</span><br><span class="line">static  $OJ_REGISTER=true; //允许注册新用户</span><br><span class="line">static  $OJ_REG_NEED_CONFIRM=false; //新注册用户需要审核</span><br><span class="line">static  $OJ_NEED_LOGIN=false; //需要登录才能访问</span><br><span class="line">static  $OJ_RANK_LOCK_PERCENT=0; //比赛封榜时间比例</span><br><span class="line">static  $OJ_SHOW_DIFF=false; //是否显示WA的对比说明</span><br><span class="line">static  $OJ_TEST_RUN=false; //提交界面是否允许测试运行</span><br><span class="line">static  $OJ_BLOCKLY=false; //是否启用Blockly界面</span><br><span class="line">static  $OJ_ENCODE_SUBMIT=false; //是否启用base64编码提交的功能，用来回避WAF防火墙误拦截。</span><br><span class="line">//static  $OJ_EXAM_CONTEST_ID=1000; // 启用考试状态，填写考试比赛ID</span><br><span class="line">//static  $OJ_ON_SITE_CONTEST_ID=1000; //启用现场赛状态，填写现场赛比赛ID</span><br><span class="line">static $OJ_OPENID_PWD = &apos;8a367fe87b1e406ea8e94d7d508dcf01&apos;;</span><br><span class="line">/* weibo config here */</span><br><span class="line">static  $OJ_WEIBO_AUTH=false;</span><br><span class="line">static  $OJ_WEIBO_AKEY=&apos;1124518951&apos;;</span><br><span class="line">static  $OJ_WEIBO_ASEC=&apos;df709a1253ef8878548920718085e84b&apos;;</span><br><span class="line">static  $OJ_WEIBO_CBURL=&apos;http://192.168.0.108/JudgeOnline/login_weibo.php&apos;;</span><br><span class="line">/* renren config here */</span><br><span class="line">static  $OJ_RR_AUTH=false;</span><br><span class="line">static  $OJ_RR_AKEY=&apos;d066ad780742404d85d0955ac05654df&apos;;</span><br><span class="line">static  $OJ_RR_ASEC=&apos;c4d2988cf5c149fabf8098f32f9b49ed&apos;;</span><br><span class="line">static  $OJ_RR_CBURL=&apos;http://192.168.0.108/JudgeOnline/login_renren.php&apos;;</span><br><span class="line">/* qq config here */</span><br><span class="line">static  $OJ_QQ_AUTH=false;</span><br><span class="line">static  $OJ_QQ_AKEY=&apos;1124518951&apos;;</span><br><span class="line">static  $OJ_QQ_ASEC=&apos;df709a1253ef8878548920718085e84b&apos;;</span><br><span class="line">static  $OJ_QQ_CBURL=&apos;192.168.0.108&apos;;</span><br><span class="line">//if(date(&apos;H&apos;)&lt;5||date(&apos;H&apos;)&gt;21||isset($_GET[&apos;dark&apos;])) $OJ_CSS=&quot;dark.css&quot;;</span><br><span class="line">if( isset($_SERVER[&apos;HTTP_ACCEPT_LANGUAGE&apos;]) &amp;&amp; strstr($_SERVER[&apos;HTTP_ACCEPT_LANGUAGE&apos;],&quot;zh-CN&quot;)) &#123;</span><br><span class="line">        $OJ_LANG=&quot;cn&quot;;</span><br><span class="line">&#125;</span><br><span class="line">if (isset($_SESSION[$OJ_NAME.&apos;_&apos;.&apos;OJ_LANG&apos;])) $OJ_LANG=$_SESSION[$OJ_NAME.&apos;_&apos;.&apos;OJ_LANG&apos;];</span><br><span class="line">require_once(dirname(__FILE__).&quot;/pdo.php&quot;);</span><br><span class="line">		// use db</span><br><span class="line">	//pdo_query(&quot;set names utf8&quot;);	</span><br><span class="line">		</span><br><span class="line">	if(isset($OJ_CSRF)&amp;&amp;$OJ_CSRF&amp;&amp;$OJ_TEMPLATE==&quot;bs3&quot;&amp;&amp;basename($_SERVER[&apos;PHP_SELF&apos;])!=&quot;problem_judge&quot;)</span><br><span class="line">		 require_once(&apos;csrf_check.php&apos;);</span><br><span class="line">	//sychronize php and mysql server with timezone settings, dafault setting for China</span><br><span class="line">	//if you are not from China, comment out these two lines or modify them.</span><br><span class="line">	//date_default_timezone_set(&quot;PRC&quot;);</span><br><span class="line">	//pdo_query(&quot;SET time_zone =&apos;+8:00&apos;&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>找到并取消注释就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//static  $OJ_EXAM_CONTEST_ID=1000; // 启用考试状态，填写考试比赛ID</span><br><span class="line">//static  $OJ_ON_SITE_CONTEST_ID=1000; //启用现场赛状态，填写现场赛比赛ID</span><br></pre></td></tr></table></figure></p>
+<h2 id="OJ判题语言，找到并修改"><a href="#OJ判题语言，找到并修改" class="headerlink" title="OJ判题语言，找到并修改"></a>OJ判题语言，找到并修改</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static  $OJ_LANGMASK=0; //1mC 2mCPP 4mPascal 8mJava 16mRuby 32mBash 1008 for security reason to mask all other language</span><br></pre></td></tr></table></figure>
+<p>在源码中的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@Ubuntu:~# vim /home/judge/src/core/judge_client/judge_client.cc</span><br></pre></td></tr></table></figure></p>
+<p>大约在130行，这个文件有2000+行代码qwq<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#ifdef _mysql_h</span><br><span class="line">MYSQL *conn;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">static char lang_ext[18][8] = &#123; &quot;c&quot;, &quot;cc&quot;, &quot;pas&quot;, &quot;java&quot;, &quot;rb&quot;, &quot;sh&quot;, &quot;py&quot;,</span><br><span class="line">		&quot;php&quot;, &quot;pl&quot;, &quot;cs&quot;, &quot;m&quot;, &quot;bas&quot;, &quot;scm&quot;,&quot;c&quot;,&quot;cc&quot;,&quot;lua&quot;,&quot;js&quot;,&quot;go&quot; &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>按照上文<strong>$OJ_LANGMASK=0</strong>代表所有的语言都可以提交，可知<strong>0</strong>决定何种语言可以使用。先说明0代表启用，1代表禁用。比如想要c和c++可以使用，那么二进制编码就是001111111111111111，转换成十进制就是‭65535‬，让 <strong>OJ_LANGMASK=65535</strong>就可以了。</p>
+<h1 id="转移数据库"><a href="#转移数据库" class="headerlink" title="转移数据库"></a>转移数据库</h1><p>关于把原来服务器上的OJ上的数据全部转移到另一台服务器上的具体命令。<br>首先在新服务器上装上hustoj。<br>两个重要的数据：<br>jol数据库  学生做题记录，ac代码<br>/home/judge/data  题目的测试数据</p>
+<h2 id="转移jol"><a href="#转移jol" class="headerlink" title="转移jol"></a>转移jol</h2><h3 id="在原来服务器上"><a href="#在原来服务器上" class="headerlink" title="在原来服务器上"></a>在原来服务器上</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u root -p密码 数据库名 &gt; 数据库文件路径</span><br><span class="line">如：mysqldump -u root -ppassword jol &gt; /home/jol.sql  //在home文件下的data.sql文件</span><br></pre></td></tr></table></figure>
+<p>下载到本地：<br>sz 命令是从linux下载文件到本地<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sz /home/jol.sql</span><br></pre></td></tr></table></figure></p>
+<h3 id="在后一台服务器上"><a href="#在后一台服务器上" class="headerlink" title="在后一台服务器上"></a>在后一台服务器上</h3><p>把本地的文件上传到该服务器上<br>进入相应的文件路径，然后输入rz选择你本地（假如是window）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rz</span><br></pre></td></tr></table></figure></p>
+<p>登录数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql - u root -p</span><br></pre></td></tr></table></figure></p>
+<p>选择转入的数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use jol;</span><br></pre></td></tr></table></figure></p>
+<p>然后把jol.sql传入database中，注意/home/jol.sql是你从本地上传到服务器上的文件路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /home/jol.sql;</span><br></pre></td></tr></table></figure></p>
+<h2 id="转移-home-judge-data"><a href="#转移-home-judge-data" class="headerlink" title="转移/home/judge/data"></a>转移/home/judge/data</h2><h3 id="原服务器上"><a href="#原服务器上" class="headerlink" title="原服务器上"></a>原服务器上</h3><p>打包data(不压缩)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf /home/judge/data.tar data</span><br></pre></td></tr></table></figure></p>
+<p>下载到本地<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sz /home/judge/data.tar</span><br></pre></td></tr></table></figure></p>
+<h3 id="后一台服务器上"><a href="#后一台服务器上" class="headerlink" title="后一台服务器上"></a>后一台服务器上</h3><p>将data.tar上传到/home/judge<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rz</span><br></pre></td></tr></table></figure></p>
+<p>在路径/home/judge下解包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf data.tar</span><br></pre></td></tr></table></figure></p>
+<p>可以了。<br>维护工作尚在进行，祝自己好运吧，qwq。</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+           <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    学号021
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://shann.xyz/2019/09/21/Linux/hustoj维护/" title="hustoj的一些操作">https://shann.xyz/2019/09/21/Linux/hustoj维护/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OJ运维/" rel="tag"><i class="fa fa-tag"></i> OJ运维</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/21/java/类与对象实训/" rel="next" title="类与对象实训">
+                <i class="fa fa-chevron-left"></i> 类与对象实训
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/21/Linux/MySQL卸载重装/" rel="prev" title="Ubuntu14.04mysql卸载与重装">
+                Ubuntu14.04mysql卸载与重装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="https://img-blog.csdnimg.cn/20200214145809532.jpg" alt="学号021">
+            </a>
+            
+              <p class="site-author-name" itemprop="name">学号021</p>
+              <p class="site-description motion-element" itemprop="description">永远都有更好的未来值得去奋斗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gageshan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gageshan@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/6308056321/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Myfriends
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shann.xyz/friends/" title="Hello the cruel world" target="_blank">Hello the cruel world</a>
+                  </li>
+                
+              </ul>
+              <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("07/30/2018 13:14:15");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+            </div>
+          
+
+          <!---<div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("07/30/2018 13:14:15");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>--->
+        </div>
+      </section>
+<!--<iframe height="100" weight="260" src="https://player.bilibili.com/player.html?aid=26597687&cid=45759200&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"> </iframe>-->
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#navicat连接数据库"><span class="nav-number">1.</span> <span class="nav-text">navicat连接数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建数据库用户并分配权限"><span class="nav-number">1.1.</span> <span class="nav-text">创建数据库用户并分配权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#登录数据库"><span class="nav-number">1.1.1.</span> <span class="nav-text">登录数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看数据库用户名"><span class="nav-number">1.2.</span> <span class="nav-text">查看数据库用户名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建用户"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权"><span class="nav-number">1.2.2.</span> <span class="nav-text">授权</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看端口开放"><span class="nav-number">1.3.</span> <span class="nav-text">查看端口开放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OJ重要的配置文件"><span class="nav-number">2.</span> <span class="nav-text">OJ重要的配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开启考试模式"><span class="nav-number">2.1.</span> <span class="nav-text">开启考试模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OJ判题语言，找到并修改"><span class="nav-number">2.2.</span> <span class="nav-text">OJ判题语言，找到并修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转移数据库"><span class="nav-number">3.</span> <span class="nav-text">转移数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转移jol"><span class="nav-number">3.1.</span> <span class="nav-text">转移jol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在原来服务器上"><span class="nav-number">3.1.1.</span> <span class="nav-text">在原来服务器上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在后一台服务器上"><span class="nav-number">3.1.2.</span> <span class="nav-text">在后一台服务器上</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转移-home-judge-data"><span class="nav-number">3.2.</span> <span class="nav-text">转移/home/judge/data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原服务器上"><span class="nav-number">3.2.1.</span> <span class="nav-text">原服务器上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后一台服务器上"><span class="nav-number">3.2.2.</span> <span class="nav-text">后一台服务器上</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+        
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学号021</span>
+
+  
+</div>
+
+
+<!---
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+--->
+
+
+
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共97.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://shann.xyz/2019/09/21/Linux/hustoj维护/';
+          this.page.identifier = '2019/09/21/Linux/hustoj维护/';
+          this.page.title = 'hustoj的一些操作';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

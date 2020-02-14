@@ -333,12 +333,273 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/02/09/Spring/springNote/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/09/Spring/springNote/" itemprop="url">Spring基础学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-09T16:37:17+08:00">
+                2020-02-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-14T15:16:01+08:00">
+                2020-02-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/09/Spring/springNote/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/09/Spring/springNote/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="IOC-xml"><a href="#IOC-xml" class="headerlink" title="IOC-xml"></a>IOC-xml</h1><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>程序耦合问题：程序间的依赖和被依赖的关系。</p>
+<p>编译期依赖和运行期依赖，尽量解决运行期依赖。</p>
+<h2 id="ioc控制反转"><a href="#ioc控制反转" class="headerlink" title="ioc控制反转"></a>ioc控制反转</h2><p>ioc是一种编程思想。由主动编程变为被动接收。ioc的实现是通过ioc容器来实现的。ioc容器–BeanFactory。</p>
+<p>控制权发生反转的过程就是控制反转，好处是能够降低程序间的依赖关系。解决程序耦合问题。</p>
+<p>控制的内容：指谁来控制对象的创建；传统的应用程序对象的创建是由程序本身控制的。使用spring后，是由spring来创建对象的。<br>反转：正转指程序来创建对象，反转指程序本身不去创建对象，而变为被动的接收对象。<br>总结：以前对象是由程序本身来创建的，使用spring后，程序变为被动的接收spring创建好的对象。</p>
+<h2 id="spring配置文件"><a href="#spring配置文件" class="headerlink" title="spring配置文件"></a>spring配置文件</h2><p>1、bean配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"h1"</span> <span class="attr">name</span>=<span class="string">"h1,h2,h3,h4"</span> <span class="attr">class</span>=<span class="string">"cn.temp.bean.Hello"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"zhangSan"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>id是bean的标识符，是唯一的，如果没有配置id，name为默认标识符。<br>如果配置了id，又配置了name，那么name是别名。<br>name可以设置多个别名，分隔符可以是空格、逗号、分号。<br>class是bean的全限定名=包名+类名。<br>如果不配置id和name，那么可以根据applicationContext.getBean(Class)获取对象。</p>
+<p>2、团队协作开发<br>通过<code>&lt;import resource=&quot;path.xml&quot;/&gt;</code>来引入外部xml文件。</p>
+<h2 id="bean创建的两种规则"><a href="#bean创建的两种规则" class="headerlink" title="bean创建的两种规则"></a>bean创建的两种规则</h2><table>
+<thead>
+<tr>
+<th>ApplicationContext</th>
+<th>BeanFactory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提供的是一种立即加载思想来创建bean对象，只要一解析完配置文件，就立马创建bean对象</td>
+<td>提供是一种延迟加载思想来创建bean，bean对象什么时候用什么时候创建（已过时，java标准不推荐用）</td>
+</tr>
+</tbody>
+</table>
+<p>bean.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">class</span>=<span class="string">"cn.demo.service.impl.CustomerServiceImpl"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerDao"</span> <span class="attr">class</span>=<span class="string">"cn.demo.dao.impl.ICustomerDaoImpl"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>ApplicationContext</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"bean.xml"</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>BeanFactory</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Resource resource = <span class="keyword">new</span> ClassPathResource(<span class="string">"bean.xml"</span>);</span><br><span class="line">BeanFactory factory = <span class="keyword">new</span> XmlBeanFactory(resource);</span><br><span class="line">factory.getBean(<span class="string">"customerDao"</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="bean实例化的三种方式"><a href="#bean实例化的三种方式" class="headerlink" title="bean实例化的三种方式"></a>bean实例化的三种方式</h2><p><strong>第一种方式</strong>：调用默认无参构造函数创建。默认情况下，如果类中没有默认无参构造方法，则创建失败，会抛出异常。（这种方式用的最多）</p>
+<p><strong>第二种方式</strong>：使用静态工厂中方法创建对象。需要使用bean标签的Factory-method属性，指定静态工厂中创建对象的方法。</p>
+<p>bean.xml:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--使用StaticFactory工厂的getCustomerService方法来创建对象存入容器，用id为staticFactory来取 --&gt;</span><br><span class="line">&lt;bean id="staticFactory" class="cn.demo.factory.StaticFactory" factory-method="getCustomerService"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<p>cn.demo.factory.StaticFactory.java:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ICustomerService <span class="title">getCustomerService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomerServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>第三种方式</strong>：使用实例工厂中的方法创建。<br>bean.xml<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--先创建一个工厂对象，在调用工厂对象里的getCustomerService方法来实例化instanceCustomer--&gt;</span><br><span class="line">&lt;bean id="instanceFactory" class="cn.demo.factory.InstanceFactory"&gt;&lt;/bean&gt;</span><br><span class="line">&lt;bean id="instanceCustomerService" factory-bean="instanceFactory" factory-method="getCustomerService"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<p>cn.demo.factory.InstanceFactory.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InstanceFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InstanceFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"instanceFactory..."</span> + <span class="keyword">this</span>.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  ICustomerService <span class="title">getCustomerService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomerServiceImpl();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="bean的作用域"><a href="#bean的作用域" class="headerlink" title="bean的作用域"></a>bean的作用域</h2><p>可以通过配置的方式来调整作用范围<br>配置的属性：bean标签的scope属性。</p>
+<p>单例（Sinleton）：<br>在整个应用程序中，只创建bean的一个实例</p>
+<p>原型（Prototype）：<br>每次注入都会创建一个新的bean。在没有获取bean对象时即通过Spring上下文获取的时候，，bean对象并不会被创建。</p>
+<p>会话（Session）：<br>在Web应用中，为每个会话创建一个bean实列</p>
+<p>请求（Request）：<br>在Web应用中，为每个请求创建一个bean实列。一次请求和当前请求的转发。</p>
+<h2 id="bean的生命周期"><a href="#bean的生命周期" class="headerlink" title="bean的生命周期"></a>bean的生命周期</h2><p>可以通过bean标签的属性init-method，destory-method来配置。</p>
+<p>单例：</p>
+<p>出生：容器创建，对象就出生。</p>
+<p>活着：只要容器在，对象就一直存在。</p>
+<p>死亡：容器销毁，对象消亡。</p>
+<p>多例：</p>
+<p>出生：每次获取bean对象时，创建对象。</p>
+<p>活着：只要对象在使用中，就一直活着。</p>
+<p>死亡：当对象长时间不使用，并且也没有别的对象引用时，由Java垃圾回收器回收。</p>
+<h2 id="spring的依赖注入"><a href="#spring的依赖注入" class="headerlink" title="spring的依赖注入"></a>spring的依赖注入</h2><p>运行期提供变量的值就叫依赖注入。缺什么，以配置文件的方式告诉spring传什么。</p>
+<p>注入方式有三种：<br>第一种：使用构造函数注入<br>第二种：使用set方法注入<br>第三种：使用注解注入</p>
+<p>注入的数据类型有三种<br>第一种：基本类型和String类型<br>第二种：其它bean类型（必须实在Spring的配置文件中出现过的bean）<br>第三种：复杂类型（集合类型）</p>
+<p>复杂类型注入：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"customerDao"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"cn.demo.dao.impl.ICustomerDaoImpl"</span>&gt;</span><br><span class="line">    &lt;property name=<span class="string">"str"</span>&gt;</span><br><span class="line">        &lt;array&gt;</span><br><span class="line">            &lt;value&gt;123&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;123&lt;/value&gt;</span><br><span class="line">        &lt;/array&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"list"</span>&gt;</span><br><span class="line">        &lt;list&gt;</span><br><span class="line">            &lt;value&gt;abc&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;abc&lt;/value&gt;</span><br><span class="line">        &lt;/list&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"map"</span>&gt;</span><br><span class="line">        &lt;map&gt;</span><br><span class="line">            &lt;entry key=<span class="string">"123"</span> value=<span class="string">"abc"</span> /&gt;</span><br><span class="line">            &lt;entry key=<span class="string">"456"</span>&gt;</span><br><span class="line">                &lt;value&gt;def&lt;/value&gt;</span><br><span class="line">            &lt;/entry&gt;</span><br><span class="line">        &lt;/map&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"set"</span>&gt;</span><br><span class="line">        &lt;set&gt;</span><br><span class="line">            &lt;value&gt;123&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;456&lt;/value&gt;</span><br><span class="line">        &lt;/set&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"pro"</span>&gt;</span><br><span class="line">        &lt;props&gt;</span><br><span class="line">            &lt;prop key="123" &gt;456&lt;/prop&gt;</span><br><span class="line">        &lt;/props&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="IOC-注解"><a href="#IOC-注解" class="headerlink" title="IOC-注解"></a>IOC-注解</h1><h3 id="用于创建bean对象"><a href="#用于创建bean对象" class="headerlink" title="用于创建bean对象"></a>用于创建bean对象</h3><p>@Component:表示这个类需要在应用程序中被创建</p>
+<p>属性：value。含义是指定bean的id。有默认值为当前类的短名首字母小写。<br>由这个注解衍生的三个注解：</p>
+<p>@Controller 一般用于表现层的注解</p>
+<p>@Service 一般用于业务层</p>
+<p>@Repository 一般用于持久层</p>
+<h3 id="用于注入数据"><a href="#用于注入数据" class="headerlink" title="用于注入数据"></a>用于注入数据</h3><p>@Autowired:自动满足bean之间的依赖<br>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> CompactDisc compactDisc1;</span><br></pre></td></tr></table></figure></p>
+<p>@Autowried注入过程：首先拿对象类型到spring容器中查找是否有这个bean对象。如果存在多个类满足这个条件，就拿字段名与bean的id比较，一旦找到就注入进去，不再继续查找，否则报错。</p>
+<h4 id="多个类实现同一接口情形"><a href="#多个类实现同一接口情形" class="headerlink" title="多个类实现同一接口情形"></a>多个类实现同一接口情形</h4><p>在实现接口时，@Component写在实现类上。<br>@Autowired可以直接写在接口上也可以写在具体实现类上。</p>
+<p>如果有多个类实现了一个接口，编译器就无法识别究竟要调用哪一个具体的实现类。</p>
+<p>解决方法：</p>
+<p><strong>1、设置首选bean</strong></p>
+<p>这时可以通过设置首选bean（@Primary注解）以实现优先哪一个实现类注入。但这个方法也不是经常有效的，一旦有多个地方设置了@Primary，就会出现先前的错误。也就是只能设置一个@Primary。</p>
+<p><strong>2、使用限定符</strong></p>
+<p>在每个实现类上使用限定符，如@Qualifier(“festival”)。然后在test方法中指定限定符，注意festival是userService的实现类。</p>
+<p>给类成员注入数据时，不能独立使用；在给方法的形参注入数据时，可以独立使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier</span>(<span class="string">"festival"</span>)</span><br><span class="line"><span class="keyword">private</span> UserService userService</span><br></pre></td></tr></table></figure></p>
+<p><strong>3、使用限定符和类id</strong><br>可以这样写@Component(“festival”)，指定每个实现类的id，然后在@Qualifier(“festival”)中指定要调用的id。实际上，如果不在@Component中指定id，那么这个实现类的默认id就是它的类名首字母小写。同样在@Qualifier(“userserviceFestival”)写上即可。</p>
+<p><strong>4、Java标准解决方案</strong><br>使用@Resource，@Resource是java标准提供的方案，需要导入<br><code>import javax.annotation.Resource;</code></p>
+<p>如：@Resource(name=”userServiceNormal”)，其中name属性对应的值就是实现类的id</p>
+<p>@ComponentScan:自动发现应用程序中创建的类</p>
+<h2 id="使用单元测试"><a href="#使用单元测试" class="headerlink" title="使用单元测试"></a>使用单元测试</h2><p>1、引入Spring单元测试模块<br>maven：junit、spring-test<br>@RunWith(SpringJUnit4ClassRunner.class)</p>
+<p>2、加载配置类<br>@ContextConfiguration(classes=AppConfig.class)</p>
+<h2 id="注解-Autowired使用的四种情形"><a href="#注解-Autowired使用的四种情形" class="headerlink" title="注解@Autowired使用的四种情形"></a>注解@Autowired使用的四种情形</h2><p>1、有参构造器<br>2、成员变量<br>3、set方法<br>4、任意方法（带有相关参数）</p>
+<h2 id="定义配置类："><a href="#定义配置类：" class="headerlink" title="定义配置类："></a>定义配置类：</h2><p>@Configuration:表示当前类是一个配置类<br>@Bean：它是把方法的返回值存入spring容器。该注解有一个属性，name：用于指定bean的id。当不指定时它有默认值为方法的名称。<br>@Import({demo.class})，导入其它配置类。如果不要用类对象里的方法就用Import导入，如果要用类对象方法就用@Component<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>(name=<span class="string">"name"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置组件扫描的基础包"><a href="#设置组件扫描的基础包" class="headerlink" title="设置组件扫描的基础包"></a>设置组件扫描的基础包</h3><p>AppConfig.java在不做任何其它配置的情况下只能扫描当前包下的类。<br>要扫描其它包下的类可以通过一些配置来实现</p>
+<p>1、设置单个包@ComponentScan(“com.demo”)，扫描demo包下所有类。</p>
+<p>2、设置多个包@ComponentScan(basePackages = {“com.demo1”,”com.demo2”})。</p>
+<p>3、设置多个实现类@ComponentScan(basePackageClasses = {UserServiceFestival.class,UserService.class})。</p>
+<p>4、配置xml文件启用组件扫描</p>
+<p>相关标签：<br><strong>component-scan</strong></p>
+<p>IDEA在resources目录下创建applicationContext.xml文件。</p>
+<p>告知spring在创建容器时要扫描的包。当配置了此标签之后，spring创建容器就回去指定的包及其子包下找相应的注解。</p>
+<p>注意：标签是在一个context的名称空间里，所以必须先导入context名称空间。<br>在bean.xml文件中写入：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com"</span>/&gt;</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>这样就是扫描com包下的类。</p>
+<p>在测试类中写入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ContextConfiguration(<span class="string">"classpath:applicationContext.xml"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>即可。</p>
+<h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p><strong>作用</strong>：不改变源码的基础上，对已有方法增强。（它是AOP思想的实现技术）</p>
+<p><strong>分类</strong>：基于接口的动态代理、基于子类的动态代理</p>
+<p>1、基于接口的动态代理，要求被代理类至少实现一个接口<br>创建代理对象的方法：newProxyInstance(ClassLoader,Class[],InvocationHandler)。<br>ClassLoader：类加载器。和被代理对象使用相同的类加载器。一般都是固定写法。<br>Class[]：字节码数组.被代理类实现的接口。（要求代理对象和被代理对象具有相同的行为）。<br>InvocationHandler：它是一个接口，就是用于我们提供增强代码的。一般都是写一个该接口的实现类。实现类可以是匿名内部类。它的含义就是：如何代理。此处的代码只能是谁用谁提供。</p>
+<p>示例1：</p>
+<p><strong>IActor.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aop.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IActor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">basicAct</span><span class="params">(<span class="keyword">float</span> money)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dangerAct</span><span class="params">(<span class="keyword">float</span> money)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>com.aop.demo.IActor.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aop.demo.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aop.demo.IActor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Actor</span> <span class="keyword">implements</span> <span class="title">IActor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dangerAct</span><span class="params">(<span class="keyword">float</span> money)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"危险的表演"</span> + money);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">basicAct</span><span class="params">(<span class="keyword">float</span> money)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"基础的表演"</span> + money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Client.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aop.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aop.demo.impl.Actor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IActor ac = <span class="keyword">new</span> Actor();</span><br><span class="line"><span class="comment">//        ac.basicAct(1000f);</span></span><br><span class="line"><span class="comment">//        ac.dangerAct(4000f);</span></span><br><span class="line"></span><br><span class="line">        IActor proxyActor = (IActor) Proxy.newProxyInstance(ac.getClass().getClassLoader(), ac.getClass().getInterfaces(), <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 执行被代理对象的任何方法都会经过该方法，该方法有拦截的功能</span></span><br><span class="line"><span class="comment">             *</span></span><br><span class="line"><span class="comment">             *  proxy ：代理对象的引用。不一定每次都会有</span></span><br><span class="line"><span class="comment">             *  method：当前执行的方法</span></span><br><span class="line"><span class="comment">             *  args：当前执行方法所需的参数</span></span><br><span class="line"><span class="comment">             *  返回值：当前执行方法的返回值</span></span><br><span class="line"><span class="comment">             *</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                <span class="keyword">float</span> money = (<span class="keyword">float</span>) args[<span class="number">0</span>];</span><br><span class="line">                Object all = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">"basicAct"</span>.equals(method.getName())) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(money &gt; <span class="number">10000</span>) &#123;</span><br><span class="line">                        all = method.invoke(ac,money);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">"dangerAct"</span>.equals(method.getName())) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(money &gt; <span class="number">40000</span>) &#123;</span><br><span class="line">                        all = method.invoke(ac,money);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> all;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        proxyActor.basicAct(<span class="number">1000f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>示例2（数据库连接池原理）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnetion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Connection conn = pool.remove(<span class="number">0</span>);</span><br><span class="line">    Connection proxyConn = (Connection)Proxy.newProxyInstance(conn.getClass().getClassLoader(),</span><br><span class="line">            conn.getClass().getInterfaces(),</span><br><span class="line">            <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                    Object rtValue = <span class="keyword">null</span>;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="string">"close"</span>.equals(method.getName())) &#123;</span><br><span class="line">                        <span class="comment">//不能直接关闭连接</span></span><br><span class="line">                        pool.add(conn);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        rtValue = method.invoke(conn,args);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> rtValue;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    <span class="keyword">return</span> proxyConn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>aop，面向切面编程。<br>简单来说就是把程序重复的代码抽取出来，在需要执行的时候，使用动态代理的技术，在不修改源码的基础上，对已有的方法进行增强。</p>
+<h2 id="基于xml的aop配置"><a href="#基于xml的aop配置" class="headerlink" title="基于xml的aop配置"></a>基于xml的aop配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">                           http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">                           http://www.springframework.org/schema/aop</span></span></span><br><span class="line"><span class="tag"><span class="string">                           http://www.springframework.org/schema/aop/spring-aop.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">class</span>=<span class="string">"com.aop2.demo.impl.CustomerServiceImpl"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--基于xml的aop配置--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--1、把通知类交给spring来管理--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logger"</span> <span class="attr">class</span>=<span class="string">"com.aop2.demo.utils.Logger"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--2、导入aop名称空间，并且使用aop:config开始aop的配置--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--3、使用aop:aspect配置切面，id属性用于给切面提供一个唯一标识。ref属性：用于应用通知bean的id--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">id</span>=<span class="string">"logAdvice"</span> <span class="attr">ref</span>=<span class="string">"logger"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--4、配置通知的类型，指定增强的方法何时执行。</span></span><br><span class="line"><span class="comment">                method：用于指定增强方法名称</span></span><br><span class="line"><span class="comment">                pointcut属性：用于指定切入点表达式</span></span><br><span class="line"><span class="comment">            --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">"printLog"</span> <span class="attr">pointcut</span>=<span class="string">"execution(public void com.aop2.demo.impl.CustomerServiceImpl.saveCustomer())"</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:before</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>环绕通知：是spring框架为我们提供的一种可以在代码中手动控制通知方法什么时候执行的方法。</p>
+<p>ProceedingJoinPoint：该接口可以作为环绕通知的方法参数来使用。在程序运行时，spring框架会为我们提供接口的实现类，供我们使用。该接口有一个方法：proceed()，它的作用就等同于method.invoke()方法，就是明确调用业务层核心方法（切入方法）。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/02/04/二分/第二讲 二分与前缀和/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -612,7 +873,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -786,7 +1047,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1049,7 +1310,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1248,7 +1509,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1415,7 +1676,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1905,7 +2166,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2512,7 +2773,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2708,12 +2969,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/java/类与对象实训/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -2727,7 +2988,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/21/java/类与对象实训/" itemprop="url">类与对象实训</a></h1>
+                <a class="post-title-link" href="/2019/09/21/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/" itemprop="url">鎕鎕鎕 HihoCoder - 1838 (贪心+思维)</a></h1>
         
 
         <div class="post-meta">
@@ -2739,177 +3000,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T13:28:14+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:25+08:00">
                 2019-09-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-09-21T13:51:52+08:00">
-                2019-09-21
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JAVA/" itemprop="url" rel="index">
-                    <span itemprop="name">JAVA</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/21/java/类与对象实训/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/java/类与对象实训/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h1><p>模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用</p>
-<h1 id="任务分析"><a href="#任务分析" class="headerlink" title="任务分析"></a>任务分析</h1><p>相关操作涉及的实体：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户类(Account) </span><br><span class="line">属性：姓名、银行卡号、密码、余额。</span><br><span class="line">操作：、存款、取款</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ATM类</span><br><span class="line">属性：登陆系统的用户</span><br><span class="line">操作：登录、显示、存款、取款、查询余额</span><br></pre></td></tr></table></figure>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ATM atm = <span class="keyword">new</span> ATM();</span><br><span class="line">        atm.load_Sys();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  String Password;</span><br><span class="line">    <span class="keyword">private</span>  String Name;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">double</span> Balance;</span><br><span class="line">    <span class="keyword">private</span>  String Number;</span><br><span class="line">    Account() &#123;&#125;;</span><br><span class="line">    Account(String Name,String Number,String Password,<span class="keyword">double</span> Balance) &#123;</span><br><span class="line">        <span class="keyword">this</span>.Name = Name;</span><br><span class="line">        <span class="keyword">this</span>.Password = Password;</span><br><span class="line">        <span class="keyword">this</span>.Number = Number;</span><br><span class="line">        <span class="keyword">this</span>.Balance = Balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String Name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Name = Name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Password;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String Password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Password = Password;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(String Number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Number = Number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getBalance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBalance</span><span class="params">(<span class="keyword">double</span> Balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Balance = Balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_Balance</span><span class="params">(<span class="keyword">double</span> balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Balance += balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sub_Balance</span><span class="params">(<span class="keyword">double</span> balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Balance -= balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"卡上余额为："</span> + <span class="keyword">this</span>.Balance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ATM</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Account act;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ATM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        act = <span class="keyword">new</span> Account(<span class="string">"gageshan"</span>,<span class="string">"****"</span>,<span class="string">"****"</span>,<span class="number">50000000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">welcome</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"---------------------------------"</span>);</span><br><span class="line">        System.out.println(<span class="string">"1-取款"</span>);</span><br><span class="line">        System.out.println(<span class="string">"2-存款"</span>);</span><br><span class="line">        System.out.println(<span class="string">"3-查询"</span>);</span><br><span class="line">        System.out.println(<span class="string">"4-推出"</span>);</span><br><span class="line">        System.out.println(<span class="string">"---------------------------------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load_Sys</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String card ;</span><br><span class="line">        String password ;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.print(<span class="string">"请输入您的银行卡号："</span>);</span><br><span class="line">        card = sc.next();</span><br><span class="line">        System.out.print(<span class="string">"请输入您的密码："</span>);</span><br><span class="line">        password = sc.next();</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(!check_sys(card,password)) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt &gt; <span class="number">3</span>)</span><br><span class="line">                System.exit(<span class="number">0</span>);</span><br><span class="line">            cnt++;</span><br><span class="line">            System.out.print(<span class="string">"密码错误，请重新输入："</span>);</span><br><span class="line">            password = sc.next();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"密码正确"</span>);</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            welcome();</span><br><span class="line">            System.out.print(<span class="string">"请输入你想进行的操作："</span>);</span><br><span class="line">             <span class="keyword">int</span> op = sc.nextInt();</span><br><span class="line">             <span class="keyword">if</span>(op == <span class="number">1</span>) &#123;</span><br><span class="line">                bet_balance();</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="number">2</span>) &#123;</span><br><span class="line">                add_balance();</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="number">3</span>) &#123;</span><br><span class="line">                query_balance();</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;</span><br><span class="line">                 System.exit(<span class="number">0</span>);</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">check_sys</span><span class="params">(String card,String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(act.getNumber().equals(card) &amp;&amp; act.getPassword().equals(password)) &#123;</span><br><span class="line">            <span class="comment">// System.out.println("hello the cruel world");</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">check_balance</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(money &gt;= act.getBalance())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bet_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.print(<span class="string">"请输入您取款的金额："</span>);</span><br><span class="line">        <span class="keyword">double</span> money = sc.nextDouble();</span><br><span class="line">        <span class="keyword">if</span>(check_balance(money)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"余额不足！"</span>);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            act.sub_Balance(money);</span><br><span class="line">            System.out.println(<span class="string">"取款成功！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.print(<span class="string">"请输入您存款的金额："</span>);</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">double</span> money = sc.nextDouble();</span><br><span class="line">        act.add_Balance(money);</span><br><span class="line">        System.out.println(<span class="string">"存款成功！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">query_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前余额为："</span> + act.getBalance());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/" itemprop="url">鎕鎕鎕 HihoCoder - 1838 (贪心+思维)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
               </time>
             
 
@@ -2961,8 +3053,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/" itemprop="commentCount"></span>
+                <a href="/2019/09/21/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/贪心/鎕鎕鎕 HihoCoder - 1838 （贪心+思维）/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -3056,12 +3148,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/金银岛/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/贪心/金银岛/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -3075,7 +3167,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/12/贪心/金银岛/" itemprop="url">金银岛</a></h1>
+                <a class="post-title-link" href="/2019/09/21/贪心/金银岛/" itemprop="url">金银岛</a></h1>
         
 
         <div class="post-meta">
@@ -3087,8 +3179,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:25+08:00">
+                2019-09-21
               </time>
             
 
@@ -3140,8 +3232,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/贪心/金银岛/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/金银岛/" itemprop="commentCount"></span>
+                <a href="/2019/09/21/贪心/金银岛/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/贪心/金银岛/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -3175,7 +3267,7 @@
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/金银岛/" rel="contents">
+            <a class="btn" href="/2019/09/21/贪心/金银岛/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -3228,12 +3320,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/老人是真饿了 HDU - 2187 /">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/贪心/老人是真饿了 HDU - 2187 /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -3247,7 +3339,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/12/贪心/老人是真饿了 HDU - 2187 /" itemprop="url">老人是真饿了 HDU - 2187</a></h1>
+                <a class="post-title-link" href="/2019/09/21/贪心/老人是真饿了 HDU - 2187 /" itemprop="url">老人是真饿了 HDU - 2187</a></h1>
         
 
         <div class="post-meta">
@@ -3259,8 +3351,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
+                2019-09-21
               </time>
             
 
@@ -3312,8 +3404,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/贪心/老人是真饿了 HDU - 2187 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/老人是真饿了 HDU - 2187 /" itemprop="commentCount"></span>
+                <a href="/2019/09/21/贪心/老人是真饿了 HDU - 2187 /#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/贪心/老人是真饿了 HDU - 2187 /" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -3348,7 +3440,7 @@
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/老人是真饿了 HDU - 2187 /" rel="contents">
+            <a class="btn" href="/2019/09/21/贪心/老人是真饿了 HDU - 2187 /" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -3401,12 +3493,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -3420,7 +3512,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/12/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/" itemprop="url">第五届新疆省ACM-ICPC程序设计竞赛（重现赛）D - O(n!）（贪心）</a></h1>
+                <a class="post-title-link" href="/2019/09/21/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/" itemprop="url">第五届新疆省ACM-ICPC程序设计竞赛（重现赛）D - O(n!）（贪心）</a></h1>
         
 
         <div class="post-meta">
@@ -3432,8 +3524,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
+                2019-09-21
               </time>
             
 
@@ -3485,8 +3577,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/" itemprop="commentCount"></span>
+                <a href="/2019/09/21/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/贪心/第五届新疆省ACM-ICPC程序设计竞赛-D题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -3579,12 +3671,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/最少拦截系统 HDU - 1257 /">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/贪心/最少拦截系统 HDU - 1257 /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -3598,7 +3690,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/12/贪心/最少拦截系统 HDU - 1257 /" itemprop="url">最少拦截系统 HDU - 1257</a></h1>
+                <a class="post-title-link" href="/2019/09/21/贪心/最少拦截系统 HDU - 1257 /" itemprop="url">最少拦截系统 HDU - 1257</a></h1>
         
 
         <div class="post-meta">
@@ -3610,8 +3702,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
+                2019-09-21
               </time>
             
 
@@ -3663,8 +3755,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/贪心/最少拦截系统 HDU - 1257 /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/最少拦截系统 HDU - 1257 /" itemprop="commentCount"></span>
+                <a href="/2019/09/21/贪心/最少拦截系统 HDU - 1257 /#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/贪心/最少拦截系统 HDU - 1257 /" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -3698,7 +3790,7 @@
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/最少拦截系统 HDU - 1257 /" rel="contents">
+            <a class="btn" href="/2019/09/21/贪心/最少拦截系统 HDU - 1257 /" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -3751,12 +3843,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/12/贪心/最小新整数/">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/贪心/最小新整数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="学号021">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/头像1.jpg">
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -3770,7 +3862,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/12/贪心/最小新整数/" itemprop="url">最小新整数</a></h1>
+                <a class="post-title-link" href="/2019/09/21/贪心/最小新整数/" itemprop="url">最小新整数</a></h1>
         
 
         <div class="post-meta">
@@ -3782,8 +3874,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T20:12:01+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
+                2019-09-21
               </time>
             
 
@@ -3835,8 +3927,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/贪心/最小新整数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/贪心/最小新整数/" itemprop="commentCount"></span>
+                <a href="/2019/09/21/贪心/最小新整数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/贪心/最小新整数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -3870,7 +3962,7 @@
 
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/09/12/贪心/最小新整数/" rel="contents">
+            <a class="btn" href="/2019/09/21/贪心/最小新整数/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -3952,7 +4044,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
             <a href="/">
-              <img class="site-author-image" itemprop="image" src="/images/头像1.jpg" alt="学号021">
+              <img class="site-author-image" itemprop="image" src="https://img-blog.csdnimg.cn/20200214145809532.jpg" alt="学号021">
             </a>
             
               <p class="site-author-name" itemprop="name">学号021</p>
@@ -3966,7 +4058,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">111</span>
+                  <span class="site-state-item-count">112</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -3977,7 +4069,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -3988,7 +4080,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -4141,7 +4233,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共93.7k字</span>
+  <span class="post-count">博客全站共97.1k字</span>
 </div>
         
 

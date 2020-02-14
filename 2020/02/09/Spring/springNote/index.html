@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('禁止访问！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="IOC-xml入门程序耦合问题：程序间的依赖和被依赖的关系。 编译期依赖和运行期依赖，尽量解决运行期依赖。 ioc控制反转ioc是一种编程思想。由主动编程变为被动接收。ioc的实现是通过ioc容器来实现的。ioc容器–BeanFactory。 控制权发生反转的过程就是控制反转，好处是能够降低程序间的依赖关系。解决程序耦合问题。 控制的内容：指谁来控制对象的创建；传统的应用程序对象的创建是由程序本身">
+<meta name="keywords" content="个人记录生活学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring基础学习">
+<meta property="og:url" content="https://shann.xyz/2020/02/09/Spring/springNote/index.html">
+<meta property="og:site_name" content="GageShan">
+<meta property="og:description" content="IOC-xml入门程序耦合问题：程序间的依赖和被依赖的关系。 编译期依赖和运行期依赖，尽量解决运行期依赖。 ioc控制反转ioc是一种编程思想。由主动编程变为被动接收。ioc的实现是通过ioc容器来实现的。ioc容器–BeanFactory。 控制权发生反转的过程就是控制反转，好处是能够降低程序间的依赖关系。解决程序耦合问题。 控制的内容：指谁来控制对象的创建；传统的应用程序对象的创建是由程序本身">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-14T07:16:01.436Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring基础学习">
+<meta name="twitter:description" content="IOC-xml入门程序耦合问题：程序间的依赖和被依赖的关系。 编译期依赖和运行期依赖，尽量解决运行期依赖。 ioc控制反转ioc是一种编程思想。由主动编程变为被动接收。ioc的实现是通过ioc容器来实现的。ioc容器–BeanFactory。 控制权发生反转的过程就是控制反转，好处是能够降低程序间的依赖关系。解决程序耦合问题。 控制的内容：指谁来控制对象的创建；传统的应用程序对象的创建是由程序本身">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://shann.xyz/2020/02/09/Spring/springNote/">
+
+
+
+
+
+  <title>Spring基础学习 | GageShan</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-126801819-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GageShan</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-friends">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-vk"></i> <br>
+            
+            friends
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/02/09/Spring/springNote/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring基础学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-09T16:37:17+08:00">
+                2020-02-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-14T15:16:01+08:00">
+                2020-02-14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/09/Spring/springNote/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/09/Spring/springNote/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="IOC-xml"><a href="#IOC-xml" class="headerlink" title="IOC-xml"></a>IOC-xml</h1><h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><p>程序耦合问题：程序间的依赖和被依赖的关系。</p>
+<p>编译期依赖和运行期依赖，尽量解决运行期依赖。</p>
+<h2 id="ioc控制反转"><a href="#ioc控制反转" class="headerlink" title="ioc控制反转"></a>ioc控制反转</h2><p>ioc是一种编程思想。由主动编程变为被动接收。ioc的实现是通过ioc容器来实现的。ioc容器–BeanFactory。</p>
+<p>控制权发生反转的过程就是控制反转，好处是能够降低程序间的依赖关系。解决程序耦合问题。</p>
+<p>控制的内容：指谁来控制对象的创建；传统的应用程序对象的创建是由程序本身控制的。使用spring后，是由spring来创建对象的。<br>反转：正转指程序来创建对象，反转指程序本身不去创建对象，而变为被动的接收对象。<br>总结：以前对象是由程序本身来创建的，使用spring后，程序变为被动的接收spring创建好的对象。</p>
+<h2 id="spring配置文件"><a href="#spring配置文件" class="headerlink" title="spring配置文件"></a>spring配置文件</h2><p>1、bean配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"h1"</span> <span class="attr">name</span>=<span class="string">"h1,h2,h3,h4"</span> <span class="attr">class</span>=<span class="string">"cn.temp.bean.Hello"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"zhangSan"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>id是bean的标识符，是唯一的，如果没有配置id，name为默认标识符。<br>如果配置了id，又配置了name，那么name是别名。<br>name可以设置多个别名，分隔符可以是空格、逗号、分号。<br>class是bean的全限定名=包名+类名。<br>如果不配置id和name，那么可以根据applicationContext.getBean(Class)获取对象。</p>
+<p>2、团队协作开发<br>通过<code>&lt;import resource=&quot;path.xml&quot;/&gt;</code>来引入外部xml文件。</p>
+<h2 id="bean创建的两种规则"><a href="#bean创建的两种规则" class="headerlink" title="bean创建的两种规则"></a>bean创建的两种规则</h2><table>
+<thead>
+<tr>
+<th>ApplicationContext</th>
+<th>BeanFactory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提供的是一种立即加载思想来创建bean对象，只要一解析完配置文件，就立马创建bean对象</td>
+<td>提供是一种延迟加载思想来创建bean，bean对象什么时候用什么时候创建（已过时，java标准不推荐用）</td>
+</tr>
+</tbody>
+</table>
+<p>bean.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">class</span>=<span class="string">"cn.demo.service.impl.CustomerServiceImpl"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerDao"</span> <span class="attr">class</span>=<span class="string">"cn.demo.dao.impl.ICustomerDaoImpl"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>ApplicationContext</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"bean.xml"</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>BeanFactory</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Resource resource = <span class="keyword">new</span> ClassPathResource(<span class="string">"bean.xml"</span>);</span><br><span class="line">BeanFactory factory = <span class="keyword">new</span> XmlBeanFactory(resource);</span><br><span class="line">factory.getBean(<span class="string">"customerDao"</span>);</span><br></pre></td></tr></table></figure></p>
+<h2 id="bean实例化的三种方式"><a href="#bean实例化的三种方式" class="headerlink" title="bean实例化的三种方式"></a>bean实例化的三种方式</h2><p><strong>第一种方式</strong>：调用默认无参构造函数创建。默认情况下，如果类中没有默认无参构造方法，则创建失败，会抛出异常。（这种方式用的最多）</p>
+<p><strong>第二种方式</strong>：使用静态工厂中方法创建对象。需要使用bean标签的Factory-method属性，指定静态工厂中创建对象的方法。</p>
+<p>bean.xml:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--使用StaticFactory工厂的getCustomerService方法来创建对象存入容器，用id为staticFactory来取 --&gt;</span><br><span class="line">&lt;bean id="staticFactory" class="cn.demo.factory.StaticFactory" factory-method="getCustomerService"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<p>cn.demo.factory.StaticFactory.java:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ICustomerService <span class="title">getCustomerService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomerServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>第三种方式</strong>：使用实例工厂中的方法创建。<br>bean.xml<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--先创建一个工厂对象，在调用工厂对象里的getCustomerService方法来实例化instanceCustomer--&gt;</span><br><span class="line">&lt;bean id="instanceFactory" class="cn.demo.factory.InstanceFactory"&gt;&lt;/bean&gt;</span><br><span class="line">&lt;bean id="instanceCustomerService" factory-bean="instanceFactory" factory-method="getCustomerService"&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<p>cn.demo.factory.InstanceFactory.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InstanceFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InstanceFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"instanceFactory..."</span> + <span class="keyword">this</span>.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  ICustomerService <span class="title">getCustomerService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomerServiceImpl();</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="bean的作用域"><a href="#bean的作用域" class="headerlink" title="bean的作用域"></a>bean的作用域</h2><p>可以通过配置的方式来调整作用范围<br>配置的属性：bean标签的scope属性。</p>
+<p>单例（Sinleton）：<br>在整个应用程序中，只创建bean的一个实例</p>
+<p>原型（Prototype）：<br>每次注入都会创建一个新的bean。在没有获取bean对象时即通过Spring上下文获取的时候，，bean对象并不会被创建。</p>
+<p>会话（Session）：<br>在Web应用中，为每个会话创建一个bean实列</p>
+<p>请求（Request）：<br>在Web应用中，为每个请求创建一个bean实列。一次请求和当前请求的转发。</p>
+<h2 id="bean的生命周期"><a href="#bean的生命周期" class="headerlink" title="bean的生命周期"></a>bean的生命周期</h2><p>可以通过bean标签的属性init-method，destory-method来配置。</p>
+<p>单例：</p>
+<p>出生：容器创建，对象就出生。</p>
+<p>活着：只要容器在，对象就一直存在。</p>
+<p>死亡：容器销毁，对象消亡。</p>
+<p>多例：</p>
+<p>出生：每次获取bean对象时，创建对象。</p>
+<p>活着：只要对象在使用中，就一直活着。</p>
+<p>死亡：当对象长时间不使用，并且也没有别的对象引用时，由Java垃圾回收器回收。</p>
+<h2 id="spring的依赖注入"><a href="#spring的依赖注入" class="headerlink" title="spring的依赖注入"></a>spring的依赖注入</h2><p>运行期提供变量的值就叫依赖注入。缺什么，以配置文件的方式告诉spring传什么。</p>
+<p>注入方式有三种：<br>第一种：使用构造函数注入<br>第二种：使用set方法注入<br>第三种：使用注解注入</p>
+<p>注入的数据类型有三种<br>第一种：基本类型和String类型<br>第二种：其它bean类型（必须实在Spring的配置文件中出现过的bean）<br>第三种：复杂类型（集合类型）</p>
+<p>复杂类型注入：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"customerDao"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"cn.demo.dao.impl.ICustomerDaoImpl"</span>&gt;</span><br><span class="line">    &lt;property name=<span class="string">"str"</span>&gt;</span><br><span class="line">        &lt;array&gt;</span><br><span class="line">            &lt;value&gt;123&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;123&lt;/value&gt;</span><br><span class="line">        &lt;/array&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"list"</span>&gt;</span><br><span class="line">        &lt;list&gt;</span><br><span class="line">            &lt;value&gt;abc&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;abc&lt;/value&gt;</span><br><span class="line">        &lt;/list&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"map"</span>&gt;</span><br><span class="line">        &lt;map&gt;</span><br><span class="line">            &lt;entry key=<span class="string">"123"</span> value=<span class="string">"abc"</span> /&gt;</span><br><span class="line">            &lt;entry key=<span class="string">"456"</span>&gt;</span><br><span class="line">                &lt;value&gt;def&lt;/value&gt;</span><br><span class="line">            &lt;/entry&gt;</span><br><span class="line">        &lt;/map&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"set"</span>&gt;</span><br><span class="line">        &lt;set&gt;</span><br><span class="line">            &lt;value&gt;123&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;456&lt;/value&gt;</span><br><span class="line">        &lt;/set&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"pro"</span>&gt;</span><br><span class="line">        &lt;props&gt;</span><br><span class="line">            &lt;prop key="123" &gt;456&lt;/prop&gt;</span><br><span class="line">        &lt;/props&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="IOC-注解"><a href="#IOC-注解" class="headerlink" title="IOC-注解"></a>IOC-注解</h1><h3 id="用于创建bean对象"><a href="#用于创建bean对象" class="headerlink" title="用于创建bean对象"></a>用于创建bean对象</h3><p>@Component:表示这个类需要在应用程序中被创建</p>
+<p>属性：value。含义是指定bean的id。有默认值为当前类的短名首字母小写。<br>由这个注解衍生的三个注解：</p>
+<p>@Controller 一般用于表现层的注解</p>
+<p>@Service 一般用于业务层</p>
+<p>@Repository 一般用于持久层</p>
+<h3 id="用于注入数据"><a href="#用于注入数据" class="headerlink" title="用于注入数据"></a>用于注入数据</h3><p>@Autowired:自动满足bean之间的依赖<br>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> CompactDisc compactDisc1;</span><br></pre></td></tr></table></figure></p>
+<p>@Autowried注入过程：首先拿对象类型到spring容器中查找是否有这个bean对象。如果存在多个类满足这个条件，就拿字段名与bean的id比较，一旦找到就注入进去，不再继续查找，否则报错。</p>
+<h4 id="多个类实现同一接口情形"><a href="#多个类实现同一接口情形" class="headerlink" title="多个类实现同一接口情形"></a>多个类实现同一接口情形</h4><p>在实现接口时，@Component写在实现类上。<br>@Autowired可以直接写在接口上也可以写在具体实现类上。</p>
+<p>如果有多个类实现了一个接口，编译器就无法识别究竟要调用哪一个具体的实现类。</p>
+<p>解决方法：</p>
+<p><strong>1、设置首选bean</strong></p>
+<p>这时可以通过设置首选bean（@Primary注解）以实现优先哪一个实现类注入。但这个方法也不是经常有效的，一旦有多个地方设置了@Primary，就会出现先前的错误。也就是只能设置一个@Primary。</p>
+<p><strong>2、使用限定符</strong></p>
+<p>在每个实现类上使用限定符，如@Qualifier(“festival”)。然后在test方法中指定限定符，注意festival是userService的实现类。</p>
+<p>给类成员注入数据时，不能独立使用；在给方法的形参注入数据时，可以独立使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier</span>(<span class="string">"festival"</span>)</span><br><span class="line"><span class="keyword">private</span> UserService userService</span><br></pre></td></tr></table></figure></p>
+<p><strong>3、使用限定符和类id</strong><br>可以这样写@Component(“festival”)，指定每个实现类的id，然后在@Qualifier(“festival”)中指定要调用的id。实际上，如果不在@Component中指定id，那么这个实现类的默认id就是它的类名首字母小写。同样在@Qualifier(“userserviceFestival”)写上即可。</p>
+<p><strong>4、Java标准解决方案</strong><br>使用@Resource，@Resource是java标准提供的方案，需要导入<br><code>import javax.annotation.Resource;</code></p>
+<p>如：@Resource(name=”userServiceNormal”)，其中name属性对应的值就是实现类的id</p>
+<p>@ComponentScan:自动发现应用程序中创建的类</p>
+<h2 id="使用单元测试"><a href="#使用单元测试" class="headerlink" title="使用单元测试"></a>使用单元测试</h2><p>1、引入Spring单元测试模块<br>maven：junit、spring-test<br>@RunWith(SpringJUnit4ClassRunner.class)</p>
+<p>2、加载配置类<br>@ContextConfiguration(classes=AppConfig.class)</p>
+<h2 id="注解-Autowired使用的四种情形"><a href="#注解-Autowired使用的四种情形" class="headerlink" title="注解@Autowired使用的四种情形"></a>注解@Autowired使用的四种情形</h2><p>1、有参构造器<br>2、成员变量<br>3、set方法<br>4、任意方法（带有相关参数）</p>
+<h2 id="定义配置类："><a href="#定义配置类：" class="headerlink" title="定义配置类："></a>定义配置类：</h2><p>@Configuration:表示当前类是一个配置类<br>@Bean：它是把方法的返回值存入spring容器。该注解有一个属性，name：用于指定bean的id。当不指定时它有默认值为方法的名称。<br>@Import({demo.class})，导入其它配置类。如果不要用类对象里的方法就用Import导入，如果要用类对象方法就用@Component<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>(name=<span class="string">"name"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="设置组件扫描的基础包"><a href="#设置组件扫描的基础包" class="headerlink" title="设置组件扫描的基础包"></a>设置组件扫描的基础包</h3><p>AppConfig.java在不做任何其它配置的情况下只能扫描当前包下的类。<br>要扫描其它包下的类可以通过一些配置来实现</p>
+<p>1、设置单个包@ComponentScan(“com.demo”)，扫描demo包下所有类。</p>
+<p>2、设置多个包@ComponentScan(basePackages = {“com.demo1”,”com.demo2”})。</p>
+<p>3、设置多个实现类@ComponentScan(basePackageClasses = {UserServiceFestival.class,UserService.class})。</p>
+<p>4、配置xml文件启用组件扫描</p>
+<p>相关标签：<br><strong>component-scan</strong></p>
+<p>IDEA在resources目录下创建applicationContext.xml文件。</p>
+<p>告知spring在创建容器时要扫描的包。当配置了此标签之后，spring创建容器就回去指定的包及其子包下找相应的注解。</p>
+<p>注意：标签是在一个context的名称空间里，所以必须先导入context名称空间。<br>在bean.xml文件中写入：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com"</span>/&gt;</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>这样就是扫描com包下的类。</p>
+<p>在测试类中写入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ContextConfiguration(<span class="string">"classpath:applicationContext.xml"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>即可。</p>
+<h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p><strong>作用</strong>：不改变源码的基础上，对已有方法增强。（它是AOP思想的实现技术）</p>
+<p><strong>分类</strong>：基于接口的动态代理、基于子类的动态代理</p>
+<p>1、基于接口的动态代理，要求被代理类至少实现一个接口<br>创建代理对象的方法：newProxyInstance(ClassLoader,Class[],InvocationHandler)。<br>ClassLoader：类加载器。和被代理对象使用相同的类加载器。一般都是固定写法。<br>Class[]：字节码数组.被代理类实现的接口。（要求代理对象和被代理对象具有相同的行为）。<br>InvocationHandler：它是一个接口，就是用于我们提供增强代码的。一般都是写一个该接口的实现类。实现类可以是匿名内部类。它的含义就是：如何代理。此处的代码只能是谁用谁提供。</p>
+<p>示例1：</p>
+<p><strong>IActor.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aop.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IActor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">basicAct</span><span class="params">(<span class="keyword">float</span> money)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dangerAct</span><span class="params">(<span class="keyword">float</span> money)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>com.aop.demo.IActor.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aop.demo.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aop.demo.IActor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Actor</span> <span class="keyword">implements</span> <span class="title">IActor</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dangerAct</span><span class="params">(<span class="keyword">float</span> money)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"危险的表演"</span> + money);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">basicAct</span><span class="params">(<span class="keyword">float</span> money)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"基础的表演"</span> + money);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Client.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aop.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aop.demo.impl.Actor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IActor ac = <span class="keyword">new</span> Actor();</span><br><span class="line"><span class="comment">//        ac.basicAct(1000f);</span></span><br><span class="line"><span class="comment">//        ac.dangerAct(4000f);</span></span><br><span class="line"></span><br><span class="line">        IActor proxyActor = (IActor) Proxy.newProxyInstance(ac.getClass().getClassLoader(), ac.getClass().getInterfaces(), <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 执行被代理对象的任何方法都会经过该方法，该方法有拦截的功能</span></span><br><span class="line"><span class="comment">             *</span></span><br><span class="line"><span class="comment">             *  proxy ：代理对象的引用。不一定每次都会有</span></span><br><span class="line"><span class="comment">             *  method：当前执行的方法</span></span><br><span class="line"><span class="comment">             *  args：当前执行方法所需的参数</span></span><br><span class="line"><span class="comment">             *  返回值：当前执行方法的返回值</span></span><br><span class="line"><span class="comment">             *</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                <span class="keyword">float</span> money = (<span class="keyword">float</span>) args[<span class="number">0</span>];</span><br><span class="line">                Object all = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">"basicAct"</span>.equals(method.getName())) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(money &gt; <span class="number">10000</span>) &#123;</span><br><span class="line">                        all = method.invoke(ac,money);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(<span class="string">"dangerAct"</span>.equals(method.getName())) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(money &gt; <span class="number">40000</span>) &#123;</span><br><span class="line">                        all = method.invoke(ac,money);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> all;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        proxyActor.basicAct(<span class="number">1000f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>示例2（数据库连接池原理）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnetion</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Connection conn = pool.remove(<span class="number">0</span>);</span><br><span class="line">    Connection proxyConn = (Connection)Proxy.newProxyInstance(conn.getClass().getClassLoader(),</span><br><span class="line">            conn.getClass().getInterfaces(),</span><br><span class="line">            <span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                    Object rtValue = <span class="keyword">null</span>;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="string">"close"</span>.equals(method.getName())) &#123;</span><br><span class="line">                        <span class="comment">//不能直接关闭连接</span></span><br><span class="line">                        pool.add(conn);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        rtValue = method.invoke(conn,args);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> rtValue;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">    <span class="keyword">return</span> proxyConn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>aop，面向切面编程。<br>简单来说就是把程序重复的代码抽取出来，在需要执行的时候，使用动态代理的技术，在不修改源码的基础上，对已有的方法进行增强。</p>
+<h2 id="基于xml的aop配置"><a href="#基于xml的aop配置" class="headerlink" title="基于xml的aop配置"></a>基于xml的aop配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">                           http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">                           http://www.springframework.org/schema/aop</span></span></span><br><span class="line"><span class="tag"><span class="string">                           http://www.springframework.org/schema/aop/spring-aop.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">class</span>=<span class="string">"com.aop2.demo.impl.CustomerServiceImpl"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--基于xml的aop配置--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--1、把通知类交给spring来管理--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logger"</span> <span class="attr">class</span>=<span class="string">"com.aop2.demo.utils.Logger"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--2、导入aop名称空间，并且使用aop:config开始aop的配置--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--3、使用aop:aspect配置切面，id属性用于给切面提供一个唯一标识。ref属性：用于应用通知bean的id--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">id</span>=<span class="string">"logAdvice"</span> <span class="attr">ref</span>=<span class="string">"logger"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--4、配置通知的类型，指定增强的方法何时执行。</span></span><br><span class="line"><span class="comment">                method：用于指定增强方法名称</span></span><br><span class="line"><span class="comment">                pointcut属性：用于指定切入点表达式</span></span><br><span class="line"><span class="comment">            --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">"printLog"</span> <span class="attr">pointcut</span>=<span class="string">"execution(public void com.aop2.demo.impl.CustomerServiceImpl.saveCustomer())"</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:before</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>环绕通知：是spring框架为我们提供的一种可以在代码中手动控制通知方法什么时候执行的方法。</p>
+<p>ProceedingJoinPoint：该接口可以作为环绕通知的方法参数来使用。在程序运行时，spring框架会为我们提供接口的实现类，供我们使用。该接口有一个方法：proceed()，它的作用就等同于method.invoke()方法，就是明确调用业务层核心方法（切入方法）。</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+           <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    学号021
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://shann.xyz/2020/02/09/Spring/springNote/" title="Spring基础学习">https://shann.xyz/2020/02/09/Spring/springNote/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/04/二分/第二讲 二分与前缀和/" rel="next" title="第二讲 二分与前缀和">
+                <i class="fa fa-chevron-left"></i> 第二讲 二分与前缀和
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <a href="/">
+              <img class="site-author-image" itemprop="image" src="https://img-blog.csdnimg.cn/20200214145809532.jpg" alt="学号021">
+            </a>
+            
+              <p class="site-author-name" itemprop="name">学号021</p>
+              <p class="site-description motion-element" itemprop="description">永远都有更好的未来值得去奋斗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">112</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/gageshan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gageshan@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/6308056321/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Myfriends
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shann.xyz/friends/" title="Hello the cruel world" target="_blank">Hello the cruel world</a>
+                  </li>
+                
+              </ul>
+              <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("07/30/2018 13:14:15");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+            </div>
+          
+
+          <!---<div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()", 1000);
+BirthDay=new Date("07/30/2018 13:14:15");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>--->
+        </div>
+      </section>
+<!--<iframe height="100" weight="260" src="https://player.bilibili.com/player.html?aid=26597687&cid=45759200&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"> </iframe>-->
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC-xml"><span class="nav-number">1.</span> <span class="nav-text">IOC-xml</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#入门"><span class="nav-number">1.1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ioc控制反转"><span class="nav-number">1.2.</span> <span class="nav-text">ioc控制反转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">spring配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bean创建的两种规则"><span class="nav-number">1.4.</span> <span class="nav-text">bean创建的两种规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bean实例化的三种方式"><span class="nav-number">1.5.</span> <span class="nav-text">bean实例化的三种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bean的作用域"><span class="nav-number">1.6.</span> <span class="nav-text">bean的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bean的生命周期"><span class="nav-number">1.7.</span> <span class="nav-text">bean的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring的依赖注入"><span class="nav-number">1.8.</span> <span class="nav-text">spring的依赖注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC-注解"><span class="nav-number">2.</span> <span class="nav-text">IOC-注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用于创建bean对象"><span class="nav-number">2.0.1.</span> <span class="nav-text">用于创建bean对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用于注入数据"><span class="nav-number">2.0.2.</span> <span class="nav-text">用于注入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多个类实现同一接口情形"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">多个类实现同一接口情形</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用单元测试"><span class="nav-number">2.1.</span> <span class="nav-text">使用单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解-Autowired使用的四种情形"><span class="nav-number">2.2.</span> <span class="nav-text">注解@Autowired使用的四种情形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义配置类："><span class="nav-number">2.3.</span> <span class="nav-text">定义配置类：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置组件扫描的基础包"><span class="nav-number">2.3.1.</span> <span class="nav-text">设置组件扫描的基础包</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#AOP"><span class="nav-number">3.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态代理"><span class="nav-number">3.1.</span> <span class="nav-text">动态代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">3.2.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于xml的aop配置"><span class="nav-number">3.3.</span> <span class="nav-text">基于xml的aop配置</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+        
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">学号021</span>
+
+  
+</div>
+
+
+<!---
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+--->
+
+
+
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共97.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://shann.xyz/2020/02/09/Spring/springNote/';
+          this.page.identifier = '2020/02/09/Spring/springNote/';
+          this.page.title = 'Spring基础学习';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
