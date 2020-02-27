@@ -266,9 +266,6 @@
       <categories>
         <category>课程设计</category>
       </categories>
-      <tags>
-        <tag>小玩具</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Linux课设-用gcc实现Linux简单命令]]></title>
@@ -825,9 +822,6 @@
     <title><![CDATA[Traffic HDU - 6573]]></title>
     <url>%2F2019%2F09%2F21%2F%E6%8A%80%E5%B7%A7%E9%A2%98%2FTraffic%20HDU%20-%206573%20%2F</url>
     <content type="text"><![CDATA[题目https://cn.vjudge.net/problem/HDU-6573 Avin is observing the cars at a crossroads. He finds that there are n cars running in the east-west direction with the i-th car passing the intersection at time ai . There are another m cars running in the north-south direction with the i-th car passing the intersection at time bi . If two cars passing the intersections at the same time, a traffic crash occurs. In order to achieve world peace and harmony, all the cars running in the north-south direction wait the same amount of integral time so that no two cars bump. You are asked the minimum waiting time. Input The first line contains two integers n and m (1 ≤ n, m ≤ 1, 000). The second line contains n distinct integers ai (1 ≤ ai ≤ 1, 000). The third line contains m distinct integers bi (1 ≤ bi ≤ 1, 000). Output Print a non-negative integer denoting the minimum waiting time.Sample Input1234561 1111 221 3 Sample Output1210 思路刚开始做，确实是没理解题意。实际上题目要求的是，南北方向行驶的车整体停下来的时间，求这个最小值。 原先的做法：如果当前东西向的车与南北向的车在同一时间走，那么南北向车（记为a）就应该停下来，也就是停下来的时间加1，然后继续比较后面的车。实际上如果南北向后面的车（记为b）又与东西向的车通过时间相同，又要停下来，这时候b停下来2分钟，a只听了1分钟。这是不对的。南北向每辆车停的时间都要相同。 正确做法：从0开始枚举南北向停车时间，那么当南北向的（通过时间+停止时间）也就是真正的停车时间都与东西向的通过时间不同，这就是最小停止时间。 代码12345678910111213141516171819202122232425262728293031323334#include&lt;bits/stdc++.h&gt;using namespace std;const int MAXN=1e4+10;int arr[MAXN],brr[MAXN];bool ta[MAXN],tb[MAXN];int main()&#123; int n,m; while(scanf("%d%d",&amp;n,&amp;m)!=EOF) &#123; memset(ta,false,sizeof(ta)); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;arr[i]),ta[arr[i]]=true; for(int i=1;i&lt;=m;i++) scanf("%d",&amp;brr[i]); int ans=0; while(true) &#123; memset(tb,false,sizeof(tb)); for(int i=1;i&lt;=m;i++) tb[brr[i]+ans]=true; int cnt=0; for(int i=1;i&lt;=2000;i++) if(ta[i]||tb[i]) cnt++; if(cnt==n+m) break; ans++; &#125; printf("%d\n",ans); &#125; return 0;&#125;]]></content>
-      <categories>
-        <category>思维题</category>
-      </categories>
       <tags>
         <tag>枚举</tag>
       </tags>
@@ -1075,9 +1069,6 @@
     <title><![CDATA[新建 Microsoft Office Word 文档]]></title>
     <url>%2F2019%2F09%2F21%2FSTL%2F%E6%96%B0%E5%BB%BAms%E6%96%87%E6%A1%A3%2F</url>
     <content type="text"><![CDATA[描述链接：https://ac.nowcoder.com/acm/contest/190/I来源：牛客网 CSL正在学习《计算机办公自动化》文件的建立与删除。 CSL发现，当他新建一个word文档时，会得到一个名为”新建 Microsoft Office Word 文档.doc”的文件，再新建一个，则名为”新建 Microsoft Office Word 文档(2).doc”，再新建，便是”新建 Microsoft Office Word 文档(3).doc”。不断新建，编号不断递增。倘若他已经新建了三个文档，然后删除了”新建 Microsoft Office Word 文档(2).doc”，再新建一个就又会得到一个”新建 Microsoft Office Word 文档(2).doc”。严格来说，Windows在每次新建文档时，都会选取一个与已有文件编号不重复的最小正整数作为新文档的编号。 现在，请你编程模拟以上过程，支持以下两种操作： New：新建一个word文档，反馈新建的文档的编号； Delete id：删除一个编号为id的word文档，反馈删除是否成功。 初始时一个文件都没有，”新建 Microsoft Office Word 文档.doc”的编号算作1。输入描述:第一行一个正整数n表示操作次数，接下来n行，每行表示一个操作。若该行为”New”，则表示新建，为:Delete id”则表示要删除编号为id的文档，其中id为一个正整数。操作按输入顺序依次进行。操作次数不超过100000，删除编号的数值不超过100000。输出描述:对于输入的每一个操作，输出其反馈结果。对于新建操作，输出新建的文档的编号；对于删除操作，反馈删除是否成功：如果删除的文件存在，则删除成功，输出”Successful”，否则输出”Failed”。示例1输入1234567891011121312NewNewNewDelete 2NewDelete 4Delete 3Delete 1NewNewNewDelete 4 输出123456789101112123Successful2FailedSuccessfulSuccessful134Successful 题解学到set，好开心。用set&lt;int&gt;来维护可以创建的队列，然后模拟。 代码1234567891011121314151617181920212223242526272829303132#include&lt;iostream&gt;#include&lt;map&gt;#include&lt;set&gt;using namespace std;const int MAXSIZE=100000+5;int main()&#123; int Case; cin&gt;&gt;Case; set&lt;int&gt; st; set&lt;int&gt;::iterator it; for(int i=1;i&lt;=MAXSIZE;i++) st.insert(i); while(Case--)&#123; string str; cin&gt;&gt;str; if(str==&quot;New&quot;)&#123; it=st.begin(); cout&lt;&lt;*it&lt;&lt;endl; st.erase(it); &#125; else&#123; int a; cin&gt;&gt;a; if(!st.count(a))&#123; cout&lt;&lt;&quot;Successful&quot;&lt;&lt;endl; st.insert(a); &#125; else cout&lt;&lt;&quot;Failed&quot;&lt;&lt;endl; &#125; &#125; return 0;&#125;]]></content>
-      <categories>
-        <category>简单题</category>
-      </categories>
   </entry>
   <entry>
     <title><![CDATA[排名 HDU - 1236]]></title>
