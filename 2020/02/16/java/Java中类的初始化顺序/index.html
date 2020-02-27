@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="初始化顺序在类的内部，字段定义的先后顺序决定了初始化的顺序。即使字段定义散布于方法定义间，它们任旧会在任何方法（包括构造器）被调用前得到初始化。  静态代码块，用static声明，jvm加载类时执行，仅执行一次 构造代码块，类中用{}声明，每次创建对象时执行。 构造函数  执行顺序：静态代码块，main()，构造代码块，构造函数。 123456789101112131415161718192021">
+<meta name="description" content="初始化顺序在类的内部，字段定义的先后顺序决定了初始化的顺序。即使字段定义散布于方法定义间，它们任旧会在任何方法（包括构造器）被调用前得到初始化。  静态代码块，用static声明，jvm加载类时执行，仅执行一次 构造代码块，类中用{}声明，每次创建对象时执行。 构造函数">
 <meta name="keywords" content="个人记录生活学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中类的初始化顺序">
 <meta property="og:url" content="https://shann.xyz/2020/02/16/java/Java中类的初始化顺序/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="初始化顺序在类的内部，字段定义的先后顺序决定了初始化的顺序。即使字段定义散布于方法定义间，它们任旧会在任何方法（包括构造器）被调用前得到初始化。  静态代码块，用static声明，jvm加载类时执行，仅执行一次 构造代码块，类中用{}声明，每次创建对象时执行。 构造函数  执行顺序：静态代码块，main()，构造代码块，构造函数。 123456789101112131415161718192021">
+<meta property="og:description" content="初始化顺序在类的内部，字段定义的先后顺序决定了初始化的顺序。即使字段定义散布于方法定义间，它们任旧会在任何方法（包括构造器）被调用前得到初始化。  静态代码块，用static声明，jvm加载类时执行，仅执行一次 构造代码块，类中用{}声明，每次创建对象时执行。 构造函数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-17T16:12:33.786Z">
+<meta property="og:updated_time" content="2020-02-27T16:30:10.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中类的初始化顺序">
-<meta name="twitter:description" content="初始化顺序在类的内部，字段定义的先后顺序决定了初始化的顺序。即使字段定义散布于方法定义间，它们任旧会在任何方法（包括构造器）被调用前得到初始化。  静态代码块，用static声明，jvm加载类时执行，仅执行一次 构造代码块，类中用{}声明，每次创建对象时执行。 构造函数  执行顺序：静态代码块，main()，构造代码块，构造函数。 123456789101112131415161718192021">
+<meta name="twitter:description" content="初始化顺序在类的内部，字段定义的先后顺序决定了初始化的顺序。即使字段定义散布于方法定义间，它们任旧会在任何方法（包括构造器）被调用前得到初始化。  静态代码块，用static声明，jvm加载类时执行，仅执行一次 构造代码块，类中用{}声明，每次创建对象时执行。 构造函数">
 
 
 
@@ -119,7 +119,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-18T00:12:33+08:00">
-                2020-02-18
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-28T00:30:10+08:00">
+                2020-02-28
               </time>
             
           </span>
@@ -410,16 +410,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/02/16/java/Java中类的初始化顺序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/16/java/Java中类的初始化顺序/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -448,9 +438,9 @@
 <ul>
 <li>静态代码块，用static声明，jvm加载类时执行，仅执行一次</li>
 <li>构造代码块，类中用{}声明，每次创建对象时执行。</li>
-<li>构造函数</li>
+<li>构造函数<a id="more"></a>
+执行顺序：静态代码块，main()，构造代码块，构造函数。</li>
 </ul>
-<p>执行顺序：静态代码块，main()，构造代码块，构造函数。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Demo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"构造方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"静态代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"构造代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"main()..."</span>);</span><br><span class="line">        <span class="keyword">new</span> Demo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**out:</span></span><br><span class="line"><span class="comment">静态代码块</span></span><br><span class="line"><span class="comment">main()...</span></span><br><span class="line"><span class="comment">构造代码块</span></span><br><span class="line"><span class="comment">构造方法</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 <h1 id="静态字段的初始化"><a href="#静态字段的初始化" class="headerlink" title="静态字段的初始化"></a>静态字段的初始化</h1><p>静态字段用static修饰。注意static关键字不能应用于局部字段。</p>
 <p>对于用static关键字修饰的字段，它的作用范围是整个类。可以用<code>类名.静态字段/静态方法</code>的方式来调用<code>字段/方法</code>。由此可见，静态字段只在第一次初始化类的时候才得到初始化。因为静态字段是对整个类起作用，无论创建多少个对象，静态字段/方法都只占用一份存储区域。如果一初始化类就重新给静态字段赋值，那么这个静态字段就和非静态字段没有区别了。</p>
@@ -559,16 +549,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
 
   
 
@@ -866,9 +846,6 @@ show_date_time();
 
 
 
-  
-  
-
 
 
 
@@ -905,16 +882,6 @@ show_date_time();
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
-  
-
 
   
 
@@ -943,26 +910,6 @@ show_date_time();
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://shann.xyz/2020/02/16/java/Java中类的初始化顺序/';
-          this.page.identifier = '2020/02/16/java/Java中类的初始化顺序/';
-          this.page.title = 'Java中类的初始化顺序';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 
@@ -1342,28 +1289,6 @@ show_date_time();
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
 
   
 
@@ -1371,5 +1296,3 @@ show_date_time();
 
 </body>
 </html>
-<!--崩溃欺骗-->
-<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

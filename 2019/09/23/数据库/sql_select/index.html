@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="Lesson 1基本语法1select col,another col from tables; 练习idtitledirectoryearlength_minutes1Toy StoryJohn Lasseter1995812A Bug’s LifeJohn Lasseter1998953Toy Story 2John Lasseter1999934Monsters, Inc.Pete Doct">
+<meta name="description" content="Lesson 1基本语法1select col,another col from tables;">
 <meta name="keywords" content="个人记录生活学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql_select_queries实操">
 <meta property="og:url" content="https://shann.xyz/2019/09/23/数据库/sql_select/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="Lesson 1基本语法1select col,another col from tables; 练习idtitledirectoryearlength_minutes1Toy StoryJohn Lasseter1995812A Bug’s LifeJohn Lasseter1998953Toy Story 2John Lasseter1999934Monsters, Inc.Pete Doct">
+<meta property="og:description" content="Lesson 1基本语法1select col,another col from tables;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-04T06:36:21.399Z">
+<meta property="og:updated_time" content="2020-02-27T16:34:10.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql_select_queries实操">
-<meta name="twitter:description" content="Lesson 1基本语法1select col,another col from tables; 练习idtitledirectoryearlength_minutes1Toy StoryJohn Lasseter1995812A Bug’s LifeJohn Lasseter1998953Toy Story 2John Lasseter1999934Monsters, Inc.Pete Doct">
+<meta name="twitter:description" content="Lesson 1基本语法1select col,another col from tables;">
 
 
 
@@ -119,7 +119,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-04T14:36:21+08:00">
-                2019-10-04
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-28T00:34:10+08:00">
+                2020-02-28
               </time>
             
           </span>
@@ -410,16 +410,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/23/数据库/sql_select/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/23/数据库/sql_select/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -445,6 +435,7 @@
 
       
         <h1 id="Lesson-1"><a href="#Lesson-1" class="headerlink" title="Lesson 1"></a>Lesson 1</h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select col,another col from tables;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><div class="datatable" datatableid="movies"><table class="table table-striped table-condensed"><tbody><tr><td class="column_name">id</td><td class="column_name">title</td><td class="column_name">director</td><td class="column_name">year</td><td class="column_name">length_minutes</td></tr><tr><td>1</td><td>Toy Story</td><td>John Lasseter</td><td>1995</td><td>81</td></tr><tr><td>2</td><td>A Bug’s Life</td><td>John Lasseter</td><td>1998</td><td>95</td></tr><tr><td>3</td><td>Toy Story 2</td><td>John Lasseter</td><td>1999</td><td>93</td></tr><tr><td>4</td><td>Monsters, Inc.</td><td>Pete Docter</td><td>2001</td><td>92</td></tr><tr><td>5</td><td>Finding Nemo</td><td>Andrew Stanton</td><td>2003</td><td>107</td></tr><tr><td>6</td><td>The Incredibles</td><td>Brad Bird</td><td>2004</td><td>116</td></tr><tr><td>7</td><td>Cars</td><td>John Lasseter</td><td>2006</td><td>117</td></tr><tr><td>8</td><td>Ratatouille</td><td>Brad Bird</td><td>2007</td><td>115</td></tr><tr><td>9</td><td>WALL-E</td><td>Andrew Stanton</td><td>2008</td><td>104</td></tr><tr><td>10</td><td>Up</td><td>Pete Docter</td><td>2009</td><td>101</td></tr><tr><td>11</td><td>Toy Story 3</td><td>Lee Unkrich</td><td>2010</td><td>103</td></tr><tr><td>12</td><td>Cars 2</td><td>John Lasseter</td><td>2011</td><td>120</td></tr><tr><td>13</td><td>Brave</td><td>Brenda Chapman</td><td>2012</td><td>102</td></tr><tr><td>14</td><td>Monsters University</td><td>Dan Scanlon</td><td>2013</td><td>110</td></tr></tbody></table></div>
 
 <p>1、Find the title of each film<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT title FROM movies;</span><br></pre></td></tr></table></figure></p>
@@ -570,16 +561,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
 
   
 
@@ -877,9 +858,6 @@ show_date_time();
 
 
 
-  
-  
-
 
 
 
@@ -916,16 +894,6 @@ show_date_time();
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
-  
-
 
   
 
@@ -954,26 +922,6 @@ show_date_time();
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://shann.xyz/2019/09/23/数据库/sql_select/';
-          this.page.identifier = '2019/09/23/数据库/sql_select/';
-          this.page.title = 'sql_select_queries实操';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 
@@ -1353,28 +1301,6 @@ show_date_time();
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
 
   
 
@@ -1382,5 +1308,3 @@ show_date_time();
 
 </body>
 </html>
-<!--崩溃欺骗-->
-<script type="text/javascript" src="/js/src/crash_cheat.js"></script>

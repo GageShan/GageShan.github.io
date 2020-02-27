@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="任务描述模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用 任务分析相关操作涉及的实体：123用户类(Account) 属性：姓名、银行卡号、密码、余额。操作：、存款、取款 123ATM类属性：登陆系统的用户操作：登录、显示、存款、取款、查询余额 实现1234567891011121314151617181920212223242526272829">
+<meta name="description" content="任务描述模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用">
 <meta name="keywords" content="面向对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类与对象实训">
 <meta property="og:url" content="https://shann.xyz/2019/09/21/java/类与对象实训/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="任务描述模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用 任务分析相关操作涉及的实体：123用户类(Account) 属性：姓名、银行卡号、密码、余额。操作：、存款、取款 123ATM类属性：登陆系统的用户操作：登录、显示、存款、取款、查询余额 实现1234567891011121314151617181920212223242526272829">
+<meta property="og:description" content="任务描述模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-14T07:17:19.576Z">
+<meta property="og:updated_time" content="2020-02-27T16:30:29.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类与对象实训">
-<meta name="twitter:description" content="任务描述模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用 任务分析相关操作涉及的实体：123用户类(Account) 属性：姓名、银行卡号、密码、余额。操作：、存款、取款 123ATM类属性：登陆系统的用户操作：登录、显示、存款、取款、查询余额 实现1234567891011121314151617181920212223242526272829">
+<meta name="twitter:description" content="任务描述模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用">
 
 
 
@@ -119,7 +119,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-14T15:17:19+08:00">
-                2020-02-14
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-28T00:30:29+08:00">
+                2020-02-28
               </time>
             
           </span>
@@ -410,16 +410,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/09/21/java/类与对象实训/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/21/java/类与对象实训/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -444,7 +434,7 @@
       
 
       
-        <h1 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h1><p>模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用</p>
+        <h1 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h1><p>模拟银行ATM机，编写一具有简单操作界面的JAVA程序，实现包括存款、取款、查询等功能在内的简单应用<br><a id="more"></a></p>
 <h1 id="任务分析"><a href="#任务分析" class="headerlink" title="任务分析"></a>任务分析</h1><p>相关操作涉及的实体：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户类(Account) </span><br><span class="line">属性：姓名、银行卡号、密码、余额。</span><br><span class="line">操作：、存款、取款</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ATM类</span><br><span class="line">属性：登陆系统的用户</span><br><span class="line">操作：登录、显示、存款、取款、查询余额</span><br></pre></td></tr></table></figure>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ATM atm = <span class="keyword">new</span> ATM();</span><br><span class="line">        atm.load_Sys();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  String Password;</span><br><span class="line">    <span class="keyword">private</span>  String Name;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">double</span> Balance;</span><br><span class="line">    <span class="keyword">private</span>  String Number;</span><br><span class="line">    Account() &#123;&#125;;</span><br><span class="line">    Account(String Name,String Number,String Password,<span class="keyword">double</span> Balance) &#123;</span><br><span class="line">        <span class="keyword">this</span>.Name = Name;</span><br><span class="line">        <span class="keyword">this</span>.Password = Password;</span><br><span class="line">        <span class="keyword">this</span>.Number = Number;</span><br><span class="line">        <span class="keyword">this</span>.Balance = Balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String Name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Name = Name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Password;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String Password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Password = Password;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(String Number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Number = Number;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getBalance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBalance</span><span class="params">(<span class="keyword">double</span> Balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Balance = Balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_Balance</span><span class="params">(<span class="keyword">double</span> balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Balance += balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sub_Balance</span><span class="params">(<span class="keyword">double</span> balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Balance -= balance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"卡上余额为："</span> + <span class="keyword">this</span>.Balance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ATM</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Account act;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ATM</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        act = <span class="keyword">new</span> Account(<span class="string">"gageshan"</span>,<span class="string">"****"</span>,<span class="string">"****"</span>,<span class="number">50000000</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">welcome</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"---------------------------------"</span>);</span><br><span class="line">        System.out.println(<span class="string">"1-取款"</span>);</span><br><span class="line">        System.out.println(<span class="string">"2-存款"</span>);</span><br><span class="line">        System.out.println(<span class="string">"3-查询"</span>);</span><br><span class="line">        System.out.println(<span class="string">"4-推出"</span>);</span><br><span class="line">        System.out.println(<span class="string">"---------------------------------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">load_Sys</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String card ;</span><br><span class="line">        String password ;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.print(<span class="string">"请输入您的银行卡号："</span>);</span><br><span class="line">        card = sc.next();</span><br><span class="line">        System.out.print(<span class="string">"请输入您的密码："</span>);</span><br><span class="line">        password = sc.next();</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(!check_sys(card,password)) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt &gt; <span class="number">3</span>)</span><br><span class="line">                System.exit(<span class="number">0</span>);</span><br><span class="line">            cnt++;</span><br><span class="line">            System.out.print(<span class="string">"密码错误，请重新输入："</span>);</span><br><span class="line">            password = sc.next();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"密码正确"</span>);</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            welcome();</span><br><span class="line">            System.out.print(<span class="string">"请输入你想进行的操作："</span>);</span><br><span class="line">             <span class="keyword">int</span> op = sc.nextInt();</span><br><span class="line">             <span class="keyword">if</span>(op == <span class="number">1</span>) &#123;</span><br><span class="line">                bet_balance();</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="number">2</span>) &#123;</span><br><span class="line">                add_balance();</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="number">3</span>) &#123;</span><br><span class="line">                query_balance();</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span> &#123;</span><br><span class="line">                 System.exit(<span class="number">0</span>);</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">check_sys</span><span class="params">(String card,String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(act.getNumber().equals(card) &amp;&amp; act.getPassword().equals(password)) &#123;</span><br><span class="line">            <span class="comment">// System.out.println("hello the cruel world");</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">check_balance</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(money &gt;= act.getBalance())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bet_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.print(<span class="string">"请输入您取款的金额："</span>);</span><br><span class="line">        <span class="keyword">double</span> money = sc.nextDouble();</span><br><span class="line">        <span class="keyword">if</span>(check_balance(money)) &#123;</span><br><span class="line">            System.out.println(<span class="string">"余额不足！"</span>);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            act.sub_Balance(money);</span><br><span class="line">            System.out.println(<span class="string">"取款成功！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.print(<span class="string">"请输入您存款的金额："</span>);</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">double</span> money = sc.nextDouble();</span><br><span class="line">        act.add_Balance(money);</span><br><span class="line">        System.out.println(<span class="string">"存款成功！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">query_balance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前余额为："</span> + act.getBalance());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -544,16 +534,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
 
   
 
@@ -851,9 +831,6 @@ show_date_time();
 
 
 
-  
-  
-
 
 
 
@@ -890,16 +867,6 @@ show_date_time();
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
-  
-
 
   
 
@@ -928,26 +895,6 @@ show_date_time();
 
   
 
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://shann.xyz/2019/09/21/java/类与对象实训/';
-          this.page.identifier = '2019/09/21/java/类与对象实训/';
-          this.page.title = '类与对象实训';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 
@@ -1327,28 +1274,6 @@ show_date_time();
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
 
   
 
@@ -1356,5 +1281,3 @@ show_date_time();
 
 </body>
 </html>
-<!--崩溃欺骗-->
-<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
