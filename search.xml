@@ -531,11 +531,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[int，long，long long范围]]></title>
-    <url>%2F2019%2F09%2F21%2F%E6%A8%A1%E6%9D%BF%2Flong%20long%E8%8C%83%E5%9B%B4%2F</url>
-    <content type="text"><![CDATA[原文地址：ACM博客_kuangbin unsigned int 0～4294967295 int 2147483648～2147483647 unsigned long 0～4294967295 long 2147483648～2147483647 long long的最大值：9223372036854775807 long long的最小值：-9223372036854775808 unsigned long long的最大值：18446744073709551615 __int64的最大值：9223372036854775807 __int64的最小值：-9223372036854775808 unsigned __int64的最大值：18446744073709551615]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[堆优化prim模板]]></title>
     <url>%2F2019%2F09%2F21%2F%E6%A8%A1%E6%9D%BF%2F%E5%A0%86%E4%BC%98%E5%8C%96prim%E6%A8%A1%E6%9D%BF%20%20%2F</url>
     <content type="text"><![CDATA[数据过大导致开大数组不实际时，用vector。123456789101112131415161718192021222324252627282930313233343536373839const int MAXN=100000+10;const int inf=10e7;struct Node&#123; int x,cost; Node(int x,int cost):x(x),cost(cost)&#123;&#125; friend bool operator &lt; (const Node &amp;a,const Node &amp;b) &#123;return a.cost&gt;b.cost;&#125;&#125;;priority_queue&lt;Node&gt; qu;int n,m;vector&lt;Node&gt; mp[MAXN];int visit[MAXN];int ans=0;void prim(int v) &#123; memset(visit,0,sizeof(visit)); visit[v]=1; int k=v; for(int i=0;i&lt;mp[k].size();i++) &#123; Node tmp=mp[k][i]; if(!visit[tmp.x]) qu.push(Node(tmp.x,tmp.cost)); &#125; while(!qu.empty()) &#123; Node tmp=qu.top(); qu.pop(); if(visit[tmp.x]) continue; ans+=tmp.cost; k=tmp.x; visit[k]=1; for(int i=0;i&lt;mp[k].size();i++) &#123; tmp=mp[k][i]; if(!visit[tmp.x]) qu.push(Node(tmp.x,tmp.cost)); &#125; &#125;&#125; 较小数据量时12345678910111213141516171819202122232425262728293031323334353637const int inf=1000000;const int MAXN=500+5;struct Node&#123; int x,y,cost; Node(int x,int y,int cost):x(x),y(y),cost(cost)&#123;&#125; friend bool operator &lt; (const Node &amp;a,const Node &amp;b) &#123;return a.cost&gt;b.cost;&#125;&#125;;int ans=0; int n,m;int mp[MAXN][MAXN];priority_queue&lt;Node&gt; qu;int visit[MAXN*MAXN];void prim(int v) &#123; memset(visit,0,sizeof(visit)); while(!qu.empty())qu.pop(); visit[v]=1; int k=v; for(int i=1;i&lt;=n;i++) &#123; for(int j=1;j&lt;=n;j++) if(!visit[j]) qu.push(Node(i,j,mp[k][j])); while(!qu.empty()&amp;&amp;visit[qu.top().y]) qu.pop(); if(qu.empty()) break; Node now=qu.top(); ans+=now.cost; k=now.y; visit[k]=1; qu.pop(); &#125; &#125;]]></content>
@@ -545,6 +540,11 @@
       <tags>
         <tag>堆优化prim</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[int，long，long long范围]]></title>
+    <url>%2F2019%2F09%2F21%2F%E6%A8%A1%E6%9D%BF%2Flong%20long%E8%8C%83%E5%9B%B4%2F</url>
+    <content type="text"><![CDATA[原文地址：ACM博客_kuangbin unsigned int 0～4294967295 int 2147483648～2147483647 unsigned long 0～4294967295 long 2147483648～2147483647 long long的最大值：9223372036854775807 long long的最小值：-9223372036854775808 unsigned long long的最大值：18446744073709551615 __int64的最大值：9223372036854775807 __int64的最小值：-9223372036854775808 unsigned __int64的最大值：18446744073709551615]]></content>
   </entry>
   <entry>
     <title><![CDATA[银行排队]]></title>
