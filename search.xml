@@ -1142,15 +1142,12 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[ubuntu14.04文件操作]]></title>
+    <title><![CDATA[linux文件操作]]></title>
     <url>%2F2019%2F09%2F21%2FLinux%2Fubuntu14.04%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[使用xshell连接云服务器一些文件操作 安装rzsz1apt-get install lrzsz rzsz说明：sz命令 发送文件到本地： #sz filenamerz命令 将本地上传文件到服务器 #rz执行该命令后，在弹出框中选择要上传的文件即可 新建文件夹1mkdir filename 重命名文件1mv filename1 filename2 这也是移动某文件到另一文件目录下的操作]]></content>
+    <content type="text"><![CDATA[文件用户分为三种：文件拥有者、群组以及其他人，对不同的用户有不同的应用权限。 用ls查看一个文件时，有如下信息1drwxrwxr-x 2 shan shan 4096 Feb 27 21:11 doc 对这个信息的解释1234567drwxrwxr-x：第1位表示文件类型，后9位为权限字段2：链接数root：文件拥有者root：所属群组4096：文件大小Feb 27 21:11：文件最后被修改的时间doc：文件名 常见的文件类型及含义123d：目录_：文件l：链接文件 权限字段说明：9位权限字段中，每3个位一组，一共为3组，分别对应文件拥有者、所属群组、其他人。一组权限有3个字段，依次为r、w、x，分别代表读，写，可执行。 文件时间有以下三种：modification time(mtime)：文件内容更新就会更新；status time(ctime)：文件的状态更新就会更新；access time(atime)：读取文件时就会更新。 1、文件与目录的基本操作1、ls列出文件或者目录信息。1234ls [-adl] file/dirName-a：列出全部文件-d：列出目录-l：列出文件全部信息 2、cd更换当前路径 3、mkdir创建目录 123mkdir [-mp] dirName-m：配置目录权限-p：递归创建目录 4、rmkdir删除目录，目录必须为空 12rmkdir [-p] dirName-p：递归删除目录 5、touch更新文件时间或建立新文件 123456touch [-acdmt] fileName-a： 更新atime-c： 更新ctime-m： 更新mtime-d： 后面可以直接写日期 或者写成touch --date='2020-02-28 20:51' doc-t： 后面可以直接写时间 6、cp复制文件。如果源文件有两个以上，则目标文件需为目录。12345cp note-txt note-markdown note-d ：若来源文件为链接文件，则复制链接文件属性而非文件本身-i ：若目标文件已经存在时，在覆盖前会先询问-p ：连同文件的属性一起复制过去-r ：递归复制 7、rm删除文件12rm [-fir] 文件或目录-r ：递归删除 8、mv移动文件123mv [-fiu] source destinationmv [options] source1 source2 source3 .... directory-f ： force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖 获取文件内容1、cat2、tac3、more4、less5、head6、tail7、od vim三个模式1、一般指令模式，查看内容2、编辑模式，对文本进行编辑3、按下”:”进入，用于保存退出等操作 使用xshell连接云服务器一些文件操作（工具使用）安装rzsz1apt-get install lrzsz rzsz说明：sz命令 发送文件到本地： #sz filenamerz命令 将本地上传文件到服务器 #rz执行该命令后，在弹出框中选择要上传的文件即可]]></content>
       <categories>
         <category>Linux</category>
       </categories>
-      <tags>
-        <tag>基本操作</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Ubuntu14.04mysql常用命令]]></title>

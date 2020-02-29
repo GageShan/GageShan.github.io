@@ -1164,7 +1164,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/21/Linux/ubuntu14.04文件操作/" itemprop="url">ubuntu14.04文件操作</a></h1>
+                <a class="post-title-link" href="/2019/09/21/Linux/ubuntu14.04文件操作/" itemprop="url">linux文件操作</a></h1>
         
 
         <div class="post-meta">
@@ -1192,8 +1192,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-11-11T13:49:56+08:00">
-                2018-11-11
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-29T17:02:39+08:00">
+                2020-02-29
               </time>
             
           </span>
@@ -1249,8 +1249,15 @@
 
       
         
-          <hr>
-<p>使用xshell连接云服务器一些文件操作<br>
+          <h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><p>用户分为三种：文件拥有者、群组以及其他人，对不同的用户有不同的应用权限。</p>
+<p>用ls查看一个文件时，有如下信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxr-x 2 shan shan 4096 Feb 27 21:11 doc</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>对这个信息的解释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxr-x：第1位表示文件类型，后9位为权限字段</span><br><span class="line">2：链接数</span><br><span class="line">root：文件拥有者</span><br><span class="line">root：所属群组</span><br><span class="line">4096：文件大小</span><br><span class="line">Feb 27 21:11：文件最后被修改的时间</span><br><span class="line">doc：文件名</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>常见的文件类型及含义<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d：目录</span><br><span class="line">_：文件</span><br><span class="line">l：链接文件</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>权限字段说明：9位权限字段中，每3个位一组，一共为3组，分别对应<code>文件拥有者</code>、<code>所属群组</code>、<code>其他人</code>。一组权限有3个字段，依次为<code>r</code>、<code>w</code>、<code>x</code>，分别代表读，写，可执行。</p>
+<p>文件时间有以下三种：<br>modification time(mtime)：文件内容更新就会更新；<br>status time(ctime)：文件的状态更新就会更新；<br>access time(atime)：读取文件时就会更新。</p>
           
 
           <!--noindex-->
@@ -1262,7 +1269,7 @@
           <!--/noindex-->
         
       
-    </p></div>
+    </div>
     
     
     
@@ -1518,8 +1525,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-15T11:28:26+08:00">
-                2019-06-15
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-29T17:03:20+08:00">
+                2020-02-29
               </time>
             
           </span>
@@ -1576,8 +1583,7 @@
       
         
           
-            <hr>
-<p>搭环境的遇到的问题，记录下来</p>
+            <p>搭环境的遇到的问题，记录下来</p>
 <h3 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server mysql-client</span><br></pre></td></tr></table></figure>
 <h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>查看MySQL版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -V</span><br></pre></td></tr></table></figure></p>
 <p>选择MySQL的版本然后卸载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove --purge mysql-server-5.5</span><br></pre></td></tr></table></figure></p>
@@ -2279,7 +2285,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共103.3k字</span>
+  <span class="post-count">博客全站共103.9k字</span>
 </div>
         
 
