@@ -107,17 +107,18 @@
 
 
 
-<meta name="description" content="永远都有更好的未来值得去奋斗">
+<meta name="description" content="问题引入由一段代码讲起。1234567891011121314public class Main &amp;#123;    public static void main(String[] args) &amp;#123;        Integer i1 = 127;        Integer i2 = 127;        Integer i3 = Integer.valueOf(127);">
 <meta name="keywords" content="个人记录生活学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GageShan">
-<meta property="og:url" content="https://shann.xyz/archives/2019/09/page/4/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中包装类型的cache机制">
+<meta property="og:url" content="https://shann.xyz/2020/02/29/java/Java中包装类型的cache机制/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="永远都有更好的未来值得去奋斗">
+<meta property="og:description" content="问题引入由一段代码讲起。1234567891011121314public class Main &amp;#123;    public static void main(String[] args) &amp;#123;        Integer i1 = 127;        Integer i2 = 127;        Integer i3 = Integer.valueOf(127);">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-29T08:05:31.030Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GageShan">
-<meta name="twitter:description" content="永远都有更好的未来值得去奋斗">
+<meta name="twitter:title" content="Java中包装类型的cache机制">
+<meta name="twitter:description" content="问题引入由一段代码讲起。1234567891011121314public class Main &amp;#123;    public static void main(String[] args) &amp;#123;        Integer i1 = 127;        Integer i2 = 127;        Integer i3 = Integer.valueOf(127);">
 
 
 
@@ -147,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/archives/2019/09/page/4/">
+  <link rel="canonical" href="https://shann.xyz/2020/02/29/java/Java中包装类型的cache机制/">
 
 
 
 
 
-  <title>Archive | GageShan</title>
+  <title>Java中包装类型的cache机制 | GageShan</title>
   
 
 
@@ -172,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -318,320 +319,254 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/02/29/java/Java中包装类型的cache机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">Java中包装类型的cache机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-29T00:27:54+08:00">
+                2020-02-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-29T16:05:31+08:00">
+                2020-02-29
+              </time>
+            
+          </span>
+
           
-        Good! 116 posts in total. Keep on posting.
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/简单搜索/KATHTHI SPOJ - KATHTHI （BFS+deque）/" itemprop="url">
-              
-                <span itemprop="name">KATHTHI SPOJ - KATHTHI （BFS+deque）</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/简单搜索/Find a way HDU - 2612  /" itemprop="url">
-              
-                <span itemprop="name">Find a way HDU - 2612</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-J/" itemprop="url">
-              
-                <span itemprop="name">北信科第十一届程序设计竞赛（重现赛）J andy的树被砍了</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h1><p>由一段代码讲起。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Integer i1 = <span class="number">127</span>;</span><br><span class="line">        Integer i2 = <span class="number">127</span>;</span><br><span class="line">        Integer i3 = Integer.valueOf(<span class="number">127</span>);</span><br><span class="line">        Integer i4 = <span class="keyword">new</span> Integer(<span class="number">127</span>);</span><br><span class="line">        Integer i5 = <span class="number">128</span>;</span><br><span class="line">        Integer i6 = <span class="number">128</span>;</span><br><span class="line">        System.out.println(i1 == i2);</span><br><span class="line">        System.out.println(i1 == i3);</span><br><span class="line">        System.out.println(i3 == i4);</span><br><span class="line">        System.out.println(i5 == i6);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>想一想输出结果是什么？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>其它还好说，可能对于一点有点迷惑，那就是为什么i1==i2输出为<strong>true</strong>，而i5==i6输出为<strong>false</strong>呢?</p>
+<p>这就涉及到Java中的Cache机制了。</p>
+<p>为了节省内存和提升Integer类性能，从Java5开始，引入了缓存机制，取值在一定范围内的Integer对象会被缓存起来。以后如果要创建对象，就会先判断该数值在不在缓存中，如果在就直接返回缓存中的对象，否则才创建。<br><a id="more"></a><br>Cache机制只有在自动装箱和手动装箱（即调用Integer.valueOf()方法）时才会有效。这也就解释了为什么i1、i2、i3是同一个对象了。而i4是直接创建对象，所以不会用到Cache机制。</p>
+<p>那为什么i5!=i6呢？上面所说取值范围内才会缓存Integer对象，难道128不在这个取值范围内？</p>
+<p>带着这个问题，我去学习了下源码。</p>
+<hr>
+<h1 id="Cache机制如何实现"><a href="#Cache机制如何实现" class="headerlink" title="Cache机制如何实现"></a>Cache机制如何实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Cache to support the object identity semantics of autoboxing for values between</span></span><br><span class="line"><span class="comment">    * -128 and 127 (inclusive) as required by JLS.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * The cache is initialized on first usage.  The size of the cache</span></span><br><span class="line"><span class="comment">    * may be controlled by the &#123;<span class="doctag">@code</span> -XX:AutoBoxCacheMax=&lt;size&gt;&#125; option.</span></span><br><span class="line"><span class="comment">    * During VM initialization, java.lang.Integer.IntegerCache.high property</span></span><br><span class="line"><span class="comment">    * may be set and saved in the private system properties in the</span></span><br><span class="line"><span class="comment">    * jdk.internal.misc.VM class.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerCache</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> low = -<span class="number">128</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> high;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// high value may be configured by property</span></span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">127</span>;</span><br><span class="line">        String integerCacheHighPropValue =</span><br><span class="line">            VM.getSavedProperty(<span class="string">"java.lang.Integer.IntegerCache.high"</span>);</span><br><span class="line">        <span class="keyword">if</span> (integerCacheHighPropValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> i = parseInt(integerCacheHighPropValue);</span><br><span class="line">                i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                <span class="comment">// If the property cannot be parsed into an int, ignore it.</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        high = h;</span><br><span class="line"></span><br><span class="line">        cache = <span class="keyword">new</span> Integer[(high - low) + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> j = low;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">            cache[k] = <span class="keyword">new</span> Integer(j++);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">        <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">IntegerCache</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一步步分析源码。</p>
+<p>IntegerCache是一个静态内部类。在类中定义了一个cache数组，不用说，这是用来存放Integer对象的。另外还有一个静态块，在第一次调用这个类的时候，会创建[low,high]范围内的对象将它们存起来。</p>
+<p>那怎么知道high的大小呢？</p>
+<p>可以看到这行代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String integerCacheHighPropValue = VM.getSavedProperty(<span class="string">"java.lang.Integer.IntegerCache.high"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这行代码的意思是获取jvm相关参数，如果没有这个参数，那么integerCacheHighPropValue自然就是null，既然是null，那么就不会执行if分支。如果有，那么在if分支里，h的值就会被改变为jvm参数。</p>
+<p>由此，都解释的通了。</p>
+<h1 id="自动装箱与Integer-valueOf的关系"><a href="#自动装箱与Integer-valueOf的关系" class="headerlink" title="自动装箱与Integer.valueOf的关系"></a>自动装箱与Integer.valueOf的关系</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Returns an &#123;<span class="doctag">@code</span> Integer&#125; instance representing the specified</span></span><br><span class="line"><span class="comment">    * &#123;<span class="doctag">@code</span> int&#125; value.  If a new &#123;<span class="doctag">@code</span> Integer&#125; instance is not</span></span><br><span class="line"><span class="comment">    * required, this method should generally be used in preference to</span></span><br><span class="line"><span class="comment">    * the constructor &#123;<span class="doctag">@link</span> #Integer(int)&#125;, as this method is likely</span></span><br><span class="line"><span class="comment">    * to yield significantly better space and time performance by</span></span><br><span class="line"><span class="comment">    * caching frequently requested values.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * This method will always cache values in the range -128 to 127,</span></span><br><span class="line"><span class="comment">    * inclusive, and may cache other values outside of this range.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span>  i an &#123;<span class="doctag">@code</span> int&#125; value.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> an &#123;<span class="doctag">@code</span> Integer&#125; instance representing &#123;<span class="doctag">@code</span> i&#125;.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@since</span>  1.5</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@HotSpotIntrinsicCandidate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Integer i = 1;<br>会自动调用valueOf方法进行创建对象。</p>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>在代码中看到这行<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br></pre></td></tr></table></figure></p>
+<p>搜了下，了解了一个知识。ArrayList的最大长度为Integer.MAX_VALUE-8，因为要有8位来存储ArrayList的长度。</p>
+<hr>
+<p>除了Integer外，还有Byte、Short、Long、Character都有缓存机制，cache[]长度不可改变。</p>
+<table>
+<thead>
+<tr>
+<th>包装类型</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integer</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Short</td>
+<td>-128~128</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>0~128</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Boolean的取值只有两个，会先创建true、false对象，使用valueOf来创建对象会根据方法的参数来决定返回哪个对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Boolean TRUE = <span class="keyword">new</span> Boolean(<span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Boolean FALSE = <span class="keyword">new</span> Boolean(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">@HotSpotIntrinsicCandidate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">valueOf</span><span class="params">(<span class="keyword">boolean</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (b ? TRUE : FALSE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-I/" itemprop="url">
-              
-                <span itemprop="name">北信科第十一届程序设计竞赛（重现赛）I andy种树</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-H/" itemprop="url">
-              
-                <span itemprop="name">北信科第十一届程序设计竞赛（重现赛）H andy和购物</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-F/" itemprop="url">
-              
-                <span itemprop="name">北信科第十一届程序设计竞赛（重现赛）F kotori和n皇后</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-E/" itemprop="url">
-              
-                <span itemprop="name">北信科第十一届程序设计竞赛（重现赛）E kotori和素因子</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-D/" itemprop="url">
-              
-                <span itemprop="name">北信科第十一届程序设计竞赛（重现赛）D kotori和迷宫</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:24+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+    <div>
+      
+           <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    学号021
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://shann.xyz/2020/02/29/java/Java中包装类型的cache机制/" title="Java中包装类型的cache机制">https://shann.xyz/2020/02/29/java/Java中包装类型的cache机制/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/25/java/Java自定义排序内容/" rel="next" title="Java中集合自定义排序（Comparator接口）">
+                <i class="fa fa-chevron-left"></i> Java中集合自定义排序（Comparator接口）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/09/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2019/09/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/09/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/2019/09/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/09/page/13/">13</a><a class="extend next" rel="next" href="/archives/2019/09/page/5/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -639,6 +574,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -661,8 +600,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -772,6 +720,23 @@ show_date_time();
         </div>
       </section>
 <!--<iframe height="100" weight="260" src="https://player.bilibili.com/player.html?aid=26597687&cid=45759200&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"> </iframe>-->
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题引入"><span class="nav-number">1.</span> <span class="nav-text">问题引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cache机制如何实现"><span class="nav-number">2.</span> <span class="nav-text">Cache机制如何实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自动装箱与Integer-valueOf的关系"><span class="nav-number">3.</span> <span class="nav-text">自动装箱与Integer.valueOf的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展"><span class="nav-number">4.</span> <span class="nav-text">扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+        
+      <!--/noindex-->
       
 
       
@@ -916,6 +881,10 @@ show_date_time();
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

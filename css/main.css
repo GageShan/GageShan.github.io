@@ -1092,7 +1092,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: url("/images/多彩.jpg");
+  background: transparent;
 }
 .header-inner {
   position: relative;
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffab93;
+  background: #6b08ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2699,6 +2699,7 @@ embed {
   margin-top: 60px;
   margin-bottom: 60px;
   padding: 25px;
+  background: #f7f2e8;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
@@ -2710,4 +2711,10 @@ embed {
 }
 img.img-topic {
   width: 100%;
+}
+.main {
+  background: #f7f2e8;
+}
+.header {
+  background: #f7f2e8;
 }
