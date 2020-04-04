@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://shann.xyz/2020/03/04/Linux/Nginx-Notes/</loc>
+    <lastmod>2020-04-04T15:49:18.530Z</lastmod>
+  </url>  <url>
+    <loc>https://shann.xyz/2020/04/02/%E6%95%B0%E5%AD%A6/%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/</loc>
+    <lastmod>2020-04-01T16:42:44.281Z</lastmod>
+  </url>  <url>
     <loc>https://shann.xyz/2020/02/17/java/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%B8%80)%20%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2020-03-31T15:53:15.248Z</lastmod>
   </url>  <url>
     <loc>https://shann.xyz/2020/02/29/java/Java%E4%B8%AD%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B%E7%9A%84cache%E6%9C%BA%E5%88%B6/</loc>
     <lastmod>2020-03-30T03:47:04.195Z</lastmod>
-  </url>  <url>
-    <loc>https://shann.xyz/2020/03/04/Linux/Nginx-Notes/</loc>
-    <lastmod>2020-03-08T09:03:04.488Z</lastmod>
   </url>  <url>
     <loc>https://shann.xyz/2019/09/21/Linux/MySQL%E5%8D%B8%E8%BD%BD%E9%87%8D%E8%A3%85/</loc>
     <lastmod>2020-02-29T09:03:20.758Z</lastmod>
