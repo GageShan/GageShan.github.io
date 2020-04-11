@@ -107,17 +107,18 @@
 
 
 
-<meta name="description" content="一点想法，一点思考，一点记录">
+<meta name="description" content="Class类对象的三种实例化方式 1234567891011121314151617public class Main &amp;#123;    public static void main(String[] args) throws ClassNotFoundException &amp;#123;        Person person = new Person();        Class&amp;lt;?">
 <meta name="keywords" content="个人记录生活学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GageShan">
-<meta property="og:url" content="https://shann.xyz/archives/2019/page/9/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Java反射机制">
+<meta property="og:url" content="https://shann.xyz/2020/04/01/java/理解Java反射机制/index.html">
 <meta property="og:site_name" content="GageShan">
-<meta property="og:description" content="一点想法，一点思考，一点记录">
+<meta property="og:description" content="Class类对象的三种实例化方式 1234567891011121314151617public class Main &amp;#123;    public static void main(String[] args) throws ClassNotFoundException &amp;#123;        Person person = new Person();        Class&amp;lt;?">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-04-01T13:06:12.106Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GageShan">
-<meta name="twitter:description" content="一点想法，一点思考，一点记录">
+<meta name="twitter:title" content="理解Java反射机制">
+<meta name="twitter:description" content="Class类对象的三种实例化方式 1234567891011121314151617public class Main &amp;#123;    public static void main(String[] args) throws ClassNotFoundException &amp;#123;        Person person = new Person();        Class&amp;lt;?">
 
 
 
@@ -147,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://shann.xyz/archives/2019/page/9/">
+  <link rel="canonical" href="https://shann.xyz/2020/04/01/java/理解Java反射机制/">
 
 
 
 
 
-  <title>Archive | GageShan</title>
+  <title>理解Java反射机制 | GageShan</title>
   
 
 
@@ -172,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -318,320 +319,250 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/04/01/java/理解Java反射机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">理解Java反射机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-01T00:01:13+08:00">
+                2020-04-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-04-01T21:06:12+08:00">
+                2020-04-01
+              </time>
+            
+          </span>
+
           
-        Good! 118 posts in total. Keep on posting.
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/数学/快速幂/" itemprop="url">
-              
-                <span itemprop="name">快速幂(个人加深理解)</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/数学/Vasya and Triangle CodeForces - 1058D （几何）/" itemprop="url">
-              
-                <span itemprop="name">Vasya and Triangle CodeForces - 1058D (几何推导)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/数学/The World is a Theatre CodeForces - 131C (组合数)/" itemprop="url">
-              
-                <span itemprop="name">The World is a Theatre CodeForces - 131C (组合数)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>Class类对象的三种实例化方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Person person = <span class="keyword">new</span> Person();</span><br><span class="line">        Class&lt;? &gt; cls1 = Person.class;</span><br><span class="line">        Class&lt;?&gt; cls2 = Class.forName(<span class="string">"Person"</span>);</span><br><span class="line">        Class&lt;?&gt; cls3 = person.getClass();</span><br><span class="line">        System.out.println(cls1.getName());</span><br><span class="line">        System.out.println(cls2.getName());</span><br><span class="line">        System.out.println(cls3.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类的加载过程"><a href="#类的加载过程" class="headerlink" title="类的加载过程"></a>类的加载过程</h2><p>当程序主动使用某个类时，如果该类还未被加载到内存中，则系统会通过以下三个步骤来对改类进行初始化。</p>
+<ul>
+<li>类的加载（Load）：将该类的class文件读入到内存中，并为之创建一个java.lang.Class对象。此过程由类加载器完成</li>
+<li>类的链接（Link）：将类的二进制数据合并到JRE中，</li>
+<li>类的初始化（Initialize）：JVM负责对类进行初始化</li>
+</ul>
+<p>加载：将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后生成一个代表这个类的java.lang.Class对象。</p>
+<p>链接：将Java类的而二进制代码合并到JVM的运行状态之中的过程</p>
+<ul>
+<li>验证：确保加载的类信息符合JVM规范，没有安全方面的问题</li>
+<li>准备：正式为类变量（static）分配内存并设置类变量默认初始值，这些内存都在方法区进行分配</li>
+<li>解析：虚拟机常量值池的符号引用（常量名）替换为直接引用（地址）的过程</li>
+</ul>
+<p>初始化：</p>
+<ul>
+<li>执行类构造器\<clinit>()方法的过程，类构造器\<clinit>()方法是由编译期自动收集类中所有变量的赋值动作和静态代码块中的语句合并产生的</clinit></clinit></li>
+<li>如果父类还没有初始化，则先触发其父类的初始化</li>
+<li>虚拟机会保证一个类\<clinit>()方法在多线程环境中被正确的加锁和同步</clinit></li>
+</ul>
+<h3 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h3><p>主动引用（一定会发生类的初始化）：</p>
+<ul>
+<li><p>当虚拟机启动时，先初始化main方法所在的类</p>
+</li>
+<li><p>new 一个对象</p>
+</li>
+<li><p>调用类的静态成员（除了final常量）和静态方法</p>
+</li>
+<li><p>使用java.lang.reflect包的方法对进行反射调用</p>
+</li>
+<li><p>当初始化一个类时，如果父类没有被初始化，则先会初始化它的父类</p>
+<p>被动调用（不会发生类的初始化）：</p>
+</li>
+<li><p>当访问一个静态域时，只有真正声明这个域的类才会被初始化。当通过子类引用父类的静态变量，不会导致子类初始化</p>
+</li>
+<li><p>通过数组定义类引用，不会触发此类的初始化</p>
+</li>
+<li><p>引用常量不会此类的初始化（常量在链接阶段就存入调用类的常量池中）</p>
+</li>
+</ul>
+<h3 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h3><p>类加载器的作用：将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后在堆中生成一个代表这个类的java.lang.Class对象，作为方法区中类数据的访问入口。</p>
+<p>类缓存：某个类被加载到类加载器中，它将维持加载一段时间，不过JVM垃圾回收机制可以回收这些Class对象。</p>
+<p>Bootstrap：系统类加载器</p>
+<p>PlatformClassLoader：平台类加载器</p>
+<p>AppClassLoader：应用程序加载器</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/数学/Submarine in the Rybinsk Sea (hard edition) CodeForces - 1195D2 (算贡献)/" itemprop="url">
-              
-                <span itemprop="name">Submarine in the Rybinsk Sea (hard edition) CodeForces - 1195D2 (算贡献)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/数学/Submarine in the Rybinsk Sea (easy edition) CodeForces - 1195D1 (算贡献)/" itemprop="url">
-              
-                <span itemprop="name">Submarine in the Rybinsk Sea (easy edition) CodeForces - 1195D1 (算贡献)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/数学/gcd模板/" itemprop="url">
-              
-                <span itemprop="name">gcd(个人加深理解)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/技巧题/Traffic HDU - 6573 /" itemprop="url">
-              
-                <span itemprop="name">Traffic HDU - 6573</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/21/并查集/Rumor CodeForces - 893C/" itemprop="url">
-              
-                <span itemprop="name">Rumor CodeForces - 893C</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-21T21:05:23+08:00" content="2019-09-21">
-          09-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+    <div>
+      
+           <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    学号021
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://shann.xyz/2020/04/01/java/理解Java反射机制/" title="理解Java反射机制">https://shann.xyz/2020/04/01/java/理解Java反射机制/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/04/Linux/Nginx-Notes/" rel="next" title="Nginx-notes">
+                <i class="fa fa-chevron-left"></i> Nginx-notes
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/02/数学/找出数组中只出现一次的数字/" rel="prev" title="找出数组中唯一的数（三同一异）">
+                找出数组中唯一的数（三同一异） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/2019/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/14/">14</a><a class="extend next" rel="next" href="/archives/2019/page/10/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -639,6 +570,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -661,8 +596,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -772,6 +716,23 @@ show_date_time();
         </div>
       </section>
 <!--<iframe height="100" weight="260" src="https://player.bilibili.com/player.html?aid=26597687&cid=45759200&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="false"> </iframe>-->
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类的加载过程"><span class="nav-number">1.</span> <span class="nav-text">类的加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的初始化"><span class="nav-number">1.1.</span> <span class="nav-text">类的初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载器"><span class="nav-number">1.2.</span> <span class="nav-text">类加载器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+        
+      <!--/noindex-->
       
 
       
@@ -916,6 +877,10 @@ show_date_time();
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

@@ -333,6 +333,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-D/" itemprop="url">北信科第十一届程序设计竞赛（重现赛）D kotori和迷宫</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-30T13:31:28+08:00">
+                2019-06-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/比赛/" itemprop="url" rel="index">
+                    <span itemprop="name">比赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>链接：<a href="https://ac.nowcoder.com/acm/contest/940/D" target="_blank" rel="noopener">https://ac.nowcoder.com/acm/contest/940/D</a><br>来源：牛客网</p>
+<p>kotori在一个n*m迷宫里，迷宫的最外层被岩浆淹没，无法涉足，迷宫内有k个出口。kotori只能上下左右四个方向移动。她想知道有多少出口是她能到达的，最近的出口离她有多远？</p>
+<p>输入描述:<br>第一行为两个整数n和m，代表迷宫的行和列数 (1≤n,m≤30)</p>
+<p>后面紧跟着n行长度为m的字符串来描述迷宫。’k’代表kotori开始的位置，’.’代表道路，’*’代表墙壁，’e’代表出口。保证输入合法。<br>输出描述:<br>若有出口可以抵达，则输出2个整数，第一个代表kotori可选择的出口的数量，第二个代表kotori到最近的出口的步数。（注意，kotori到达出口一定会离开迷宫）</p>
+<p>若没有出口可以抵达，则输出-1。<br>示例1<br>输入<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span> <span class="number">8</span></span><br><span class="line">e.*.*e.*</span><br><span class="line">.**.*.*e</span><br><span class="line">..*k**..</span><br><span class="line">***.*.e*</span><br><span class="line">.**.*.**</span><br><span class="line">*......e</span><br></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 7</span><br></pre></td></tr></table></figure></p>
+<p>说明<br>可供选择坐标为[4,7]和[6,8]，到kotori的距离分别是8和7步。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>简单BFS，需要注意的是，一遇到出口就离开迷宫了，所以出口不能当作通道走，不能以此走到其他位置。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,dep;</span><br><span class="line">	node(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> dep):x(x),y(y),dep(dep)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="keyword">char</span> str[MAXN][MAXN];</span><br><span class="line"><span class="keyword">bool</span> visit[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> dx[]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> dy[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line"><span class="keyword">bool</span> flag;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;node&gt; qu;</span><br><span class="line">	qu.push(node(x,y,<span class="number">0</span>));</span><br><span class="line">	<span class="built_in">memset</span>(visit,<span class="literal">false</span>,<span class="keyword">sizeof</span>(visit));</span><br><span class="line">	<span class="keyword">while</span>(!qu.empty()) &#123;</span><br><span class="line">		node t=qu.front();qu.pop();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(str[t.x][t.y]==<span class="string">'e'</span>) &#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			ans=min(ans,t.dep);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		visit[t.x][t.y]=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> tx=t.x+dx[i];</span><br><span class="line">			<span class="keyword">int</span> ty=t.y+dy[i];</span><br><span class="line">			<span class="keyword">if</span>(tx&gt;=<span class="number">0</span>&amp;&amp;tx&lt;n&amp;&amp;ty&gt;=<span class="number">0</span>&amp;&amp;ty&lt;m&amp;&amp;!visit[tx][ty]&amp;&amp;str[tx][ty]!=<span class="string">'*'</span>)</span><br><span class="line">				qu.push(node(tx,ty,t.dep+<span class="number">1</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">true</span>;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">int</span> sx,sy;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">			<span class="keyword">if</span>(str[i][j]==<span class="string">'k'</span>) &#123;</span><br><span class="line">				sx=i;</span><br><span class="line">				sy=j;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag=<span class="literal">false</span>;</span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	<span class="keyword">while</span>(!flag) &#123;</span><br><span class="line">		BFS(sx,sy);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans==<span class="number">0x3f3f3f3f</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,cnt,ans);	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/比赛/北信科第十一届竞赛/北信科十一届竞赛-B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1798,149 +1961,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/模板/long long范围/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/21/模板/long long范围/" itemprop="url">int，long，long long范围<转载></转载></a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
-                2019-09-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2019-03-10T18:48:40+08:00">
-                2019-03-10
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://www.cnblogs.com/kuangbin/archive/2011/07/23/2115001.html" target="_blank" rel="noopener">原文地址：ACM博客_kuangbin </a><br>unsigned   int   0～4294967295  </p>
-<p>int   2147483648～2147483647</p>
-<p>unsigned long 0～4294967295</p>
-<p>long   2147483648～2147483647</p>
-<p>long long的最大值：9223372036854775807</p>
-<p>long long的最小值：-9223372036854775808</p>
-<p>unsigned long long的最大值：18446744073709551615</p>
-<p>__int64的最大值：9223372036854775807</p>
-<p>__int64的最小值：-9223372036854775808</p>
-<p>unsigned __int64的最大值：18446744073709551615</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/模板/堆优化prim模板  /">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2048,6 +2068,149 @@
           
             <p>数据过大导致开大数组不实际时，用vector。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">const int MAXN=100000+10;</span><br><span class="line">const int inf=10e7;</span><br><span class="line">struct Node&#123;</span><br><span class="line">	int x,cost;</span><br><span class="line">	Node(int x,int cost):x(x),cost(cost)&#123;&#125;</span><br><span class="line">	friend bool operator &lt; (const Node &amp;a,const Node &amp;b) &#123;return a.cost&gt;b.cost;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">priority_queue&lt;Node&gt; qu;</span><br><span class="line">int n,m;</span><br><span class="line">vector&lt;Node&gt; mp[MAXN];</span><br><span class="line">int visit[MAXN];</span><br><span class="line">int ans=0;</span><br><span class="line"></span><br><span class="line">void prim(int v) &#123;</span><br><span class="line">	memset(visit,0,sizeof(visit));</span><br><span class="line">	visit[v]=1;</span><br><span class="line">	int k=v;</span><br><span class="line">	for(int i=0;i&lt;mp[k].size();i++) &#123;</span><br><span class="line">		Node tmp=mp[k][i];</span><br><span class="line">		if(!visit[tmp.x])</span><br><span class="line">			qu.push(Node(tmp.x,tmp.cost));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	while(!qu.empty()) &#123;</span><br><span class="line">		Node tmp=qu.top();</span><br><span class="line">		qu.pop();</span><br><span class="line">		if(visit[tmp.x]) continue;</span><br><span class="line">		</span><br><span class="line">		ans+=tmp.cost;</span><br><span class="line">		k=tmp.x;</span><br><span class="line">		visit[k]=1;</span><br><span class="line">		for(int i=0;i&lt;mp[k].size();i++) &#123;</span><br><span class="line">			tmp=mp[k][i];</span><br><span class="line">			if(!visit[tmp.x])</span><br><span class="line">				qu.push(Node(tmp.x,tmp.cost));</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>较小数据量时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">const int inf=1000000;</span><br><span class="line">const int MAXN=500+5;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struct Node&#123;</span><br><span class="line">	int x,y,cost;</span><br><span class="line">	Node(int x,int y,int cost):x(x),y(y),cost(cost)&#123;&#125;</span><br><span class="line">	friend bool operator &lt; (const Node &amp;a,const Node &amp;b) &#123;return a.cost&gt;b.cost;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int ans=0; </span><br><span class="line">int n,m;</span><br><span class="line">int mp[MAXN][MAXN];</span><br><span class="line">priority_queue&lt;Node&gt; qu;</span><br><span class="line">int visit[MAXN*MAXN];</span><br><span class="line"></span><br><span class="line">void prim(int v) &#123;</span><br><span class="line">	</span><br><span class="line">	memset(visit,0,sizeof(visit));</span><br><span class="line">	while(!qu.empty())qu.pop();</span><br><span class="line">	visit[v]=1;</span><br><span class="line">	int k=v;</span><br><span class="line">	for(int i=1;i&lt;=n;i++) &#123;</span><br><span class="line">		for(int j=1;j&lt;=n;j++) </span><br><span class="line">			if(!visit[j]) </span><br><span class="line">				qu.push(Node(i,j,mp[k][j]));</span><br><span class="line">			</span><br><span class="line">		while(!qu.empty()&amp;&amp;visit[qu.top().y]) qu.pop();</span><br><span class="line">		if(qu.empty()) break;</span><br><span class="line">		Node now=qu.top();</span><br><span class="line">		ans+=now.cost;</span><br><span class="line">		k=now.y;</span><br><span class="line">		visit[k]=1;</span><br><span class="line">		qu.pop();</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/模板/long long范围/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/模板/long long范围/" itemprop="url">int，long，long long范围<转载></转载></a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-03-10T18:48:40+08:00">
+                2019-03-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.cnblogs.com/kuangbin/archive/2011/07/23/2115001.html" target="_blank" rel="noopener">原文地址：ACM博客_kuangbin </a><br>unsigned   int   0～4294967295  </p>
+<p>int   2147483648～2147483647</p>
+<p>unsigned long 0～4294967295</p>
+<p>long   2147483648～2147483647</p>
+<p>long long的最大值：9223372036854775807</p>
+<p>long long的最小值：-9223372036854775808</p>
+<p>unsigned long long的最大值：18446744073709551615</p>
+<p>__int64的最大值：9223372036854775807</p>
+<p>__int64的最小值：-9223372036854775808</p>
+<p>unsigned __int64的最大值：18446744073709551615</p>
 
           
         
@@ -2573,169 +2736,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/09/21/数据结构/走迷宫/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/21/数据结构/走迷宫/" itemprop="url">走迷宫（迷宫问题补题）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T21:05:24+08:00">
-                2019-09-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2018-09-29T16:23:54+08:00">
-                2018-09-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="一、题目描述"><a href="#一、题目描述" class="headerlink" title="一、题目描述"></a>一、题目描述</h1><blockquote>
-<p>一个迷宫由R行C列格子组成，有的格子里有障碍物，不能走；有的格子是空地，可以走。<br>给定一个迷宫，求从左上角走到右下角最少需要走多少步(数据保证一定能走到)。只能在水平方向或垂直方向走，不能斜着走。<br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/21/数据结构/走迷宫/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></blockquote></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2792,7 +2792,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2927,7 +2927,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共101.9k字</span>
+  <span class="post-count">博客全站共102.8k字</span>
 </div>
         
 
