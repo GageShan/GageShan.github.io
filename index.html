@@ -333,6 +333,346 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/05/25/数据库/索引/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/25/数据库/索引/" itemprop="url">索引基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-25T21:55:23+08:00">
+                2020-05-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-06-27T00:06:06+08:00">
+                2020-06-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引是帮助数据高效获取数据的排好序的数据结构。</p>
+<h2 id="演变-二叉树到红黑树到B树到B-树"><a href="#演变-二叉树到红黑树到B树到B-树" class="headerlink" title="演变-二叉树到红黑树到B树到B+树"></a>演变-二叉树到红黑树到B树到B+树</h2><p>二叉树：可能因为数据的特殊，将会使得二叉树退化成单链表，严重降低了检索的性能<br>红黑树：当左右子树失衡时，会自动进行旋转。当数据量达到千万级别，树的深度可能达到几十层，影响性能<br>B树：树的每一个节点可以存储多个数据，从而可以控制树的深度。节点中的数据索引从左到右递增排序<br>B+树：对B树做个一点变动，叶子节点用指针连接，提高区间访问的性能；</p>
+<p><img src="https://img-blog.csdnimg.cn/20200525224555727.jpg" alt="BTree"><br><img src="https://img-blog.csdnimg.cn/20200525224809302.jpg" alt="B+Tree"></p>
+<h2 id="数据引擎"><a href="#数据引擎" class="headerlink" title="数据引擎"></a>数据引擎</h2><p>MYisam：索引文件和数据文件分离，非聚集（MYD存储数据，MYI存储索引）<br>InnoDB：索引和数据在同一文件，聚集（ibd）</p>
+<h2 id="索引底层实现方式"><a href="#索引底层实现方式" class="headerlink" title="索引底层实现方式"></a>索引底层实现方式</h2><h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>对于需要建立索引的列，列中数据通过hash函数得到一个散列值，散列值标识了一个位置，该位置存储就是该行数据在磁盘中的地址。<br>hash实现的索引，其特点是可以快速检索到数据，但对于求某一范围数据的查询难以实现</p>
+<h3 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+ Tree"></a>B+ Tree</h3><ul>
+<li>InnoDB：叶子节点存储的是数据</li>
+<li>MYISAM：叶子节点存储的是数据在磁盘中的地址</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/05/08/Spring/springboot使用@autowried注入对象为null/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="学号021">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GageShan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/08/Spring/springboot使用@autowried注入对象为null/" itemprop="url">Spring Boot使用@Autowired注入对象为null</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-08T23:28:28+08:00">
+                2020-05-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-06-27T00:07:54+08:00">
+                2020-06-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在做项目的时候，在某类使用@Autowired注入了一个Service层的对象，但在使用的时候，却发现这个Service层实例为null值。</p>
+<p>原因：当使用new关键字创建对象时，虽然使用了@Autowired对这个对象进行装配，但实际上Spring不会这样做。因为Spring不会对任何一个new出来的对象进行自动装配，只有当一个对象也是一个在Spring中注册过的Bean，才会获得自动装配的功能</p>
+<pre><code class="java">
+<span class="comment">/**</span>
+<span class="comment"> * <span class="doctag">@Configuration</span>：指明当前类是一个配置类；就是来替代之前的Spring配置文件</span>
+<span class="comment"> *</span>
+<span class="comment"> * 在配置文件中用&lt;bean&gt;&lt;bean/&gt;标签添加组件</span>
+<span class="comment"> *</span>
+<span class="comment"> */</span>
+<span class="meta">@Configuration</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAppConfig</span> </span>{
+
+    <span class="comment">//将方法的返回值添加到容器中；容器中这个组件默认的id就是方法名</span>
+    <span class="meta">@Bean</span>
+    <span class="function"><span class="keyword">public</span> HelloService <span class="title">helloService02</span><span class="params">()</span></span>{
+        System.out.println(<span class="string">"配置类@Bean给容器中添加组件了..."</span>);
+        <span class="keyword">return</span> <span class="keyword">new</span> HelloService();
+    }
+}
+</code></pre>
+<p>@Configuration会告知Spring这是一个配置类，会为Spring上下文提供bean。@Bean标注的方法表明这些方法返回的对象会以bean的形式添加到Spring的应用上下文中（默认情况下，bean所对应的bean Id就是定义的方法名称）。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shann.xyz/2020/04/02/数学/找出数组中只出现一次的数字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2486,357 +2826,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/11/13/操作系统/OS实验五-银行家算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/13/操作系统/OS实验五-银行家算法/" itemprop="url">银行家算法实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-13T16:43:53+08:00">
-                2019-11-13
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-28T00:31:21+08:00">
-                2020-02-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>操作系统编程小作业</p>
-<p><a href="https://shann.xyz/2019/10/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95%E9%81%BF%E5%85%8D%E6%AD%BB%E9%94%81/">银行家算法详细讲解</a><br>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/13/操作系统/OS实验五-银行家算法/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shann.xyz/2019/10/22/数据库/mysql语法练习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="学号021">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://img-blog.csdnimg.cn/20200214145809532.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GageShan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/22/数据库/mysql语法练习/" itemprop="url">sql经典练习题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-22T16:56:10+08:00">
-                2019-10-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-28T00:34:05+08:00">
-                2020-02-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>网上流传已久的sql语法练习题，找来练练。</p>
-<h2 id="相关表结构"><a href="#相关表结构" class="headerlink" title="相关表结构"></a>相关表结构</h2><h3 id="course表"><a href="#course表" class="headerlink" title="course表"></a>course表</h3><table>
-<thead>
-<tr>
-<th>CId</th>
-<th>Cname</th>
-<th>TId</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01</td>
-<td>语文</td>
-<td>02</td>
-</tr>
-<tr>
-<td>02</td>
-<td>数学</td>
-<td>01</td>
-</tr>
-<tr>
-<td>03</td>
-<td>英语</td>
-<td>03</td>
-</tr>
-</tbody>
-</table>
-          
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/22/数据库/mysql语法练习/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2893,7 +2882,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">120</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2915,7 +2904,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -3028,7 +3017,7 @@ show_date_time();
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共103.1k字</span>
+  <span class="post-count">博客全站共103.8k字</span>
 </div>
         
 
