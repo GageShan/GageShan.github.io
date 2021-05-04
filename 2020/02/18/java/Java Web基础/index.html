@@ -1,37 +1,403 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
+  
+  <title>Java Web基础（Servlet、Cookie、Session、Jsp回顾整理） | GageShan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、servletservlet是JavaWeb三大组件之一，属于动态资源 servlet有两种创建顺序，第一是在服务器启动时创建，第二是用户访问时创建。服务器启动时创建需要在web.xml中配置0来实现，其中，0就是创建的次序，数字越小，越先创建。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Web基础（Servlet、Cookie、Session、Jsp回顾整理）">
+<meta property="og:url" content="https://shann.xyz/2020/02/18/java/Java%20Web%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="GageShan">
+<meta property="og:description" content="一、servletservlet是JavaWeb三大组件之一，属于动态资源 servlet有两种创建顺序，第一是在服务器启动时创建，第二是用户访问时创建。服务器启动时创建需要在web.xml中配置0来实现，其中，0就是创建的次序，数字越小，越先创建。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-02-18T13:41:10.482Z">
+<meta property="article:modified_time" content="2020-02-27T16:29:43.258Z">
+<meta property="article:author" content="学号021">
+<meta property="article:tag" content="个人记录生活学习">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="GageShan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GageShan</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://shann.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java/Java Web基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/18/java/Java%20Web%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2020-02-18T13:41:10.482Z" itemprop="datePublished">2020-02-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaWeb/">JavaWeb</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java Web基础（Servlet、Cookie、Session、Jsp回顾整理）
+    </h1>
+  
 
-{% block content %}
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、servlet"><a href="#一、servlet" class="headerlink" title="一、servlet"></a>一、servlet</h1><p>servlet是JavaWeb三大组件之一，属于动态资源</p>
+<p>servlet有两种创建顺序，第一是在服务器启动时创建，第二是用户访问时创建。服务器启动时创建需要在web.xml中配置<load-on-startup>0</load-on-startup>来实现，其中，0就是创建的次序，数字越小，越先创建。<br><span id="more"></span></p>
+<h3 id="实现-javax-servlet-Servlet-接口"><a href="#实现-javax-servlet-Servlet-接口" class="headerlink" title="实现 javax.servlet.Servlet  接口"></a>实现 javax.servlet.Servlet  接口</h3><p>生命周期方法：</p>
+<ul>
+<li>void init(ServletConfig servletconfig) servlet被创建之后立即调用，只执行1次 </li>
+<li>void service(ServletRequest requset,ServletResponse servletresponse) 执行多次</li>
+<li>void destory() servlet被销毁之前调用，只执行1次</li>
+</ul>
+<p>特性：</p>
+<ul>
+<li>单例，一个类只有一个对象。可以存在多个servlet</li>
+<li>线程是不安全的，所以它的效率非常高</li>
+</ul>
+<p>servlet由我们来写，但对象由服务器来创建，方法也由服务器来调用。</p>
+<h3 id="实现-javax-servlet-GenericServlet-类"><a href="#实现-javax-servlet-GenericServlet-类" class="headerlink" title="实现 javax.servlet.GenericServlet  类"></a>实现 javax.servlet.GenericServlet  类</h3><h3 id="实现-javax-servlet-HttpServlet-类"><a href="#实现-javax-servlet-HttpServlet-类" class="headerlink" title="实现 javax.servlet.HttpServlet  类"></a>实现 javax.servlet.HttpServlet  类</h3><ul>
+<li>void service(ServletRequest req, ServletResponse res) </li>
+<li>protected void service(HttpServletRequest req, HttpServletResponse resp)  </li>
+<li>protected void doPut(HttpServletRequest req, HttpServletResponse resp)  </li>
+<li>protected void doPost(HttpServletRequest req, HttpServletResponse resp)  </li>
+</ul>
+<p>HttpServlet类结构介绍：在实例化HttpServlet后，先调用service(ServletRequest, ServletResponse)方法，在这个方法中将ServletRequest和ServletResponse强转为HttpServletRequest和HttpServletResponse，最后根据HttpServletRequest中的参数决定调用doPost方法还是doGet方法</p>
+<p>注意：如果没有覆写doPost或doGet方法，当这两个方法被调用时，浏览器会出现405错误，表示不支持该种请求方式。</p>
+<h2 id="ServletContext"><a href="#ServletContext" class="headerlink" title="ServletContext"></a>ServletContext</h2><p>一个项目中只有一个ServletContext（也叫做application），所以可以在多个servlet中利用这个对象来传递数据。</p>
+<p>服务器为每一个应用程序创建ServletContext对象，ServletContext对象在服务器启动时创建，在服务器关闭时销毁。</p>
+<p>获取ServletContext</p>
+<ul>
+<li>ServletConfig#getServletContext()</li>
+<li>GenericServlet#getServletContext()</li>
+<li>HttpSession#getServletContext()</li>
+<li>ServletContextEvent#getServletContext()</li>
+</ul>
+<h3 id="统计网页访问量小案例"><a href="#统计网页访问量小案例" class="headerlink" title="统计网页访问量小案例"></a>统计网页访问量小案例</h3><p>从ServletContext中利用getAttribute方法获取访问量count值，如果访问量值为null，说明本次访问是第一次访问，利用setAttribute方法将访问量保存下来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bservlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        ServletContext servletContext = <span class="keyword">this</span>.getServletContext();</span><br><span class="line">        Integer count = (Integer)servletContext.getAttribute(<span class="string">&quot;count&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(count == <span class="keyword">null</span>) &#123;</span><br><span class="line">            servletContext.setAttribute(<span class="string">&quot;count&quot;</span>,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            servletContext.setAttribute(<span class="string">&quot;count&quot;</span>,count + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        PrintWriter pw = resp.getWriter();</span><br><span class="line">        pw.println(<span class="string">&quot;&lt;h1&gt;&quot;</span> + count + <span class="string">&quot;&lt;/h1&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PrintWriter是向网页输出的输出流，从response中获取对象。</p>
+<h2 id="获取类路径资源"><a href="#获取类路径资源" class="headerlink" title="获取类路径资源"></a>获取类路径资源</h2><p>如果在文件路径前写有‘/’，那么此时对准的文件路径起始点就是classes目录下，如果不写，那么对准的文件路径起始点就是 <code>.class</code>文件目录下。</p>
+<p>两种方式：</p>
+<ul>
+<li>ClassLoader</li>
+<li>Class</li>
+</ul>
+<h3 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h3><p>如果资源文件存在于src目录下，那么直接使用getResourceAsStream(“a.txt”)，就可以获取文件资源；<br>如果资源文件存在于其它包目录下，假如存在于包web/day1_3下，那么将文件路径写全即可getResourceAsStream(“web/day1_3/a.txt”)。</p>
+<p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">       ClassLoader classLoader = <span class="keyword">this</span>.getClass().getClassLoader();</span><br><span class="line">       InputStream input = classLoader.getResourceAsStream(<span class="string">&quot;web/day1_3/a.txt&quot;</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>((len = input.read(data)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            String line = <span class="keyword">new</span> String(data,<span class="number">0</span>,len);</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line">        input.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><p>Class是相对于classes文件来说的。<code>.java</code>文件会被编译成<code>.class</code>文件存放于classes目录下。</p>
+<p>如果资源文件与调用该文件的<code>.class</code>文件处于同一路径，那么直接使用getResourceAsStream(“a.txt”)即可；</p>
+<p>如果处于不同路径，例如存放于src目录下，那么使用getResourceAsStream(“/a.txt”)；</p>
+<p>如果处于其它包下，例如存放于/web/day1_2下，而<code>.class</code>文件位于/web/day1_3下，那么使用getResourceAsStream(“/web/day1_2/a.txt”)即可。</p>
+<p>代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        </span><br><span class="line">        Class cl = <span class="keyword">this</span>.getClass();</span><br><span class="line">        InputStream input = cl.getResourceAsStream(<span class="string">&quot;/web/day1_2/a.txt&quot;</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>((len = input.read(data)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            String line = <span class="keyword">new</span> String(data,<span class="number">0</span>,len);</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line">        input.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="二、cookie"><a href="#二、cookie" class="headerlink" title="二、cookie"></a>二、cookie</h1><p>cookie是以键值对的形式由服务器发送给浏览器保存在客户端上的。属于Http。</p>
+<p>示例代码：</p>
+<p>添加cookie<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cookie cookie1 = <span class="keyword">new</span> Cookie(<span class="string">&quot;aaa&quot;</span>,<span class="string">&quot;AAA&quot;</span>);</span><br><span class="line">response.addCookie(cookie1);</span><br></pre></td></tr></table></figure><br>获取cookie的key<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookie.getName();</span><br></pre></td></tr></table></figure><br>获取cookie的value<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookie.getValue()</span><br></pre></td></tr></table></figure></p>
+<p>设置cookie的生命周期</p>
+<p>cookie#setMaxAge(int MaxAge);</p>
+<ul>
+<li>MaxAge &lt; 0，浏览器一旦关闭，该cookie即死亡</li>
+<li>MaxAge = 0，该cookie立即被销毁</li>
+<li>MaxAge &gt; 0，cookie存活时间，以秒为单位</li>
+</ul>
+<p>cookie的path：</p>
+<p>如果访问路径包含cookie的保存路径，则会将该cookie带回给服务器</p>
+<h1 id="三、HttpSession"><a href="#三、HttpSession" class="headerlink" title="三、HttpSession"></a>三、HttpSession</h1><p>HttpSession是由JavaWeb提供的，Servlet三大域对象之一。</p>
+<hr>
+<p>三大域对象：</p>
+<ul>
+<li>request，一次请求对应一个request，但一个request可以在多个servlet中传递</li>
+<li>session，一个用户对应一个session，同一个用户的请求都在同一个session内</li>
+<li>application（ServletContex），一个应用程序对应一个application，应用程序不死，application不死</li>
+</ul>
+<hr>
+<p><strong>作用域范围</strong></p>
+<p>session的会话范围从用户打开浏览器访问服务器开始到关闭浏览器结束。<br>生命周期：session默认存活30分钟。</p>
+<p>理解：一个Session就是一个会话。一个用户可以对一个服务器发出多个request，一个session包含多个request。</p>
+<p>很少出现并发请求，session保存在服务器端。</p>
+<p>转发：地址栏不发生改变，写的路径不需要带项目名<br>重定向：地址栏发生改变，写的路径需要带项目名。重定向后就是两个不同的请求</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>当用户访问服务器时，服务器会创建一个session，并分配一个sessionId，这个sessionId跟创建的session对应。session会被保存在服务器端，而sessionId会被保存在cookie中。</p>
+<p>创建了新的session，浏览器会得到一个包含sessionId的cookie，这个cookie的生命为-1，即只保存在内存中，当浏览器关闭时，cookie即被销毁。</p>
+<p>之后请求session时，因为可以通过cookie中的sessionIs找到session，所以与上次请求的session是同一session对象。</p>
+<p>服务器并不会一开始就创建session，而是第一次获取session时才会创建。</p>
+<p><strong>session最大不活跃时间</strong></p>
+<p>session有一个最大不活跃时间，当用户不对页面做任何操作时，session或被服务器销毁，下次就需要重新创建session，这样做可以保证用户信息安全。</p>
+<h1 id="四、JSP"><a href="#四、JSP" class="headerlink" title="四、JSP"></a>四、JSP</h1><p>三种jsp脚本</p>
+<p>1、&lt;% — %&gt;，方法体内能写什么就能写什么</p>
+<p>2、&lt;%= — %&gt;，out.write()能写什么就写什么</p>
+<p>3、&lt;%! — %&gt;，类里面能写什么就能写什么，一般不用，用了会被敲死</p>
+<h2 id="jsp指令"><a href="#jsp指令" class="headerlink" title="jsp指令"></a>jsp指令</h2><p>一个jsp页面中，可以有0个或N个page指令。</p>
+<p>三大指令：</p>
+<ul>
+<li>page</li>
+<li>include</li>
+<li>taglib</li>
+</ul>
+<hr>
+<p><strong>page</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> pageEncoding=<span class="string">&quot;utf-8&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>contentType和pageEncoding是等价的，一个什么值另一个也是同样的值，所以一般只用设置一个。如果两个都没有设置，那么默认是iso。</p>
+</blockquote>
+<blockquote>
+<p>import：导入Java包，可以使用多次</p>
+</blockquote>
+<blockquote>
+<p>errorPage：当当前页面抛出异常，则转发到指定页面，设置状态码为200</p>
+</blockquote>
+<blockquote>
+<p>isErrorPage：设置某个页面为处理错误页面，当属性为true时，会设置状态码为500。并且只有这个页面能使用九大内置对象中的Exception。</p>
+</blockquote>
+<p><strong>include</strong><br>静态包含，将多个jsp文件合并成一个文件然后被编译成.class文件，在运行之前就合并。</p>
+<h2 id="九大内置对象"><a href="#九大内置对象" class="headerlink" title="九大内置对象"></a>九大内置对象</h2><ul>
+<li>out（response.getWriter()），jsp的输出流，用来响应客户端</li>
+<li>page，当前jsp对象，它的引用类型是Object，即真身中有以下代码：Object page = this;</li>
+<li>exception（Throwable）</li>
+<li>request（HttpServletRequest）</li>
+<li>response（HttpServletResponse）</li>
+<li>config（ServletConfig），对应真身中的ServletConfig</li>
+<li>session（HttpSession）</li>
+<li>pageContext，一个顶九个</li>
+<li>application（ServletContext）</li>
+</ul>
+<p>servlet三大域对象，jsp四大域对象。</p>
+<ul>
+<li>ServletContext，作用于整个应用程序</li>
+<li>session，整个会话，一个会话只有一个用户</li>
+<li>request，一次请求，一个请求可能跨多个servlet</li>
+<li>pageContext，一个jsp页面，在当前页面和当前页面所使用的标签之间共享数据。<blockquote>
+<p>1、代理其它域；<br>  pageContext.setAttribute(“xxx”,”XXX”，PageContext.PAGE_SCOPE);<br>2、全域查找；<br>  pageContext.findAttribute(“xxx”);从范围较小的域查到范围大的域，小域优先于大域<br>3、获取其它域对象</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="jsp动作标签"><a href="#jsp动作标签" class="headerlink" title="jsp动作标签"></a>jsp动作标签</h2><p>动作标签是由服务器来执行的，而静态的html是由浏览器的解释的。</p>
+<p><a href="jsp:forward">jsp:forward</a> 请求转发<br><a href="jsp:include">jsp:include</a> 动态包含，在运行的时候调用另一个页面。与&lt;%@include&gt;不同。<br><a href="jsp:param">jsp:param</a> 作为include和forward的子标签，用来给转发和包含的页面传值。</p>
+<h2 id="JavaBean规范"><a href="#JavaBean规范" class="headerlink" title="JavaBean规范"></a>JavaBean规范</h2><p>1、必须要有一个默认构造器<br>2、提供get/set方法，如果只有get方法，那么这个是可读属性<br>3、属性：有get/set方法的成员，还可以没有成员。属性名称由get/set方法来决定，即get/set方法名称去掉get/set后小写的名称。</p>
+<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><p>EL是jsp内置的表达式语言。<br>作用：</p>
+<ul>
+<li>替代&lt;%= … %&gt;，也就是说，EL是用来输出的</li>
+<li>读取四大域对象，${xxx}，全域查找名为xxx的属性，如果不存在就输出空串而不是null。${pageScope.xxx}、${requestScope.xxx}、${sessionScope.xxx}、${applicationScope.xxx}，指定域获取属性。</li>
+<li>javaBean导航，${requestScope.emp.address.street}，使用El获取request域的emp —-&gt; request.getAttribute(“emp”).getAddress().getStreet()。</li>
+</ul>
+<h3 id="EL函数库"><a href="#EL函数库" class="headerlink" title="EL函数库"></a>EL函数库</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;fn&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/functions&quot;</span> %&gt;</span><br><span class="line"></span><br><span class="line">$&#123;fn:toLowerCase(<span class="string">&quot;Hellowosdio&quot;</span>)&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="jstl"><a href="#jstl" class="headerlink" title="jstl"></a>jstl</h3><h4 id="core库"><a href="#core库" class="headerlink" title="core库"></a>core库</h4><h5 id="out标签"><a href="#out标签" class="headerlink" title="out标签"></a>out标签</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">request.setAttribute(<span class="string">&quot;code&quot;</span>,<span class="string">&quot;&lt;script&gt;alter(&#x27;helloworld&#x27;);&lt;/script&gt;&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line">$&#123;code&#125;</span><br><span class="line">&lt;c:out value=<span class="string">&quot;$&#123;code&#125;&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="set标签"><a href="#set标签" class="headerlink" title="set标签"></a>set标签</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">&quot;name&quot;</span> value=<span class="string">&quot;&lt;script&gt;alter(&#x27;helloworld&#x27;);&lt;/script&gt;&quot;</span> scope=<span class="string">&quot;request&quot;</span>/&gt;</span><br><span class="line">&lt;c:out value=<span class="string">&quot;$&#123;name&#125;&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>重要属性：scope：默认为page，可选值为page，request，session，application。</p>
+<h5 id="remove标签"><a href="#remove标签" class="headerlink" title="remove标签"></a>remove标签</h5><p>如果不写scope，那么删除的全域中所有的属性</p>
+<h5 id="url标签"><a href="#url标签" class="headerlink" title="url标签"></a>url标签</h5><p>value属性：指定一个路径名，自动在路径前面添加项目名。</p>
+<p>注意：路径名必须以斜杠开头<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:url value=<span class="string">&quot;/Aservlet&quot;</span> /&gt;</span><br><span class="line"><span class="comment">//在页面上输出/jsp/Aservlet</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:url value=<span class="string">&quot;/Aservlet&quot;</span> &gt;</span><br><span class="line">    &lt;c:param name=<span class="string">&quot;name&quot;</span> value=<span class="string">&quot;gageshan&quot;</span> /&gt;</span><br><span class="line">&lt;/c:url&gt;</span><br><span class="line"><span class="comment">// 输出为 jsp/Aservlet?name=gageshan</span></span><br></pre></td></tr></table></figure>
+<p>重要属性：var：指定变量名，添加这个属性后，url标签就不会输出到页面中，而是会保存到域中。<br>scope：与var一起使用，将url标签保存到域中。</p>
+<h5 id="if、choose"><a href="#if、choose" class="headerlink" title="if、choose"></a>if、choose</h5><p>if对应Java中的if语句，choose对应Java中的if/else if/else</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;11&gt;4&quot;</span>&gt;</span><br><span class="line">    &lt;c:out value=<span class="string">&quot;/a&quot;</span>/&gt;</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=&quot;&quot;&gt;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;&quot;&gt;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=&quot;&quot;&gt;&lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;&lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h5><p>用来循环遍历数组，集合。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;c:forEach <span class="keyword">var</span>=<span class="string">&quot;i&quot;</span> begin=<span class="string">&quot;1&quot;</span> end=<span class="string">&quot;10&quot;</span> step=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">$&#123;i&#125;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure></p>
+<p>重要的属性：items：指定要循环谁，可以是数组或者集合，items=”${…}”，不能写有空格。var：将数组或集合中的元素赋给var指定的变量。varStatus，循环状态变量。</p>
+<h4 id="fmt"><a href="#fmt" class="headerlink" title="fmt"></a>fmt</h4><p>格式化库</p>
+<h5 id="格式化日期"><a href="#格式化日期" class="headerlink" title="格式化日期"></a>格式化日期</h5><p>&lt;fmt:formatDate value=”” pattern=””&gt;</p>
+<p>value：指定一个Date类型变量<br>pattern：指定输出的模板，”yyyy-mm-dd HH:mm:ss”</p>
+<h5 id="格式化数字"><a href="#格式化数字" class="headerlink" title="格式化数字"></a>格式化数字</h5><p>&lt;fmt:formatNumber value=”${num1}” pattern=”0.00” /&gt;<br>pattern：0.00：保留小数点后两位，不足两位以0来补，并且会四舍五入。#.##，不补位。</p>
+<h3 id="自定义标签"><a href="#自定义标签" class="headerlink" title="自定义标签"></a>自定义标签</h3><p>写标签类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> web.day3_2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.JspException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.tagext.JspTag;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.tagext.SimpleTagSupport;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTag1</span> <span class="keyword">extends</span> <span class="title">SimpleTagSupport</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doTag</span><span class="params">()</span> <span class="keyword">throws</span> JspException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.getJspContext().getOut().write(<span class="string">&quot;hello tag&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置tld文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;ISO-8859-1&quot;</span>?&gt;</span><br><span class="line"></span><br><span class="line">&lt;taglib xmlns=<span class="string">&quot;http://java.sun.com/xml/ns/javaee&quot;</span></span><br><span class="line">        xmlns:xsi=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="line">        xsi:schemaLocation=<span class="string">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd&quot;</span></span><br><span class="line">        version=<span class="string">&quot;2.1&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;tlib-version&gt;1.0&lt;/tlib-version&gt;</span><br><span class="line">    &lt;short-name&gt;itcast&lt;/short-name&gt;</span><br><span class="line">    &lt;uri&gt;http:<span class="comment">//www.itcast.cn/tags/it-1.0&lt;/uri&gt;</span></span><br><span class="line"></span><br><span class="line">    &lt;!-- Invoke <span class="string">&#x27;Generate&#x27;</span> action to add tags or functions --&gt;</span><br><span class="line">    &lt;tag&gt;</span><br><span class="line">        &lt;name&gt;mytag1&lt;/name&gt;</span><br><span class="line">        &lt;tag-<span class="class"><span class="keyword">class</span>&gt;<span class="title">web</span>.<span class="title">day3_2</span>.<span class="title">MyTag1</span>&lt;/<span class="title">tag</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">body</span>-<span class="title">content</span>&gt;<span class="title">empty</span>&lt;/<span class="title">body</span>-<span class="title">content</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">tag</span>&gt;</span></span><br><span class="line"><span class="class">&lt;/<span class="title">taglib</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br></pre></td></tr></table></figure></p>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://shann.xyz/2020/02/18/java/Java%20Web%E5%9F%BA%E7%A1%80/" data-id="ckoa6muvu0003c0v97qe94lw6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/08/java/springboot%E4%BD%BF%E7%94%A8@autowried%E6%B3%A8%E5%85%A5%E5%AF%B9%E8%B1%A1%E4%B8%BAnull/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring Boot使用@Autowired注入对象为null
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/04/%E4%BA%8C%E5%88%86/%E7%AC%AC%E4%BA%8C%E8%AE%B2%20%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第二讲 二分与前缀和</div>
+    </a>
+  
+</nav>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaWeb/">JavaWeb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%8C%E5%88%86-%E4%B8%89%E5%88%86-%E5%88%86%E6%B2%BB/">二分-三分-分治</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" rel="tag">二分答案</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" rel="tag">基础算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Spring-Boot/" style="font-size: 10px;">Spring Boot</a> <a href="/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/" style="font-size: 10px;">二分答案</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" style="font-size: 10px;">基础算法</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/04/redis/redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F%EF%BC%88rdb-aof%EF%BC%89/">Redis持久化方式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/08/java/springboot%E4%BD%BF%E7%94%A8@autowried%E6%B3%A8%E5%85%A5%E5%AF%B9%E8%B1%A1%E4%B8%BAnull/">Spring Boot使用@Autowired注入对象为null</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/18/java/Java%20Web%E5%9F%BA%E7%A1%80/">Java Web基础（Servlet、Cookie、Session、Jsp回顾整理）</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/04/%E4%BA%8C%E5%88%86/%E7%AC%AC%E4%BA%8C%E8%AE%B2%20%E4%BA%8C%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/">第二讲 二分与前缀和</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/01/java/Java%E5%AE%9E%E7%8E%B0%E8%A7%A3%E5%8E%8Bzip%E6%96%87%E4%BB%B6/">Java实现批量解压zip文件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 学号021<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
